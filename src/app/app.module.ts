@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router'
 
 
 import { AppComponent } from './app.component';
-import { AlertModule, DropdownModule, AccordionModule  } from 'ng2-bootstrap';
+import { AlertModule, DropdownModule, AccordionModule,CarouselModule   } from 'ng2-bootstrap';
 
 
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
@@ -31,10 +31,14 @@ import { ThingFilterPipe } from './filters/thing-filter.pipe'
 
 import {} from './models'
 
-import { GenericReportComponent } from './generic-report/generic-report.component'
+import { PlayersComponent } from './players/players.component'
 import { GenericReport2Component } from './generic-report2/generic-report2.component';
 import { ThingDetailComponent } from './thing-detail/thing-detail.component';
-import { StarComponent } from './star/star.component'
+import { StarComponent } from './star/star.component';
+import { FaqComponent } from './faq/faq.component';
+import { ContactComponent } from './contact/contact.component';
+import { HowitworksComponent } from './howitworks/howitworks.component';
+import { WagersComponent } from './wagers/wagers.component'
 
 
 
@@ -44,17 +48,22 @@ import { StarComponent } from './star/star.component'
     HomeComponent,
     ThingsComponent,
     NavComponent,
-    GenericReportComponent,
+    PlayersComponent,
     GenericReport2Component,
     Error404Component,
     ThingFilterPipe,
     ThingDetailComponent,
-    StarComponent
+    StarComponent,
+    FaqComponent,
+    ContactComponent,
+    HowitworksComponent,
+    WagersComponent
   ],
   imports: [
     AlertModule.forRoot(), 
     DropdownModule.forRoot(),
     AccordionModule.forRoot(),
+    CarouselModule.forRoot(),
     ToastModule.forRoot(),
     BrowserModule,
     RouterModule.forRoot(appRoutes),

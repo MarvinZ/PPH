@@ -9,15 +9,61 @@
         <li>
           <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
         </li>
+
+        <li><a [routerLink]="['/howitworks']" routerLinkActive="active">{{ 'How it works' | translate:lang }}</a></li>
+        <li><a [routerLink]="['/faq']" routerLinkActive="active">{{ 'Faq' | translate:lang }}</a></li>
+        <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
+
+
         <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>
-        <li ><a [routerLink]="['/genericReport']" routerLinkActive="active">{{ 'Generic report' | translate:lang }}</a></li>
+        <li ><a [routerLink]="['/players']" routerLinkActive="active">{{ 'Players' | translate:lang }}</a></li>
+        <li ><a [routerLink]="['/wagers']" routerLinkActive="active">{{ 'Wagers' | translate:lang }}</a></li>
+
         <li *ngIf="auth.isAuthenticated()" ><a [routerLink]="['/genericReport2']" routerLinkActive="active">{{ 'Secure report' | translate:lang }}</a></li>
      
         <li>
           <a href="">
             <div dropdown class="dropdown">
               <div dropdownToggle class="dropdown-toggle">
-              {{'More options' | translate:lang}}
+              {{'Cash reports' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">             
+                      <li>
+                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+              </li>
+              <li>
+                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+              </div>
+
+            </div>
+          </a>
+        </li>
+             
+        <li>
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'wagers reports' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">             
+                      <li>
+                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+              </li>
+              <li>
+                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+              </div>
+
+            </div>
+          </a>
+        </li>
+             
+        <li>
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Other reports' | translate:lang}}
                 <span class="caret"></span>
               </div>
               <div dropdownMenu class="dropdown-menu">             
