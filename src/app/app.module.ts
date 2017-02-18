@@ -54,7 +54,7 @@ import { StarComponent } from './star/star.component'
   imports: [
     AlertModule.forRoot(), 
     DropdownModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
     ToastModule.forRoot(),
     BrowserModule,
     RouterModule.forRoot(appRoutes),
