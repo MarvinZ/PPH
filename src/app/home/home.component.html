@@ -1,0 +1,15 @@
+
+
+<p>
+  Home works!
+</p>
+<alert type="success">hello</alert>
+<button class="btn btn-success" (click)=" test()">click me!</button>
+<button class="btn btn-default" (click)="showSuccess()">Toastr Testr</button>
+
+
+<hr>
+
+<p>{{ today | localeDate:defaultLocale:'fullDate' }}</p>       
+<p>{{ pi | localeDecimal:defaultLocale:'1.5-5' }}</p>
+<p>{{ value | localeCurrency:defaultLocale:currency:true:'1.2-2' }}</p>

@@ -1,0 +1,65 @@
+<div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >ng2Start</a>
+    </div>
+
+    <!--<div class="collapse navbar-collapse">-->
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+        </li>
+        <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>
+        <li ><a [routerLink]="['/genericReport']" routerLinkActive="active">{{ 'Generic report' | translate:lang }}</a></li>
+        <li *ngIf="auth.isAuthenticated()" ><a [routerLink]="['/genericReport2']" routerLinkActive="active">{{ 'Secure report' | translate:lang }}</a></li>
+     
+        <li>
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'More options' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">             
+                      <li>
+                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+              </li>
+              <li>
+                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+              </div>
+
+            </div>
+          </a>
+        </li>
+
+      </ul>
+   
+      <!--<div class="navbar-header navbar-right">
+   <select class="selectpicker" data-width="fit">
+    <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
+  <option  data-content='<span class="flag-icon flag-icon-mx"></span> Español'>Español</option>
+</select>
+      </div>-->
+
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{auth.currentUser.firstName}}</a>
+          </li>
+          <li>
+              <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout">Log out </a>
+          </li>
+        </ul>
+      </div>
+      <form id="searchForm"  class="navbar-form navbar-right"  >
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" >
+        </div>
+        <button class="btn btn-default" >
+          Search
+        </button>
+      </form>
+    <!--</div>-->
+  </div>
+</div>

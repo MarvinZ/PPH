@@ -1,0 +1,76 @@
+<div *ngIf="!auth.isAuthenticated()">
+
+
+  <div class="row">
+  <div class="col-md-2">
+    
+<accordion>
+  <accordion-group #group1>
+    <div accordion-heading>
+      Cash
+      <i class="pull-right float-xs-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group1?.isOpen, 'glyphicon-chevron-right': !group1?.isOpen}"></i>
+    </div>
+
+              <div>             
+                      <li>
+                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+              </li>
+              <li>
+                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+              </div>
+    </accordion-group>
+
+    <accordion-group #group2>
+    <div accordion-heading>
+      Players
+      <i class="pull-right float-xs-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group2?.isOpen, 'glyphicon-chevron-right': !group2?.isOpen}"></i>
+    </div>
+    ohohoihoihiohiohiohioh
+  </accordion-group>
+    <accordion-group #group3>
+    <div accordion-heading>
+      Marketing!
+      <i class="pull-right float-xs-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group3?.isOpen, 'glyphicon-chevron-right': !group3?.isOpen}"></i>
+    </div>
+    sdfsdfsdfsdfsdfsdf
+  </accordion-group>
+    <accordion-group #group4>
+    <div accordion-heading>
+      Others
+      <i class="pull-right float-xs-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group4?.isOpen, 'glyphicon-chevron-right': !group4?.isOpen}"></i>
+    </div>
+    This is just some content to illustrate fancy headings.
+  </accordion-group>
+</accordion>
+
+  </div>
+  <div class="col-md-10">
+    
+  <p>
+  generic-report2 works too!
+</p>
+
+Am I authenticated? -> {{auth.isAuthenticated()}}
+
+
+
+  </div>
+ 
+</div>
+
+
+</div>
+
+<div *ngIf="auth.isAuthenticated()">
+<p>
+    You have no access to this module, here are some potatoes
+</p>
+<img src="https://media.giphy.com/media/iiZpZq2rpkkvu/giphy.gif" alt="potato" height="300" width="200"></div>
+
+
+
+
