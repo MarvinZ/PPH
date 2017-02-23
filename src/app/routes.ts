@@ -9,6 +9,8 @@ import { ThingDetailComponent } from './thing-detail/thing-detail.component'
 import { ThingDetailGuard } from './guards/thing-detail-guard'
 
 import { FaqComponent } from './faq/faq.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+
 import { ContactComponent } from './contact/contact.component';
 import { HowitworksComponent } from './howitworks/howitworks.component'
 
@@ -41,7 +43,8 @@ export const appRoutes: Routes = [
     { path:'wagers', component: WagersComponent },
 
     { path:'howitworks', component: HowitworksComponent },
-    { path:'faq', component: FaqComponent },
+    { path:'FAQ', component: FaqComponent },
+    { path:'ToS', component: TermsOfServiceComponent },
     { path:'contactus', component: ContactComponent },
     { path:'players', component: PlayersComponent },
     { path:'genericReport2', component: GenericReport2Component },

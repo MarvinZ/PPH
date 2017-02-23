@@ -56,7 +56,8 @@ import { PlayerTotalsComponent } from './player-totals/player-totals.component';
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent } from './marketing/marketing.component';
-import { PlayerStandingsComponent } from './player-standings/player-standings.component'
+import { PlayerStandingsComponent } from './player-standings/player-standings.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component'
 
 
 
@@ -90,7 +91,8 @@ import { PlayerStandingsComponent } from './player-standings/player-standings.co
     PlayerOpenBetsComponent,
     PlayerHistoryComponent,
     MarketingComponent,
-    PlayerStandingsComponent
+    PlayerStandingsComponent,
+    TermsOfServiceComponent
   ],
   imports: [
     AlertModule.forRoot(), 
