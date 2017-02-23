@@ -59,6 +59,11 @@ import { MarketingComponent } from './marketing/marketing.component';
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component'
 
+import { MyDatePickerModule } from 'mydatepicker';
+import { MyDateRangePickerModule } from 'mydaterangepicker';
+
+
+
 
 
 @NgModule({
@@ -105,7 +110,10 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    LocalizationModule.forRoot()
+    LocalizationModule.forRoot(),
+    MyDatePickerModule,
+    MyDateRangePickerModule 
+    
   ],
   providers: [    
         AuthService,
