@@ -9,3 +9,41 @@
 <li>Add wagers</li>
 <li>Delete wagers</li>
 </ul>
+<!--
+<div class="panel panel-default">
+            <div class="panel-heading">{{comment.author}}</div>
+            <div class="panel-body">
+                {{comment.text}}
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-info" (click)="editComment()"><span class="glyphicon glyphicon-edit"></span></button>
+                <button class="btn btn-danger" (click)="deleteComment(comment.id)"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+        </div>
+
+        <hr>-->
+
+ <form (ngSubmit)="submitComment()">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+                    <input type="text" class="form-control" placeholder="Author" [(ngModel)]="model.author" name="author">
+                </div>
+                <br />
+                <textarea class="form-control" rows="3" placeholder="Text" [(ngModel)]="model.text" name="text"></textarea>
+                <br />
+                <button *ngIf="!editing" type="submit" class="btn btn-primary btn-block">Add</button>
+                <button *ngIf="editing" type="submit" class="btn btn-warning btn-block">Update</button>
+            </div>
+        </form>
+
+
+                <button  type="submit" class="btn btn-primary btn-block" (click)="demeDuro()">+1</button>
+
+
+   <pre>{{comments | json}}</pre>
+
+
+
+
+

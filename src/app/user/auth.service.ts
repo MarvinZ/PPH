@@ -30,4 +30,9 @@ export class AuthService {
     this.currentUser = null;
     this.router.navigate(['home']);
   }
+
+    singup(name:string, email:string, phone: string) {
+    console.log(name, phone, email);
+    this.router.navigate(['home']);
+  }
 }

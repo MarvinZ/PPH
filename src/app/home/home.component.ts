@@ -78,6 +78,8 @@ export class HomeComponent extends Localization implements OnInit {
       }
 
         signup(formValues) {
+          console.log(formValues);
+          this.authService.singup(formValues.name,  formValues.email, formValues.phone);
 this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
     // this.router.navigate(['home'])
   }

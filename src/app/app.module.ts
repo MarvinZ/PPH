@@ -21,6 +21,9 @@ import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
 import { ThingService } from './services/thing.service'
 import { ReportService } from './services/report.service'
+import { CommentService } from './services/commentX.service'
+import { EmitterService } from './services/emitter.service'
+
 
 import { ThingDetailGuard } from './guards/thing-detail-guard'
 
@@ -76,7 +79,9 @@ import { WagersComponent } from './wagers/wagers.component'
         AuthService,
         ThingService,
         ThingDetailGuard,
-        ReportService
+        ReportService,
+        CommentService,
+        EmitterService
   ],
   bootstrap: [AppComponent]
 })
