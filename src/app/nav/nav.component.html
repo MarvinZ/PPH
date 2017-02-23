@@ -14,10 +14,16 @@
         <li><a [routerLink]="['/faq']" routerLinkActive="active">{{ 'Faq' | translate:lang }}</a></li>
         <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
 
+        <li><a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
 
         <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>
         <li ><a [routerLink]="['/players']" routerLinkActive="active">{{ 'Players' | translate:lang }}</a></li>
         <li ><a [routerLink]="['/wagers']" routerLinkActive="active">{{ 'Wagers' | translate:lang }}</a></li>
+
+        <li><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Main' | translate:lang }}</a></li>
+
+
+
 
         <li *ngIf="auth.isAuthenticated()" ><a [routerLink]="['/genericReport2']" routerLinkActive="active">{{ 'Secure report' | translate:lang }}</a></li>
      
@@ -29,11 +35,12 @@
                 <span class="caret"></span>
               </div>
               <div dropdownMenu class="dropdown-menu">             
-                      <li>
-                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
-              </li>
-              <li>
-                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+              <li><a [routerLink]="['/weeklyTransactions']" routerLinkActive="active">{{ 'Weekly Transactions' | translate:lang }}</a></li>
+
+              <li><a [routerLink]="['/weeklyBalances']" routerLinkActive="active">{{ 'Weekly Balances' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/cashFlow']" routerLinkActive="active">{{ 'Cash Flow Balances' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/weeklyPayments']" routerLinkActive="active">{{ 'Weekly Payments' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/agentCommission']" routerLinkActive="active">{{ 'Agent Commission' | translate:lang }}</a></li>
               </div>
 
             </div>
@@ -48,11 +55,8 @@
                 <span class="caret"></span>
               </div>
               <div dropdownMenu class="dropdown-menu">             
-                      <li>
-                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
-              </li>
-              <li>
-                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+              <li><a [routerLink]="['/agentExposure']" routerLinkActive="active">{{ 'Agent Exposure' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/agentPosition']" routerLinkActive="active">{{ 'Agent Position' | translate:lang }}</a></li>      
               </div>
 
             </div>
@@ -63,15 +67,15 @@
           <a href="">
             <div dropdown class="dropdown">
               <div dropdownToggle class="dropdown-toggle">
-              {{'Other reports' | translate:lang}}
+              {{'Player reports' | translate:lang}}
                 <span class="caret"></span>
               </div>
               <div dropdownMenu class="dropdown-menu">             
-                      <li>
-                <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
-              </li>
-              <li>
-                <a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>        
+                        <li><a [routerLink]="['/playerStandings']" routerLinkActive="active">{{ 'Player Standings' | translate:lang }}</a></li>
+                        <li><a [routerLink]="['/actionByPlayer']" routerLinkActive="active">{{ 'Action By Player' | translate:lang }}</a></li>
+                        <li><a [routerLink]="['/playerTotals']" routerLinkActive="active">{{ 'Player Totals' | translate:lang }}</a></li>
+                        <li><a [routerLink]="['/playerOpenBets']" routerLinkActive="active">{{ 'Player Open Bets' | translate:lang }}</a></li>
+                        <li><a [routerLink]="['/playerHistory']" routerLinkActive="active">{{ 'Player History' | translate:lang }}</a></li>      
               </div>
 
             </div>

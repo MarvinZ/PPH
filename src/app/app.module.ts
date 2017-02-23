@@ -41,7 +41,22 @@ import { StarComponent } from './star/star.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
-import { WagersComponent } from './wagers/wagers.component'
+import { WagersComponent } from './wagers/wagers.component';
+import { MainComponent } from './main/main.component';
+import { WeeklyTransactionsComponent } from './weekly-transactions/weekly-transactions.component';
+import { WeeklyBalancesComponent } from './weekly-balances/weekly-balances.component';
+import { CashFlowComponent } from './cash-flow/cash-flow.component';
+import { WeeklyPaymentsComponent } from './weekly-payments/weekly-payments.component';
+import { AgentExposureComponent } from './agent-exposure/agent-exposure.component';
+import { AgentPositionComponent } from './agent-position/agent-position.component';
+import { AgentCommissionComponent } from './agent-commission/agent-commission.component';
+import { PlayerStandingComponent } from './player-standing/player-standing.component';
+import { ActionByPlayerComponent } from './action-by-player/action-by-player.component';
+import { PlayerTotalsComponent } from './player-totals/player-totals.component';
+import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
+import { PlayerHistoryComponent } from './player-history/player-history.component';
+import { MarketingComponent } from './marketing/marketing.component';
+import { PlayerStandingsComponent } from './player-standings/player-standings.component'
 
 
 
@@ -60,7 +75,22 @@ import { WagersComponent } from './wagers/wagers.component'
     FaqComponent,
     ContactComponent,
     HowitworksComponent,
-    WagersComponent
+    WagersComponent,
+    MainComponent,
+    WeeklyTransactionsComponent,
+    WeeklyBalancesComponent,
+    CashFlowComponent,
+    WeeklyPaymentsComponent,
+    AgentExposureComponent,
+    AgentPositionComponent,
+    AgentCommissionComponent,
+    PlayerStandingComponent,
+    ActionByPlayerComponent,
+    PlayerTotalsComponent,
+    PlayerOpenBetsComponent,
+    PlayerHistoryComponent,
+    MarketingComponent,
+    PlayerStandingsComponent
   ],
   imports: [
     AlertModule.forRoot(), 
