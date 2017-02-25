@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ChatService, Message} from './../services/chat.service';
+
 
 @Component({
   selector: 'app-weekly-balances',
@@ -7,9 +9,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeeklyBalancesComponent implements OnInit {
 
-  constructor() { }
+  	randomData: number[] = [];
+			//messages: Message[] = [];
 
-  ngOnInit() {
-  }
+
+private message = {
+		author : 'peter',
+		message: ''
+	};
+  constructor(private chatService: ChatService) { }
+
+// sendMsg() {
+// 		// console.log('new message from client: ', this.message);
+// 		this.chatService.messages.next(this.message);
+// 		this.message.message = '';
+// 	}
+
+	ngOnInit(){
+
+		// this.chatService.messages.subscribe(msg => {
+		// 	this.messages.push(msg);
+		// });
+
+		this.chatService.randomData.subscribe(num => {
+			this.randomData.push(num);
+			// reset if there are 20 numbers in the array
+			if (this.randomData.length > 20) {
+				this.randomData = [];
+			}
+		})
+	}
 
 }

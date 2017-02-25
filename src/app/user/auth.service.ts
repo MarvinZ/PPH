@@ -13,9 +13,22 @@ export class AuthService {
       id: 1,
       userName: userName,
       firstName: 'Marv',
-      lastName: 'Test'
+      lastName: 'Test',
+      userType: 'PPH'
     }
   }
+
+
+hasAffiliateAccess() {
+  return this.currentUser.userType === 'AFFILIATE';
+
+}
+
+
+hasAgentAccess() {
+  return this.currentUser.userType === 'AGENT' || this.currentUser.userType === 'PPH';
+
+}
 
   isAuthenticated() {
     return !!this.currentUser;

@@ -6,92 +6,256 @@
 
     <!--<div class="collapse navbar-collapse">-->
       <ul class="nav navbar-nav">
-        <li>
+        <li *ngIf="!auth.isAuthenticated()">
           <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+          </li>
+
+       <li *ngIf="!auth.isAuthenticated()">
+
+          <a [routerLink]="['/homepph']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
         </li>
 
-        <li><a [routerLink]="['/howitworks']" routerLinkActive="active">{{ 'How it works' | translate:lang }}</a></li>
-        <li><a [routerLink]="['/FAQ']" routerLinkActive="active">{{ 'Faq' | translate:lang }}</a></li>
-        <li><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Tearms of Service' | translate:lang }}</a></li>
+         <li  *ngIf="!auth.isAuthenticated()">
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'How it works' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">             
+                <li><a [routerLink]="['/howitworks']" routerLinkActive="active">{{ 'How it works PPH' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/howitworkspph']" routerLinkActive="active">{{ 'How it works' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/demopph']" routerLinkActive="active">{{ 'Demo PPH' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/affilaitedemo']" routerLinkActive="active">{{ 'Demo' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/signinguppph']" routerLinkActive="active">{{ 'Signing up PPH' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/signingup']" routerLinkActive="active">{{ 'Signining up' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/affilaitegallery']" routerLinkActive="active">{{ 'Gallery' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/gallerypph']" routerLinkActive="active">{{ 'Gallery PPH' | translate:lang }}</a></li>
+              </div>
+            </div>
+          </a>
+        </li>
 
-        <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
-
-        <li><a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
-
-        <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things' | translate:lang }}</a></li>
-        <li ><a [routerLink]="['/players']" routerLinkActive="active">{{ 'Players' | translate:lang }}</a></li>
-        <li ><a [routerLink]="['/wagers']" routerLinkActive="active">{{ 'Wagers' | translate:lang }}</a></li>
-
-        <li><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Main' | translate:lang }}</a></li>
 
 
+         <li  *ngIf="!auth.isAuthenticated()">
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Pay per head' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">             
+                <li><a [routerLink]="['/servicespph']" routerLinkActive="active">{{ 'PPH Services' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/productspph']" routerLinkActive="active">{{ 'PPH Products' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/feespph']" routerLinkActive="active">{{ 'PPH Fees' | translate:lang }}</a></li>
+              </div>
+            </div>
+          </a>
+        </li>
 
+        <li  *ngIf="!auth.isAuthenticated()">
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Features' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">             
+                <li><a [routerLink]="['/payments']" routerLinkActive="active">{{ 'Payments' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/FAQ']" routerLinkActive="active">{{ 'Faq' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/aboutus']" routerLinkActive="active">{{ 'About us' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/paymentspph']" routerLinkActive="active">{{ 'PPH Payments' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/FAQpph']" routerLinkActive="active">{{ 'PPH Faq' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/aboutuspph']" routerLinkActive="active">{{ 'PPH About us' | translate:lang }}</a></li>
+              </div>
+            </div>
+          </a>
+        </li>
+
+
+              <li  *ngIf="!auth.isAuthenticated()"><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Tearms of Service' | translate:lang }}</a></li>
+              <li  *ngIf="!auth.isAuthenticated()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Tearms of Service PPH' | translate:lang }}</a></li>
+
+
+              <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/contactuspph']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/affiliatecontactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
+
+
+
+              <li  *ngIf="!auth.isAuthenticated()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
+              <li  *ngIf="!auth.isAuthenticated()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
+              <li  *ngIf="!auth.isAuthenticated()"><a [routerLink]="['/affiliatesignup']" routerLinkActive="active">{{ 'Affiliate Sign up' | translate:lang }}</a></li>
+
+
+<!--
+
+not authorized
+authorized-->
+
+
+
+
+
+        <li  *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"  ><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Main' | translate:lang }}</a></li>
+                <li   *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()" ><a [routerLink]="['/mainpph']" routerLinkActive="active">{{ 'Main PPH' | translate:lang }}</a></li>
+
+        <li  *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"  ><a [routerLink]="['/affiliatemain']" routerLinkActive="active">{{ 'Affiliate Main' | translate:lang }}</a></li>
+
+
+
+ <li  *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()" >
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Banking' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">    
+                  <li><a [routerLink]="['/weeklyBalances']" routerLinkActive="active">{{ 'Weekly Balances' | translate:lang }}</a></li>
+                  <li><a [routerLink]="['/weeklyTransactions']" routerLinkActive="active">{{ 'Weekly Transactions' | translate:lang }}</a></li>
+                  <li><a [routerLink]="['/playerStandings']" routerLinkActive="active">{{ 'Player Standings' | translate:lang }}</a></li>
+                  <li><a [routerLink]="['/holdPercentage']" routerLinkActive="active">{{ 'Hold Percentage' | translate:lang }}</a></li>
+                  <li><a [routerLink]="['/cashFlow']" routerLinkActive="active">{{ 'Cash Flow Balances' | translate:lang }}</a></li>   
+                  <li><a [routerLink]="['/webVsPhone']" routerLinkActive="active">{{ 'Web vs Phone' | translate:lang }}</a></li>   
+                  <li><a [routerLink]="['/grossWeek']" routerLinkActive="active">{{ 'Cash Flow Balances' | translate:lang }}</a></li>   
+                  <li><a [routerLink]="['/weeklyPayments']" routerLinkActive="active">{{ 'Weekly Payments' | translate:lang }}</a></li>
+                  <li><a [routerLink]="['/settledFigures']" routerLinkActive="active">{{ 'Settled Figures' | translate:lang }}</a></li>
+                  <li><a [routerLink]="['/monthlySummary']" routerLinkActive="active">{{ 'Monthly Summary' | translate:lang }}</a></li>
+               
+              </div>
+            </div>
+          </a>
+        </li>
+
+
+<li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"> 
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Agent' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">  
+                <li><a [routerLink]="['/agentExposure']" routerLinkActive="active">{{ 'Exposure' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentPosition']" routerLinkActive="active">{{ 'Position' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentDistribution']" routerLinkActive="active">{{ 'Distribution' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentHistory']" routerLinkActive="active">{{ 'History' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentCommission']" routerLinkActive="active">{{ 'Commission' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentadjustment']" routerLinkActive="active">{{ 'Adjustments' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentAccessLog']" routerLinkActive="active">{{ 'Access log' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentCardTransactions']" routerLinkActive="active">{{ 'Card Transactions' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/agentBeatTheLine']" routerLinkActive="active">{{ 'Beat the line' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/platinumLiveWager']" routerLinkActive="active">{{ 'Platinum Live Wager' | translate:lang }}</a></li>               
+              </div>
+            </div>
+          </a>
+        </li>
+
+<li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Players' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">      <li><a [routerLink]="['/actionByPlayer']" routerLinkActive="active">{{ 'Action By Player' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/playerHistory']" routerLinkActive="active">{{ 'Player History' | translate:lang }}</a></li>    
+                <li><a [routerLink]="['/playerTotals']" routerLinkActive="active">{{ 'Player Totals' | translate:lang }}</a></li>
+                <li><a [routerLink]="['/playerLiveWagerTransactions']" routerLinkActive="active">{{ 'Live Wager Transactions' | translate:lang }}</a></li>         
+                <li><a [routerLink]="['/playerAccess']" routerLinkActive="active">{{ 'Player Access' | translate:lang }}</a></li>         
+                <li><a [routerLink]="['/playerCount']" routerLinkActive="active">{{ 'Player Count' | translate:lang }}</a></li>         
+                <li><a [routerLink]="['/playerIP']" routerLinkActive="active">{{ 'Player IP' | translate:lang }}</a></li>         
+                <li><a [routerLink]="['/crossIP']" routerLinkActive="active">{{ 'Cross IP' | translate:lang }}</a></li>         
+                <li><a [routerLink]="['/topPlayers']" routerLinkActive="active">{{ 'top Players' | translate:lang }}</a></li>       
+
+               
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <li  *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"  >
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Wagers' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">    
+                 <li><a [routerLink]="['/playerOpenBets']" routerLinkActive="active">{{ 'Player Open Bets' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/changedWagers']" routerLinkActive="active">{{ 'Changed Wagers' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/RiskReport']" routerLinkActive="active">{{ 'Risk' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/wagerListing']" routerLinkActive="active">{{ 'Wager Listing' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/dailySummary']" routerLinkActive="active">{{ 'Daily Summary' | translate:lang }}</a></li>               
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <li  *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()" >
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Management' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">     
+
+                 <li><a [routerLink]="['/playerManagement']" routerLinkActive="active">{{ 'Player Management' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/agentManagement']" routerLinkActive="active">{{ 'Agent Management' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/playerLimits']" routerLinkActive="active">{{ 'Player Limits' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/liveDealerPlayerTransactions']" routerLinkActive="active">{{ 'Live Dealer Player Transactions' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/playerProfiles']" routerLinkActive="active">{{ 'Player Profiles' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/profileLimits']" routerLinkActive="active">{{ 'Profile Limits' | translate:lang }}</a></li>
+                 <li><a [routerLink]="['/maxMoneyLine']" routerLinkActive="active">{{ 'Max Money Line' | translate:lang }}</a></li>        
+               
+              </div>
+            </div>
+          </a>
+        </li>
+
+        <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
+          <a href="">
+            <div dropdown class="dropdown">
+              <div dropdownToggle class="dropdown-toggle">
+              {{'Tools' | translate:lang}}
+                <span class="caret"></span>
+              </div>
+              <div dropdownMenu class="dropdown-menu">  
+
+                  <li><a [routerLink]="['/cashier']" routerLinkActive="active">{{ 'Cashier' | translate:lang }}</a></li>      
+
+                  <li><a [routerLink]="['/agentPayments']" routerLinkActive="active">{{ 'Agent Payments' | translate:lang }}</a></li>       
+
+                  <li><a [routerLink]="['/addAgent']" routerLinkActive="active">{{ 'Add Agent' | translate:lang }}</a></li>        
+                  <li><a [routerLink]="['/addPlayer']" routerLinkActive="active">{{ 'Add Player' | translate:lang }}</a></li>        
+                  <li><a [routerLink]="['/moveLines']" routerLinkActive="active">{{ 'Move Lines' | translate:lang }}</a></li>        
+                  <li><a [routerLink]="['/BetTicker']" routerLinkActive="active">{{ 'Bet Ticker' | translate:lang }}</a></li>        
+                  <li><a [routerLink]="['/BetAlerts']" routerLinkActive="active">{{ 'Bet Alerts' | translate:lang }}</a></li>        
+                  <li><a [routerLink]="['/ScoresAndOdds']" routerLinkActive="active">{{ 'Scores and more' | translate:lang }}</a></li>  
+
+              </div>
+            </div>
+          </a>
+        </li>
+
+
+
+        <li *ngIf="auth.isAuthenticated() && auth.hasAffiliateAccess()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
+
+        <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things TEST' | translate:lang }}</a></li>
+        <li ><a [routerLink]="['/players']" routerLinkActive="active">{{ 'Players TEST' | translate:lang }}</a></li>
+        <li ><a [routerLink]="['/wagers']" routerLinkActive="active">{{ 'Wagers TEST' | translate:lang }}</a></li>
+
+
+             
 
         <li *ngIf="auth.isAuthenticated()" ><a [routerLink]="['/genericReport2']" routerLinkActive="active">{{ 'Secure report' | translate:lang }}</a></li>
      
-        <li>
-          <a href="">
-            <div dropdown class="dropdown">
-              <div dropdownToggle class="dropdown-toggle">
-              {{'Cash reports' | translate:lang}}
-                <span class="caret"></span>
-              </div>
-              <div dropdownMenu class="dropdown-menu">             
-              <li><a [routerLink]="['/weeklyTransactions']" routerLinkActive="active">{{ 'Weekly Transactions' | translate:lang }}</a></li>
 
-              <li><a [routerLink]="['/weeklyBalances']" routerLinkActive="active">{{ 'Weekly Balances' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/cashFlow']" routerLinkActive="active">{{ 'Cash Flow Balances' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/weeklyPayments']" routerLinkActive="active">{{ 'Weekly Payments' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/agentCommission']" routerLinkActive="active">{{ 'Agent Commission' | translate:lang }}</a></li>
-              </div>
-
-            </div>
-          </a>
-        </li>
-             
-        <li>
-          <a href="">
-            <div dropdown class="dropdown">
-              <div dropdownToggle class="dropdown-toggle">
-              {{'wagers reports' | translate:lang}}
-                <span class="caret"></span>
-              </div>
-              <div dropdownMenu class="dropdown-menu">             
-              <li><a [routerLink]="['/agentExposure']" routerLinkActive="active">{{ 'Agent Exposure' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/agentPosition']" routerLinkActive="active">{{ 'Agent Position' | translate:lang }}</a></li>      
-              </div>
-
-            </div>
-          </a>
-        </li>
-             
-        <li>
-          <a href="">
-            <div dropdown class="dropdown">
-              <div dropdownToggle class="dropdown-toggle">
-              {{'Player reports' | translate:lang}}
-                <span class="caret"></span>
-              </div>
-              <div dropdownMenu class="dropdown-menu">             
-                        <li><a [routerLink]="['/playerStandings']" routerLinkActive="active">{{ 'Player Standings' | translate:lang }}</a></li>
-                        <li><a [routerLink]="['/actionByPlayer']" routerLinkActive="active">{{ 'Action By Player' | translate:lang }}</a></li>
-                        <li><a [routerLink]="['/playerTotals']" routerLinkActive="active">{{ 'Player Totals' | translate:lang }}</a></li>
-                        <li><a [routerLink]="['/playerOpenBets']" routerLinkActive="active">{{ 'Player Open Bets' | translate:lang }}</a></li>
-                        <li><a [routerLink]="['/playerHistory']" routerLinkActive="active">{{ 'Player History' | translate:lang }}</a></li>      
-              </div>
-
-            </div>
-          </a>
-        </li>
-
-      </ul>
-   
-      <!--<div class="navbar-header navbar-right">
-   <select class="selectpicker" data-width="fit">
-    <option data-content='<span class="flag-icon flag-icon-us"></span> English'>English</option>
-  <option  data-content='<span class="flag-icon flag-icon-mx"></span> Español'>Español</option>
-</select>
-      </div>-->
+     </ul>
 
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
@@ -112,6 +276,9 @@
           Search
         </button>
       </form>
-    <!--</div>-->
-  </div>
+
+
+
+    </div>
+
 </div>

@@ -24,6 +24,10 @@ import { ReportService } from './services/report.service'
 import { CommentService } from './services/commentX.service'
 import { EmitterService } from './services/emitter.service'
 
+import {ChatService} from './services/chat.service';
+import {WebSocketService} from './services/websocket.service';
+
+
 
 import { ThingDetailGuard } from './guards/thing-detail-guard'
 
@@ -121,7 +125,9 @@ import { MyDateRangePickerModule } from 'mydaterangepicker';
         ThingDetailGuard,
         ReportService,
         CommentService,
-        EmitterService
+        EmitterService,
+        WebSocketService,
+        ChatService
   ],
   bootstrap: [AppComponent]
 })

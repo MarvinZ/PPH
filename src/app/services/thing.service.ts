@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
-import { Observable } from 'rxjs/Observable';
+
+import {Observable} from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
+import {Observer} from "rxjs/Observer";
+
+
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -12,6 +17,8 @@ import { IThing } from './../models/thing';
 @Injectable()
 export class ThingService {
     private _thingUrl = 'http://localhost:29328/api/values';// running in other project, or just use the one in the api folder.
+        private _data = 'wss://api.bitfinex.com/ws/2';// running in other project, or just use the one in the api folder.
+
 
     constructor(private _http: Http) { }
 
