@@ -36,6 +36,16 @@ import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.com
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent } from './marketing/marketing.component'
 
+import { AffiliateSignUpComponent } from './affiliate-sign-up/affiliate-sign-up.component'
+import { DemoComponent } from './demo/demo.component'
+import { SigningUpComponent } from './signing-up/signing-up.component'
+
+import { GalleryComponent } from './gallery/gallery.component'
+import { PaymentsComponent } from './payments/payments.component'
+import { AboutUsComponent } from './about-us/about-us.component'
+
+
+
 
 export const appRoutes: Routes = [
     { path:'home', component: HomeComponent },
@@ -69,6 +79,13 @@ export const appRoutes: Routes = [
     { path:'playerHistory', component: PlayerHistoryComponent },
     { path:'marketing', component: MarketingComponent },
 
+    { path:'affiliatesignup', component: AffiliateSignUpComponent },
+
+    { path:'demo', component: DemoComponent },
+    { path:'signingUp', component: SigningUpComponent },
+    { path:'gallery', component: GalleryComponent },
+        { path:'payments', component: PaymentsComponent },
+            { path:'aboutUs', component: AboutUsComponent }
 
 
 ]

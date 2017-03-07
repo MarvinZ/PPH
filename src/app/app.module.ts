@@ -65,6 +65,12 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
 
 import { MyDatePickerModule } from 'mydatepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
+import { AffiliateSignUpComponent } from './affiliate-sign-up/affiliate-sign-up.component';
+import { DemoComponent } from './demo/demo.component';
+import { SigningUpComponent } from './signing-up/signing-up.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 
@@ -101,7 +107,13 @@ import { MyDateRangePickerModule } from 'mydaterangepicker';
     PlayerHistoryComponent,
     MarketingComponent,
     PlayerStandingsComponent,
-    TermsOfServiceComponent
+    TermsOfServiceComponent,
+    AffiliateSignUpComponent,
+    DemoComponent,
+    SigningUpComponent,
+    GalleryComponent,
+    PaymentsComponent,
+    AboutUsComponent
   ],
   imports: [
     AlertModule.forRoot(), 
