@@ -16,6 +16,8 @@ export class LoginComponent {
   public tempRes: LoginResponse
   public  errorMessage: string
 
+  public showInvalidCredentials: boolean
+
 
   constructor(private authService:AuthService, private router:Router) {
     this.tempRes = new LoginResponse(new ResponseStatus('','',''), new ResponseAgentInfo ('',0));
@@ -26,7 +28,7 @@ export class LoginComponent {
     this.authService.loginUser(formValues.userName, formValues.password).subscribe(tempRes => {this.tempRes = tempRes ;
     
 if(this.tempRes.ResponseStatus.Status === 'Success'  && this.tempRes.ResponseAgentInfo.IdAgent != 0 ){
-              alert ('yeyyyyy');
+              alert ('welcome...');
 
                this.authService.currentUser = {
       id: this.tempRes.ResponseAgentInfo.IdAgent,
@@ -40,7 +42,7 @@ if(this.tempRes.ResponseStatus.Status === 'Success'  && this.tempRes.ResponseAge
                 this.router.navigate(['home']);
             }
             else {
-              alert ('nooooooooooo');
+              this.showInvalidCredentials = true;
             }
           
        

@@ -49,9 +49,6 @@ let payload = {
 
 
 
-
-
-
 isAffiliateSite() {
   return true;
 }
