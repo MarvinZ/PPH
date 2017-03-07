@@ -41,12 +41,32 @@ export class AgentExposureComponent extends Localization implements OnInit {
   }
 
   go() {
+    let t0 = performance.now();
     this.reportService.GetAgentExposureReportDetail(2287)
     .subscribe(response2 => {this.response2 = response2;                            
        if(this.response2.ResponseStatus.Status === 'Success'
-       && this.response2.ResponseInfo) {
-         this.toastr.success('This toast will dismiss in 5 seconds.', 'Successssssssssssssssss');
+      /* && this.response2.ResponseInfo*/) {
          console.log(this.response2.ResponseInfo);   
+         let t1 = performance.now();
+         this.toastr.success('This query took '+(t1 - t0) + ' milliseconds..', 'Success');
+
+       }
+       else  {this.toastr.error('This is not good!', 'Oops!');
+        console.log(this.response2.ResponseInfo);}}, 
+     error => this.errorMessage = <any>error);
+
+  }
+
+
+   go2() {
+    let t0 = performance.now();
+    this.reportService.GetWeeklyBalanceReport(2287)
+    .subscribe(response2 => {this.response2 = response2;                            
+       if(this.response2.ResponseStatus.Status === 'Success'
+      /* && this.response2.ResponseInfo*/) {
+         console.log(this.response2.ResponseInfo);   
+         let t1 = performance.now();
+         this.toastr.success('This query took '+(t1 - t0) + ' milliseconds..', 'Success');
 
        }
        else  {this.toastr.error('This is not good!', 'Oops!');
