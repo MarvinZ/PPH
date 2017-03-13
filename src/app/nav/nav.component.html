@@ -1,7 +1,7 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand">Affiliates Site Beta</a>
+      <a class="navbar-brand">{{auth.siteName}} Site Beta</a>
     </div>
 
     <!--<div class="collapse navbar-collapse">-->
@@ -73,20 +73,19 @@
       </li>
 
 
-      <li *ngIf="!auth.isAuthenticated() "><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Tearms of Service' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()">"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Tearms of Service PPH' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Terms of Service' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
 
 
       <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactuspph']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/affiliatecontactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/affiliatecontactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
 
 
 
-      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()">"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()">"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated()"><a [routerLink]="['/affiliatesignup']" routerLinkActive="active">{{ 'Affiliate Sign up' | translate:lang }}</a></li>
-
-      <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/affiliatesignup']" routerLinkActive="active">{{ 'Affiliate Sign up' | translate:lang }}</a></li>
 
       <!--
 
@@ -97,7 +96,7 @@ authorized-->
 
 
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Main' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Dashboard' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/mainpph']" routerLinkActive="active">{{ 'Main PPH' | translate:lang }}</a></li>
 
       <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/affiliatemain']" routerLinkActive="active">{{ 'Affiliate Main' | translate:lang }}</a></li>

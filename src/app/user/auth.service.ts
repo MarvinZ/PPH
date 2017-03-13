@@ -21,6 +21,7 @@ export class AuthService {
 
   constructor (private router:Router, private http: Http) { }
   currentUser:IUser
+  siteName: string = 'Affiliates'
  // loginUser(userName: string, password: string) { }
 
 

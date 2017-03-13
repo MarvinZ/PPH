@@ -1,3 +1,25 @@
-<p>
-  marketing works!
-</p>
+
+<div *ngIf="banners"> 
+
+
+<table class="table table-responsive  table-hover">
+  <tr>
+    <th>Sport</th>
+    <th>Display</th>
+    <th>Preview</th>
+    <th>Get the code!</th>
+  </tr>
+  
+  <tr *ngFor="let banner of banners;">
+    <td>{{banner.sport}}</td>
+    <td>{{banner.display}}</td>
+    <td><img src="{{banner.source}}"></td>
+    <td><button class="btn btn-default"> Copy HTML code </button></td>
+  </tr>
+</table>
+
+</div>
+
+<pre>
+  {{banners | json}}
+</pre>

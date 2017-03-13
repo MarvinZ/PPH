@@ -6,6 +6,8 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
+import { Router } from '@angular/router'
+
 
 @Component({
   selector: 'app-cash-flow',
@@ -56,13 +58,16 @@ export class CashFlowComponent extends Localization implements OnInit {
   response: any
   errorMessage: string
 
-  constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, public vcr: ViewContainerRef,
+  constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, public vcr: ViewContainerRef, private router: Router,
     public locale: LocaleService, public translation: TranslationService, private auth: AuthService) {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
   }
 
   ngOnInit() {
+    if (!this.auth.currentUser) {
+      this.router.navigate(['/user/login']);
+    }
     let currentDate = new Date();
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
