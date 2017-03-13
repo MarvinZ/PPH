@@ -1,6 +1,86 @@
-<p>
-  weekly-payments works!
-</p>
-<pre>
+<div class="container">
+  <h2>{{'Weekly Balances' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
+        <!--<label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model2" required></my-date-range-picker>-->
+      </div>
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
+            </select>
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Sports:'| translate:lang  }}</label>
+        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>-->
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.AgentList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+
+
+    <div *ngFor=" let Item of response.AgentList;">
+
+      <div class="row" style="text-align: center; color: white; background-color: black;">
+        {{Item._Agent}}
+      </div>
+      <div class="row" style="background-color: lightgray">
+        <div class="col-md-2">Player</div>
+        <div class="col-md-1">Monday</div>
+        <div class="col-md-1">Tuesday</div>
+        <div class="col-md-1">Wednesday</div>
+        <div class="col-md-1">Thursday</div>
+        <div class="col-md-1">Friday</div>
+        <div class="col-md-1">Saturday</div>
+        <div class="col-md-1">Sunday</div>
+      </div>
+  <div *ngIf="Item.PlayerList?.length > 0">
+
+      <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
+
+        <div class="row table-hover">
+          <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day1 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day2 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day3 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day4 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day5 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day6 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day7 | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+
+      </div>
+  </div>
+
+    </div>
+  </div>
+
+
+  <pre>
   {{response | json}}
 </pre>
+
+</div>
+
+<div *ngIf="loading">doing something else.... </div>
