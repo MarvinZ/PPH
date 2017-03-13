@@ -77,8 +77,8 @@
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
 
 
-      <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactuspph']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/affiliatecontactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
 
 

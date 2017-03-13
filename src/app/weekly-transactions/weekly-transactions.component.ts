@@ -6,6 +6,7 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
+import { Angular2Csv } from 'angular2-csv/angular2-csv';
 
 
 @Component({
@@ -91,5 +92,24 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 				this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
+	}
+
+
+	ExportToExcel() {
+		alert('holisssss');
+		console.log (this.response.CashFlowList);
+		try {
+			var options = {
+				showLabels: true
+			};
+			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+			new Angular2Csv(this.response.CashFlowList, 'xxxx' + displayDate, options);
+		} catch (error) {
+			alert(error);
+		}
+
+
+
 	}
 }

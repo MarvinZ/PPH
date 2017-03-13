@@ -20,6 +20,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
 import { ThingService } from './services/thing.service'
+import { ContactService } from './services/contact.service'
 import { ReportService } from './services/report.service'
 import { AffiliateService } from './services/affiliate.service'
 
@@ -150,7 +151,8 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
         EmitterService,
         WebSocketService,
         ChatService,
-        AffiliateService
+        AffiliateService,
+        ContactService
   ],
   bootstrap: [AppComponent]
 })
