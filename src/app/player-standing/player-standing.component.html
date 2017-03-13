@@ -1,3 +1,89 @@
-<p>
-  player-standing works!
-</p>
+<div class="container">
+  <h2>{{'Player Standings' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
+      </div>
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
+            </select>
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.ListAgent?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+
+    <div *ngFor="let Item of response.ListAgent;">
+
+
+      <div class="row" style="text-align: center; color: white; background-color: black;">
+        {{Item._agent}}
+      </div>
+      <div class="row" style="background-color: lightgray">
+        <div class="col-xs-5">Player</div>
+        <div class="col-md-1">Credit Limit</div>
+        <div class="col-md-1">This Week</div>
+        <div class="col-md-1">At Risk</div>
+        <div class="col-md-1">Current Balance</div>
+        <div class="col-md-1">This Week Sports</div>
+        <div class="col-md-1">This Week Horses</div>
+        <div class="col-md-1">This Week Casino</div>
+      </div>
+      <!--<div *ngIf="Item.ListPlayer.length > 0">-->
+        <div *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
+
+          <div class="row table-hover">
+            <div class="col-md-5">{{ItemDetailPlayer._player}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._creditlimit | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweek | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._atrisk | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'4.2-2'}}</div>
+          </div>
+
+        </div>
+        <div class="row" style="background-color: lightgray;">
+          <div class="col-md-3"></div>
+          <div class="col-md-2">Total:</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._creditlimittotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._thisweektotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._atrisktotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._currentbalancetotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._thissportstotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._thishorsestotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{Item._thiscasinototal | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+      <!--</div>-->
+
+    </div>
+  </div>
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">doing something else.... </div>

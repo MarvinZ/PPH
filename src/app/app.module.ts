@@ -21,6 +21,8 @@ import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
 import { ThingService } from './services/thing.service'
 import { ReportService } from './services/report.service'
+import { AffiliateService } from './services/affiliate.service'
+
 import { CommentService } from './services/commentX.service'
 import { EmitterService } from './services/emitter.service'
 
@@ -71,6 +73,10 @@ import { SigningUpComponent } from './signing-up/signing-up.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { HoldPercentageComponent } from './hold-percentage/hold-percentage.component';
+import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component';
+import { SettledFiguresComponent } from './settled-figures/settled-figures.component';
+import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
 
 
 
@@ -113,7 +119,11 @@ import { AboutUsComponent } from './about-us/about-us.component';
     SigningUpComponent,
     GalleryComponent,
     PaymentsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    HoldPercentageComponent,
+    MonthlySummaryComponent,
+    SettledFiguresComponent,
+    WebVsPhoneComponent
   ],
   imports: [
     AlertModule.forRoot(), 
@@ -139,7 +149,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
         CommentService,
         EmitterService,
         WebSocketService,
-        ChatService
+        ChatService,
+        AffiliateService
   ],
   bootstrap: [AppComponent]
 })

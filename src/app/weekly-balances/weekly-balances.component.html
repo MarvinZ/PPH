@@ -1,38 +1,198 @@
-<p>
-  weekly-balances works!
-</p>
+<div class="container">
+  <h2>{{'Weekly Balances' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
 
-<button (click)="go2()" >go2</button>
+      <div class="col-xs-3 form-group">
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
+        <!--<label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model2" required></my-date-range-picker>-->
+      </div>
 
-<pre>
-  {{response2 | json}}
+      <div class="col-xs-3 form-group">
+        <label>{{'Transaction Type:'| translate:lang  }}</label>
+        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
+            <option *ngFor="let tt of transactionTypes" [value]="tt.value" >{{tt.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Sports:'| translate:lang  }}</label>
+        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>-->
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.AgentList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.From | date: 'MM/dd/yyyy'}} To {{response.To | date: 'MM/dd/yyyy'}}</h2>
+
+
+    <hr />
+    <div *ngFor=" let Item of response.AgentList;">
+
+      <div class="row" style="text-align: center; color: white; background-color: black;">
+        {{Item._Agent}}
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="col-md-3">Player</div>
+          <div class="col-md-3">Name</div>
+          <div class="col-md-3">Password</div>
+          <div class="col-md-3">BalFwd</div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-md-3">Mon</div>
+          <div class="col-md-3">Tue</div>
+          <div class="col-md-3">Wed</div>
+          <div class="col-md-3">Thu</div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-md-3">Fri</div>
+          <div class="col-md-3">Sat</div>
+          <div class="col-md-3">Sun</div>
+          <div class="col-md-3">This Week</div>
+        </div>
+
+        <div class="col-md-1">Pending</div>
+        <div class="col-md-1">Pmts</div>
+        <div class="col-md-1">Balance</div>
+        <!--<div class="col-md-1">Adjustment</div>
+            <div class="col-md-1">Horse Adjustment</div>
+            <div class="col-md-1">Total</div>-->
+      </div>
+
+      <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="col-md-3">{{ItemDetailPlayer._Player}}</div>
+            <div class="col-md-3">{{ItemDetailPlayer._Name}}</div>
+            <div class="col-md-3">{{ItemDetailPlayer._Password}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._BalFwd | currency:'USD':true:'4.2-2'}}</div>
+          </div>
+
+          <div class="col-md-3" style="text-align: right;">
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'4.2-2'}}</div>
+          </div>
+          <div class="col-md-3" style="text-align: right;">
+
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'4.2-2'}}</div>
+          </div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Ptms | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Balance | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+
+      </div>
+
+      <div class="row" style="background-color: lightgray">
+        <div class="col-md-3">
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3" style="text-align: right;">{{Item._BalFwd}}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay1}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay2}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay3}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay4}}</div>
+        </div>
+        <div class="col-md-3">
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay5}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay6}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay7}}</div>
+          <div class="col-md-3" style="text-align: right;">-</div>
+        </div>
+
+        <div class="col-md-1" style="text-align: right;">-</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._Ptms}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._Balance}}</div>
+        <!--<div class="col-md-1">Adjustment</div>
+            <div class="col-md-1">Horse Adjustment</div>
+            <div class="col-md-1">Total</div>-->
+      </div>
+
+      <hr />
+
+      <!--  <div class="row">-->
+      <!--<div class="col-md-2" style="cursor: pointer;">
+
+            <div class="col-md-4" ng-click="openModal('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-4" ng-click="openModal('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-4" ng-click="openModal('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'4.2-2'}}</div>
+        </div>-->
+
+    </div>
+  </div>
+  <hr />
+
+
+
+
+  <!--<div *ngIf="response?.CashFlowList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.From | date: 'MM/dd/yyyy'}} To {{response.To | date: 'MM/dd/yyyy'}}</h2>
+    <p></p>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>{{'Transaction' | translate:lang}}</th>
+          <th>{{'Description' | translate:lang}}</th>
+          <th>{{'Amount' | translate:lang}}</th>
+          <th>{{'Balance' | translate:lang}}</th>
+          <th>{{'Date' | translate:lang}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let PreAff of response.CashFlowList">
+          <td>
+            {{PreAff.Transaction}}
+          </td>
+          <td>
+            {{PreAff.Description}}
+          </td>
+          <td>
+            {{PreAff.Amount}}
+          </td>
+          <td>
+            {{PreAff.Balance}}
+          </td>
+          <td>
+            {{PreAff.Date | date}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>-->
+
+  <pre>
+  {{response | json}}
 </pre>
 
-<!--
-		<div class="data">
-			<h2>Received data ({{randomData.length}}, reset after 20): </h2>
-			<p *ngFor="let data of randomData">{{ data }}</p>
-		</div>-->
+</div>
 
-<!--
-		<h2>New message:</h2>	
-		  <div class="input-group col-xs-8">		   
-                <input
-                    [(ngModel)]="message.message"
-                    name="msg"                    
-                    type="text"
-                    class="form-control"
-                    placeholder="message...">
-                <span class="input-group-btn">
-                    <button                       
-                        class="btn btn-secondary"
-                        (click)="sendMsg()">send</button>
-                </span>
-            </div>
-
-				<div class="messages">
-			<h2>Recieved messages:</h2>
-			<p *ngFor="let msg of messages">
-				<strong>({{msg.author}})</strong> 
-				{{msg.message}} ({{msg.newDate}})</p>
-		</div>-->
+<div *ngIf="loading">doing something else.... </div>

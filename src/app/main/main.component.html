@@ -1,5 +1,83 @@
-<p>
-  main works!
-</p>
+<div class="container" *ngIf="response">
+    <h2>{{'Statistics' | translate:lang }}</h2>
+    <table class="table table-hover" *ngIf="response">
+        <tbody>
+            <tr>
+                <td>{{'Current Balance'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.CurrentBalance | currency:'USD':true:'4.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.PlayerWinLoss | currency:'USD':true:'4.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.EarningLoses | currency:'USD':true:'4.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Last Weeks Player s Wins/Losses'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.LastWeekPlayerWinLoss | currency:'USD':true:'4.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Last 2 Weeks Player s Wins/Losses'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.Last2WeekPlayerWinLoss | currency:'USD':true:'4.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Number of Players'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.NumPlayers}}</td>
+            </tr>
+            <tr>
+                <td>{{'Number of Players that have Wagered This Week'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.NumPlayerWageredThisWeek}}</td>
+            </tr>
+            <tr>
+                <td>{{'Commission Percentage' | translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.CommissionPercentaje}}</td>
+            </tr>
+        </tbody>
+    </table>
 
-AffiliatesMain, dashboard
+    <div *ngIf="response?.CashFlowList?.length > 0">
+        <h2>{{'Period' | translate:lang}} {{response.From | date: 'MM/dd/yyyy'}} To {{response.To | date: 'MM/dd/yyyy'}}</h2>
+        <p></p>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+                    <th>{{'Transaction' | translate:lang}}</th>
+                    <th>{{'Description' | translate:lang}}</th>
+                    <th>{{'Amount' | translate:lang}}</th>
+                    <th>{{'Balance' | translate:lang}}</th>
+                    <th>{{'Date' | translate:lang}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let PreAff of response.CashFlowList">
+                    <td>
+                        {{PreAff.Transaction}}
+                    </td>
+                    <td>
+                        {{PreAff.Description}}
+                    </td>
+                    <td>
+                        {{PreAff.Amount}}
+                    </td>
+                    <td>
+                        {{PreAff.Balance}}
+                    </td>
+                    <td>
+                        {{PreAff.Date | date}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="!response">doing something else.... </div>

@@ -32,6 +32,9 @@ import { ActionByPlayerComponent } from './action-by-player/action-by-player.com
 import { PlayerTotalsComponent } from './player-totals/player-totals.component';
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
 
+
+import { HoldPercentageComponent } from './hold-percentage/hold-percentage.component';
+
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent } from './marketing/marketing.component'
@@ -45,47 +48,59 @@ import { PaymentsComponent } from './payments/payments.component'
 import { AboutUsComponent } from './about-us/about-us.component'
 
 
+import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component'
+import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component'
+
+import { SettledFiguresComponent } from './settled-figures/settled-figures.component'
+
+
+
 
 
 export const appRoutes: Routes = [
-    { path:'home', component: HomeComponent },
-    { path:'things', component: ThingsComponent },
-    { path:'wagers', component: WagersComponent },
+    { path: 'home', component: HomeComponent },
+    { path: 'things', component: ThingsComponent },
+    { path: 'wagers', component: WagersComponent },
 
-    { path:'howitworks', component: HowitworksComponent },
-    { path:'FAQ', component: FaqComponent },
-    { path:'ToS', component: TermsOfServiceComponent },
-    { path:'contactus', component: ContactComponent },
-    { path:'players', component: PlayersComponent },
-    { path:'genericReport2', component: GenericReport2Component },
-    { path:'', redirectTo: '/home', pathMatch:'full' },
-    { path: 'user', loadChildren: 'app/user/user.module#UserModule'},
+    { path: 'howitworks', component: HowitworksComponent },
+    { path: 'FAQ', component: FaqComponent },
+    { path: 'ToS', component: TermsOfServiceComponent },
+    { path: 'contactus', component: ContactComponent },
+    { path: 'players', component: PlayersComponent },
+    { path: 'genericReport2', component: GenericReport2Component },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
     { path: '404', component: Error404Component },
-    { path: 'thing/:id',canActivate: [ ThingDetailGuard],component: ThingDetailComponent },
+    { path: 'thing/:id', canActivate: [ThingDetailGuard], component: ThingDetailComponent },
 
 
-    { path:'main', component: MainComponent },
-    { path:'weeklyTransactions', component: WeeklyTransactionsComponent },
-    { path:'weeklyBalances', component: WeeklyBalancesComponent },
-    { path:'cashFlow', component: CashFlowComponent },
-    { path:'weeklyPayments', component: WeeklyPaymentsComponent },
-    { path:'agentExposure', component: AgentExposureComponent },
-    { path:'agentPosition', component: AgentPositionComponent },
-    { path:'agentCommission', component: AgentCommissionComponent },
-    { path:'playerStandings', component: PlayerStandingComponent },
-    { path:'actionByPlayer', component: ActionByPlayerComponent },
-    { path:'playerTotals', component: PlayerTotalsComponent },
-    { path:'playerOpenBets', component: PlayerOpenBetsComponent },
-    { path:'playerHistory', component: PlayerHistoryComponent },
-    { path:'marketing', component: MarketingComponent },
+    { path: 'main', component: MainComponent },
+    { path: 'weeklyTransactions', component: WeeklyTransactionsComponent },
+    { path: 'weeklyBalances', component: WeeklyBalancesComponent },
+    { path: 'cashFlow', component: CashFlowComponent },
+    { path: 'holdPercentage', component: HoldPercentageComponent },
+    { path: 'weeklyPayments', component: WeeklyPaymentsComponent },
+    { path: 'agentExposure', component: AgentExposureComponent },
+    { path: 'agentPosition', component: AgentPositionComponent },
+    { path: 'agentCommission', component: AgentCommissionComponent },
+    { path: 'playerStandings', component: PlayerStandingComponent },
+    { path: 'actionByPlayer', component: ActionByPlayerComponent },
+    { path: 'playerTotals', component: PlayerTotalsComponent },
+    { path: 'playerOpenBets', component: PlayerOpenBetsComponent },
+    { path: 'playerHistory', component: PlayerHistoryComponent },
+    { path: 'marketing', component: MarketingComponent },
 
-    { path:'affiliatesignup', component: AffiliateSignUpComponent },
+    { path: 'webVsPhone', component: WebVsPhoneComponent },
+    { path: 'monthlySummary', component: MonthlySummaryComponent },
+    { path: 'settledFigures', component: SettledFiguresComponent },
 
-    { path:'demo', component: DemoComponent },
-    { path:'signingUp', component: SigningUpComponent },
-    { path:'gallery', component: GalleryComponent },
-        { path:'payments', component: PaymentsComponent },
-            { path:'aboutUs', component: AboutUsComponent }
+    { path: 'affiliatesignup', component: AffiliateSignUpComponent },
+
+    { path: 'demo', component: DemoComponent },
+    { path: 'signingUp', component: SigningUpComponent },
+    { path: 'gallery', component: GalleryComponent },
+    { path: 'payments', component: PaymentsComponent },
+    { path: 'aboutUs', component: AboutUsComponent }
 
 
 ]

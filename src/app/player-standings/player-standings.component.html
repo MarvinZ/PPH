@@ -1,3 +1,24 @@
 <p>
   player-standings works!
 </p>
+<form #myForm="ngForm" novalidate>
+  <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
+
+
+  <my-date-range-picker name="mydaterange" [options]="myDatePickerOptions" [(ngModel)]="model2" required></my-date-range-picker>
+</form>
+
+
+<!--https://github.com/kekeh/mydatepicker-->
+
+<pre>
+  {{model | json}}
+
+{{model2 | json}}
+</pre>
+
+
+
+<pre>
+  {{response | json}}
+</pre>

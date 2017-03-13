@@ -23,7 +23,11 @@
       <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="email..." />
     </div>
  
-
+            <div class="form-group col-xs-6" >
+      <label for="countryName">{{'Country:' | translate:lang}}</label>
+      <em *ngIf="signupForm.controls.countryName?.invalid && (signupForm.controls.countryName?.touched || mouseoverLogin)">Required</em>
+      <input (ngModel)="countryName" name="countryName" required id="countryName" type="text" class="form-control" placeholder="country Name..." />
+    </div>
 
             <div class="form-group col-xs-6" >
       <label for="businessName">{{'Business name:' | translate:lang}}</label>

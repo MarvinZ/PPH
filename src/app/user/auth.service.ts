@@ -29,7 +29,7 @@ export class AuthService {
         // let bodyString = JSON.stringify(body); // Stringify payload
         // let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         // let options = new RequestOptions({ headers: headers }); // Create a request option
-let url = 'http://panmora.com/api/Agent/LoginPPh';
+let url = 'http://panmora.com/twapi/api/Agent/LoginPPh';
 let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization':'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
 let options = new RequestOptions({ headers: headers }); // Create a request option
 let payload = {

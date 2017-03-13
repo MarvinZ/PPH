@@ -1,3 +1,81 @@
-<p>
-  cash-flow works!
-</p>
+<div class="container">
+  <h2>{{'cash Flow' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Select Date:' | translate:lang  }}</label>-->
+        <!--<my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>-->
+        <label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+      </div>
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Transaction Type:'| translate:lang  }}</label>
+        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
+            <option *ngFor="let tt of transactionTypes" [value]="tt.value" >{{tt.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Sports:'| translate:lang  }}</label>
+        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>-->
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.ListAgent?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+
+    <div *ngFor=" let Item of response.ListAgent;">
+      <div class="row" style="text-align: center; color: white; background-color: black;">
+        {{Item._agent}}
+      </div>
+      <div class="row" style="background-color: lightgray">
+        <div class="col-md-1">Player</div>
+        <div class="col-md-2">Placed</div>
+        <div class="col-md-2">Payment Method</div>
+        <div class="col-md-1">Reference</div>
+        <div class="col-md-3">Description</div>
+        <div class="col-md-1">Amount</div>
+        <div class="col-md-1">Fee</div>
+        <div class="col-md-1">Bonus</div>
+      </div>
+      <div *ngFor="let ItemDetailPlayer of Item.ListDetail">
+
+        <div class="row table-hover">
+          <div class="col-md-1">{{ItemDetailPlayer._player}}</div>
+          <div class="col-md-2">{{ItemDetailPlayer._placed}}</div>
+          <div class="col-md-2">{{ItemDetailPlayer._paymentmethod}}</div>
+          <div class="col-md-1">{{ItemDetailPlayer._reference}}</div>
+          <div class="col-md-3">{{ItemDetailPlayer._description}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._amount | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._fee | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._bonus | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">doing something else.... </div>
