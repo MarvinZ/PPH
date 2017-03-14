@@ -6,10 +6,10 @@ import { RouterModule } from '@angular/router'
 
 
 import { AppComponent } from './app.component';
-import { AlertModule, DropdownModule, AccordionModule,CarouselModule   } from 'ng2-bootstrap';
+import { AlertModule, DropdownModule, AccordionModule, CarouselModule } from 'ng2-bootstrap';
 
 
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 
 import { HomeComponent } from './home/home.component';
@@ -27,8 +27,8 @@ import { AffiliateService } from './services/affiliate.service'
 import { CommentService } from './services/commentX.service'
 import { EmitterService } from './services/emitter.service'
 
-import {ChatService} from './services/chat.service';
-import {WebSocketService} from './services/websocket.service';
+import { ChatService } from './services/chat.service';
+import { WebSocketService } from './services/websocket.service';
 
 
 
@@ -39,7 +39,7 @@ import { LocalizationModule } from 'angular-l10n';
 
 import { ThingFilterPipe } from './filters/thing-filter.pipe'
 
-import {} from './models'
+import { } from './models'
 
 import { PlayersComponent } from './players/players.component'
 import { GenericReport2Component } from './generic-report2/generic-report2.component';
@@ -54,7 +54,7 @@ import { WeeklyTransactionsComponent } from './weekly-transactions/weekly-transa
 import { WeeklyBalancesComponent } from './weekly-balances/weekly-balances.component';
 import { CashFlowComponent } from './cash-flow/cash-flow.component';
 import { WeeklyPaymentsComponent } from './weekly-payments/weekly-payments.component';
-import { AgentExposureComponent } from './agent-exposure/agent-exposure.component';
+import { AgentExposureComponent, ExposureModalComponent } from './agent-exposure/agent-exposure.component';
 import { AgentPositionComponent } from './agent-position/agent-position.component';
 import { AgentCommissionComponent } from './agent-commission/agent-commission.component';
 import { PlayerStandingComponent } from './player-standing/player-standing.component';
@@ -69,7 +69,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
 import { MyDatePickerModule } from 'mydatepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
 import { AffiliateSignUpComponent } from './affiliate-sign-up/affiliate-sign-up.component';
-import { DemoComponent } from './demo/demo.component';
+import { DemoComponent, DemoModalComponent } from './demo/demo.component';
 import { SigningUpComponent } from './signing-up/signing-up.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PaymentsComponent } from './payments/payments.component';
@@ -78,9 +78,6 @@ import { HoldPercentageComponent } from './hold-percentage/hold-percentage.compo
 import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component';
 import { SettledFiguresComponent } from './settled-figures/settled-figures.component';
 import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
-
-
-
 
 
 @NgModule({
@@ -104,7 +101,7 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     WeeklyBalancesComponent,
     CashFlowComponent,
     WeeklyPaymentsComponent,
-    AgentExposureComponent,
+    AgentExposureComponent,ExposureModalComponent ,
     AgentPositionComponent,
     AgentCommissionComponent,
     PlayerStandingComponent,
@@ -116,7 +113,7 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     PlayerStandingsComponent,
     TermsOfServiceComponent,
     AffiliateSignUpComponent,
-    DemoComponent,
+    DemoComponent,DemoModalComponent,
     SigningUpComponent,
     GalleryComponent,
     PaymentsComponent,
@@ -127,7 +124,7 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     WebVsPhoneComponent
   ],
   imports: [
-    AlertModule.forRoot(), 
+    AlertModule.forRoot(),
     DropdownModule.forRoot(),
     AccordionModule.forRoot(),
     CarouselModule.forRoot(),
@@ -139,20 +136,20 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     HttpModule,
     LocalizationModule.forRoot(),
     MyDatePickerModule,
-    MyDateRangePickerModule 
-    
+    MyDateRangePickerModule
+
   ],
-  providers: [    
-        AuthService,
-        ThingService,
-        ThingDetailGuard,
-        ReportService,
-        CommentService,
-        EmitterService,
-        WebSocketService,
-        ChatService,
-        AffiliateService,
-        ContactService
+  providers: [
+    AuthService,
+    ThingService,
+    ThingDetailGuard,
+    ReportService,
+    CommentService,
+    EmitterService,
+    WebSocketService,
+    ChatService,
+    AffiliateService,
+    ContactService
   ],
   bootstrap: [AppComponent]
 })

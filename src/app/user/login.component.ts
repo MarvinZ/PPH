@@ -26,7 +26,7 @@ export class LoginComponent {
 
   login(formValues) {
     this.authService.loginUser(formValues.userName, formValues.password).subscribe(tempRes => {
-    this.tempRes = tempRes;
+      this.tempRes = tempRes;
 
       if (this.tempRes.ResponseStatus.Status === 'Success' && this.tempRes.ResponseAgentInfo.IdAgent != 0) {
         alert('welcome...');
@@ -36,7 +36,8 @@ export class LoginComponent {
           userName: formValues.userName,
           firstName: formValues.userName,
           lastName: 'Test',
-          userType: 'PPH'
+          userType: 'PPH',
+          selectedSubagent: 0
         }
 
 

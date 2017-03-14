@@ -103,7 +103,7 @@ export class AffiliateService {
   }
 
   // GET api/temp/GetAgentExposureReport?idagent={idagent}&sport={sport}&idCurrency={idCurrency}
-  GetAgentExposureReport(idAgent: number, sport: string, idCurrency: number): Observable<any> {
+  GetAgentExposureReport(idAgent: number, sport: string, idCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetAgentExposureReport?idAgent=" + idAgent + "&sport=" + sport + "&idCurrency=")
       .map((response: Response) => <any>response.json())
       .do(data => console.log('All: ' + JSON.stringify(data)))
@@ -111,7 +111,7 @@ export class AffiliateService {
   }
 
   // GET api/temp/GetAgentExposureReportDetail?idagent={idagent}&idgame={idgame}&wagerType={wagerType}&play={play}
-  GetAgentExposureReportDetail(idAgent: number, idgame: number, wagerType: string, play: string): Observable<any> {
+  GetAgentExposureReportDetail(idAgent: number, idgame: string, wagerType: string, play: string): Observable<any> {
     return this._http.get(this._url + "GetAgentExposureReportDetail?idAgent=" + idAgent + "&idgame=" + idgame + "&wagerType=" + wagerType + "&play=" + play)
       .map((response: Response) => <any>response.json())
       .do(data => console.log('All: ' + JSON.stringify(data)))

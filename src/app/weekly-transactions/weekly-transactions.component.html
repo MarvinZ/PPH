@@ -72,13 +72,14 @@
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
+
   </div>
 
   <pre>
   {{response | json}}
 </pre>
 
-<button (click)="ExportToExcel()">deme duro papi</button>
 </div>
 
 <div *ngIf="loading">doing something else.... </div>

@@ -4,4 +4,5 @@ export class IUser {
   lastName: string
   userName: string
   userType: string
+  selectedSubagent: number
 }

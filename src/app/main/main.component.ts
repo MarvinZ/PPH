@@ -46,13 +46,13 @@ export class MainComponent extends Localization implements OnInit {
 
 
 
-		this.affiliateService.GetMyAgents(this.auth.currentUser.id)
-			.subscribe(response2 => {
-				this.response2 = response2;
-				let t1 = performance.now();
-				this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-			},
-			error => this.errorMessage = <any>error);
+		// this.affiliateService.GetMyAgents(this.auth.currentUser.id)
+		// 	.subscribe(response2 => {
+		// 		this.response2 = response2;
+		// 		let t1 = performance.now();
+		// 		this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+		// 	},
+		// 	error => this.errorMessage = <any>error);
 
 
 

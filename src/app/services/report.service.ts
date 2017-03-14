@@ -32,11 +32,11 @@ export class ReportService {
 
 
     // Add a new comment
-    GetAgentExposureReport(idAgent: number): Observable<ReportResponse> {
+    GetAgentExposureReport(idAgent: number, sport: string, currency: string): Observable<ReportResponse> {
         // let bodyString = JSON.stringify(body); // Stringify payload
         // let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
         // let options = new RequestOptions({ headers: headers }); // Create a request option
-        let url = 'http://panmora.com/api/AgentReports/GetAgentExposureReport';
+        let url = 'http://panmora.com/twapi/api/AgentReports/GetAgentExposureReport';
         let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
         let options = new RequestOptions({ headers: headers }); // Create a request option
         let payload = {
@@ -45,18 +45,18 @@ export class ReportService {
                 "DomainName": "pph",
             },
             "PrmIdAgent": idAgent,
-            "PrmAgent": "sample string 2",
-            "PrmSport": "sample string 3",
-            "PrmIdCurrency": 1,
-            "PrmIdGame": 1,
-            "PrmWagerType": "sample string 6",
-            "PrmPlay": "sample string 7",
+            "PrmAgent": "",
+            "PrmSport": sport,
+            "PrmIdCurrency": currency,
+            "PrmIdGame": "",
+            "PrmWagerType": "",
+            "PrmPlay": "",
             "PrmShowFeatures": true,
-            "PrmIdSubAgent": 1,
-            "PrmIsDistribuitor": "sample string 10",
-            "PrmTransactionType": 1,
-            "PrmDateInit": "sample string 12",
-            "PrmDateEnd": "sample string 13"
+            "PrmIdSubAgent": "",
+            "PrmIsDistribuitor": "",
+            "PrmTransactionType": "",
+            "PrmDateInit": "",
+            "PrmDateEnd": ""
         }
 
         return this._http.post(url, payload, options) // ...using post request

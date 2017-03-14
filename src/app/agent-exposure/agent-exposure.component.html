@@ -1,12 +1,199 @@
-<p>
-  agent-exposure works!
-</p>
+<div class="container">
+  <h2>{{'Agent Exposure' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+      <div class="col-xs-3 form-group">
+        <label>{{'Sports:'| translate:lang  }}</label>
+        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Transaction Type:'| translate:lang  }}</label>
+        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
+            <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
+            </select>-->
+      </div>
+      <div class="col-xs-3 form-group">
 
-<button (click)="go()" >GO</button>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.ListExposure?.length > 0">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="col-md-4">#</div>
+        <div class="col-md-8">Teams</div>
+      </div>
+      <div class="col-md-2 ">
+        <div class="col-md-4">Spread</div>
+        <div class="col-md-4">Total</div>
+        <div class="col-md-4">Line</div>
+      </div>
+      <div class="col-md-2">
+        <div class="col-md-4">Spread</div>
+        <div class="col-md-4">Total</div>
+        <div class="col-md-4">Line</div>
+      </div>
+      <div class="col-md-2">
+        <div class="col-md-4">Spread</div>
+        <div class="col-md-4">Total</div>
+        <div class="col-md-4">Line</div>
+      </div>
+      <div class="col-md-2 ">
+        <div class="col-md-4">Spread</div>
+        <div class="col-md-4">Total</div>
+        <div class="col-md-4">Line</div>
+      </div>
+    </div>
 
 
-<button (click)="go2()" >go2</button>
+    <div *ngFor="let Item of response.ListExposure">
 
-<pre>
-  {{response2 | json}}
+      <div class="row">
+        <!--Visitor-->
+
+        <div class="col-md-4">
+          <div class="col-md-4">{{Item._VisitorNumber}}</div>
+          <div class="col-md-8">{{Item._VisitorTeam}}</div>
+        </div>
+
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Straights-->
+          <div class="col-md-4" (click)="modal.show('V0', 'SB', Item._IdGame);">{{Item._StraightbetVSpread | currency:'USD':true:'4.2-2'}}</div>
+
+          <!--PLAY - WAGERTYPE - IDGAME-->
+          <div class="col-md-4" (click)="modal.show('V2', 'SB', Item._IdGame);">{{Item._StraightbetVTotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'SB', Item._IdGame);">{{Item._StraightbetVMoney | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Parlays-->
+          <div class="col-md-4" (click)="modal.show('V0', 'PB', Item._IdGame);">{{Item._ParlayVSpread | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'PB', Item._IdGame);">{{Item._ParlayVTotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'PB', Item._IdGame);">{{Item._ParlayVMoney | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Teasers-->
+          <div class="col-md-4" (click)="modal.show('V0', 'TB', Item._IdGame);">{{Item._TeaserVSpread | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'TB', Item._IdGame);">{{Item._TeaserVTotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'TB', Item._IdGame);">{{Item._TeaserVMoney | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Reverses-->
+          <div class="col-md-4" (click)="modal.show('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'4.2-2'}}</div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <!--Home-->
+        <div class="col-md-4">
+          <div class="col-md-4">{{Item._HomeNumber}}</div>
+          <div class="col-md-8">{{Item._HomeTeam}}</div>
+        </div>
+
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Straights-->
+          <div class="col-md-4" (click)="modal.show('H1', 'SB', Item._IdGame);">{{Item._StraightbetHSpread}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'SB', Item._IdGame);">{{Item._StraightbetHTotal}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'SB', Item._IdGame);">{{Item._StraightbetHMoney}}</div>
+        </div>
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Parlays-->
+          <div class="col-md-4" (click)="modal.show('H1', 'PB', Item._IdGame);">{{Item._ParlayHSpread}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'PB', Item._IdGame);">{{Item._ParlayHTotal}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'PB', Item._IdGame);">{{Item._ParlayHMoney}}</div>
+        </div>
+
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Teasers-->
+          <div class="col-md-4" (click)="modal.show('H1', 'TB', Item._IdGame);">{{Item._TeaserHSpread}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'TB', Item._IdGame);">{{Item._TeaserHTotal}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'TB', Item._IdGame);">{{Item._TeaserHMoney}}</div>
+        </div>
+
+        <div class="col-md-2" style="cursor: pointer;">
+          <!--Reverses-->
+          <div class="col-md-4" (click)="modal.show('H1', 'RB', Item._IdGame);">{{Item._ReversesHSpread}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'RB', Item._IdGame);">{{Item._ReversesHTotal}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'RB', Item._IdGame);">{{Item._ReversesHMoney}}</div>
+        </div>
+
+      </div>
+      <hr />
+    </div>
+  </div>
+
+  <pre>
+  {{response | json}}
 </pre>
+
+</div>
+
+<div *ngIf="loading">doing something else.... </div>
+
+
+<exposure-modal #modal>
+  <div class="app-modal-header">
+    Agent Exposure Detail
+  </div>
+  <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length > 0">
+
+    <div class="row">
+      <div class="col-md-1 text-center">Player</div>
+      <div class="col-md-2 text-center">Ticket#</div>
+      <div class="col-md-2 text-center">Placed Date</div>
+      <div class="col-md-4 text-center">Line</div>
+      <div class="col-md-1 text-center">Risk</div>
+      <div class="col-md-1 text-center">ToWin</div>
+    </div>
+
+    <div *ngFor="let ItemDetails of modal.response.ListDetail">
+      <div class="row">
+        <div class="col-md-1 text-center">{{ItemDetails._player}}</div>
+        <div class="col-md-2 text-center">{{ItemDetails._ticket}}</div>
+        <div class="col-md-2 text-center">{{ItemDetails._placeddate}}</div>
+        <div class="col-md-4 text-center">{{ItemDetails._line}}</div>
+        <div class="col-md-1 text-center">{{ItemDetails._riskamount | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1 text-center">{{ItemDetails._winamount | currency:'USD':true:'4.2-2'}}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1 text-center"></div>
+      <div class="col-md-2 text-center"></div>
+      <div class="col-md-2 text-center"></div>
+      <div class="col-md-4 text-center">Total:</div>
+      <div class="col-md-1 text-center">{{modal.totalRisk | currency:'USD':true:'4.2-2'}}</div>
+      <div class="col-md-1 text-center">{{modal.totalWin | currency:'USD':true:'4.2-2'}}</div>
+    </div>
+
+
+    <pre>
+  {{modal.response | json}}
+</pre>
+  </div>
+   <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length == 0"> 
+     there is nothing to show!
+   </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+  </div>
+</exposure-modal>

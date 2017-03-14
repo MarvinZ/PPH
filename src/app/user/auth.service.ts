@@ -50,7 +50,7 @@ let payload = {
 
 
 isAffiliateSite() {
-  return false;
+  return true;
 }
 hasAffiliateAccess() {
   return this.currentUser.userType === 'AFFILIATE';

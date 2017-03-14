@@ -80,6 +80,7 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 	}
 
 	go() {
+		this.response = null;
 		this.loading = true;
 		let t0 = performance.now();
 		this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
@@ -96,20 +97,18 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 
 
 	ExportToExcel() {
-		alert('holisssss');
-		console.log (this.response.CashFlowList);
+		console.log(this.response.CashFlowList);
 		try {
 			var options = {
 				showLabels: true
 			};
 			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-			new Angular2Csv(this.response.CashFlowList, 'xxxx' + displayDate, options);
+			new Angular2Csv(this.response.CashFlowList, 'WeeklyTransactions' + displayDate, options);
 		} catch (error) {
 			alert(error);
 		}
-
-
-
 	}
+
+
 }
