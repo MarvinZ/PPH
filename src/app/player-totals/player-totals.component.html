@@ -1,3 +1,100 @@
-<p>
-  player-totals works!
-</p>
+<div class="container">
+  <h2>{{'Player Totals' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+
+        <label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+            </select>
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.AgentList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <p></p>
+
+
+        <div *ngFor="let Item of response.AgentList;">
+
+
+        <div class="row" style="text-align: center; color: white; background-color: black;">
+            {{Item._agent}}
+        </div>
+        <div class="row" style="background-color: lightgray">
+            <div class="col-xs-2">Player</div>
+            <div class="col-md-3">Last Wager</div>
+            <div class="col-md-1">Open Bets</div>
+            <div class="col-md-1">Graded Bets Amount</div>
+            <div class="col-md-1">Win</div>
+            <div class="col-md-1">Los</div>
+            <div class="col-md-1">Net</div>
+            <div class="col-md-1">Currency</div>
+            <div class="col-md-1">Current Balance</div>
+            <!--<div class="col-md-1">Adjustment</div>
+            <div class="col-md-1">Horse Adjustment</div>
+            <div class="col-md-1">Total</div>-->
+        </div>
+
+        <div *ngFor="let ItemDetailPlayer of Item.PlayerList">
+
+            <div class="row table-hover">
+                <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
+                <div class="col-md-3">{{ItemDetailPlayer._lastwager}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._totalriskopen | currency:'USD':true:'4.2-2'}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._totalriskgraded | currency:'USD':true:'4.2-2'}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._win | currency:'USD':true:'4.2-2'}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._lose | currency:'USD':true:'4.2-2'}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._net | currency:'USD':true:'4.2-2'}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._current}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'4.2-2'}}</div>
+                <!--<div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._horseadjustment | currency:'USD':true:'4.2-2'}}</div>
+                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._total | currency:'USD':true:'4.2-2'}}</div>-->
+            </div>
+
+        </div>
+        <div class="row" style="background-color: lightgray;">
+            <div class="col-md-2">Total Players: {{Item.PlayerList.length}}</div>
+            <div class="col-md-3"></div>
+            <div class="col-md-1" style="text-align: right;"></div>
+            <div class="col-md-1" style="text-align: right;"></div>
+            <div class="col-md-1" style="text-align: right;"></div>
+            <div class="col-md-1" style="text-align: right;"></div>
+            <div class="col-md-1" style="text-align: right;"></div>
+            <div class="col-md-1" style="text-align: right;"></div>
+        </div>
+
+
+        <hr />
+
+
+    </div>
+
+  </div>
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">doing something else.... </div>

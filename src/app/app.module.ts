@@ -86,7 +86,15 @@ import { AgentAdjustmentsComponent } from './agent-adjustments/agent-adjustments
 import { AccessLogComponent } from './access-log/access-log.component';
 import { CardTransactionsComponent } from './card-transactions/card-transactions.component';
 import { BeatTheLineComponent } from './beat-the-line/beat-the-line.component';
-import { PlatinumLiveWagerComponent } from './platinum-live-wager/platinum-live-wager.component'
+import { PlatinumLiveWagerComponent } from './platinum-live-wager/platinum-live-wager.component';
+import { ReportTemplateComponent } from './report-template/report-template.component';
+import { LiveWagerTransactionsComponent } from './live-wager-transactions/live-wager-transactions.component';
+import { PlayerAccessComponent } from './player-access/player-access.component';
+import { PlayerCountComponent } from './player-count/player-count.component';
+import { PlayerIpComponent } from './player-ip/player-ip.component';
+import { CrossIpComponent } from './cross-ip/cross-ip.component';
+import { TopPlayersComponent } from './top-players/top-players.component';
+import { GrossWeekComponent } from './gross-week/gross-week.component'
 
 @NgModule({
   declarations: [
@@ -137,7 +145,15 @@ import { PlatinumLiveWagerComponent } from './platinum-live-wager/platinum-live-
     AccessLogComponent,
     CardTransactionsComponent,
     BeatTheLineComponent,
-    PlatinumLiveWagerComponent
+    PlatinumLiveWagerComponent,
+    ReportTemplateComponent,
+    LiveWagerTransactionsComponent,
+    PlayerAccessComponent,
+    PlayerCountComponent,
+    PlayerIpComponent,
+    CrossIpComponent,
+    TopPlayersComponent,
+    GrossWeekComponent
   ],
   imports: [
     AlertModule.forRoot(),

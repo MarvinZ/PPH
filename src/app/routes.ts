@@ -2,23 +2,15 @@ import { Routes } from '@angular/router'
 import { HomeComponent } from './home/home.component'
 import { ThingsComponent } from './things/things.component'
 import { WagersComponent } from './wagers/wagers.component'
-
 import { PlayersComponent } from './players/players.component'
 import { GenericReport2Component } from './generic-report2/generic-report2.component'
 import { ThingDetailComponent } from './thing-detail/thing-detail.component'
 import { ThingDetailGuard } from './guards/thing-detail-guard'
-
 import { FaqComponent } from './faq/faq.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
-
 import { ContactComponent } from './contact/contact.component';
 import { HowitworksComponent } from './howitworks/howitworks.component'
-
-
-
 import { Error404Component } from './errors/404.component'
-
-
 import { MainComponent } from './main/main.component';
 import { WeeklyTransactionsComponent } from './weekly-transactions/weekly-transactions.component';
 import { WeeklyBalancesComponent } from './weekly-balances/weekly-balances.component';
@@ -28,40 +20,36 @@ import { AgentExposureComponent } from './agent-exposure/agent-exposure.componen
 import { AgentPositionComponent } from './agent-position/agent-position.component';
 import { AgentCommissionComponent } from './agent-commission/agent-commission.component';
 import { PlayerStandingComponent } from './player-standing/player-standing.component';
+import { GrossWeekComponent } from './gross-week/gross-week.component';
 import { ActionByPlayerComponent } from './action-by-player/action-by-player.component';
 import { PlayerTotalsComponent } from './player-totals/player-totals.component';
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
-
-
 import { HoldPercentageComponent } from './hold-percentage/hold-percentage.component';
-
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent } from './marketing/marketing.component'
-
 import { AffiliateSignUpComponent } from './affiliate-sign-up/affiliate-sign-up.component'
 import { DemoComponent } from './demo/demo.component'
 import { SigningUpComponent } from './signing-up/signing-up.component'
-
 import { GalleryComponent } from './gallery/gallery.component'
 import { PaymentsComponent } from './payments/payments.component'
 import { AboutUsComponent } from './about-us/about-us.component'
-
-
 import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component'
 import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component'
-
 import { SettledFiguresComponent } from './settled-figures/settled-figures.component'
-
 import { AgentHistoryComponent } from './agent-history/agent-history.component';
 import { AgentDistributionComponent } from './agent-distribution/agent-distribution.component';
-
-
+import { AgentAdjustmentsComponent } from './agent-adjustments/agent-adjustments.component';
 import { AccessLogComponent } from './access-log/access-log.component';
 import { CardTransactionsComponent } from './card-transactions/card-transactions.component';
 import { BeatTheLineComponent } from './beat-the-line/beat-the-line.component';
 import { PlatinumLiveWagerComponent } from './platinum-live-wager/platinum-live-wager.component';
-
+import { LiveWagerTransactionsComponent } from './live-wager-transactions/live-wager-transactions.component';
+import { PlayerAccessComponent } from './player-access/player-access.component';
+import { PlayerCountComponent } from './player-count/player-count.component';
+import { PlayerIpComponent } from './player-ip/player-ip.component';
+import { CrossIpComponent } from './cross-ip/cross-ip.component';
+import { TopPlayersComponent } from './top-players/top-players.component';
 
 
 export const appRoutes: Routes = [
@@ -81,6 +69,7 @@ export const appRoutes: Routes = [
     { path: 'main', component: MainComponent },
     { path: 'weeklyTransactions', component: WeeklyTransactionsComponent },
     { path: 'weeklyBalances', component: WeeklyBalancesComponent },
+    { path: 'grossWeek', component: GrossWeekComponent },
     { path: 'cashFlow', component: CashFlowComponent },
     { path: 'holdPercentage', component: HoldPercentageComponent },
     { path: 'weeklyPayments', component: WeeklyPaymentsComponent },
@@ -92,13 +81,19 @@ export const appRoutes: Routes = [
     { path: 'playerTotals', component: PlayerTotalsComponent },
     { path: 'playerOpenBets', component: PlayerOpenBetsComponent },
     { path: 'playerHistory', component: PlayerHistoryComponent },
+    { path: 'playerLiveWagerTransactions', component: LiveWagerTransactionsComponent },
+    { path: 'playerAccess', component: PlayerAccessComponent },
+    { path: 'playerCount', component: PlayerCountComponent },
+    { path: 'playerIP', component: PlayerIpComponent },
+    { path: 'crossIP', component: CrossIpComponent },
+    { path: 'topPlayers', component: TopPlayersComponent },
     { path: 'marketing', component: MarketingComponent },
     { path: 'webVsPhone', component: WebVsPhoneComponent },
     { path: 'monthlySummary', component: MonthlySummaryComponent },
     { path: 'settledFigures', component: SettledFiguresComponent },
     { path: 'agentHistory', component: AgentHistoryComponent },
     { path: 'agentDistribution', component: AgentDistributionComponent },
-    { path: 'agentadjustment', component: AgentDistributionComponent },
+    { path: 'agentadjustment', component: AgentAdjustmentsComponent },
     { path: 'agentAccessLog', component: AccessLogComponent },
     { path: 'agentCardTransactions', component: CardTransactionsComponent },
     { path: 'agentBeatTheLine', component: BeatTheLineComponent },
@@ -109,6 +104,5 @@ export const appRoutes: Routes = [
     { path: 'gallery', component: GalleryComponent },
     { path: 'payments', component: PaymentsComponent },
     { path: 'aboutUs', component: AboutUsComponent }
-
 
 ]

@@ -9,11 +9,11 @@ import { Router } from '@angular/router'
 import { Angular2Csv } from 'angular2-csv/angular2-csv';
 
 @Component({
-  selector: 'app-action-by-player',
-  templateUrl: './action-by-player.component.html',
-  styleUrls: ['./action-by-player.component.css']
+  selector: 'app-gross-week',
+  templateUrl: './gross-week.component.html',
+  styleUrls: ['./gross-week.component.css']
 })
-export class ActionByPlayerComponent extends Localization implements OnInit {
+export class GrossWeekComponent extends Localization implements OnInit {
   private myDatePickerOptions: IMyOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
@@ -22,7 +22,7 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
   loading: boolean = false;
   Showfutures: Boolean = false;
   ddlCurrency: string = '1'
-  
+
   public currencies = [
   	{ value: '1', display: 'USD' },
   	{ value: '2', display: 'MXN' },
@@ -37,6 +37,7 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
     public translation: TranslationService, private auth: AuthService) {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
+
   }
 
   ngOnInit() {
@@ -47,29 +48,20 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
+    this.dateModel = { date: { year: year, month: month, day: day } };
 
-      let currentDateStart = new Date();
-    currentDateStart.setDate(currentDateStart.getDate() - 7);
-
-    let day2 = currentDateStart.getDate();
-    let month2 = currentDateStart.getMonth() + 1;
-    let year2 = currentDateStart.getFullYear();
-
-    this.dateModel = {
-      beginDate: { year: year2, month: month2, day: day2 },
-      endDate: { year: year, month: month, day: day }
-    };
+ 
   }
 
   go() {
     this.response = null;
     this.loading = true;
-     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
-    let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
 
     let t0 = performance.now();
-    this.affiliateService.GetActionsByPlayer(this.auth.currentUser.id, 
-    startDate, endDate,this.ddlCurrency)
+    alert (this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day);
+    this.affiliateService.GetGrossWeekReport(this.auth.currentUser.id, 
+    this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day,
+    this.ddlCurrency)
       .subscribe(response => {
         this.response = response;
         this.loading = false;
@@ -80,8 +72,9 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
       },
       error => this.errorMessage = <any>error);
   }
- 
 
+ 
+ 
 
 }  //end of class
 
