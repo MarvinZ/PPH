@@ -1,3 +1,86 @@
-<p>
-  agent-position works!
-</p>
+<div class="container">
+  <h2>{{'Agent Position' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>-->
+        <label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Show futures:'| translate:lang  }}</label>
+        <input type="checkbox" name="Showfutures" [(ngModel)]="Showfutures" class="form-control">
+
+
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Transaction Type:'| translate:lang  }}</label>
+        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
+            <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
+            </select>-->
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+            </select>-->
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.ListGame?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <p></p>
+    <div *ngFor="let Item of response.ListGame">
+
+      <div class="row">
+        <div class="col-md-2">{{Item._title1}}:{{Item._gamedatetime}}</div>
+        <div class="col-md-1">{{Item._title2}}</div>
+        <div class="col-md-1">{{Item._title3}}</div>
+        <div class="col-md-1">{{Item._title4}}</div>
+        <div class="col-md-1">{{Item._title5}}</div>
+        <div class="col-md-1">{{Item._title6}}</div>
+        <div class="col-md-1">{{Item._title7}}</div>
+        <div class="col-md-1">{{Item._title8}}</div>
+        <div class="col-md-1">{{Item._title9}}</div>
+      </div>
+
+      <div *ngFor="let ItemDetail of Item.ListDetail">
+
+        <div class="row">
+          <div class="col-md-2">{{parceFrac(ItemDetail._title1)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title2)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title3)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title4)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title5)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title6)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title7)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title8)}}</div>
+          <div class="col-md-1">{{parceFrac(ItemDetail._title9)}}</div>
+        </div>
+
+      </div>
+
+      <hr/>
+
+
+    </div>
+
+  </div>
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">doing something else.... </div>

@@ -78,7 +78,15 @@ import { HoldPercentageComponent } from './hold-percentage/hold-percentage.compo
 import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component';
 import { SettledFiguresComponent } from './settled-figures/settled-figures.component';
 import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
+import { AgentDistributionComponent } from './agent-distribution/agent-distribution.component';
+import { AgentHistoryComponent } from './agent-history/agent-history.component';
 
+import {SafePipe} from './safe-pipe.pipe';
+import { AgentAdjustmentsComponent } from './agent-adjustments/agent-adjustments.component';
+import { AccessLogComponent } from './access-log/access-log.component';
+import { CardTransactionsComponent } from './card-transactions/card-transactions.component';
+import { BeatTheLineComponent } from './beat-the-line/beat-the-line.component';
+import { PlatinumLiveWagerComponent } from './platinum-live-wager/platinum-live-wager.component'
 
 @NgModule({
   declarations: [
@@ -101,7 +109,7 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     WeeklyBalancesComponent,
     CashFlowComponent,
     WeeklyPaymentsComponent,
-    AgentExposureComponent,ExposureModalComponent ,
+    AgentExposureComponent, ExposureModalComponent,
     AgentPositionComponent,
     AgentCommissionComponent,
     PlayerStandingComponent,
@@ -113,7 +121,7 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     PlayerStandingsComponent,
     TermsOfServiceComponent,
     AffiliateSignUpComponent,
-    DemoComponent,DemoModalComponent,
+    DemoComponent, DemoModalComponent,
     SigningUpComponent,
     GalleryComponent,
     PaymentsComponent,
@@ -121,7 +129,15 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
     HoldPercentageComponent,
     MonthlySummaryComponent,
     SettledFiguresComponent,
-    WebVsPhoneComponent
+    WebVsPhoneComponent,
+    AgentDistributionComponent,
+    AgentHistoryComponent,
+    SafePipe,
+    AgentAdjustmentsComponent,
+    AccessLogComponent,
+    CardTransactionsComponent,
+    BeatTheLineComponent,
+    PlatinumLiveWagerComponent
   ],
   imports: [
     AlertModule.forRoot(),

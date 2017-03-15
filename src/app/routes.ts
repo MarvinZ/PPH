@@ -53,7 +53,14 @@ import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.compo
 
 import { SettledFiguresComponent } from './settled-figures/settled-figures.component'
 
+import { AgentHistoryComponent } from './agent-history/agent-history.component';
+import { AgentDistributionComponent } from './agent-distribution/agent-distribution.component';
 
+
+import { AccessLogComponent } from './access-log/access-log.component';
+import { CardTransactionsComponent } from './card-transactions/card-transactions.component';
+import { BeatTheLineComponent } from './beat-the-line/beat-the-line.component';
+import { PlatinumLiveWagerComponent } from './platinum-live-wager/platinum-live-wager.component';
 
 
 
@@ -61,7 +68,6 @@ export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'things', component: ThingsComponent },
     { path: 'wagers', component: WagersComponent },
-
     { path: 'howitworks', component: HowitworksComponent },
     { path: 'FAQ', component: FaqComponent },
     { path: 'ToS', component: TermsOfServiceComponent },
@@ -72,8 +78,6 @@ export const appRoutes: Routes = [
     { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
     { path: '404', component: Error404Component },
     { path: 'thing/:id', canActivate: [ThingDetailGuard], component: ThingDetailComponent },
-
-
     { path: 'main', component: MainComponent },
     { path: 'weeklyTransactions', component: WeeklyTransactionsComponent },
     { path: 'weeklyBalances', component: WeeklyBalancesComponent },
@@ -89,13 +93,17 @@ export const appRoutes: Routes = [
     { path: 'playerOpenBets', component: PlayerOpenBetsComponent },
     { path: 'playerHistory', component: PlayerHistoryComponent },
     { path: 'marketing', component: MarketingComponent },
-
     { path: 'webVsPhone', component: WebVsPhoneComponent },
     { path: 'monthlySummary', component: MonthlySummaryComponent },
     { path: 'settledFigures', component: SettledFiguresComponent },
-
+    { path: 'agentHistory', component: AgentHistoryComponent },
+    { path: 'agentDistribution', component: AgentDistributionComponent },
+    { path: 'agentadjustment', component: AgentDistributionComponent },
+    { path: 'agentAccessLog', component: AccessLogComponent },
+    { path: 'agentCardTransactions', component: CardTransactionsComponent },
+    { path: 'agentBeatTheLine', component: BeatTheLineComponent },
+    { path: 'platinumLiveWager', component: PlatinumLiveWagerComponent },
     { path: 'affiliatesignup', component: AffiliateSignUpComponent },
-
     { path: 'demo', component: DemoComponent },
     { path: 'signingUp', component: SigningUpComponent },
     { path: 'gallery', component: GalleryComponent },
