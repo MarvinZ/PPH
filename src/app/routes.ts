@@ -50,6 +50,10 @@ import { PlayerCountComponent } from './player-count/player-count.component';
 import { PlayerIpComponent } from './player-ip/player-ip.component';
 import { CrossIpComponent } from './cross-ip/cross-ip.component';
 import { TopPlayersComponent } from './top-players/top-players.component';
+import { ChangedWagersComponent } from './changed-wagers/changed-wagers.component';
+import { WagerRiskComponent } from './wager-risk/wager-risk.component';
+import { WagerListingComponent } from './wager-listing/wager-listing.component';
+import { DailySummaryComponent } from './daily-summary/daily-summary.component'
 
 
 export const appRoutes: Routes = [
@@ -103,6 +107,10 @@ export const appRoutes: Routes = [
     { path: 'signingUp', component: SigningUpComponent },
     { path: 'gallery', component: GalleryComponent },
     { path: 'payments', component: PaymentsComponent },
-    { path: 'aboutUs', component: AboutUsComponent }
+    { path: 'aboutUs', component: AboutUsComponent },
+    { path: 'changedWagers', component: ChangedWagersComponent },
+    { path: 'RiskReport', component: WagerRiskComponent },
+    { path: 'wagerListing', component: WagerListingComponent },
+    { path: 'dailySummary', component: DailySummaryComponent }
 
 ]

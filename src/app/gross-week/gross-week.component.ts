@@ -37,7 +37,6 @@ export class GrossWeekComponent extends Localization implements OnInit {
     public translation: TranslationService, private auth: AuthService) {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
-
   }
 
   ngOnInit() {
@@ -48,9 +47,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
-    this.dateModel = { date: { year: year, month: month, day: day } };
-
- 
+    this.dateModel = { date: { year: year, month: month, day: day } };     
   }
 
   go() {
@@ -58,14 +55,13 @@ export class GrossWeekComponent extends Localization implements OnInit {
     this.loading = true;
 
     let t0 = performance.now();
-    alert (this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day);
+    //alert (this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day);
     this.affiliateService.GetGrossWeekReport(this.auth.currentUser.id, 
     this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day,
     this.ddlCurrency)
       .subscribe(response => {
         this.response = response;
         this.loading = false;
-
         console.log(this.response);
         let t1 = performance.now();
         this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
@@ -73,7 +69,6 @@ export class GrossWeekComponent extends Localization implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
- 
  
 
 }  //end of class

@@ -3,8 +3,6 @@
     <div class="navbar-header">
       <a class="navbar-brand">{{auth.siteName}} Site Beta</a>
     </div>
-
-    <!--<div class="collapse navbar-collapse">-->
     <ul class="nav navbar-nav">
       <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()">
         <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
@@ -35,7 +33,6 @@
           </div>
         </a>
       </li>
-
 
       <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()">
         <a>
@@ -72,16 +69,12 @@
         </a>
       </li>
 
-
       <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Terms of Service' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
-
 
       <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
       <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
-
-
 
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
@@ -91,10 +84,6 @@
 
 not authorized
 authorized-->
-
-
-
-
 
       <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Dashboard' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/mainpph']" routerLinkActive="active">{{ 'Main PPH' | translate:lang }}</a></li>
@@ -115,7 +104,7 @@ authorized-->
               <li><a [routerLink]="['/weeklyTransactions']" routerLinkActive="active">{{ 'Weekly Transactions' | translate:lang }}*</a></li>
               <li><a [routerLink]="['/playerStandings']" routerLinkActive="active">{{ 'Player Standings' | translate:lang }}*</a></li>
               <li><a [routerLink]="['/holdPercentage']" routerLinkActive="active">{{ 'Hold Percentage' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/grossWeek']" routerLinkActive="active">{{ 'Gross Week' | translate:lang }}</a></li>
+              <li><a [routerLink]="['/grossWeek']" routerLinkActive="active">{{ 'Gross Week' | translate:lang }}*</a></li>
               <li><a [routerLink]="['/cashFlow']" routerLinkActive="active">{{ 'Cash Flow Balances' | translate:lang }}*</a></li>
               <li><a [routerLink]="['/webVsPhone']" routerLinkActive="active">{{ 'Web vs Phone' | translate:lang }}</a></li>
               <li><a [routerLink]="['/weeklyPayments']" routerLinkActive="active">{{ 'Weekly Payments*' | translate:lang }}</a></li>
@@ -126,7 +115,6 @@ authorized-->
           </div>
         </a>
       </li>
-
 
       <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
         <a>
@@ -168,8 +156,6 @@ authorized-->
               <li><a [routerLink]="['/playerIP']" routerLinkActive="active">{{ 'Player IP' | translate:lang }}</a></li>
               <li><a [routerLink]="['/crossIP']" routerLinkActive="active">{{ 'Cross IP' | translate:lang }}</a></li>
               <li><a [routerLink]="['/topPlayers']" routerLinkActive="active">{{ 'top Players' | translate:lang }}</a></li>
-
-
             </div>
           </div>
         </a>
@@ -201,7 +187,6 @@ authorized-->
               <span class="caret"></span>
             </div>
             <div dropdownMenu class="dropdown-menu">
-
               <li><a [routerLink]="['/playerManagement']" routerLinkActive="active">{{ 'Player Management' | translate:lang }}</a></li>
               <li><a [routerLink]="['/agentManagement']" routerLinkActive="active">{{ 'Agent Management' | translate:lang }}</a></li>
               <li><a [routerLink]="['/playerLimits']" routerLinkActive="active">{{ 'Player Limits' | translate:lang }}</a></li>
@@ -209,7 +194,6 @@ authorized-->
               <li><a [routerLink]="['/playerProfiles']" routerLinkActive="active">{{ 'Player Profiles' | translate:lang }}</a></li>
               <li><a [routerLink]="['/profileLimits']" routerLinkActive="active">{{ 'Profile Limits' | translate:lang }}</a></li>
               <li><a [routerLink]="['/maxMoneyLine']" routerLinkActive="active">{{ 'Max Money Line' | translate:lang }}</a></li>
-
             </div>
           </div>
         </a>
@@ -223,39 +207,29 @@ authorized-->
               <span class="caret"></span>
             </div>
             <div dropdownMenu class="dropdown-menu">
-
               <li><a [routerLink]="['/cashier']" routerLinkActive="active">{{ 'Cashier' | translate:lang }}</a></li>
-
               <li><a [routerLink]="['/agentPayments']" routerLinkActive="active">{{ 'Agent Payments' | translate:lang }}</a></li>
-
               <li><a [routerLink]="['/addAgent']" routerLinkActive="active">{{ 'Add Agent' | translate:lang }}</a></li>
               <li><a [routerLink]="['/addPlayer']" routerLinkActive="active">{{ 'Add Player' | translate:lang }}</a></li>
               <li><a [routerLink]="['/moveLines']" routerLinkActive="active">{{ 'Move Lines' | translate:lang }}</a></li>
               <li><a [routerLink]="['/BetTicker']" routerLinkActive="active">{{ 'Bet Ticker' | translate:lang }}</a></li>
               <li><a [routerLink]="['/BetAlerts']" routerLinkActive="active">{{ 'Bet Alerts' | translate:lang }}</a></li>
               <li><a [routerLink]="['/ScoresAndOdds']" routerLinkActive="active">{{ 'Scores and more' | translate:lang }}</a></li>
-
             </div>
           </div>
         </a>
       </li>
-
-
 
       <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
       <!--
         <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things TEST' | translate:lang }}</a></li>
         <li ><a [routerLink]="['/players']" routerLinkActive="active">{{ 'Players TEST' | translate:lang }}</a></li>
         <li ><a [routerLink]="['/wagers']" routerLinkActive="active">{{ 'Wagers TEST' | translate:lang }}</a></li>-->
-
-
       <!--             
-
         <li *ngIf="auth.isAuthenticated()" ><a [routerLink]="['/genericReport2']" routerLinkActive="active">{{ 'Secure report' | translate:lang }}</a></li>
      -->
 
     </ul>
-
     <div class="navbar-header navbar-right">
       <ul class="nav navbar-nav">
         <li>

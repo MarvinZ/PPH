@@ -94,7 +94,11 @@ import { PlayerCountComponent } from './player-count/player-count.component';
 import { PlayerIpComponent } from './player-ip/player-ip.component';
 import { CrossIpComponent } from './cross-ip/cross-ip.component';
 import { TopPlayersComponent } from './top-players/top-players.component';
-import { GrossWeekComponent } from './gross-week/gross-week.component'
+import { GrossWeekComponent } from './gross-week/gross-week.component';
+import { ChangedWagersComponent } from './changed-wagers/changed-wagers.component';
+import { WagerRiskComponent } from './wager-risk/wager-risk.component';
+import { WagerListingComponent } from './wager-listing/wager-listing.component';
+import { DailySummaryComponent } from './daily-summary/daily-summary.component'
 
 @NgModule({
   declarations: [
@@ -153,7 +157,11 @@ import { GrossWeekComponent } from './gross-week/gross-week.component'
     PlayerIpComponent,
     CrossIpComponent,
     TopPlayersComponent,
-    GrossWeekComponent
+    GrossWeekComponent,
+    ChangedWagersComponent,
+    WagerRiskComponent,
+    WagerListingComponent,
+    DailySummaryComponent
   ],
   imports: [
     AlertModule.forRoot(),
