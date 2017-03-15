@@ -13,57 +13,68 @@
 
 <div class="row">
   <div class="col-md-8">
-    <!--<carousel>
-  <slide>
-    <img src="http://valor-software.com/ng2-bootstrap/assets/images/nature/7.jpg" alt="First slide">
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </slide>
-  <slide>
-    <img src="http://valor-software.com/ng2-bootstrap/assets/images/nature/8.jpg" alt="Second slide">
-    <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </slide>
-  <slide>
-    <img src="http://valor-software.com/ng2-bootstrap/assets/images/nature/1.jpg" alt="Third slide">
-    <div class="carousel-caption">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </slide>
-</carousel>-->
+    <carousel>
+      <slide>
+        <img src="http://valor-software.com/ng2-bootstrap/assets/images/nature/7.jpg" alt="First slide">
+        <div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div>
+      </slide>
+      <slide>
+        <img src="http://valor-software.com/ng2-bootstrap/assets/images/nature/8.jpg" alt="Second slide">
+        <div class="carousel-caption">
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </slide>
+      <slide>
+        <img src="http://valor-software.com/ng2-bootstrap/assets/images/nature/1.jpg" alt="Third slide">
+        <div class="carousel-caption">
+          <h3>Third slide label</h3>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </slide>
+    </carousel>
   </div>
-
-
-
-  <div class="col-md-4">
+  <div class="col-md-4 form-group" *ngIf="!contactRequestSubmitted">
     <h2>GET STARTED NOW!</h2>
     <p>Fill the form and our agent will contact you as soon as possible</p>
-    <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)" autocomplete="off" novalidate>
-      <div class="form-group">
-        <label for="name">name:</label>
-        <em *ngIf="signupForm.controls.name?.invalid && (signupForm.controls.name?.touched || mouseoverLogin)">Required</em>
-        <input (ngModel)="name" name="name" required id="name" type="text" class="form-control" placeholder="Name..." />
-      </div>
-      <div class="form-group">
-        <label for="email">email:</label>
-        <em *ngIf="signupForm.controls.email?.invalid && (signupForm.controls.email?.touched || mouseoverLogin)">Required</em>
-        <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="email..." />
-      </div>
-      <div class="form-group">
-        <label for="phone">phone:</label>
-        <em *ngIf="signupForm.controls.phone?.invalid && (signupForm.controls.phone?.touched || mouseoverLogin)">Required</em>
-        <input (ngModel)="phone" name="phone" required id="phone" type="text" class="form-control" placeholder="phone..." />
-      </div>
+    <div class="form-group">
+      <form #contactForm="ngForm" (ngSubmit)="contactus(contactForm.value)" autocomplete="off" novalidate>
+        <div class="form-group">
+          <label for="userName">Name:</label>
+          <em *ngIf="contactForm.controls.userName?.invalid && (contactForm.controls.userName?.touched || mouseoverLogin)">Required</em>
+          <input (ngModel)="username" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..."
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <em *ngIf="contactForm.controls.email?.invalid && (contactForm.controls.email?.touched || mouseoverContact) || contactForm.controls.email?.pattern==false">Required, format incorret</em>
+          <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="Email..." pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <em *ngIf="contactForm.controls.phone?.invalid && (contactForm.controls.phone?.touched || mouseoverContact)">Required</em>
+          <input (ngModel)="phone" name="phone" required id="name" type="number" class="form-control" placeholder="Phone..." />
+        </div>
+        <!--<div class="form-group">
+          <label for="message">Message:</label>
+          <em *ngIf="contactForm.controls.message?.invalid  && (contactForm.controls.message?.touched || mouseoverContact)">Required</em>
+          <textarea (ngModel)="message" name="message" required id="message" type="text" rows=7 class="form-control" placeholder="Message..."></textarea>
+        </div>-->
 
-      <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
-      <button type="submit" [disabled]="signupForm.invalid" class="btn btn-default">Sign up Now!</button>
+        <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+      <button type="submit" [disabled]="contactForm.invalid" class="btn btn-default">Submit</button>
     </span>
-      <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
-    </form>
+        <!--<button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>-->
+      </form>
+    </div>
+  </div>
+
+  
+  <div class="col-md-4 form-group" *ngIf="contactRequestSubmitted">
+    I dont know what to display here.. but the contact form worked :) 
   </div>
 </div>

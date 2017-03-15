@@ -73,12 +73,12 @@
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
 
       <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Affiliate Contact us' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li> <!-- Affiliate -->
       <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
 
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/affiliatesignup']" routerLinkActive="active">{{ 'Affiliate Sign up' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/affiliatesignup']" routerLinkActive="active">{{ 'Sign up NOW!' | translate:lang }}</a></li><!-- Affiliate -->
 
       <!--
 
