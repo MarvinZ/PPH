@@ -24,10 +24,10 @@ export class GrossWeekComponent extends Localization implements OnInit {
   ddlCurrency: string = '1'
 
   public currencies = [
-  	{ value: '1', display: 'USD' },
-  	{ value: '2', display: 'MXN' },
-  	{ value: '3', display: 'GBP' },
-  	{ value: '4', display: 'EUR' }
+    { value: '1', display: 'USD' },
+    { value: '2', display: 'MXN' },
+    { value: '3', display: 'GBP' },
+    { value: '4', display: 'EUR' }
   ];
 
   response: any
@@ -47,7 +47,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
-    this.dateModel = { date: { year: year, month: month, day: day } };     
+    this.dateModel = { date: { year: year, month: month, day: day } };
   }
 
   go() {
@@ -56,9 +56,9 @@ export class GrossWeekComponent extends Localization implements OnInit {
 
     let t0 = performance.now();
     //alert (this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day);
-    this.affiliateService.GetGrossWeekReport(this.auth.currentUser.id, 
-    this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day,
-    this.ddlCurrency)
+    this.affiliateService.GetGrossWeekReport(this.auth.currentUser.id,
+      this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day,
+      this.ddlCurrency)
       .subscribe(response => {
         this.response = response;
         this.loading = false;
@@ -69,7 +69,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
- 
+
 
 }  //end of class
 

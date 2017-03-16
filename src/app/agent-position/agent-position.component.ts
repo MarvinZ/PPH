@@ -9,108 +9,108 @@ import { Router } from '@angular/router'
 
 
 @Component({
-  selector: 'app-agent-position',
-  templateUrl: './agent-position.component.html',
-  styleUrls: ['./agent-position.component.css']
+    selector: 'app-agent-position',
+    templateUrl: './agent-position.component.html',
+    styleUrls: ['./agent-position.component.css']
 })
 export class AgentPositionComponent extends Localization implements OnInit {
-  private myDatePickerOptions: IMyOptions = {
-    // other options...
-    dateFormat: 'yyyy-mm-dd',
-  };
-  private dateModel: any
-  loading: boolean = false;
-
-  Showfutures: Boolean = false;
-
-  response: any
-  errorMessage: string
-  constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
-    public vcr: ViewContainerRef, public locale: LocaleService,
-    public translation: TranslationService, private auth: AuthService) {
-    super(locale, translation);
-    this.toastr.setRootViewContainerRef(vcr);
-
-  }
-
-  ngOnInit() {
-    if (!this.auth.currentUser) {
-      this.router.navigate(['/user/login']);
-    }
-    let currentDate = new Date();
-    let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1;
-    let year = currentDate.getFullYear();
-
-    let currentDateStart = new Date();
-    currentDateStart.setDate(currentDateStart.getDate() - 7);
-
-    let day2 = currentDateStart.getDate();
-    let month2 = currentDateStart.getMonth() + 1;
-    let year2 = currentDateStart.getFullYear();
-
-    this.dateModel = {
-      beginDate: { year: year2, month: month2, day: day2 },
-      endDate: { year: year, month: month, day: day }
+    private myDatePickerOptions: IMyOptions = {
+        // other options...
+        dateFormat: 'yyyy-mm-dd',
     };
-  }
+    private dateModel: any
+    loading: boolean = false;
 
-  go() {
-    this.response = null;
-    let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
-    let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
+    Showfutures: Boolean = false;
 
-    this.loading = true;
-    let t0 = performance.now();
-    this.affiliateService.GetAgentPositionReport(this.auth.currentUser.id, this.Showfutures,
-     startDate, endDate)
-      .subscribe(response => {
-        this.response = response;
-        this.loading = false;
+    response: any
+    errorMessage: string
+    constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
+        public vcr: ViewContainerRef, public locale: LocaleService,
+        public translation: TranslationService, private auth: AuthService) {
+        super(locale, translation);
+        this.toastr.setRootViewContainerRef(vcr);
 
-        console.log(this.response);
-        let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-      },
-      error => this.errorMessage = <any>error);
-  }
+    }
 
-
-   parceFrac (frac:string) {
-
-            if (frac.includes("frac")) {
-
-                if (frac.includes("&frac12;")) {
-                    return frac.replace("&frac12;", " 1/2 ");
-                }
-                else if (frac.includes("&frac13;")) {
-                    return frac.replace("&frac13;", " 1/3 ");
-                }
-                else if (frac.includes("&frac14;")) {
-                    return frac.replace("&frac14;", " 1/4 ");
-                }
-                else if (frac.includes("&frac15;")) {
-                    return frac.replace("&frac15;", " 1/5 ");
-                }
-                else if (frac.includes("&frac16;")) {
-                    return frac.replace("&frac16;", " 1/6 ");
-                }
-                else if (frac.includes("&frac17;")) {
-                    return frac.replace("&frac17;", " 1/7 ");
-                }
-                else if (frac.includes("&frac18;")) {
-                    return frac.replace("&frac18;", " 1/8 ");
-                }
-                else if (frac.includes("&frac19;")) {
-                    return frac.replace("&frac19;", " 1/9 ");
-                }
-                else
-                    return frac;
-
-
-            } else
-                return frac;
+    ngOnInit() {
+        if (!this.auth.currentUser) {
+            this.router.navigate(['/user/login']);
         }
+        let currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = currentDate.getMonth() + 1;
+        let year = currentDate.getFullYear();
+
+        let currentDateStart = new Date();
+        currentDateStart.setDate(currentDateStart.getDate() - 7);
+
+        let day2 = currentDateStart.getDate();
+        let month2 = currentDateStart.getMonth() + 1;
+        let year2 = currentDateStart.getFullYear();
+
+        this.dateModel = {
+            beginDate: { year: year2, month: month2, day: day2 },
+            endDate: { year: year, month: month, day: day }
+        };
+    }
+
+    go() {
+        this.response = null;
+        let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
+        let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
+
+        this.loading = true;
+        let t0 = performance.now();
+        this.affiliateService.GetAgentPositionReport(this.auth.currentUser.id, this.Showfutures,
+            startDate, endDate)
+            .subscribe(response => {
+                this.response = response;
+                this.loading = false;
+
+                console.log(this.response);
+                let t1 = performance.now();
+                this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+            },
+            error => this.errorMessage = <any>error);
+    }
+
+
+    parceFrac(frac: string) {
+
+        if (frac.includes("frac")) {
+
+            if (frac.includes("&frac12;")) {
+                return frac.replace("&frac12;", " 1/2 ");
+            }
+            else if (frac.includes("&frac13;")) {
+                return frac.replace("&frac13;", " 1/3 ");
+            }
+            else if (frac.includes("&frac14;")) {
+                return frac.replace("&frac14;", " 1/4 ");
+            }
+            else if (frac.includes("&frac15;")) {
+                return frac.replace("&frac15;", " 1/5 ");
+            }
+            else if (frac.includes("&frac16;")) {
+                return frac.replace("&frac16;", " 1/6 ");
+            }
+            else if (frac.includes("&frac17;")) {
+                return frac.replace("&frac17;", " 1/7 ");
+            }
+            else if (frac.includes("&frac18;")) {
+                return frac.replace("&frac18;", " 1/8 ");
+            }
+            else if (frac.includes("&frac19;")) {
+                return frac.replace("&frac19;", " 1/9 ");
+            }
+            else
+                return frac;
+
+
+        } else
+            return frac;
+    }
 
 
 

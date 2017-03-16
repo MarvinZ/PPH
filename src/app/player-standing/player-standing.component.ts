@@ -55,6 +55,8 @@ export class PlayerStandingComponent extends Localization implements OnInit {
 
 	go() {
 		this.loading = true;
+		this.response = null;
+
 		let t0 = performance.now();
 		this.affiliateService.GetPlayerStandings(this.auth.currentUser.id,
 			this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day, this.ddlCurrency)

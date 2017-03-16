@@ -48,7 +48,7 @@ export class PlayerTotalsComponent extends Localization implements OnInit {
     let year = currentDate.getFullYear();
     this.dateModel = { date: { year: year, month: month, day: day } };
 
-     let currentDateStart = new Date();
+    let currentDateStart = new Date();
     currentDateStart.setDate(currentDateStart.getDate() - 7);
 
     let day2 = currentDateStart.getDate();
@@ -65,12 +65,12 @@ export class PlayerTotalsComponent extends Localization implements OnInit {
   go() {
     this.response = null;
     this.loading = true;
-     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
+    let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
 
     let t0 = performance.now();
-    this.affiliateService.GetPlayerTotalsReport(this.auth.currentUser.id, 
-    startDate, endDate, this.ddlCurrency)
+    this.affiliateService.GetPlayerTotalsReport(this.auth.currentUser.id,
+      startDate, endDate, this.ddlCurrency)
       .subscribe(response => {
         this.response = response;
         this.loading = false;
@@ -81,5 +81,5 @@ export class PlayerTotalsComponent extends Localization implements OnInit {
       },
       error => this.errorMessage = <any>error);
   }
- 
+
 } //end of class

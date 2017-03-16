@@ -74,31 +74,31 @@
 
         <div class="col-md-2" style="cursor: pointer;">
           <!--Straights-->
-          <div class="col-md-4" (click)="modal.show('V0', 'SB', Item._IdGame);">{{Item._StraightbetVSpread | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V0', 'SB', Item._IdGame);">{{Item._StraightbetVSpread | currency:'USD':true:'1.2-2'}}</div>
 
           <!--PLAY - WAGERTYPE - IDGAME-->
-          <div class="col-md-4" (click)="modal.show('V2', 'SB', Item._IdGame);">{{Item._StraightbetVTotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V4', 'SB', Item._IdGame);">{{Item._StraightbetVMoney | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'SB', Item._IdGame);">{{Item._StraightbetVTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'SB', Item._IdGame);">{{Item._StraightbetVMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
         <div class="col-md-2" style="cursor: pointer;">
           <!--Parlays-->
-          <div class="col-md-4" (click)="modal.show('V0', 'PB', Item._IdGame);">{{Item._ParlayVSpread | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V2', 'PB', Item._IdGame);">{{Item._ParlayVTotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V4', 'PB', Item._IdGame);">{{Item._ParlayVMoney | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V0', 'PB', Item._IdGame);">{{Item._ParlayVSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'PB', Item._IdGame);">{{Item._ParlayVTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'PB', Item._IdGame);">{{Item._ParlayVMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
         <div class="col-md-2" style="cursor: pointer;">
           <!--Teasers-->
-          <div class="col-md-4" (click)="modal.show('V0', 'TB', Item._IdGame);">{{Item._TeaserVSpread | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V2', 'TB', Item._IdGame);">{{Item._TeaserVTotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V4', 'TB', Item._IdGame);">{{Item._TeaserVMoney | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V0', 'TB', Item._IdGame);">{{Item._TeaserVSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'TB', Item._IdGame);">{{Item._TeaserVTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'TB', Item._IdGame);">{{Item._TeaserVMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
         <div class="col-md-2" style="cursor: pointer;">
           <!--Reverses-->
-          <div class="col-md-4" (click)="modal.show('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-4" (click)="modal.show('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
       </div>
@@ -172,8 +172,8 @@
         <div class="col-md-2 text-center">{{ItemDetails._ticket}}</div>
         <div class="col-md-2 text-center">{{ItemDetails._placeddate}}</div>
         <div class="col-md-4 text-center">{{ItemDetails._line}}</div>
-        <div class="col-md-1 text-center">{{ItemDetails._riskamount | currency:'USD':true:'4.2-2'}}</div>
-        <div class="col-md-1 text-center">{{ItemDetails._winamount | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1 text-center">{{ItemDetails._riskamount | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1 text-center">{{ItemDetails._winamount | currency:'USD':true:'1.2-2'}}</div>
       </div>
     </div>
     <div class="row">
@@ -181,8 +181,8 @@
       <div class="col-md-2 text-center"></div>
       <div class="col-md-2 text-center"></div>
       <div class="col-md-4 text-center">Total:</div>
-      <div class="col-md-1 text-center">{{modal.totalRisk | currency:'USD':true:'4.2-2'}}</div>
-      <div class="col-md-1 text-center">{{modal.totalWin | currency:'USD':true:'4.2-2'}}</div>
+      <div class="col-md-1 text-center">{{modal.totalRisk | currency:'USD':true:'1.2-2'}}</div>
+      <div class="col-md-1 text-center">{{modal.totalWin | currency:'USD':true:'1.2-2'}}</div>
     </div>
 
 

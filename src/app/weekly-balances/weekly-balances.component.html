@@ -51,10 +51,9 @@
 
       <div class="row">
         <div class="col-md-3">
-          <div class="col-md-3">Player</div>
-          <div class="col-md-3">Name</div>
-          <div class="col-md-3">Password</div>
-          <div class="col-md-3">BalFwd</div>
+          <div class="col-md-4">Player</div>
+          <div class="col-md-4">Name</div>
+          <div class="col-md-4">BalFwd</div>
         </div>
         <div class="col-md-3">
           <div class="col-md-3">Mon</div>
@@ -81,55 +80,53 @@
 
         <div class="row">
           <div class="col-md-3">
-            <div class="col-md-3">{{ItemDetailPlayer._Player}}</div>
-            <div class="col-md-3">{{ItemDetailPlayer._Name}}</div>
-            <div class="col-md-3">{{ItemDetailPlayer._Password}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._BalFwd | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-4">{{ItemDetailPlayer._Player}}</div>
+            <div class="col-md-4">{{ItemDetailPlayer._Name}}</div>
+            <div class="col-md-4" style="text-align: right;">{{ItemDetailPlayer._BalFwd | currency:'USD':true:'1.2-2'}}</div>
           </div>
 
           <div class="col-md-3" style="text-align: right;">
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'1.2-2'}}</div>
           </div>
           <div class="col-md-3" style="text-align: right;">
 
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'1.2-2'}}</div>
           </div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Ptms | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Balance | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Ptms | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
       </div>
 
       <div class="row" style="background-color: lightgray">
         <div class="col-md-3">
-          <div class="col-md-3"></div>
-          <div class="col-md-3"></div>
-          <div class="col-md-3"></div>
-          <div class="col-md-3" style="text-align: right;">{{Item._BalFwd}}</div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4" style="text-align: right;">{{Item._BalFwd | currency:'USD':true:'1.2-2'}}</div>
         </div>
         <div class="col-md-3">
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay1}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay2}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay3}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay4}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay1 | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay2 | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay3 | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay4 | currency:'USD':true:'1.2-2'}}</div>
         </div>
         <div class="col-md-3">
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay5}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay6}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay7}}</div>
-          <div class="col-md-3" style="text-align: right;">-</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay5 | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay6 | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay7 | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-3" style="text-align: right;"></div>
         </div>
 
         <div class="col-md-1" style="text-align: right;">-</div>
-        <div class="col-md-1" style="text-align: right;">{{Item._Ptms}}</div>
-        <div class="col-md-1" style="text-align: right;">{{Item._Balance}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._Ptms | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._Balance | currency:'USD':true:'1.2-2'}}</div>
         <!--<div class="col-md-1">Adjustment</div>
             <div class="col-md-1">Horse Adjustment</div>
             <div class="col-md-1">Total</div>-->
@@ -140,9 +137,9 @@
       <!--  <div class="row">-->
       <!--<div class="col-md-2" style="cursor: pointer;">
 
-            <div class="col-md-4" ng-click="openModal('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-4" ng-click="openModal('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-4" ng-click="openModal('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-4" ng-click="openModal('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-4" ng-click="openModal('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-4" ng-click="openModal('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>-->
 
     </div>

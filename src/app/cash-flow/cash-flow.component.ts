@@ -88,6 +88,8 @@ export class CashFlowComponent extends Localization implements OnInit {
 
   go() {
     this.loading = true;
+    this.response = null;
+
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
     let t0 = performance.now();
