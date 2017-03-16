@@ -11,7 +11,7 @@
       </div>
       <div class="col-xs-3 form-group">
 
-        
+
         <!--<label>{{'Sports:'| translate:lang  }}</label>
         <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
           <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
@@ -84,4 +84,6 @@
 
 </div>
 
-<div *ngIf="loading">doing something else.... </div>
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

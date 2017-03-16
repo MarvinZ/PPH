@@ -51,31 +51,31 @@
         <div class="col-md-1">This Week Casino</div>
       </div>
       <!--<div *ngIf="Item.ListPlayer.length > 0">-->
-        <div *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
+      <div *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
 
-          <div class="row table-hover">
-            <div class="col-md-5">{{ItemDetailPlayer._player}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._creditlimit | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweek | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._atrisk | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'4.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'4.2-2'}}</div>
-          </div>
+        <div class="row table-hover">
+          <div class="col-md-5">{{ItemDetailPlayer._player}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._creditlimit | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweek | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._atrisk | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'4.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'4.2-2'}}</div>
+        </div>
 
-        </div>
-        <div class="row" style="background-color: lightgray;">
-          <div class="col-md-3"></div>
-          <div class="col-md-2">Total:</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._creditlimittotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._thisweektotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._atrisktotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._currentbalancetotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._thissportstotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._thishorsestotal | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{Item._thiscasinototal | currency:'USD':true:'4.2-2'}}</div>
-        </div>
+      </div>
+      <div class="row" style="background-color: lightgray;">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">Total:</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._creditlimittotal | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._thisweektotal | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._atrisktotal | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._currentbalancetotal | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._thissportstotal | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._thishorsestotal | currency:'USD':true:'4.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{Item._thiscasinototal | currency:'USD':true:'4.2-2'}}</div>
+      </div>
       <!--</div>-->
 
     </div>
@@ -86,4 +86,6 @@
 
 </div>
 
-<div *ngIf="loading">doing something else.... </div>
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

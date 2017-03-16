@@ -98,7 +98,8 @@ import { GrossWeekComponent } from './gross-week/gross-week.component';
 import { ChangedWagersComponent } from './changed-wagers/changed-wagers.component';
 import { WagerRiskComponent } from './wager-risk/wager-risk.component';
 import { WagerListingComponent } from './wager-listing/wager-listing.component';
-import { DailySummaryComponent } from './daily-summary/daily-summary.component'
+import { DailySummaryComponent } from './daily-summary/daily-summary.component';
+import { LoadingComponent } from './loading/loading.component'
 
 @NgModule({
   declarations: [
@@ -161,7 +162,8 @@ import { DailySummaryComponent } from './daily-summary/daily-summary.component'
     ChangedWagersComponent,
     WagerRiskComponent,
     WagerListingComponent,
-    DailySummaryComponent
+    DailySummaryComponent,
+    LoadingComponent
   ],
   imports: [
     AlertModule.forRoot(),

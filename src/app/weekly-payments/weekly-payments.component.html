@@ -55,23 +55,23 @@
         <div class="col-md-1">Saturday</div>
         <div class="col-md-1">Sunday</div>
       </div>
-  <div *ngIf="Item.PlayerList?.length > 0">
+      <div *ngIf="Item.PlayerList?.length > 0">
 
-      <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
+        <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
 
-        <div class="row table-hover">
-          <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day1 | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day2 | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day3 | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day4 | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day5 | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day6 | currency:'USD':true:'4.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day7 | currency:'USD':true:'4.2-2'}}</div>
+          <div class="row table-hover">
+            <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day1 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day2 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day3 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day4 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day5 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day6 | currency:'USD':true:'4.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day7 | currency:'USD':true:'4.2-2'}}</div>
+          </div>
+
         </div>
-
       </div>
-  </div>
 
     </div>
   </div>
@@ -83,4 +83,6 @@
 
 </div>
 
-<div *ngIf="loading">doing something else.... </div>
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

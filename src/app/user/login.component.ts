@@ -9,26 +9,31 @@ import { LoginResponse, ResponseStatus, ResponseAgentInfo } from './../models/ap
   templateUrl: './login.component.html',
   styles: [`
     em { float:right; color:#E05C65; padding-left:10px; }
+    
   `]
 })
 export class LoginComponent {
 
   public tempRes: LoginResponse
   public errorMessage: string
-
   public showInvalidCredentials: boolean
+  public loading: boolean
 
 
   constructor(private authService: AuthService, private router: Router) {
     this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0));
-
   }
 
   login(formValues) {
+    this.loading = true;
+
     this.authService.loginUser(formValues.userName, formValues.password).subscribe(tempRes => {
       this.tempRes = tempRes;
 
+
       if (this.tempRes.ResponseStatus.Status === 'Success' && this.tempRes.ResponseAgentInfo.IdAgent != 0) {
+        this.loading = true;
+
         alert('welcome...');
 
         this.authService.currentUser = {
@@ -40,20 +45,13 @@ export class LoginComponent {
           selectedSubagent: 0
         }
 
-
         this.router.navigate(['main']);
       }
       else {
         this.showInvalidCredentials = true;
       }
-
-
-
     },
       error => this.errorMessage = <any>error);
-
-
-
   }
 
   cancel() {
