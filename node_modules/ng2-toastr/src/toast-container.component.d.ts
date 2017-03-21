@@ -1,24 +1,35 @@
-import { ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, NgZone, OnDestroy, AnimationTransitionEvent } from '@angular/core';
 import { Toast } from './toast';
 import { ToastOptions } from './toast-options';
 import { DomSanitizer } from '@angular/platform-browser';
-export declare class ToastContainer {
+import 'rxjs/add/operator/first';
+import { Observable } from 'rxjs/Observable';
+export declare class ToastContainer implements OnDestroy {
     private sanitizer;
     private cdr;
+    private _zone;
     position: string;
     messageClass: string;
     titleClass: string;
     positionClass: string;
-    toasts: Toast[];
     maxShown: number;
     newestOnTop: boolean;
     animate: string;
+    toasts: Toast[];
+    private _fresh;
     private onToastClicked;
-    constructor(sanitizer: DomSanitizer, cdr: ChangeDetectorRef, options: ToastOptions);
+    private _onEnter;
+    private _onExit;
+    constructor(sanitizer: DomSanitizer, cdr: ChangeDetectorRef, _zone: NgZone, options: ToastOptions);
+    onEnter(): Observable<void>;
+    onExit(): Observable<void>;
     addToast(toast: Toast): void;
     removeToast(toast: Toast): void;
     removeAllToasts(): void;
     clicked(toast: Toast): void;
     anyToast(): boolean;
     findToast(toastId: number): Toast | void;
+    onAnimationEnd(event: AnimationTransitionEvent): void;
+    private _ngExit();
+    ngOnDestroy(): void;
 }

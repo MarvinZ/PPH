@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Toast = (function () {
     function Toast(type, message, title, data) {
         this.type = type;
