@@ -99,7 +99,9 @@ import { ChangedWagersComponent } from './changed-wagers/changed-wagers.componen
 import { WagerRiskComponent } from './wager-risk/wager-risk.component';
 import { WagerListingComponent } from './wager-listing/wager-listing.component';
 import { DailySummaryComponent } from './daily-summary/daily-summary.component';
-import { LoadingComponent } from './loading/loading.component'
+import { LoadingComponent } from './loading/loading.component';
+import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.component';
+import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component'
 
 @NgModule({
   declarations: [
@@ -163,7 +165,9 @@ import { LoadingComponent } from './loading/loading.component'
     WagerRiskComponent,
     WagerListingComponent,
     DailySummaryComponent,
-    LoadingComponent
+    LoadingComponent,
+    PreAffiliatesComponent,
+    AffiliatesAdminComponent
   ],
   imports: [
     AlertModule.forRoot(),

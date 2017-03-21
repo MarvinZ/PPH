@@ -54,6 +54,8 @@ import { ChangedWagersComponent } from './changed-wagers/changed-wagers.componen
 import { WagerRiskComponent } from './wager-risk/wager-risk.component';
 import { WagerListingComponent } from './wager-listing/wager-listing.component';
 import { DailySummaryComponent } from './daily-summary/daily-summary.component'
+import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.component';
+import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component'
 
 
 export const appRoutes: Routes = [
@@ -111,6 +113,8 @@ export const appRoutes: Routes = [
     { path: 'changedWagers', component: ChangedWagersComponent },
     { path: 'RiskReport', component: WagerRiskComponent },
     { path: 'wagerListing', component: WagerListingComponent },
-    { path: 'dailySummary', component: DailySummaryComponent }
+    { path: 'dailySummary', component: DailySummaryComponent },
+    { path: 'preAffiliates', component: PreAffiliatesComponent },
+    { path: 'affiliatesAdmin', component: AffiliatesAdminComponent }     
 
 ]

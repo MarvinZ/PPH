@@ -73,6 +73,8 @@ export class AffiliateService {
       "AgentPassword": AgentPassword
     }
 
+    console.log (payload);
+
     return this._http.post(this._url + "InsertPreAffiliate", payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any

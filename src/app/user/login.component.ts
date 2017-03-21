@@ -2,6 +2,8 @@ import { Component } from '@angular/core'
 import { AuthService } from './auth.service'
 import { Router } from '@angular/router'
 import { LoginResponse, ResponseStatus, ResponseAgentInfo } from './../models/api';
+import { Localization, LocaleService, TranslationService } from 'angular-l10n';
+
 
 
 

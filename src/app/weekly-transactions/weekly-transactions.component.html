@@ -63,10 +63,10 @@
             {{PreAff.Description}}
           </td>
           <td>
-            {{PreAff.Amount}}
+            {{PreAff.Amount | currency:'USD':true:'1.2-2'}}
           </td>
           <td>
-            {{PreAff.Balance}}
+            {{PreAff.Balance | currency:'USD':true:'1.2-2'}}
           </td>
           <td>
             {{PreAff.Date | date}}

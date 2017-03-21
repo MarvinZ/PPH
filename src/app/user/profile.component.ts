@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { AuthService } from './auth.service'
-import { Router} from '@angular/router'
+import { ReportResponse } from './../models/api';
+import { ReportService } from './../services/report.service'
+import { AffiliateService } from './../services/affiliate.service'
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { Localization, LocaleService, TranslationService } from 'angular-l10n';
+import { IMyOptions } from 'mydatepicker';
+import { AuthService } from '../user/auth.service'
+import { Router } from '@angular/router'
+
 
 @Component({
   templateUrl: './profile.component.html',
@@ -14,18 +21,21 @@ import { Router} from '@angular/router'
     .error :ms-input-placeholder { color: #999; }
   `]
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent extends Localization implements OnInit {
   profileForm:FormGroup
   private firstName:FormControl
   private lastName:FormControl
 
-  constructor(private router:Router, private authService:AuthService) {
-
-  }
+constructor(private affiliateService: AffiliateService, public toastr: ToastsManager,
+		public vcr: ViewContainerRef, public locale: LocaleService, private router: Router,
+		public translation: TranslationService, private auth: AuthService) {
+		super(locale, translation);
+		this.toastr.setRootViewContainerRef(vcr);
+	}
 
   ngOnInit() {
-    this.firstName = new FormControl(this.authService.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
-    this.lastName = new FormControl(this.authService.currentUser.lastName, Validators.required)
+    this.firstName = new FormControl(this.auth.currentUser.firstName, [Validators.required, Validators.pattern('[a-zA-Z].*')])
+    this.lastName = new FormControl(this.auth.currentUser.lastName, Validators.required)
 
     this.profileForm = new FormGroup({
       firstName: this.firstName,
@@ -35,7 +45,7 @@ export class ProfileComponent implements OnInit {
 
   saveProfile(formValues) {
     if (this.profileForm.valid) {
-      this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+      this.auth.updateCurrentUser(formValues.firstName, formValues.lastName)
       this.router.navigate(['home'])
     }
   }
