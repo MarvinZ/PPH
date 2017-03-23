@@ -179,7 +179,8 @@ export class AffiliateService {
 
   // GET api/temp/GetGrossWeekReport?prmIdAgent={prmIdAgent}&prmStartDate={prmStartDate}&prmIdCurrency={prmIdCurrency}
   GetGrossWeekReport(prmIdAgent: number, prmStartDate: string, prmIdCurrency: string): Observable<any> {
-    return this._http.get(this._url + "GetGrossWeekReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "1&prmIdCurrency=" + prmIdCurrency)
+    console.log(this._url + "GetGrossWeekReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "1&prmIdCurrency=" + prmIdCurrency);
+    return this._http.get(this._url + "GetGrossWeekReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);

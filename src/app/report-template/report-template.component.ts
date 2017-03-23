@@ -38,7 +38,7 @@ export class ReportTemplateComponent extends Localization implements OnInit {
   // 	{ value: 'SOC', display: 'SOC' },
   // 	{ value: 'TNT', display: 'TNT' },
   // 	{ value: 'NHL', display: 'NHL' },
-  // 	{ value: 'ALL', display: 'ALL' }
+  // 	{ value: 'All', display: 'ALL' }
   // ];
 
   // public currencies = [
