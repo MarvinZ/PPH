@@ -64,11 +64,14 @@ import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.com
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent } from './marketing/marketing.component';
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
-import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component'
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { TermsOfServicePphComponent } from './terms-of-service-pph/terms-of-service-pph.component';
 
 import { MyDatePickerModule } from 'mydatepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
-import { AffiliateSignUpComponent } from './affiliate-sign-up/affiliate-sign-up.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignUpPphComponent } from './sign-up-pph/sign-up-pph.component';
+
 import { DemoComponent, DemoModalComponent } from './demo/demo.component';
 import { SigningUpComponent } from './signing-up/signing-up.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -81,7 +84,7 @@ import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
 import { AgentDistributionComponent } from './agent-distribution/agent-distribution.component';
 import { AgentHistoryComponent } from './agent-history/agent-history.component';
 
-import {SafePipe} from './safe-pipe.pipe';
+import { SafePipe } from './safe-pipe.pipe';
 import { AgentAdjustmentsComponent } from './agent-adjustments/agent-adjustments.component';
 import { AccessLogComponent } from './access-log/access-log.component';
 import { CardTransactionsComponent } from './card-transactions/card-transactions.component';
@@ -135,7 +138,9 @@ import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.co
     MarketingComponent,
     PlayerStandingsComponent,
     TermsOfServiceComponent,
-    AffiliateSignUpComponent,
+    TermsOfServicePphComponent,
+    SignUpComponent,
+    SignUpPphComponent,
     DemoComponent, DemoModalComponent,
     SigningUpComponent,
     GalleryComponent,

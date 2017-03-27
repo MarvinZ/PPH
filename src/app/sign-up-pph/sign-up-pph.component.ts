@@ -9,11 +9,11 @@ import { AffiliateService } from '../services/affiliate.service'
 import { Router } from '@angular/router'
 
 @Component({
-  selector: 'app-affiliate-sign-up',
-  templateUrl: './affiliate-sign-up.component.html',
-  styleUrls: ['./affiliate-sign-up.component.css']
+  selector: 'app-sign-up-pph',
+  templateUrl: './sign-up-pph.component.html',
+  styleUrls: ['./sign-up-pph.component.css']
 })
-export class AffiliateSignUpComponent extends Localization implements OnInit {
+export class SignUpPphComponent extends Localization implements OnInit {
 
   ddlCountries: string = 'United States'
   countryCode: number = 1

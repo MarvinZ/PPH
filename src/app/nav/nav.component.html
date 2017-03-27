@@ -3,17 +3,42 @@
     <div class="navbar-header">
       <a class="navbar-brand">{{auth.siteName}} Site Beta</a>
     </div>
-    <ul class="nav navbar-nav">
+
+
+    <ul class="nav navbar-nav" *ngIf="auth.isAdminSite()">
+      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PreAffiliates' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PrePPHs' | translate:lang }}</a></li>
+
+      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'Affiliates Admin' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'PPH Admin' | translate:lang }}</a></li>
+
+
+    </ul>
+    <div class="navbar-header navbar-right" *ngIf="auth.isAdminSite()">
+
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink]="['user/adminLogin']" *ngIf="!auth.isAuthenticated()">{{ 'Admin Login' | translate:lang}}</a>
+
+        </li>
+        <li>
+          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout">{{ 'Log out'| translate:lang}} </a>
+        </li>
+
+      </ul>
+    </div>
+
+    <ul class="nav navbar-nav" *ngIf="!auth.isAdminSite()">
       <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()">
         <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
       </li>
 
-      <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()">
+      <li *ngIf="!auth.isAuthenticated() && auth.isPPHSite()">
 
-        <a [routerLink]="['/homepph']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
+        <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
       </li>
 
-      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() ">
+      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() && !auth.isPPHSite()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -34,7 +59,7 @@
         </a>
       </li>
 
-      <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()">
+      <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite() && auth.isPPHSite()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -58,43 +83,37 @@
               <span class="caret"></span>
             </div>
             <div dropdownMenu class="dropdown-menu">
-              <li><a [routerLink]="['/payments']" routerLinkActive="active">{{ 'Payments' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/FAQ']" routerLinkActive="active">{{ 'Faq' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/aboutUs']" routerLinkActive="active">{{ 'About us' | translate:lang }}</a></li>
-              <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/paymentspph']" routerLinkActive="active">{{ 'PPH Payments' | translate:lang }}</a></li>
-              <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/FAQpph']" routerLinkActive="active">{{ 'PPH Faq' | translate:lang }}</a></li>
-              <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/aboutuspph']" routerLinkActive="active">{{ 'PPH About us' | translate:lang }}</a></li>
+              <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/payments']" routerLinkActive="active">{{ 'Payments' | translate:lang }}</a></li>
+              <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/FAQ']" routerLinkActive="active">{{ 'Faq' | translate:lang }}</a></li>
+              <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/aboutUs']" routerLinkActive="active">{{ 'About us' | translate:lang }}</a></li>
+              <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/paymentspph']" routerLinkActive="active">{{ 'PPH Payments' | translate:lang }}</a></li>
+              <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/FAQpph']" routerLinkActive="active">{{ 'PPH Faq' | translate:lang }}</a></li>
+              <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/aboutuspph']" routerLinkActive="active">{{ 'PPH About us' | translate:lang }}</a></li>
             </div>
           </div>
         </a>
       </li>
 
-      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Terms of Service' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Terms of Service' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
 
-      <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us PPH' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
-      <!-- Affiliate -->
-      <li *ngIf="!auth.isAffiliateSite()"><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
 
-      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
-      <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()"><a [routerLink]="['/affiliatesignup']" routerLinkActive="active">{{ 'Sign up NOW!' | translate:lang }}</a></li>
-      <!-- Affiliate -->
+      <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
+      <li *ngIf="!auth.isAuthenticated()  && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
 
       <!--
 
 not authorized
 authorized-->
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Dashboard' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated()"><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Dashboard' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/mainpph']" routerLinkActive="active">{{ 'Main PPH' | translate:lang }}</a></li>
 
       <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/affiliatemain']" routerLinkActive="active">{{ 'Affiliate Main' | translate:lang }}</a></li>
 -->
 
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
+      <li *ngIf="auth.isAuthenticated()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -118,7 +137,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
+      <li *ngIf="auth.isAuthenticated() ">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -141,7 +160,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
+      <li *ngIf="auth.isAuthenticated()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -163,7 +182,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()">
+      <li *ngIf="auth.isAuthenticated()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -181,7 +200,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess() && !auth.isAffiliateSite()">
+      <li *ngIf="auth.isAuthenticated()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -201,7 +220,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess() && !auth.isAffiliateSite()">
+      <li *ngIf="auth.isAuthenticated() ">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -223,30 +242,22 @@ authorized-->
       </li>
 
       <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PreAffiliates' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'Affiliates Admin' | translate:lang }}</a></li>
 
-      <!--
-        <li><a [routerLink]="['/things']" routerLinkActive="active">{{ 'Things TEST' | translate:lang }}</a></li>
-        <li ><a [routerLink]="['/players']" routerLinkActive="active">{{ 'Players TEST' | translate:lang }}</a></li>
-        <li ><a [routerLink]="['/wagers']" routerLinkActive="active">{{ 'Wagers TEST' | translate:lang }}</a></li>-->
-      <!--             
-        <li *ngIf="auth.isAuthenticated()" ><a [routerLink]="['/genericReport2']" routerLinkActive="active">{{ 'Secure report' | translate:lang }}</a></li>
-     -->
 
     </ul>
-    <div class="navbar-header navbar-right">
+    <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
       <ul class="nav navbar-nav">
         <li>
           <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">{{ 'Login' | translate:lang}}</a>
-          <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">{{ 'Welcome' | translate:lang}}{{auth.currentUser.firstName}}</a>
+          <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">{{ 'Welcome ' | translate:lang}}{{auth.currentUser.firstName}}</a>
         </li>
         <li>
           <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout">{{ 'Log out'| translate:lang}} </a>
         </li>
       </ul>
+
     </div>
-    <form id="searchForm" class="navbar-form navbar-right">
+    <form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
       </div>
@@ -254,6 +265,13 @@ authorized-->
           {{ 'Search'| translate:lang}}
         </button>
     </form>
+    <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
+      <ul class="nav navbar-nav">
+
+        <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
+      </ul>
+    </div>
+
 
 
 

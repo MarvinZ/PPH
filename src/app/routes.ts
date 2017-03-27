@@ -1,16 +1,17 @@
-import { Routes } from '@angular/router'
-import { HomeComponent } from './home/home.component'
-import { ThingsComponent } from './things/things.component'
-import { WagersComponent } from './wagers/wagers.component'
-import { PlayersComponent } from './players/players.component'
-import { GenericReport2Component } from './generic-report2/generic-report2.component'
-import { ThingDetailComponent } from './thing-detail/thing-detail.component'
-import { ThingDetailGuard } from './guards/thing-detail-guard'
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ThingsComponent } from './things/things.component';
+import { WagersComponent } from './wagers/wagers.component';
+import { PlayersComponent } from './players/players.component';
+import { GenericReport2Component } from './generic-report2/generic-report2.component';
+import { ThingDetailComponent } from './thing-detail/thing-detail.component';
+import { ThingDetailGuard } from './guards/thing-detail-guard';
 import { FaqComponent } from './faq/faq.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { TermsOfServicePphComponent } from './terms-of-service-pph/terms-of-service-pph.component';
 import { ContactComponent } from './contact/contact.component';
-import { HowitworksComponent } from './howitworks/howitworks.component'
-import { Error404Component } from './errors/404.component'
+import { HowitworksComponent } from './howitworks/howitworks.component';
+import { Error404Component } from './errors/404.component';
 import { MainComponent } from './main/main.component';
 import { WeeklyTransactionsComponent } from './weekly-transactions/weekly-transactions.component';
 import { WeeklyBalancesComponent } from './weekly-balances/weekly-balances.component';
@@ -27,16 +28,17 @@ import { PlayerStandingsComponent } from './player-standings/player-standings.co
 import { HoldPercentageComponent } from './hold-percentage/hold-percentage.component';
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
-import { MarketingComponent } from './marketing/marketing.component'
-import { AffiliateSignUpComponent } from './affiliate-sign-up/affiliate-sign-up.component'
-import { DemoComponent } from './demo/demo.component'
-import { SigningUpComponent } from './signing-up/signing-up.component'
-import { GalleryComponent } from './gallery/gallery.component'
-import { PaymentsComponent } from './payments/payments.component'
-import { AboutUsComponent } from './about-us/about-us.component'
-import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component'
-import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component'
-import { SettledFiguresComponent } from './settled-figures/settled-figures.component'
+import { MarketingComponent } from './marketing/marketing.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { SignUpPphComponent } from './sign-up-pph/sign-up-pph.component';
+import { DemoComponent } from './demo/demo.component';
+import { SigningUpComponent } from './signing-up/signing-up.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { PaymentsComponent } from './payments/payments.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
+import { MonthlySummaryComponent } from './monthly-summary/monthly-summary.component';
+import { SettledFiguresComponent } from './settled-figures/settled-figures.component';
 import { AgentHistoryComponent } from './agent-history/agent-history.component';
 import { AgentDistributionComponent } from './agent-distribution/agent-distribution.component';
 import { AgentAdjustmentsComponent } from './agent-adjustments/agent-adjustments.component';
@@ -53,9 +55,9 @@ import { TopPlayersComponent } from './top-players/top-players.component';
 import { ChangedWagersComponent } from './changed-wagers/changed-wagers.component';
 import { WagerRiskComponent } from './wager-risk/wager-risk.component';
 import { WagerListingComponent } from './wager-listing/wager-listing.component';
-import { DailySummaryComponent } from './daily-summary/daily-summary.component'
+import { DailySummaryComponent } from './daily-summary/daily-summary.component';
 import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.component';
-import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component'
+import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component';
 
 
 export const appRoutes: Routes = [
@@ -65,6 +67,7 @@ export const appRoutes: Routes = [
     { path: 'howitworks', component: HowitworksComponent },
     { path: 'FAQ', component: FaqComponent },
     { path: 'ToS', component: TermsOfServiceComponent },
+    { path: 'ToSpph', component: TermsOfServicePphComponent },
     { path: 'contactus', component: ContactComponent },
     { path: 'players', component: PlayersComponent },
     { path: 'genericReport2', component: GenericReport2Component },
@@ -104,7 +107,8 @@ export const appRoutes: Routes = [
     { path: 'agentCardTransactions', component: CardTransactionsComponent },
     { path: 'agentBeatTheLine', component: BeatTheLineComponent },
     { path: 'platinumLiveWager', component: PlatinumLiveWagerComponent },
-    { path: 'affiliatesignup', component: AffiliateSignUpComponent },
+    { path: 'signup', component: SignUpComponent },
+    { path: 'signuppph', component: SignUpPphComponent },
     { path: 'demo', component: DemoComponent },
     { path: 'signingUp', component: SigningUpComponent },
     { path: 'gallery', component: GalleryComponent },
@@ -115,6 +119,6 @@ export const appRoutes: Routes = [
     { path: 'wagerListing', component: WagerListingComponent },
     { path: 'dailySummary', component: DailySummaryComponent },
     { path: 'preAffiliates', component: PreAffiliatesComponent },
-    { path: 'affiliatesAdmin', component: AffiliatesAdminComponent }     
+    { path: 'affiliatesAdmin', component: AffiliatesAdminComponent }
 
 ]
