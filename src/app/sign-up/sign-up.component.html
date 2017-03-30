@@ -97,6 +97,9 @@
         <input (ngModel)="password" name="password" required id="password" type="text" class="form-control" placeholder="password..."
         />
       </div>
+       <re-captcha site_key="6Lc53xoUAAAAAG1YAD_1dB_UC-Nf-qoh9G24N0zi" (captchaResponse)="handleCorrectCaptcha($event)" #recaptcha></re-captcha>
+
+
       <div>
         <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
       <button type="submit" [disabled]="signupForm.invalid" class="btn btn-default">Sign up Now!</button>

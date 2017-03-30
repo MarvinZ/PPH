@@ -109,6 +109,7 @@ import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.componen
 import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component'
 
 import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
+import { ReCaptchaModule } from 'angular2-recaptcha';
 
 
 
@@ -196,7 +197,8 @@ import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/depo
     LocalizationModule.forRoot(),
     MyDatePickerModule,
     MyDateRangePickerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReCaptchaModule
 
   ],
   providers: [

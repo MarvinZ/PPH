@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit, ViewChild } from '@angular/core';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
@@ -8,12 +8,19 @@ import { CarouselConfig } from 'ng2-bootstrap/carousel';
 import { AffiliateService } from '../services/affiliate.service'
 import { Router } from '@angular/router'
 
+import { ReCaptchaComponent } from 'angular2-recaptcha/lib/captcha.component';
+
+
+
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent extends Localization implements OnInit {
+  @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
+
 
   ddlCountries: string = 'United States'
   countryCode: number = 1
@@ -12134,4 +12141,10 @@ export class SignUpComponent extends Localization implements OnInit {
     this.router.navigate(['home'])
   }
 
+
+  handleCorrectCaptcha($event) {
+    alert('yeyyy');
+    console.log($event);
+  }
+  // https://github.com/xmaestro/angular2-recaptcha
 }
