@@ -116,7 +116,7 @@ export class ReportTemplateComponent extends Localization implements OnInit {
       };
       var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-      new Angular2Csv(this.response.CashFlowList, 'WeeklyTransactions' + displayDate, options);
+      new Angular2Csv(this.response.CashFlowList, 'WeeklyBalances' + displayDate, options);
     } catch (error) {
       alert(error);
     }

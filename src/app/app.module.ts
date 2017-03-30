@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 import { AppComponent } from './app.component';
@@ -106,6 +108,11 @@ import { LoadingComponent } from './loading/loading.component';
 import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.component';
 import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component'
 
+import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -172,7 +179,8 @@ import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.co
     DailySummaryComponent,
     LoadingComponent,
     PreAffiliatesComponent,
-    AffiliatesAdminComponent
+    AffiliatesAdminComponent,
+    DepositsAndWithdrawalsComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -187,7 +195,8 @@ import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.co
     HttpModule,
     LocalizationModule.forRoot(),
     MyDatePickerModule,
-    MyDateRangePickerModule
+    MyDateRangePickerModule,
+    BrowserAnimationsModule
 
   ],
   providers: [

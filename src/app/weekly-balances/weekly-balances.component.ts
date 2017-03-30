@@ -7,6 +7,8 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
+import { Angular2Csv } from 'angular2-csv/angular2-csv';
+
 
 
 @Component({
@@ -22,24 +24,9 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 	private dateModel: any
 	loading: boolean = false;
 
-	// ddlSports :string
 	ddlTransType: string = '-1'
 	ddlCurrency: string = '1'
 
-	// public sports  = [
-	// 	{ value: 'NFL', display: 'NFL' },
-	// 	{ value: 'MU', display: 'MU' },
-	// 	{ value: 'MLB', display: 'MLB' },
-	// 	{ value: 'CBB', display: 'CBB' },
-	// 	{ value: 'CFB', display: 'CFB' },
-	// 	{ value: 'PROP', display: 'PROP' },
-	// 	{ value: 'CBB', display: 'CBB' },
-	// 	{ value: 'NBA', display: 'NBA' },
-	// 	{ value: 'SOC', display: 'SOC' },
-	// 	{ value: 'TNT', display: 'TNT' },
-	// 	{ value: 'NHL', display: 'NHL' },
-	// 	{ value: 'ALL', display: 'ALL' }
-	// ];
 
 	public currencies = [
 		{ value: '1', display: 'USD' },
@@ -54,10 +41,7 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 		{ value: '1', display: 'Casino' },
 		{ value: '2', display: 'Racing' }
 	];
-	// private model2: Object = {
-	// 	beginDate: { year: 2018, month: 10, day: 9 },
-	// 	endDate: { year: 2018, month: 10, day: 19 }
-	// };
+
 	response: any
 	errorMessage: string
 
@@ -82,8 +66,8 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 		this.loading = true;
 		this.response = null;
 		let t0 = performance.now();
-		this.affiliateService.GetWeeklyBalanceReport('1', this.ddlTransType, this.auth.currentUser.id,
-			this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day, this.ddlCurrency)
+		let datetoUse = this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day;
+		this.affiliateService.GetWeeklyBalanceReport('1', this.ddlTransType, this.auth.currentUser.id, datetoUse, this.ddlCurrency)
 			.subscribe(response => {
 				this.response = response;
 				this.loading = false;
@@ -92,6 +76,80 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 			},
 			error => this.errorMessage = <any>error);
 	}
+
+	goExactly(whichWeek: string) {
+		this.loading = true;
+		this.response = null;
+		let t10 = performance.now();
+		let currentDate = new Date();
+		let day = currentDate.getDate();
+		let month = currentDate.getMonth() + 1;
+		let year = currentDate.getFullYear();
+		let datetoUse = year + '-' + month + '-' + day;
+
+		if (whichWeek === 'thisWeek') {
+			//use today
+
+		} else {
+			if (whichWeek === 'lastWeek') {
+				let oneWeekAgo = new Date();
+				oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+				let day = oneWeekAgo.getDate();
+				let month = oneWeekAgo.getMonth() + 1;
+				let year = oneWeekAgo.getFullYear();
+				datetoUse = year + '-' + month + '-' + day;
+
+			} else {
+				if (whichWeek === 'last2Weeks') {
+					let TwoWeeksAgo = new Date();
+					TwoWeeksAgo.setDate(TwoWeeksAgo.getDate() - 14);
+					let day = TwoWeeksAgo.getDate();
+					let month = TwoWeeksAgo.getMonth() + 1;
+					let year = TwoWeeksAgo.getFullYear();
+					datetoUse = year + '-' + month + '-' + day;
+
+				} else {
+					if (whichWeek === 'last3Weeks') {
+						let TwoWeeksAgo = new Date();
+						TwoWeeksAgo.setDate(TwoWeeksAgo.getDate() - 21);
+						let day = TwoWeeksAgo.getDate();
+						let month = TwoWeeksAgo.getMonth() + 1;
+						let year = TwoWeeksAgo.getFullYear();
+						datetoUse = year + '-' + month + '-' + day;
+
+					} else {
+						//do nothing
+					}
+				}
+
+			}
+
+		}
+
+		this.affiliateService.GetWeeklyBalanceReport('1', this.ddlTransType, this.auth.currentUser.id, datetoUse, this.ddlCurrency)
+			.subscribe(response => {
+				this.response = response;
+				this.loading = false;
+				let t11 = performance.now();
+				this.toastr.success('This query took ' + (t11 - t10) + ' milliseconds..', 'Success');
+			},
+			error => this.errorMessage = <any>error);
+	}
+
+	ExportToExcel() {
+		console.log(this.response.CashFlowList);
+		try {
+			var options = {
+				showLabels: true
+			};
+			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+			new Angular2Csv(this.response.AgentList, 'WeeklyTransactions' + displayDate, options);
+		} catch (error) {
+			alert(error);
+		}
+	}
+
 }
 
 

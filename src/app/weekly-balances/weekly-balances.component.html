@@ -1,13 +1,30 @@
 <div class="container">
   <h2>{{'Weekly Balances' | translate:lang }}</h2>
   <form #myForm="ngForm" novalidate>
+
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <button class="btn btn-default" (click)="goExactly('thisWeek')">{{'This Week' | translate:lang}}</button>
+      </div>
+      <div class="col-xs-3 form-group">
+        <button class="btn btn-default" (click)="goExactly('lastWeek')">{{'Last week' | translate:lang}}</button>
+      </div>
+      <div class="col-xs-3 form-group">
+        <button class="btn btn-default" (click)="goExactly('last2Weeks')">{{'2 weeks ago' | translate:lang}}</button>
+      </div>
+      <div class="col-xs-3 form-group">
+        <button class="btn btn-default" (click)="goExactly('last3Weeks')">{{'3 weeks ago' | translate:lang}}</button>
+      </div>
+    </div>
+
+
     <div class="row">
 
       <div class="col-xs-3 form-group">
         <label>{{'Select Date:' | translate:lang  }}</label>
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
-        <!--<label>{{'Select Date range:' | translate:lang  }}</label>
-        <my-date-range-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model2" required></my-date-range-picker>-->
+
       </div>
 
       <div class="col-xs-3 form-group">
@@ -17,31 +34,27 @@
             </select>
       </div>
       <div class="col-xs-3 form-group">
-        <label>{{'Currency:'| translate:lang  }}</label>
+        <!--<label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
                 <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
-            </select>
+            </select>-->
       </div>
       <div class="col-xs-3 form-group">
-        <!--<label>{{'Sports:'| translate:lang  }}</label>
-        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
-          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
-            </select>-->
+
       </div>
     </div>
 
     <div class="row">
 
       <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
+        <button class="btn btn-default" (click)="go()">{{'Go' | translate:lang }}</button>
       </div>
     </div>
   </form>
 
   <div *ngIf="response?.AgentList?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-
-
+    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
     <hr />
     <div *ngFor=" let Item of response.AgentList;">
 
@@ -71,9 +84,7 @@
         <div class="col-md-1">Pending</div>
         <div class="col-md-1">Pmts</div>
         <div class="col-md-1">Balance</div>
-        <!--<div class="col-md-1">Adjustment</div>
-            <div class="col-md-1">Horse Adjustment</div>
-            <div class="col-md-1">Total</div>-->
+
       </div>
 
       <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
@@ -102,7 +113,6 @@
           <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Ptms | currency:'USD':true:'1.2-2'}}</div>
           <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</div>
         </div>
-
       </div>
 
       <div class="row" style="background-color: lightgray">
@@ -127,64 +137,11 @@
         <div class="col-md-1" style="text-align: right;">-</div>
         <div class="col-md-1" style="text-align: right;">{{Item._Ptms | currency:'USD':true:'1.2-2'}}</div>
         <div class="col-md-1" style="text-align: right;">{{Item._Balance | currency:'USD':true:'1.2-2'}}</div>
-        <!--<div class="col-md-1">Adjustment</div>
-            <div class="col-md-1">Horse Adjustment</div>
-            <div class="col-md-1">Total</div>-->
       </div>
-
-      <hr />
-
-      <!--  <div class="row">-->
-      <!--<div class="col-md-2" style="cursor: pointer;">
-
-            <div class="col-md-4" ng-click="openModal('V0', 'RB', Item._IdGame);">{{Item._ReversesVSpread | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-4" ng-click="openModal('V2', 'RB', Item._IdGame);">{{Item._ReversesVTotal | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-4" ng-click="openModal('V4', 'RB', Item._IdGame);">{{Item._ReversesVMoney | currency:'USD':true:'1.2-2'}}</div>
-        </div>-->
 
     </div>
   </div>
   <hr />
-
-
-
-
-  <!--<div *ngIf="response?.CashFlowList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.From | date: 'MM/dd/yyyy'}} To {{response.To | date: 'MM/dd/yyyy'}}</h2>
-    <p></p>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-
-          <th>{{'Transaction' | translate:lang}}</th>
-          <th>{{'Description' | translate:lang}}</th>
-          <th>{{'Amount' | translate:lang}}</th>
-          <th>{{'Balance' | translate:lang}}</th>
-          <th>{{'Date' | translate:lang}}</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let PreAff of response.CashFlowList">
-          <td>
-            {{PreAff.Transaction}}
-          </td>
-          <td>
-            {{PreAff.Description}}
-          </td>
-          <td>
-            {{PreAff.Amount}}
-          </td>
-          <td>
-            {{PreAff.Balance}}
-          </td>
-          <td>
-            {{PreAff.Date | date}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>-->
 
   <pre>
   {{response | json}}

@@ -1,0 +1,79 @@
+<div class="container">
+  <h2>{{'Deposits and withdrawals' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.CashFlowList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
+
+    <p></p>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{'Transaction Number' | translate:lang}}</th>
+          <th>{{'Bank Name' | translate:lang}}</th>
+          <th>{{'Amount' | translate:lang}}</th>
+          <th>{{'Depositor' | translate:lang}}</th>
+          <th>{{'Player Card' | translate:lang}}</th>
+          <th>{{'Agent' | translate:lang}}</th>
+          <th>{{'Player' | translate:lang}}</th>
+          <th>{{'Date Entered' | translate:lang}}</th>
+          <th>{{'Deposit Date' | translate:lang}}</th>
+          <th>{{'Deposits/Withdrawals' | translate:lang}}</th>
+          <th>{{'Image' | translate:lang}}</th>
+          <th>{{'Checked' | translate:lang}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--<tr *ngFor="let PreAff of response.CashFlowList">
+          <td>
+            {{PreAff.Transaction}}
+          </td>
+          <td>
+            {{PreAff.Description}}
+          </td>
+          <td>
+            {{PreAff.Amount}}
+          </td>
+          <td>
+            {{PreAff.Balance}}
+          </td>
+          <td>
+            {{PreAff.Date | date}}
+          </td>
+        </tr>-->
+      </tbody>
+    </table>
+  </div>
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

@@ -58,7 +58,7 @@ import { WagerListingComponent } from './wager-listing/wager-listing.component';
 import { DailySummaryComponent } from './daily-summary/daily-summary.component';
 import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.component';
 import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component';
-
+import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
 
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -119,6 +119,9 @@ export const appRoutes: Routes = [
     { path: 'wagerListing', component: WagerListingComponent },
     { path: 'dailySummary', component: DailySummaryComponent },
     { path: 'preAffiliates', component: PreAffiliatesComponent },
-    { path: 'affiliatesAdmin', component: AffiliatesAdminComponent }
+    { path: 'affiliatesAdmin', component: AffiliatesAdminComponent },
+    { path: 'depositsandWithdrawals', component: DepositsAndWithdrawalsComponent },
+
+
 
 ]

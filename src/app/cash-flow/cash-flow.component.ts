@@ -7,6 +7,8 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
+import { Angular2Csv } from 'angular2-csv/angular2-csv';
+
 
 
 @Component({
@@ -23,23 +25,9 @@ export class CashFlowComponent extends Localization implements OnInit {
   loading: boolean = false;
 
   // ddlSports :string
-  ddlTransType: string = '-1'
+  ddlTransType: string = '0'
   ddlCurrency: string = '1'
 
-  // public sports  = [
-  // 	{ value: 'NFL', display: 'NFL' },
-  // 	{ value: 'MU', display: 'MU' },
-  // 	{ value: 'MLB', display: 'MLB' },
-  // 	{ value: 'CBB', display: 'CBB' },
-  // 	{ value: 'CFB', display: 'CFB' },
-  // 	{ value: 'PROP', display: 'PROP' },
-  // 	{ value: 'CBB', display: 'CBB' },
-  // 	{ value: 'NBA', display: 'NBA' },
-  // 	{ value: 'SOC', display: 'SOC' },
-  // 	{ value: 'TNT', display: 'TNT' },
-  // 	{ value: 'NHL', display: 'NHL' },
-  // 	{ value: 'ALL', display: 'ALL' }
-  // ];
 
   public currencies = [
     { value: '1', display: 'USD' },
@@ -48,11 +36,13 @@ export class CashFlowComponent extends Localization implements OnInit {
     { value: '4', display: 'EUR' }
   ];
 
-  public transactionTypes = [
-    { value: '-1', display: 'All' },
-    { value: '0', display: 'Sports' },
-    { value: '1', display: 'Casino' },
-    { value: '2', display: 'Racing' }
+
+
+    public transactionTypes = [
+    { value: '0', display: 'All' },
+    { value: '1', display: 'Receipts' },
+    { value: '2', display: 'Disbursement' },
+    { value: '3', display: 'Transfer' }
   ];
   private dateModel: any
   response: any
@@ -93,7 +83,7 @@ export class CashFlowComponent extends Localization implements OnInit {
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
     let t0 = performance.now();
-    this.affiliateService.GetCashFlowReport(1, this.auth.currentUser.id, startDate, endDate, this.ddlCurrency)
+    this.affiliateService.GetCashFlowReport(this.ddlTransType, this.auth.currentUser.id, startDate, endDate, this.ddlCurrency)
       .subscribe(response => {
         this.response = response;
         this.loading = false;
@@ -102,4 +92,31 @@ export class CashFlowComponent extends Localization implements OnInit {
       },
       error => this.errorMessage = <any>error);
   }
+
+
+  	ExportToExcel() {
+		let res = []
+
+		for (let agent of this.response.ListAgent) {
+			if (agent.ListDetail) {
+				for (let player of agent.ListDetail) {
+					res.push(player);
+				}
+			}
+		}
+		console.log(res);
+
+		try {
+			var options = {
+				showLabels: true
+			};
+			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+			new Angular2Csv(res, 'WeeklyBalances' + displayDate, options);
+		} catch (error) {
+			alert(error);
+		}
+	}
+
+
 }

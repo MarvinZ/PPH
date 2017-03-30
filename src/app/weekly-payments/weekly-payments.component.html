@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>{{'Weekly Balances' | translate:lang }}</h2>
+  <h2>{{'Weekly Payments' | translate:lang }}</h2>
   <form #myForm="ngForm" novalidate>
     <div class="row">
 
@@ -38,12 +38,13 @@
 
   <div *ngIf="response?.AgentList?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
 
     <div *ngFor=" let Item of response.AgentList;">
 
       <div class="row" style="text-align: center; color: white; background-color: black;">
-        {{Item._Agent}}
+        {{Item._agent}}
       </div>
       <div class="row" style="background-color: lightgray">
         <div class="col-md-2">Player</div>
@@ -71,6 +72,21 @@
           </div>
 
         </div>
+
+        <div class="row table-hover" style="background-color: lightgray">
+          <div class="col-md-3">{{Item.PlayerList.length}} {{'Players' | translate:lang }}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day1') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day2') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day3') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day4') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day5') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day6') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day7') | currency:'USD':true:'1.2-2'}}</div>
+
+        </div>
+
+
+
       </div>
 
     </div>

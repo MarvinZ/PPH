@@ -23,10 +23,7 @@
             </select>
       </div>
       <div class="col-xs-3 form-group">
-        <!--<label>{{'Sports:'| translate:lang  }}</label>
-        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
-          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
-            </select>-->
+
       </div>
     </div>
 
@@ -40,6 +37,7 @@
 
   <div *ngIf="response?.ListAgent?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
 
     <div *ngFor=" let Item of response.ListAgent;">
       <div class="row" style="text-align: center; color: white; background-color: black;">

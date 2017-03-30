@@ -1,3 +1,89 @@
-<p>
-  settled-figures works!
-</p>
+<div class="container">
+  <h2>{{'Settled Figures' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
+
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+            </select>
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">{{'GO!' | translate:lang}}</button>
+      </div>
+    </div>
+  </form>
+
+ <div *ngIf="response?.AgentList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+
+    <div *ngFor="let Item of response.AgentList">
+
+      <div class="row" style="text-align: center; color: white; background-color: black;">
+        {{Item._agent}}
+      </div>
+      <div class="row" style="background-color: lightgray">
+        <div class="col-md-3">Player</div>
+        <div class="col-md-3">Carry Over</div>
+        <div class="col-md-1">This Week</div>
+        <div class="col-md-1">Pmts</div>
+        <div class="col-md-1">Pmts</div>
+        <div class="col-md-1">Current Balance</div>
+  
+      </div>
+
+      <div *ngFor="let ItemDetailPlayer of Item.PlayerList">
+<!--
+        <div class="row table-hover">
+          <div class="col-md-3">{{ItemDetailPlayer._player}}</div>
+          <div class="col-md-3">{{ItemDetailPlayer._name}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._balfwd | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._pmts | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._casinoweek | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._sportsweek | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._horsesweek | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;">{{getLineTotal(ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) | currency:'USD':true:'1.2-2'}}</div>
+        </div>-->
+
+      </div>
+      <div class="row table-hover"  style="background-color: lightgray">
+        <div class="col-md-3">{{Item.PlayerList.length}} {{'Players' | translate:lang }}</div>
+        <div class="col-md-3"></div>
+        <!--<div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_balfwd') | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_pmts') | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_casinoweek') | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_sportsweek') | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_horsesweek') | currency:'USD':true:'1.2-2'}}</div>
+        <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_allweek') | currency:'USD':true:'1.2-2'}}</div>-->
+      </div>
+    </div>
+  </div>
+
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

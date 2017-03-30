@@ -7,7 +7,7 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
-
+import { Angular2Csv } from 'angular2-csv/angular2-csv';
 
 
 @Component({
@@ -68,4 +68,29 @@ export class PlayerStandingComponent extends Localization implements OnInit {
 			},
 			error => this.errorMessage = <any>error);
 	}
+
+	ExportToExcel() {
+		let res = []
+
+		for (let agent of this.response.ListAgent) {
+			if (agent.ListPlayer) {
+				for (let player of agent.ListPlayer) {
+					res.push(player);
+				}
+			}
+		}
+		console.log(res);
+
+		try {
+			var options = {
+				showLabels: true
+			};
+			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+			new Angular2Csv(res, 'WeeklyBalances' + displayDate, options);
+		} catch (error) {
+			alert(error);
+		}
+	}
+
 }

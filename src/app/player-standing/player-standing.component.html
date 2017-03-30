@@ -33,6 +33,7 @@
 
   <div *ngIf="response?.ListAgent?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
 
     <div *ngFor="let Item of response.ListAgent;">
 

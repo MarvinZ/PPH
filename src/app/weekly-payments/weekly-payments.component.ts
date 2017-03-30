@@ -8,6 +8,8 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
+import { Angular2Csv } from 'angular2-csv/angular2-csv';
+
 
 
 @Component({
@@ -71,7 +73,59 @@ export class WeeklyPaymentsComponent extends Localization implements OnInit {
 			},
 			error => this.errorMessage = <any>error);
 	}
-}
+
+
+	getTotal(Item: any, cat: string) {
+		let result = 0;
+		//  console.log(Item);
+		if (Item.PlayerList.length > 0) {
+			for (let entry of Item.PlayerList) {
+				if (cat === '_day1')
+					result = result + Number(entry._day1);
+				if (cat === '_day2')
+					result = result + Number(entry._day2);
+				if (cat === '_day3')
+					result = result + Number(entry._day3);
+				if (cat === '_day4')
+					result = result + Number(entry._day4);
+				if (cat === '_day5')
+					result = result + Number(entry._day5);
+				if (cat === '_day6')
+					result = result + Number(entry._day6);
+				if (cat === '_day7')
+					result = result + Number(entry._day7);
+			}
+		}
+		return result;
+	}
+
+
+	ExportToExcel() {
+		let res = []
+
+		for (let agent of this.response.AgentList) {
+			if (agent.PlayerList) {
+				for (let player of agent.PlayerList) {
+					res.push(player);
+				}
+			}
+		}
+		console.log(res);
+
+		try {
+			var options = {
+				showLabels: true
+			};
+			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+			new Angular2Csv(res, 'GrossWeek' + displayDate, options);
+		} catch (error) {
+			alert(error);
+		}
+	}
+
+
+}// class ends here :)
 
 
 

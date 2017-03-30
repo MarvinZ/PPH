@@ -68,6 +68,56 @@ export class GrossWeekComponent extends Localization implements OnInit {
       },
       error => this.errorMessage = <any>error);
   }
+getLineTotal (a:string, b:string, c:string) {
+  return Number(a)+Number(b)+Number(c);
+
+}
+
+  getTotal(Item: any, cat: string) {
+    let result = 0;
+    //  console.log(Item);
+    if (Item.PlayerList.length > 0) {
+      for (let entry of Item.PlayerList) {
+        if (cat === '_balfwd')
+          result = result + Number(entry._balfwd);
+        if (cat === '_casinoweek')
+          result = result + Number(entry._casinoweek);
+        if (cat === '_horsesweek')
+          result = result + Number(entry._horsesweek);
+        if (cat === '_pmts')
+          result = result + Number(entry._pmts);
+        if (cat === '_allweek')
+          result = result + Number(entry._sportsweek)+ Number(entry._horsesweek)+ Number(entry._casinoweek);
+       // console.log(entry);
+      }
+    }
+    return result;
+  }
+
+
+  	ExportToExcel() {
+		let res = []
+
+		for (let agent of this.response.AgentList) {
+			if (agent.PlayerList) {
+				for (let player of agent.PlayerList) {
+					res.push(player);
+				}
+			}
+		}
+		console.log(res);
+
+		try {
+			var options = {
+				showLabels: true
+			};
+			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+			new Angular2Csv(res, 'GrossWeek' + displayDate, options);
+		} catch (error) {
+			alert(error);
+		}
+	}
 
 
 

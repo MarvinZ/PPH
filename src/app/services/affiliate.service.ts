@@ -170,7 +170,7 @@ export class AffiliateService {
   }
 
   // GET api/temp/GetCashFlowReport?prmTransType={prmTransType}&prmIdAgent={prmIdAgent}&prmStartDate={prmStartDate}&prmEndDate={prmEndDate}&prmIdCurrency={prmIdCurrency}
-  GetCashFlowReport(prmTransType: number, prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
+  GetCashFlowReport(prmTransType: string, prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetCashFlowReport?prmTransType=" + prmTransType + "&prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
       .do(data => console.log('All: ' + JSON.stringify(data)))
