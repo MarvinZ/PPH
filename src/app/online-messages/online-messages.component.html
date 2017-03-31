@@ -1,33 +1,22 @@
 <div class="container">
-  <h2>{{'Hold Percent' | translate:lang }}</h2>
+  <h2>{{'Online Messages' | translate:lang }}</h2>
   <form #myForm="ngForm" novalidate>
     <div class="row">
 
       <div class="col-xs-3 form-group">
-
-        <label>{{'Select Date range:' | translate:lang  }}</label>
-        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
-      </div>
-      <div class="col-xs-3 form-group">
-
-
-        <label>{{'View detail:'| translate:lang  }}</label>
-        <input type="checkbox" name="viewDetail" [(ngModel)]="viewDetail" class="form-control">
-
-
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
 
       </div>
       <div class="col-xs-3 form-group">
-        <label>{{'Agent:'| translate:lang  }}</label>
-        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
-            <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
-            </select>
+ 
+
       </div>
       <div class="col-xs-3 form-group">
-        <label>{{'Player:'| translate:lang  }}</label>
-        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
-            </select>
+       
+      </div>
+      <div class="col-xs-3 form-group">
+     
       </div>
     </div>
 
@@ -38,10 +27,10 @@
       </div>
     </div>
   </form>
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
   <div *ngIf="response?.CashFlowList?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
     <table class="table table-hover">
       <thead>

@@ -7,20 +7,19 @@ import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
 import { Angular2Csv } from 'angular2-csv/angular2-csv';
-
 @Component({
-  selector: 'app-beat-the-line',
-  templateUrl: './beat-the-line.component.html',
-  styleUrls: ['./beat-the-line.component.css']
+  selector: 'app-agent-payments',
+  templateUrl: './agent-payments.component.html',
+  styleUrls: ['./agent-payments.component.css']
 })
-export class BeatTheLineComponent extends Localization implements OnInit {
+export class AgentPaymentsComponent extends Localization implements OnInit {
   private myDatePickerOptions: IMyOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
   };
   private dateModel: any
   loading: boolean = false;
-  beatersOnly: Boolean = false;
+  viewDetail: Boolean = false;
 
   // ddlSports :string = 'NFL'
   // ddlTransType: string = '-1'
@@ -124,41 +123,7 @@ export class BeatTheLineComponent extends Localization implements OnInit {
     }
   }
 
-  parceFrac(frac: string) {
-
-    if (frac.includes("frac")) {
-
-      if (frac.includes("&frac12;")) {
-        return frac.replace("&frac12;", " 1/2 ");
-      }
-      else if (frac.includes("&frac13;")) {
-        return frac.replace("&frac13;", " 1/3 ");
-      }
-      else if (frac.includes("&frac14;")) {
-        return frac.replace("&frac14;", " 1/4 ");
-      }
-      else if (frac.includes("&frac15;")) {
-        return frac.replace("&frac15;", " 1/5 ");
-      }
-      else if (frac.includes("&frac16;")) {
-        return frac.replace("&frac16;", " 1/6 ");
-      }
-      else if (frac.includes("&frac17;")) {
-        return frac.replace("&frac17;", " 1/7 ");
-      }
-      else if (frac.includes("&frac18;")) {
-        return frac.replace("&frac18;", " 1/8 ");
-      }
-      else if (frac.includes("&frac19;")) {
-        return frac.replace("&frac19;", " 1/9 ");
-      }
-      else
-        return frac;
-
-    } else
-      return frac;
-  }
-
+  
 
 
 }  //end of class

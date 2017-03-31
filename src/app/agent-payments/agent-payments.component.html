@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>{{'Hold Percent' | translate:lang }}</h2>
+  <h2>{{'Agent Payments' | translate:lang }}</h2>
   <form #myForm="ngForm" novalidate>
     <div class="row">
 
@@ -9,13 +9,6 @@
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
       <div class="col-xs-3 form-group">
-
-
-        <label>{{'View detail:'| translate:lang  }}</label>
-        <input type="checkbox" name="viewDetail" [(ngModel)]="viewDetail" class="form-control">
-
-
-
       </div>
       <div class="col-xs-3 form-group">
         <label>{{'Agent:'| translate:lang  }}</label>
@@ -24,10 +17,7 @@
             </select>
       </div>
       <div class="col-xs-3 form-group">
-        <label>{{'Player:'| translate:lang  }}</label>
-        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
-            </select>
+
       </div>
     </div>
 

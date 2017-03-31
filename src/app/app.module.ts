@@ -111,6 +111,11 @@ import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.co
 import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
 import { ReCaptchaModule } from 'angular2-recaptcha';
 
+import { OnlineMessagesComponent } from './online-messages/online-messages.component'
+
+import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
+
+
 
 
 
@@ -181,7 +186,9 @@ import { ReCaptchaModule } from 'angular2-recaptcha';
     LoadingComponent,
     PreAffiliatesComponent,
     AffiliatesAdminComponent,
-    DepositsAndWithdrawalsComponent
+    DepositsAndWithdrawalsComponent,
+    OnlineMessagesComponent,
+    AgentPaymentsComponent,
   ],
   imports: [
     AlertModule.forRoot(),

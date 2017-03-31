@@ -1,3 +1,92 @@
-<p>
-  beat-the-line works!
-</p>
+<div class="container">
+  <h2>{{'Beat the line' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+
+        <label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+      </div>
+      <div class="col-xs-3 form-group">
+        <!--<label>{{'Sports:'| translate:lang  }}</label>
+        <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>-->
+
+        <label>{{'Beaters only:'| translate:lang  }}</label>
+        <input type="checkbox" name="beatersOnly" [(ngModel)]="beatersOnly" class="form-control">
+
+
+
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Agent:'| translate:lang  }}</label>
+        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
+            <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Player:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+            </select>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">{{'GO!' | translate:lang}}</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.CashFlowList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>{{'Transaction' | translate:lang}}</th>
+          <th>{{'Description' | translate:lang}}</th>
+          <th>{{'Amount' | translate:lang}}</th>
+          <th>{{'Balance' | translate:lang}}</th>
+          <th>{{'Date' | translate:lang}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let PreAff of response.CashFlowList">
+          <td>
+            {{PreAff.Transaction}}
+          </td>
+          <td>
+            {{PreAff.Description}}
+          </td>
+          <td>
+            {{PreAff.Amount}}
+          </td>
+          <td>
+            {{PreAff.Balance}}
+          </td>
+          <td>
+            {{PreAff.Date | date}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

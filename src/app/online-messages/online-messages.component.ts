@@ -7,12 +7,13 @@ import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
 import { Angular2Csv } from 'angular2-csv/angular2-csv';
+
 @Component({
-  selector: 'app-agent-adjustments',
-  templateUrl: './agent-adjustments.component.html',
-  styleUrls: ['./agent-adjustments.component.css']
+  selector: 'app-online-messages',
+  templateUrl: './online-messages.component.html',
+  styleUrls: ['./online-messages.component.css']
 })
-export class AgentAdjustmentsComponent  extends Localization implements OnInit {
+export class OnlineMessagesComponent extends Localization implements OnInit {
   private myDatePickerOptions: IMyOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
@@ -21,16 +22,7 @@ export class AgentAdjustmentsComponent  extends Localization implements OnInit {
   loading: boolean = false;
   Showfutures: Boolean = false;
 
-  ddlTransType: string = '-1'
-  ddlCurrency: string = '1'
 
-
-  public currencies = [
-    { value: '1', display: 'USD' },
-    { value: '2', display: 'MXN' },
-    { value: '3', display: 'GBP' },
-    { value: '4', display: 'EUR' }
-  ];
 
   response: any
   errorMessage: string
@@ -50,28 +42,14 @@ export class AgentAdjustmentsComponent  extends Localization implements OnInit {
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
+    this.dateModel = { date: { year: year, month: month, day: day } };
 
-    let currentDateStart = new Date();
-    currentDateStart.setDate(currentDateStart.getDate() - 7);
-
-    let day2 = currentDateStart.getDate();
-    let month2 = currentDateStart.getMonth() + 1;
-    let year2 = currentDateStart.getFullYear();
-
-    this.dateModel = {
-      beginDate: { year: year2, month: month2, day: day2 },
-      endDate: { year: year, month: month, day: day }
-    };
 
   }
-
-
 
   go() {
     this.response = null;
     this.loading = true;
-    let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
-    let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
 
     let t0 = performance.now();
     let t1 = performance.now();
@@ -102,6 +80,8 @@ export class AgentAdjustmentsComponent  extends Localization implements OnInit {
       alert(error);
     }
   }
+
+
 
 }  //end of class
 

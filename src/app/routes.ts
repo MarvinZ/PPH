@@ -60,6 +60,10 @@ import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.componen
 import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component';
 import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
 
+import { OnlineMessagesComponent } from './online-messages/online-messages.component'
+
+import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
+
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'things', component: ThingsComponent },
@@ -121,7 +125,7 @@ export const appRoutes: Routes = [
     { path: 'preAffiliates', component: PreAffiliatesComponent },
     { path: 'affiliatesAdmin', component: AffiliatesAdminComponent },
     { path: 'depositsandWithdrawals', component: DepositsAndWithdrawalsComponent },
-
-
+    { path: 'onlineMessages', component: OnlineMessagesComponent },
+    { path: 'agentPayments', component: AgentPaymentsComponent },
 
 ]
