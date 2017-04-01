@@ -115,6 +115,9 @@ import { OnlineMessagesComponent } from './online-messages/online-messages.compo
 
 import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
 
+import { BannerFarmComponent } from './banner-farm/banner-farm.component'
+
+
 
 
 
@@ -189,6 +192,7 @@ import { AgentPaymentsComponent } from './agent-payments/agent-payments.componen
     DepositsAndWithdrawalsComponent,
     OnlineMessagesComponent,
     AgentPaymentsComponent,
+    BannerFarmComponent
   ],
   imports: [
     AlertModule.forRoot(),

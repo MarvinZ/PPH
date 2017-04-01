@@ -14,6 +14,8 @@
     <ul class="nav navbar-nav" *ngIf="auth.isAdminSite()">
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PreAffiliates' | translate:lang }}</a></li>
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PrePPHs' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/bannerFarm']" routerLinkActive="active">{{ 'Banner farm' | translate:lang }}</a></li>
+
 
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'Affiliates Admin' | translate:lang }}</a></li>
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'PPH Admin' | translate:lang }}</a></li>

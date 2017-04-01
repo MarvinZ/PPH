@@ -64,6 +64,9 @@ import { OnlineMessagesComponent } from './online-messages/online-messages.compo
 
 import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
 
+import { BannerFarmComponent } from './banner-farm/banner-farm.component'
+
+
 export const appRoutes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'things', component: ThingsComponent },
@@ -127,5 +130,9 @@ export const appRoutes: Routes = [
     { path: 'depositsandWithdrawals', component: DepositsAndWithdrawalsComponent },
     { path: 'onlineMessages', component: OnlineMessagesComponent },
     { path: 'agentPayments', component: AgentPaymentsComponent },
+    { path: 'bannerFarm', component: BannerFarmComponent },
+
+
+
 
 ]

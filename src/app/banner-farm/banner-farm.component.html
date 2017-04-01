@@ -1,0 +1,175 @@
+<div class="container">
+  <h2>{{'Banner Farm' | translate:lang }}</h2>
+
+  <div *ngIf="isEditMode;then editMode  else listMode"> </div>
+
+  <ng-template #listMode>List mode
+
+    <button class="btn btn-default" (click)="goToEditMode()">  New banner </button>
+  </ng-template>
+
+  <ng-template #editMode>Edit mode
+
+    <form #myForm="ngForm" novalidate>
+      <div class="row">
+
+        <div class="col-xs-3 form-group">
+
+          <label>{{'Target Book:'| translate:lang  }}</label>
+          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook">
+            <option *ngFor="let b of books" [value]="b.value">{{b.display}}</option>
+            </select>
+        </div>
+        <div class="col-xs-3 form-group">
+          <label>{{'Banner Type:'| translate:lang  }}</label>
+          <select name="ddlBannerType" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerType">
+            <option *ngFor="let bt of bannerTypes" [value]="bt.value">{{bt.display}}</option>
+            </select>
+
+        </div>
+        <div class="col-xs-3 form-group">
+
+          <label>{{'Sports:'| translate:lang  }}</label>
+          <select name="ddlLanguages" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguages">
+          <option *ngFor="let language of languages" [value]="language.value">{{language.display}}</option>
+            </select>
+
+
+
+
+        </div>
+        <div class="col-xs-3 form-group">
+          <label>{{'Sports:'| translate:lang  }}</label>
+          <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3 form-group">
+          <label>{{'Image url:'| translate:lang  }}</label>
+          <input [(ngModel)]="imgUrl" name="imgUrl" required id="imgUrl" type="text" class="form-control" placeholder="image url...">
+
+        </div>
+        <div class="col-xs-3 form-group">
+          <label>{{'Custom Size'| translate:lang  }}</label>
+          <input type="checkbox" name="customSize" [(ngModel)]="customSize" class="form-control">
+
+
+
+        </div>
+        <div class="col-xs-3 form-group" *ngIf="customSize">
+          <label>{{'Height:'| translate:lang  }}</label>
+          <button class="btn btn-default" (click)="minus('imgHeight')">-</button>
+          <input [(ngModel)]="imgHeight" name="imgHeight" required id="imgHeight" type="number" class="form-control" max="500" min="25">
+          <button class="btn btn-default" (click)="add('imgHeight')">+</button>
+
+          <label>{{'Width:'| translate:lang  }}</label>
+          <button class="btn btn-default" (click)="minus('imgWidth')">-</button>
+
+          <input [(ngModel)]="imgWidth" name="imgWidth" required id="imgWidth" type="number" class="form-control" max="500" min="25">
+          <button class="btn btn-default" (click)="add('imgWidth')">+</button>
+
+
+        </div>
+        <div class="col-xs-3 form-group">
+
+        </div>
+      </div>
+
+https://www.draftkings.com/
+
+      <div class="row" *ngIf="showPreview">
+        <label>{{'Image url:'| translate:lang  }}</label>
+        <input [(ngModel)]="imgUrl" name="imgUrl" required id="imgUrl" type="text" class="form-control" placeholder="image url...">
+
+        <p> Banner preview: {{imgUrl}} - {{imgHeight}} - {{imgWidth}}</p>
+
+        https://68.media.tumblr.com/3ae7352eb46d34fd3e5e0df33478b403/tumblr_n5rzrlQAlX1s7i3n8o1_400.gif
+        <div *ngIf="customSize;then   customSizeBanner else  fixedSizeBanner"> </div>
+
+        <ng-template #fixedSizeBanner>
+          <a href="http://www.jazzsports.ag/" target="_blank" title="Example">
+            <img [src]="imgUrl" alt="">
+          </a>
+        </ng-template>
+
+        <ng-template #customSizeBanner>
+          <a href="http://www.jazzsports.ag/" target="_blank" title="Example">
+            <img [src]="imgUrl" alt="" [width]="imgWidth" [height]="imgHeight">
+          </a>
+        </ng-template>
+
+
+        <div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4 form-group">
+          <button class="btn btn-default" (click)="preview()">{{'Preview!' | translate:lang}}</button>
+        </div>
+
+        <div class="col-xs-4 form-group">
+          <!--<button class="btn btn-default" (click)="go()">{{'GO!' | translate:lang}}</button>-->
+        </div>
+      </div>
+    </form>
+
+
+
+    <button class="btn btn-default" (click)="goToEditMode()">  Cancel </button>
+
+  </ng-template>
+
+
+
+  <!--<div *ngIf="response?.CashFlowList?.length > 0">
+    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>{{'Transaction' | translate:lang}}</th>
+          <th>{{'Description' | translate:lang}}</th>
+          <th>{{'Amount' | translate:lang}}</th>
+          <th>{{'Balance' | translate:lang}}</th>
+          <th>{{'Date' | translate:lang}}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let PreAff of response.CashFlowList">
+          <td>
+            {{PreAff.Transaction}}
+          </td>
+          <td>
+
+            {{PreAff.Description}}
+          </td>
+          <td>
+            {{PreAff.Amount}}
+          </td>
+          <td>
+            {{PreAff.Balance}}
+          </td>
+          <td>
+            {{PreAff.Date | date}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>-->
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>
