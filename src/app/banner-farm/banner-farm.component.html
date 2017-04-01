@@ -4,6 +4,26 @@
   <div *ngIf="isEditMode;then editMode  else listMode"> </div>
 
   <ng-template #listMode>List mode
+    <table class="table table-responsive  table-hover">
+      <tr>
+        <th>Sport</th>
+        <th>Preview</th>
+        <th>Get the code!</th>
+        <th>Modify</th>
+        <th>Deactivate</th>
+
+      </tr>
+
+      <tr *ngFor="let banner of banners;">
+        <td>{{banner.sport}}</td>
+        <td><img src="{{banner.source}}"></td>
+        <td><button class="btn btn-default"> Copy HTML code </button></td>
+        <td><button class="btn btn-default" (click)="goToEditMode(banner)"> Modify </button></td>
+        <td><button class="btn btn-danger"> Deactivate </button></td>
+
+
+      </tr>
+    </table>
 
     <button class="btn btn-default" (click)="goToEditMode()">  New banner </button>
   </ng-template>
@@ -77,7 +97,7 @@
         </div>
       </div>
 
-https://www.draftkings.com/
+      https://www.draftkings.com/
 
       <div class="row" *ngIf="showPreview">
         <label>{{'Image url:'| translate:lang  }}</label>
@@ -111,7 +131,7 @@ https://www.draftkings.com/
         </div>
 
         <div class="col-xs-4 form-group">
-          <!--<button class="btn btn-default" (click)="go()">{{'GO!' | translate:lang}}</button>-->
+          <button class="btn btn-default" (click)="save()">{{'Save' | translate:lang}}</button>
         </div>
       </div>
     </form>

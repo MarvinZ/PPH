@@ -34,6 +34,8 @@ export class BannerFarmComponent extends Localization implements OnInit {
   ddlSports: string = 'NFL'
   ddlLanguages: string = '1'
 
+  imgUrl: string = 'http:\\'
+
 
 
 
@@ -68,6 +70,17 @@ export class BannerFarmComponent extends Localization implements OnInit {
     { value: 'All', display: 'ALL' }
   ];
 
+  public banners = [
+    { sport: 'NFL', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'MU', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'MLB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'CBB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'CFB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'PROP', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'CBB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+    { sport: 'NBA', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
+  ];
+
   response: any
   errorMessage: string
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
@@ -79,9 +92,9 @@ export class BannerFarmComponent extends Localization implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.auth.currentUser) {
-      this.router.navigate(['/user/adminLogin']);
-    }
+    // if (!this.auth.currentUser) {
+    //   this.router.navigate(['/user/adminLogin']);
+    // }
     let currentDate = new Date();
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
@@ -103,7 +116,10 @@ export class BannerFarmComponent extends Localization implements OnInit {
   }
 
 
-  goToEditMode() {
+  goToEditMode(banner?:any) {
+    if (banner) {
+      this.imgUrl = banner.source;
+    }
     this.isEditMode = !this.isEditMode;
   }
   // go() {
@@ -143,6 +159,20 @@ export class BannerFarmComponent extends Localization implements OnInit {
       this.imgWidth--;
     if (control === 'imgHeight')
       this.imgHeight--;
+  }
+
+
+  save() {
+    /*
+      // ddlSports :string = 'NFL'
+  ddlBannerType: string = '1'
+  ddlBook: string = '1'
+  ddlSports: string = 'NFL'
+  ddlLanguages: string = '1'
+
+*/
+    this.banners.push({ sport: this.ddlSports, url: 'https://www.draftkings.com/', source: this.imgUrl })
+    alert('yeyyy');
   }
 
 }  //end of class
