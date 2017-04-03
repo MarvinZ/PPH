@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FileUploadModule } from "ng2-file-upload";
 
 
 import { AppComponent } from './app.component';
@@ -209,7 +210,9 @@ import { BannerFarmComponent } from './banner-farm/banner-farm.component'
     MyDatePickerModule,
     MyDateRangePickerModule,
     BrowserAnimationsModule,
-    ReCaptchaModule
+    ReCaptchaModule,
+    FileUploadModule
+
 
   ],
   providers: [
