@@ -1,24 +1,30 @@
 <div class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
+      <div class="makeMeWhiteAndNice">
       <img src="http://www.jazzaffiliates.com/img/logo.png" alt="">
-      <a class="navbar-brand">{{auth.siteName}} Site Beta</a>
-    </div>
-    <p>
-      20+ years in business
 
-    </p>
-    <p>
-      +1.800.681.1066
-    </p>
+      </div>
+      <!--<a class="navbar-brand">{{auth.siteName}} Site Beta</a>-->
+      <div class="makeMeWhiteAndNice">
+        <p>
+          20+ years in business
+        </p>
+        <p>
+          +1.800.681.1066
+        </p>
+      </div>
+    </div>
+
+
     <ul class="nav navbar-nav" *ngIf="auth.isAdminSite()">
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PreAffiliates' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PrePPHs' | translate:lang }}</a></li>
+      <!--<li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PrePPHs' | translate:lang }}</a></li>-->
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/bannerFarm']" routerLinkActive="active">{{ 'Banner farm' | translate:lang }}</a></li>
 
 
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'Affiliates Admin' | translate:lang }}</a></li>
-      <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'PPH Admin' | translate:lang }}</a></li>
+      <!--<li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'PPH Admin' | translate:lang }}</a></li>-->
 
 
     </ul>

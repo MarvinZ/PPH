@@ -4,27 +4,34 @@
   <form #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)" autocomplete="off" novalidate>
 
     <div class="row">
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="name">{{'First name:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.name?.invalid && (signupForm.controls.name?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="name" name="name" required id="name" type="text" class="form-control" placeholder="Name..." />
       </div>
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="lastname">{{'Last name:' | translate:lang}} </label>
         <em *ngIf="signupForm.controls.lastname?.invalid && (signupForm.controls.lastname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="lastname" name="lastname" required id="lastname" type="text" class="form-control" placeholder="Lastname..."
         />
       </div>
 
-    <div class="form-group col-xs-6">
-      <label for="email">Email:</label>
-      <em *ngIf="signupForm.controls.email?.invalid && (signupForm.controls.email?.touched || mouseoverContact) || signupForm.controls.email?.pattern==false">Required,  incorrect email format</em>
-      <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="Email..." pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"
-      />
-    </div>
+      <div class="form-group col-xs-4">
+        <label for="email">Email:</label>
+        <em *ngIf="signupForm.controls.email?.invalid && (signupForm.controls.email?.touched || mouseoverContact) || signupForm.controls.email?.pattern==false">Required,  incorrect email format</em>
+        <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="Email..." pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"
+        />
+      </div>
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
+        <label for="businessName">{{'Business name:' | translate:lang}}</label>
+        <em *ngIf="signupForm.controls.businessName?.invalid && (signupForm.controls.businessName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <input (ngModel)="businessName" name="businessName" required id="businessName" type="text" class="form-control" placeholder="Business Name..."
+        />
+      </div>
+
+      <div class="form-group col-xs-4">
         <label for="countryName">{{'Country:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.countryName?.invalid && (signupForm.controls.countryName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <!--<input (ngModel)="countryName" name="countryName" required id="countryName" type="text" class="form-control" placeholder="country Name..." />-->
@@ -34,14 +41,15 @@
 
       </div>
 
-      <div class="form-group col-xs-6">
-        <label for="businessName">{{'Business name:' | translate:lang}}</label>
-        <em *ngIf="signupForm.controls.businessName?.invalid && (signupForm.controls.businessName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-        <input (ngModel)="businessName" name="businessName" required id="businessName" type="text" class="form-control" placeholder="Business Name..."
-        />
+      <div class="form-group col-xs-4">
+        <label for="stateOrProvince">{{'State or province:' | translate:lang}}</label>
+        <em *ngIf="signupForm.controls.stateOrProvince?.invalid && (signupForm.controls.stateOrProvince?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <input (ngModel)="stateOrProvince" name="stateOrProvince" required id="stateOrProvince" type="text" class="form-control"
+          placeholder="state or province..." />
       </div>
 
-      <div class="form-group col-xs-6">
+
+      <div class="form-group col-xs-4">
         <label for="addressLine1">{{'Address line 1:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.addressLine1?.invalid && (signupForm.controls.addressLine1?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="addressLine1" name="addressLine1" required id="addressLine1" type="text" class="form-control" placeholder="Address Line 1..."
@@ -49,21 +57,21 @@
       </div>
 
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="addressLine2">{{'Address line 2:' | translate:lang}}</label>
         <!--<em *ngIf="signupForm.controls.addressLine2?.invalid && (signupForm.controls.addressLine2?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>-->
         <input (ngModel)="addressLine2" name="addressLine2" required id="addressLine2" type="text" class="form-control" placeholder="Address Line 2..."
         />
       </div>
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="city">{{'City:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.city?.invalid && (signupForm.controls.city?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="city" name="city" required id="city" type="text" class="form-control" placeholder="city..." />
       </div>
 
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="zip">{{'Zip:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.zip?.invalid && (signupForm.controls.zip?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="zip" name="zip" required id="zip" type="text" class="form-control" placeholder="Address Line 2..." />
@@ -71,46 +79,61 @@
 
 
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="countryCode">{{'Country code:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.countryCode?.invalid && (signupForm.controls.countryCode?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input [(ngModel)]="countryCode" name="countryCode" required id="countryCode" type="text" class="form-control" placeholder="Country code..."
         />
       </div>
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="phone">{{'Phone:' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.phone?.invalid && (signupForm.controls.phone?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="phone" name="phone" required id="phone" type="number" class="form-control" placeholder="phone..." />
       </div>
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.nickname?.invalid && (signupForm.controls.nickname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="nickname" name="nickname" required id="nickname" type="text" class="form-control" placeholder="nickname..."
         />
       </div>
 
-      <div class="form-group col-xs-6">
+      <div class="form-group col-xs-4">
         <label for="password">{{'Desired password' | translate:lang}}</label>
         <em *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
         <input (ngModel)="password" name="password" required id="password" type="text" class="form-control" placeholder="password..."
         />
       </div>
-       <re-captcha site_key="6Lc53xoUAAAAAG1YAD_1dB_UC-Nf-qoh9G24N0zi" (captchaResponse)="handleCorrectCaptcha($event)" #recaptcha></re-captcha>
+
+      <div class="form-group col-xs-4">
+        <div class="row">
 
 
-      <div>
-        <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+          <div class="form-group col-xs-6">
+            <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
       <button type="submit" [disabled]="signupForm.invalid" class="btn btn-default">Sign up Now!</button>
-    </span>
+  </span>
+          </div>
+          <div class="form-group col-xs-6">
+            <button type="button" (click)="cancel()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>
+          </div>
+        </div>
+      </div>
 
-        <button type="button" (click)="cancel()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>
+    </div>
 
+    <div class="row">
+
+      <div class="form-group col-xs-4">
+        <re-captcha site_key="6Lc53xoUAAAAAG1YAD_1dB_UC-Nf-qoh9G24N0zi" (captchaResponse)="handleCorrectCaptcha($event)" #recaptcha></re-captcha>
       </div>
     </div>
 
+
+
   </form>
+
 </div>
 
 
@@ -118,7 +141,7 @@
 
 
 
-<div class="col-md-4" *ngIf="isSuccessfulSignup">
+<div *ngIf="isSuccessfulSignup">
   <p>
     Dont call us, we will call you
   </p>

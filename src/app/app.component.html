@@ -1,30 +1,31 @@
+<div class="row">
 
-  
-  <div class="row">
-  
-  <div class="col-md-11"><app-nav></app-nav></div>
+  <div class="col-md-11">
+    <app-nav></app-nav>
+  </div>
   <div class="col-md-1">
     <div class="btn-group">
-    <!--<h6>{{ 'Change country' | translate:lang }}</h6>-->
-    <button (click)="selectLocale('en', 'US', 'USD');" class="btn btn-default btn-xs">USA En</button>
-    <button (click)="selectLocale('es', 'US', 'USD');" class="btn btn-default btn-xs">USA Sp</button>
-    <button (click)="selectLocale('en', 'GB', 'GBP');" class="btn btn-default btn-xs">UK En</button>
-    <button (click)="selectLocale('it', 'IT', 'EUR');" class="btn btn-default btn-xs">It It</button>
-    <button (click)="selectLocale('es', 'MX', 'USD');" class="btn btn-default btn-xs">LA Es</button>
-    <button (click)="selectLocale('pt', 'BR', 'USD');" class="btn btn-default btn-xs">BRA Pt</button>
+      <!--<h6>{{ 'Change country' | translate:lang }}</h6>-->
+      <button (click)="selectLocale('en', 'US', 'USD');" class="btn btn-default btn-xs">USA En</button>
+      <button (click)="selectLocale('es', 'US', 'USD');" class="btn btn-default btn-xs">USA Es</button>
+      <button (click)="selectLocale('en', 'GB', 'GBP');" class="btn btn-default btn-xs">UK En</button>
     </div>
-        </div>
-  
+    <div class="btn-group">
+      <button (click)="selectLocale('it', 'IT', 'EUR');" class="btn btn-default btn-xs">It It</button>
+      <button (click)="selectLocale('es', 'MX', 'USD');" class="btn btn-default btn-xs">LA Es</button>
+      <button (click)="selectLocale('pt', 'BR', 'USD');" class="btn btn-default btn-xs">BRA Pt</button>
+  </div>
 </div>
-  
-  
-  
-  <div class="container">
 
-
-<h1>{{ 'Title' | translate:lang }}</h1>
-
-
-<router-outlet></router-outlet>
 </div>
- 
+
+
+
+<div class="container">
+
+
+  <h1>{{ 'Title' | translate:lang }}</h1>
+
+
+  <router-outlet></router-outlet>
+</div>

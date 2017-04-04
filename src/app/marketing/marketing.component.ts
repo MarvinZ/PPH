@@ -6,6 +6,8 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
+import { Banner } from './../models/banner';
+
 
 
 @Component({
@@ -21,57 +23,51 @@ export class MarketingComponent extends Localization implements OnInit {
   //	private dateModel: any
   loading: boolean = false;
 
-  // ddlSports :string
-  // ddlTransType: string
-  // ddlCurrency: string
+  ddlBannerTypeFilter: string = 'All'
+  ddlBookFilter: string = 'All'
+  ddlSportsFilter: string = 'All'
+  ddlLanguagesFilter: string = 'All'
 
-  // public sports  = [
-  // 	{ value: 'NFL', display: 'NFL' },
-  // 	{ value: 'MU', display: 'MU' },
-  // 	{ value: 'MLB', display: 'MLB' },
-  // 	{ value: 'CBB', display: 'CBB' },
-  // 	{ value: 'CFB', display: 'CFB' },
-  // 	{ value: 'PROP', display: 'PROP' },
-  // 	{ value: 'CBB', display: 'CBB' },
-  // 	{ value: 'NBA', display: 'NBA' },
-  // 	{ value: 'SOC', display: 'SOC' },
-  // 	{ value: 'TNT', display: 'TNT' },
-  // 	{ value: 'NHL', display: 'NHL' },
-  // 	{ value: 'ALL', display: 'ALL' }
-  // ];
+  bannerTypesFilter: any = []
+  languagesFilter: any = []
+  booksFilter: any = []
+  sportsfilter: any = []
 
-  public banners = [
-    { sport: 'NFL', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'MU', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'MLB', display: 'horizontal', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'CBB', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'CFB', display: 'horizontal', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'PROP', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'CBB', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'NBA', display: 'horizontal', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'SOC', display: 'horizontal', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'TNT', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'NHL', display: 'vertical', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-    { sport: 'NBA', display: 'horizontal', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' }
+
+  public bannerTypes = [
+    { value: 'Static', display: 'Static' },
+    { value: 'Dynamic', display: 'Dynamic' },
+
   ];
 
-  // public currencies = [
-  // 	{ value: '1', display: 'USD' },
-  // 	{ value: '2', display: 'MXN' },
-  // 	{ value: '3', display: 'GBP' },
-  // 	{ value: '4', display: 'EUR' }
-  // ];
+  public languages = [
+    { value: 'English', display: 'English' },
+    { value: 'Español', display: 'Español' }
+  ];
 
-  // public transactionTypes = [
-  // 	{ value: '-1', display: 'All' },
-  // 	{ value: '0', display: 'Sports' },
-  // 	{ value: '1', display: 'Casino' },
-  // 	{ value: '2', display: 'Racing' }
-  // ];
-  // private model2: Object = {
-  // 	beginDate: { year: 2018, month: 10, day: 9 },
-  // 	endDate: { year: 2018, month: 10, day: 19 }
-  // };
+  public books = [
+    { value: 'Jazz', display: 'Jazz' },
+    { value: 'ABC', display: 'ABC' }
+  ];
+
+
+  public sports = [
+    { value: 'NFL', display: 'NFL' },
+    { value: 'MU', display: 'MU' },
+    { value: 'MLB', display: 'MLB' },
+    { value: 'CBB', display: 'CBB' },
+    { value: 'CFB', display: 'CFB' },
+    { value: 'PROP', display: 'PROP' },
+    { value: 'CBB', display: 'CBB' },
+    { value: 'NBA', display: 'NBA' },
+    { value: 'SOC', display: 'SOC' },
+    { value: 'TNT', display: 'TNT' },
+    { value: 'NHL', display: 'NHL' }
+  ];
+
+
+  public banners: Banner[] = [];
+  public bannersToDisplay: Banner[] = [];
   response: any
   errorMessage: string
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
@@ -91,7 +87,59 @@ export class MarketingComponent extends Localization implements OnInit {
     // let month = currentDate.getMonth() + 1;
     // let year = currentDate.getFullYear();
     // this.dateModel = { date: { year: year, month: month, day: day } };
+
+     for (let i = 1; i <= 120; i++) {
+      let ban = new Banner();
+      ban.bannerId = i;
+      ban.bannerTitle = 'A title -> ' + i;
+      ban.bannerType = i % 2 == 0 ? 'Dynamic' : 'Static';
+      ban.book = i % 3 == 0 ? 'Jazz' : 'ABC';
+      ban.description = 'Random generated description';
+      ban.language = i % 5 == 0 ? 'English' : 'Español';
+      ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
+      ban.imageUrl = 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg';
+      this.banners.push(ban);
+    }
+    this.bannersToDisplay = this.banners;
+
+    this.sportsfilter = this.sports.slice();
+    this.sportsfilter.push({ value: 'All', display: 'All' });
+
+    this.booksFilter = this.books.slice();
+    this.booksFilter.push({ value: 'All', display: 'All' });
+
+    this.languagesFilter = this.languages.slice();
+    this.languagesFilter.push({ value: 'All', display: 'All' });
+
+    this.bannerTypesFilter = this.bannerTypes.slice();
+    this.bannerTypesFilter.push({ value: 'All', display: 'All' });
+
+
   }
+
+
+   onChangeBannerTypeFilter() {
+    this.loading = true;
+    this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
+      && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
+      && (e.sport === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
+      && (e.book === this.ddlBookFilter || this.ddlBookFilter === 'All'))
+    this.loading = false;
+
+
+  }
+
+
+  clearFilters() {
+    this.bannersToDisplay = this.banners;
+    this.ddlBannerTypeFilter = 'All'
+    this.ddlBookFilter = 'All'
+    this.ddlSportsFilter = 'All'
+    this.ddlLanguagesFilter = 'All'
+  }
+
+
+
 
 
 }

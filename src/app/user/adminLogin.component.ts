@@ -68,7 +68,7 @@ export class AdminLoginComponent {
   }
 
   cancel() {
-    this.router.navigate(['preaffiliates']);
+    this.router.navigate(['home']);
   }
 
 

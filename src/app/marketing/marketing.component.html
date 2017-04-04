@@ -1,22 +1,81 @@
+<div *ngIf="banners">
 
-<div *ngIf="banners"> 
+  <div class="row">
+    <label>{{'Filters:'| translate:lang  }}</label>
 
 
-<table class="table table-responsive  table-hover">
-  <tr>
-    <th>Sport</th>
-    <th>Display</th>
-    <th>Preview</th>
-    <th>Get the code!</th>
-  </tr>
-  
-  <tr *ngFor="let banner of banners;">
-    <td>{{banner.sport}}</td>
-    <td>{{banner.display}}</td>
-    <td><img src="{{banner.source}}"></td>
-    <td><button class="btn btn-default"> Copy HTML code </button></td>
-  </tr>
-</table>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3 form-group">
+      <label>{{'Target Book:'| translate:lang  }}</label>
+      <select name="ddlBookFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlBookFilter" (change)="onChangeBannerTypeFilter()">
+          <option *ngFor="let b of booksFilter" [value]="b.value"> {{b.display}}</option>
+        </select>
+    </div>
+    <div class="col-xs-3 form-group">
+      <label>{{'Banner Type:'| translate:lang  }}</label>
+      <select name="ddlBannerTypeFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerTypeFilter" (change)="onChangeBannerTypeFilter()">
+
+            <option *ngFor="let bt of bannerTypesFilter" [value]="bt.value">{{bt.display}}</option>
+            </select>
+    </div>
+    <div class="col-xs-3 form-group">
+      <label>{{'Language:'| translate:lang  }}</label>
+      <select name="ddlLanguagesFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguagesFilter" (change)="onChangeBannerTypeFilter()"> 
+
+          <option *ngFor="let language of languagesFilter" [value]="language.value">{{language.display}}</option>
+            </select>
+    </div>
+    <div class="col-xs-3 form-group">
+      <label>{{'Sports:'| translate:lang  }}</label>
+      <select name="ddlSportsFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlSportsFilter" (change)="onChangeBannerTypeFilter()">
+
+          <option *ngFor="let sport of sportsfilter" [value]="sport.value">{{sport.display}}</option>
+            </select>
+    </div>
+  </div>
+  <div class="row">
+    <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
+ {{'Clear filters'| translate:lang }} </button>
+
+  </div>
+  <div class="row">
+    Total banners found: {{bannersToDisplay.length}}
+  </div>
+
+  <div *ngIf="loading">
+    <app-loading> </app-loading>
+  </div>
+
+  <div *ngIf="!loading">
+
+    <table class="table table-responsive  table-hover">
+      <tr>
+        <th>Title</th>
+        <th>Book</th>
+        <th>Type</th>
+        <th>Language</th>
+        <th>Sport</th>
+        <th>Preview</th>
+        <th>Get the code!</th>
+
+
+      </tr>
+
+      <tr *ngFor="let banner of bannersToDisplay;">
+        <td>{{banner.bannerTitle}}</td>
+        <td>{{banner.book}}</td>
+        <td>{{banner.bannerType}}</td>
+        <td>{{banner.language}}</td>
+        <td>{{banner.sport}}</td>
+
+        <td><img src="{{banner.imageUrl}}" class="imagePreview"></td>
+        <td><button class="btn btn-default"> Copy HTML code </button></td>
+
+      </tr>
+    </table>
+  </div>
 
 </div>
 

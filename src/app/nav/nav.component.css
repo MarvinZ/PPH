@@ -6,3 +6,9 @@
 .logout {
     cursor: pointer;
 }
+
+.makeMeWhiteAndNice {
+    padding:10px;
+    color:whitesmoke;
+    display: inline-block;
+}

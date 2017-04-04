@@ -33,6 +33,9 @@ export class BannerFarmComponent extends Localization implements OnInit {
   isEditMode: Boolean = false;
   showBannerPreview: Boolean = false;
   customSize: Boolean = false;
+
+
+
   imgHeight: number = 250;
   imgWidth: number = 250;
 
@@ -93,16 +96,6 @@ export class BannerFarmComponent extends Localization implements OnInit {
     { value: 'NHL', display: 'NHL' }
   ];
 
-  // public banners = [
-  //   { sport: 'NFL', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'MU', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'MLB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'CBB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'CFB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'PROP', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'CBB', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  //   { sport: 'NBA', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/', source: 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' },
-  // ];
 
   public banners: Banner[] = [];
   public bannersToDisplay: Banner[] = [];
@@ -130,7 +123,9 @@ export class BannerFarmComponent extends Localization implements OnInit {
       ban.description = 'Random generated description';
       ban.language = i % 5 == 0 ? 'English' : 'Español';
       ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg';
+      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg':  i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg':'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
+      
+      
       this.banners.push(ban);
     }
     this.bannersToDisplay = this.banners;
@@ -146,6 +141,11 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
     this.bannerTypesFilter = this.bannerTypes.slice();
     this.bannerTypesFilter.push({ value: 'All', display: 'All' });
+
+    this.ddlBannerType = 'Static'
+    this.ddlBook  = 'Jazz'
+    this.ddlSports  = 'NFL'
+    this.ddlLanguages  = 'English'
 
 
   }
@@ -221,6 +221,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
       this.banners.push(ban);
       this.toastr.success('Your banner has been created!', 'Success');
+      this.isEditMode = false;
 
     }
     else {
@@ -239,7 +240,6 @@ export class BannerFarmComponent extends Localization implements OnInit {
     this.ddlLanguages = '1'
     this.imgUrl = 'http:\\\\'
     this.isEditMode = false;
-
   }
 
   deactivateBanner() {

@@ -21,7 +21,7 @@ import { ReCaptchaComponent } from 'angular2-recaptcha/lib/captcha.component';
 export class SignUpComponent extends Localization implements OnInit {
   @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
 
-
+  isCaptchaOK: boolean = false;
   ddlCountries: string = 'United States'
   countryCode: number = 1
   countries: any =
@@ -12094,7 +12094,10 @@ export class SignUpComponent extends Localization implements OnInit {
 
 
   navigateHome() {
-    this.router.navigate(['home']);
+    let that = this;
+    setTimeout(() => {
+      that.router.navigate(['home'])
+    }, 3000)
   }
   signup(formValues) {
     console.log(formValues);
@@ -12102,27 +12105,33 @@ export class SignUpComponent extends Localization implements OnInit {
     FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
    */
-    this.affiliateService.InsertPreAffiliate(formValues.name, formValues.lastname,
-      formValues.email, formValues.ddlCountries, formValues.countryCode, formValues.addressLine1, formValues.addressLine2,
-      formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
-      formValues.nickname, formValues.password).subscribe(val => {
-        console.log(val);
-        if (val > 0) {
-          this.toastr.success('Your application has been submitted!', 'Success');
 
-          this.isSuccessfulSignup = true;
-          // setTimeout(this.navigateHome(), 5000);
-        }
-        else {
-          this.toastr.error('Your application has not been submitted!', 'Error');
-          // 
+    if (this.isCaptchaOK) {
+      this.affiliateService.InsertPreAffiliate(formValues.name, formValues.lastname,
+        formValues.email, formValues.ddlCountries, formValues.countryCode, formValues.addressLine1, formValues.addressLine2,
+        formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
+        formValues.nickname, formValues.password).subscribe(val => {
+          // needs state or province
+          console.log(val);
+          if (val > 0) {
+            this.toastr.success('Your application has been submitted!', 'Success');
 
-        }
+            this.isSuccessfulSignup = true;
+            this.navigateHome()
+          }
+          else {
+            this.toastr.error('Your application has not been submitted!', 'Error');
 
-        setTimeout(this.navigateHome(), 6000);
+          }
 
-      });
+          setTimeout(this.navigateHome(), 6000);
 
+        });
+
+    }
+    else {
+      this.toastr.error('Please validate that you are a human');
+    }
 
     // if(result.result==='success') {
     //   this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
@@ -12132,19 +12141,18 @@ export class SignUpComponent extends Localization implements OnInit {
     //   this.toastr.error ('ERROR', 'errrorrrrrr');    // this.authService.loginUser(formValues.userName, formValues.password)
     // }
 
-
-
     // this.router.navigate(['home'])
   }
 
   cancel() {
+
     this.router.navigate(['home'])
   }
 
 
   handleCorrectCaptcha($event) {
-    alert('yeyyy');
     console.log($event);
+    this.isCaptchaOK = true;
   }
   // https://github.com/xmaestro/angular2-recaptcha
 }
