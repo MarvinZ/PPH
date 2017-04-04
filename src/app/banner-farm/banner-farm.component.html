@@ -82,16 +82,16 @@
           <td>{{banner.sport}}</td>
 
           <td><img src="{{banner.imageUrl}}" class="imagePreview"></td>
-          <td><button class="btn btn-default"> {{'Copy HTML code' | translate:lang}} </button></td>
+          <td><button class="btn btn-default"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>
           <td>
-            <button class="btn btn-default" (click)="goToEditMode(banner)" *ngIf="banner.bannerType === 'Dynamic'"> {{'Modify' | translate:lang}} </button>
-            <span *ngIf="banner.bannerType != 'Dynamic'">{{'Static banner' | translate:lang}}</span></td>
-          <td><button class="btn btn-danger" (click)="deactivateBanner()"> {{'Deactivate' | translate:lang}} </button>
+            <button class="btn btn-default" (click)="goToEditMode(banner)" [disabled]="banner.bannerType === 'Dynamic'"> <span class="glyphicon glyphicon-picture"></span>
+ {{'Modify' | translate:lang}} </button>
+          <td><button class="btn btn-danger" (click)="deactivateBanner()"> <span class="glyphicon glyphicon-remove-sign"></span>
+ {{'Deactivate' | translate:lang}} </button>
           </td>
         </tr>
       </table>
     </div>
-
 
   </ng-template>
 
@@ -263,7 +263,7 @@
 
 
 
-<br>
+      <br>
 
 
       <div class="row">
