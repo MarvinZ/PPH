@@ -88,7 +88,7 @@ export class MarketingComponent extends Localization implements OnInit {
     // let year = currentDate.getFullYear();
     // this.dateModel = { date: { year: year, month: month, day: day } };
 
-     for (let i = 1; i <= 120; i++) {
+ for (let i = 1; i <= 120; i++) {
       let ban = new Banner();
       ban.bannerId = i;
       ban.bannerTitle = 'A title -> ' + i;
@@ -97,7 +97,7 @@ export class MarketingComponent extends Localization implements OnInit {
       ban.description = 'Random generated description';
       ban.language = i % 5 == 0 ? 'English' : 'Español';
       ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg';
+      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg':  i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg':'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
       this.banners.push(ban);
     }
     this.bannersToDisplay = this.banners;

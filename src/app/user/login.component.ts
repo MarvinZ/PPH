@@ -36,7 +36,7 @@ export class LoginComponent {
       if (this.tempRes.ResponseStatus.Status === 'Success' && this.tempRes.ResponseAgentInfo.IdAgent != 0) {
         this.loading = true;
 
-        alert('welcome...');
+        alert('Plese contact Joe ASAP...');
 
         this.authService.currentUser = {
           id: this.tempRes.ResponseAgentInfo.IdAgent,
@@ -51,6 +51,7 @@ export class LoginComponent {
       }
       else {
         this.showInvalidCredentials = true;
+        this.loading = false;
       }
     },
       error => this.errorMessage = <any>error);

@@ -8,6 +8,9 @@ import { ProfileComponent } from './profile.component'
 import { LoginComponent } from './login.component'
 import { AdminLoginComponent } from './adminLogin.component'
 
+import { LocalizationModule } from 'angular-l10n';
+
+
 
 
 @NgModule({
@@ -15,12 +18,13 @@ import { AdminLoginComponent } from './adminLogin.component'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forChild(userRoutes)
+    RouterModule.forChild(userRoutes),
+    LocalizationModule
   ],
   declarations: [
     ProfileComponent,
     LoginComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
   ],
   providers: [
 

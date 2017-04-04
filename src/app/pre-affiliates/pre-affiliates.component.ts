@@ -23,7 +23,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
 
   preAffiliate = {
     "Id": 0,
-    "FirstName": "Holiiiiiiiiiis",
+    "FirstName": "",
     "LastName": "",
     "Email": "",
     "CountryName": "",
@@ -48,17 +48,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
   }
-
-  ngOnInit() {
-    // if (!this.auth.currentUser) {
-    //   this.router.navigate(['/user/login']);
-    // }
-
-    this.response = null;
-    this.loading = true;
-    //  let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
-    // let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
-
+  getData() {
     let t0 = performance.now();
     this.affiliateService.GetPreaffiliates()
       .subscribe(response => {
@@ -71,6 +61,18 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
       },
       error => this.errorMessage = <any>error);
   }
+  ngOnInit() {
+    // if (!this.auth.currentUser) {
+    //   this.router.navigate(['/user/login']);
+    // }
+
+    this.response = null;
+    this.loading = true;
+    //  let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
+    // let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
+    this.getData();
+
+  }
 
   closeDetails() {
     this.showDetails = false;
@@ -81,20 +83,35 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
   }
 
 
-  CreateAffiliate(info: any) {
+  CreateAgent(formValues) {
 
-    try {
-      alert('created!!! NOT');
+    console.log(formValues);
+    /*
+    FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
+   Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
+   */
+
+    this.affiliateService.CreateAgents(formValues.name, formValues.lastname,
+      formValues.email, formValues.ddlCountrie, formValues.CountryDialCode, formValues.addressLine1, formValues.addressLine2,
+      formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
+      formValues.nickname, formValues.password).subscribe(val => {
+        // needs state or province
+        console.log(val);
+        if (val[0] > 0) {
+          this.toastr.success('The agent has been created!', 'Success');
+          this.getData();
+          //this.closeDetails();
+
+        }
+        else {
+          this.toastr.error('The agent has not been created!', 'Error');
+
+        }
 
 
-      // $cookies.putObject("affPre", info);
-      // $location.path('/CreateAgent');
-
-    } catch (e) {
-      alert(e.message);
-    }
-
+      });
   }
+
 
   DetailsAffiliate(info: any) {
 
@@ -114,28 +131,6 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
 
 
 
-  createAffiliate(formValues) {
-    console.log(formValues);
-    /*
-    FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
-   Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
-   */
-    this.affiliateService.InsertPreAffiliate(formValues.name, formValues.lastname,
-      formValues.email, formValues.countryName, formValues.countrytCode, formValues.addressLine1, formValues.addressLine2,
-      formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
-      formValues.nickname, formValues.password).subscribe(val => console.log(val));
-    // if(result.result==='success') {
-    //   this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
-    //   this.isSuccessfulSignup = true;
-    // }
-    // else {
-    //   this.toastr.error ('ERROR', 'errrorrrrrr');    // this.authService.loginUser(formValues.userName, formValues.password)
-    // }
-
-
-
-    // this.router.navigate(['home'])
-  }
 
 
 }  //end of class

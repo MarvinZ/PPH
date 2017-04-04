@@ -52,7 +52,7 @@
 
     <h3>Preaffiliate Details</h3>
 
-    <form #signupForm="ngForm" (ngSubmit)="createAffiliate(signupForm.value)" autocomplete="off" novalidate>
+    <form #signupForm="ngForm" (ngSubmit)="CreateAgent(signupForm.value)" autocomplete="off" novalidate>
 
       <div class="row">
         <div class="form-group col-xs-6">
@@ -123,9 +123,9 @@
 
 
         <div class="form-group col-xs-6">
-          <label for="countrytCode">{{'Country code:' | translate:lang}}</label>
-          <em *ngIf="signupForm.controls.countrytCode?.invalid && (signupForm.controls.countrytCode?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <input [(ngModel)]="preAffiliate.countrytCode" name="countrytCode" required id="countrytCode" type="text" class="form-control"
+          <label for="CountryDialCode">{{'Country code:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.CountryDialCode?.invalid && (signupForm.controls.CountryDialCode?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.CountryDialCode" name="CountryDialCode" required id="CountryDialCode" type="text" class="form-control"
             placeholder="Address Line 2..." />
         </div>
 
@@ -136,19 +136,19 @@
           />
         </div>
 
-        <div class="form-group col-xs-6">
-          <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
-          <em *ngIf="signupForm.controls.nickname?.invalid && (signupForm.controls.nickname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <input [(ngModel)]="preAffiliate.AgentName" name="nickname" required id="nickname" type="text" class="form-control" placeholder="nickname..."
-          />
-        </div>
+           <div class="form-group col-xs-6">
+        <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
+        <em *ngIf="signupForm.controls.nickname?.invalid && (signupForm.controls.nickname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <input [(ngModel)]="nickname" name="nickname" required id="nickname" type="text" class="form-control" placeholder="nickname..."
+        />
+      </div>
 
-        <div class="form-group col-xs-6">
-          <label for="password">{{'Desired password' | translate:lang}}</label>
-          <em *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <input [(ngModel)]="preAffiliate.AgentPassword" name="password" required id="password" type="text" class="form-control" placeholder="password..."
-          />
-        </div>
+      <div class="form-group col-xs-6">
+        <label for="password">{{'Desired password' | translate:lang}}</label>
+        <em *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <input [(ngModel)]="password" name="password" required id="password" type="text" class="form-control" placeholder="password..."
+        />
+      </div>
         <div class="form-group col-xs-6">
           <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
       <button type="submit" [disabled]="signupForm.invalid" class="btn btn-success">Create Affiliate</button>

@@ -82,9 +82,12 @@
           <td>{{banner.sport}}</td>
 
           <td><img src="{{banner.imageUrl}}" class="imagePreview"></td>
-          <td><button class="btn btn-default"> Copy HTML code </button></td>
-          <td><button class="btn btn-default" (click)="goToEditMode(banner)"> Modify </button></td>
-          <td><button class="btn btn-danger" (click)="deactivateBanner()"> Deactivate </button></td>
+          <td><button class="btn btn-default"> {{'Copy HTML code' | translate:lang}} </button></td>
+          <td>
+            <button class="btn btn-default" (click)="goToEditMode(banner)" *ngIf="banner.bannerType === 'Dynamic'"> {{'Modify' | translate:lang}} </button>
+            <span *ngIf="banner.bannerType != 'Dynamic'">{{'Static banner' | translate:lang}}</span></td>
+          <td><button class="btn btn-danger" (click)="deactivateBanner()"> {{'Deactivate' | translate:lang}} </button>
+          </td>
         </tr>
       </table>
     </div>
@@ -129,7 +132,7 @@
 
       </div>
 
-         <div class="row">
+      <div class="row">
 
         <div class="col-md-12" style="margin-bottom: 40px">
 
@@ -183,82 +186,84 @@
           </div>
 
         </div>
+
+
         <div class="row">
-
+          <div class="col-xs-3 form-group">
+            <label>{{'Target Book:'| translate:lang  }}</label>
+            <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook">
+            <option *ngFor="let b of books" [value]="b.value"  >{{b.display}}</option>
+            </select>
+          </div>
+          <div class="col-xs-3 form-group">
+            <label>{{'Banner Type:'| translate:lang  }}</label>
+            <select name="ddlBannerType" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerType">
+            <option *ngFor="let bt of bannerTypes" [value]="bt.value">{{bt.display}}</option>
+            </select>
+          </div>
+          <div class="col-xs-3 form-group">
+            <label>{{'Language:'| translate:lang  }}</label>
+            <select name="ddlLanguages" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguages">
+          <option *ngFor="let language of languages" [value]="language.value">{{language.display}}</option>
+            </select>
+          </div>
+          <div class="col-xs-3 form-group">
+            <label>{{'Sports:'| translate:lang  }}</label>
+            <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
+          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
+            </select>
+          </div>
         </div>
 
-        <!--https://www.draftkings.com/-->
-
-        <!--https://68.media.tumblr.com/3ae7352eb46d34fd3e5e0df33478b403/tumblr_n5rzrlQAlX1s7i3n8o1_400.gif-->
-        <div *ngIf="showBannerPreview">
-          <p> Banner preview: {{imgUrl}} - {{imgHeight}} - {{imgWidth}}</p>
-
-          <div *ngIf="customSize;then   customSizeBanner else  fixedSizeBanner"> </div>
-
-          <ng-template #fixedSizeBanner>
-            <a href="http://www.jazzsports.ag/" target="_blank" title="Example">
-              <img [src]="imgUrl" alt="">
-            </a>
-          </ng-template>
-
-          <ng-template #customSizeBanner>
-            <a href="http://www.jazzsports.ag/" target="_blank" title="Example">
-              <img [src]="imgUrl" alt="" [width]="imgWidth" [height]="imgHeight">
-            </a>
-          </ng-template>
+        <div class="row">
+          <div class="col-xs-3 form-group">
+            <label>{{'Custom Size'| translate:lang  }}</label>
+            <input type="checkbox" name="customSize" [(ngModel)]="customSize" class="form-control">
+          </div>
+          <div class="col-xs-3 form-group" *ngIf="customSize">
+            <label>{{'Height:'| translate:lang  }}</label>
+            <button class="btn btn-default" (click)="minus('imgHeight')">-</button>
+            <input [(ngModel)]="imgHeight" name="imgHeight" required id="imgHeight" type="number" max="500" min="25">
+            <button class="btn btn-default" (click)="add('imgHeight')">+</button>
+          </div>
+          <div class="col-xs-3 form-group" *ngIf="customSize">
+            <label>{{'Width:'| translate:lang  }}</label>
+            <button class="btn btn-default" (click)="minus('imgWidth')">-</button>
+            <input [(ngModel)]="imgWidth" name="imgWidth" required id="imgWidth" type="number" max="500" min="25">
+            <button class="btn btn-default" (click)="add('imgWidth')">+</button>
+          </div>
         </div>
+        <div class="row">
+          <!--https://www.draftkings.com/-->
+
+          <!--https://68.media.tumblr.com/3ae7352eb46d34fd3e5e0df33478b403/tumblr_n5rzrlQAlX1s7i3n8o1_400.gif-->
+          <div *ngIf="showBannerPreview">
+            <p> Banner preview: {{imgUrl}} - {{imgHeight}} - {{imgWidth}}</p>
+
+            <div *ngIf="customSize;then   customSizeBanner else  fixedSizeBanner"> </div>
+
+            <ng-template #fixedSizeBanner>
+              <a href="http://www.jazzsports.ag/" target="_blank" title="Example">
+                <img [src]="imgUrl" alt="">
+              </a>
+            </ng-template>
+
+            <ng-template #customSizeBanner>
+              <a href="http://www.jazzsports.ag/" target="_blank" title="Example">
+                <img [src]="imgUrl" alt="" [width]="imgWidth" [height]="imgHeight">
+              </a>
+            </ng-template>
+          </div>
+        </div>
+
+
         <div>
         </div>
       </div>
 
-      
 
-      <div class="row">
-        <div class="col-xs-3 form-group">
-          <label>{{'Target Book:'| translate:lang  }}</label>
-          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook">
-            <option *ngFor="let b of books" [value]="b.value"  >{{b.display}}</option>
-            </select>
-        </div>
-        <div class="col-xs-3 form-group">
-          <label>{{'Banner Type:'| translate:lang  }}</label>
-          <select name="ddlBannerType" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerType">
-            <option *ngFor="let bt of bannerTypes" [value]="bt.value">{{bt.display}}</option>
-            </select>
-        </div>
-        <div class="col-xs-3 form-group">
-          <label>{{'Language:'| translate:lang  }}</label>
-          <select name="ddlLanguages" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguages">
-          <option *ngFor="let language of languages" [value]="language.value">{{language.display}}</option>
-            </select>
-        </div>
-        <div class="col-xs-3 form-group">
-          <label>{{'Sports:'| translate:lang  }}</label>
-          <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
-          <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
-            </select>
-        </div>
-      </div>
 
-   <div class="row">
-        <div class="col-xs-3 form-group">
-          <label>{{'Custom Size'| translate:lang  }}</label>
-          <input type="checkbox" name="customSize" [(ngModel)]="customSize" class="form-control">
-        </div>
-        <div class="col-xs-3 form-group" *ngIf="customSize">
-          <label>{{'Height:'| translate:lang  }}</label>
-          <button class="btn btn-default" (click)="minus('imgHeight')">-</button>
-          <input [(ngModel)]="imgHeight" name="imgHeight" required id="imgHeight" type="number" max="500" min="25">
-          <button class="btn btn-default" (click)="add('imgHeight')">+</button>
-        </div>
-        <div class="col-xs-3 form-group" *ngIf="customSize">
-          <label>{{'Width:'| translate:lang  }}</label>
-          <button class="btn btn-default" (click)="minus('imgWidth')">-</button>
-          <input [(ngModel)]="imgWidth" name="imgWidth" required id="imgWidth" type="number" max="500" min="25">
-          <button class="btn btn-default" (click)="add('imgWidth')">+</button>
-        </div>
-      </div>
-
+<br>
 
 
       <div class="row">

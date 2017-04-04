@@ -12099,6 +12099,7 @@ export class SignUpComponent extends Localization implements OnInit {
       that.router.navigate(['home'])
     }, 3000)
   }
+
   signup(formValues) {
     console.log(formValues);
     /*

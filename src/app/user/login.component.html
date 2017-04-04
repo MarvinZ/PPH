@@ -1,29 +1,35 @@
-<h1>Login</h1>
+<h1>{{'Login' | translate:lang}}</h1>
 <hr>
 <div class="col-md-4">
   <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
     <div class="form-group">
-      <label for="userName">User Name:</label>
+      <label for="userName">{{'User Name' | translate:lang}}:</label>
       <em *ngIf="loginForm.controls.userName?.invalid && (loginForm.controls.userName?.touched || mouseoverLogin)">Required</em>
       <input (ngModel)="username" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..."
       />
     </div>
     <div class="form-group">
-      <label for="password">Password:</label>
+      <label for="password">{{'Password' | translate:lang}}:</label>
       <em *ngIf="loginForm.controls.password?.invalid  && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
       <input (ngModel)="password" name="password" required id="password" type="password" class="form-control" placeholder="Password..."
       />
     </div>
 
     <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
-      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-default">Login</button>
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-default">{{'Login' | translate:lang}}</button>
     </span>
-    <button type="button" (click)="cancel()" class="btn btn-default">Cancel</button>
+    <button type="button" (click)="cancel()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>
   </form>
 </div>
 
 <div *ngIf="showInvalidCredentials">
-  Invalid Credentials
+  {{'Invalid Credentials' | translate:lang}}
 </div>
 
-<div *ngIf="loading">authenticating... </div>
+<div *ngIf="loading">
+  <p>{{'Running security checks' | translate:lang}}...</p>
+  <p>
+    <i class="fa fa-refresh fa-spin fa-5x fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </p>
+</div>

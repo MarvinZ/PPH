@@ -73,7 +73,7 @@ export class AffiliateService {
       "AgentPassword": AgentPassword
     }
 
-    console.log (payload);
+    console.log(payload);
 
     return this._http.post(this._url + "InsertPreAffiliate", payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -93,8 +93,37 @@ export class AffiliateService {
   }
 
   //POST api/temp/CreateAgents
+  CreateAgents(FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
+    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
 
-  // TO do
+    let payload = {
+      "Id": 0,
+      "FirstName": FirstName,
+      "LastName": LastName,
+      "Email": Email,
+      "CountryName": CountryName,
+      "CountryDialCode": CountryDialCode,
+      "Address1": Address1,
+      "Address2": Address2,
+      "Phone": Phone,
+      "City": City,
+      "ZipCode": ZipCode,
+      "BusinessName": BusinessName,
+      "LanguageId": LanguageId,
+      "AgentName": AgentName,
+      "AgentPassword": AgentPassword
+    }
+    console.log('xxxxxxxxxxxxx');
+    console.log(payload);
+
+    return this._http.post(this._url + "CreateAgents", payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+
+
+  }
 
   // GET api/temp/GetAllAffiliates
   GetAllAffiliates(): Observable<any> {
