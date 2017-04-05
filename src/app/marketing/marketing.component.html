@@ -1,3 +1,24 @@
+<marketing-modal #modal>
+  <div class="app-modal-header">
+    {{'Get the code' | translate:lang }} !
+  </div>
+
+  <div class="app-modal-body">
+    <pre>
+      <code>    
+      {{modal.code}} 
+      </code>
+    </pre>
+
+
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default" (click)="modal.hide()">{{'Cancel'| translate:lang }}</button>
+    <button type="button" class="btn btn-primary">{{'COpy Code' | translate:lang}}</button>
+  </div>
+</marketing-modal>
+
+
 <div *ngIf="banners">
 
   <div class="row">
@@ -38,7 +59,7 @@
   <div class="row">
     <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
  {{'Clear filters'| translate:lang }} </button>
-
+<br>
   </div>
   <div class="row">
     Total banners found: {{bannersToDisplay.length}}
@@ -71,7 +92,7 @@
         <td>{{banner.sport}}</td>
 
         <td><img src="{{banner.imageUrl}}" class="imagePreview"></td>
-        <td><button class="btn btn-default"> Copy HTML code </button></td>
+        <td><button class="btn btn-default" (click)="modal.show(banner)"> {{'Copy HTML code' | translate:lang}} </button></td>
 
       </tr>
     </table>

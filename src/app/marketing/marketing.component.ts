@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, OnInit } from '@angular/core';
+import { Component, ViewContainerRef, OnInit, ViewChild } from '@angular/core';
 import { ReportResponse } from './../models/api';
 import { AffiliateService } from './../services/affiliate.service'
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
@@ -16,6 +16,8 @@ import { Banner } from './../models/banner';
   styleUrls: ['./marketing.component.css']
 })
 export class MarketingComponent extends Localization implements OnInit {
+  @ViewChild('MarketingModalComponent')
+  public readonly modal: MarketingModalComponent
   private myDatePickerOptions: IMyOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
@@ -33,6 +35,7 @@ export class MarketingComponent extends Localization implements OnInit {
   booksFilter: any = []
   sportsfilter: any = []
 
+  public code = '<perrito>';
 
   public bannerTypes = [
     { value: 'Static', display: 'Static' },
@@ -65,7 +68,29 @@ export class MarketingComponent extends Localization implements OnInit {
     { value: 'NHL', display: 'NHL' }
   ];
 
+  public realBannersABC = [
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC120x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC120x600.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC160x300.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC160x600.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC234x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC250x250.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC300x300.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC728x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/AbcislandsBanners/ABC728x90.gif' },
+  ]
+  public realBannerLooselines = [
 
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-120x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-234x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-250x250.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-300x160.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-300x300.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-468x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-500x160.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-728x60.gif' },
+    { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-728x90.gif' }
+  ]
   public banners: Banner[] = [];
   public bannersToDisplay: Banner[] = [];
   response: any
@@ -88,18 +113,58 @@ export class MarketingComponent extends Localization implements OnInit {
     // let year = currentDate.getFullYear();
     // this.dateModel = { date: { year: year, month: month, day: day } };
 
- for (let i = 1; i <= 120; i++) {
+
+    for (let i = 1; i <= 9; i++) {
       let ban = new Banner();
       ban.bannerId = i;
-      ban.bannerTitle = 'A title -> ' + i;
-      ban.bannerType = i % 2 == 0 ? 'Dynamic' : 'Static';
-      ban.book = i % 3 == 0 ? 'Jazz' : 'ABC';
+      ban.bannerTitle = 'ABC-' + i;
+      ban.bannerType = 'Static'
+      ban.book = 'ABC';
       ban.description = 'Random generated description';
       ban.language = i % 5 == 0 ? 'English' : 'Español';
       ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg':  i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg':'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
+      ban.imageUrl = this.realBannersABC[i - 1].url;
+      ban.targetUrl = 'http://signup.abcislands.ag/abc_signupnew.aspx';
+
+
       this.banners.push(ban);
     }
+
+
+    for (let i = 1; i <= 9; i++) {
+      let ban = new Banner();
+      ban.bannerId = 9 + i;
+      ban.bannerTitle = 'Looselines-' + i;
+      ban.bannerType = 'Static'
+      ban.book = 'Looselines';
+      ban.description = 'Random generated description';
+      ban.language = i % 5 == 0 ? 'Español' : 'English';
+      ban.sport = i % 4 == 0 ? 'NFL' : 'NBA';
+      ban.imageUrl = this.realBannerLooselines[i - 1].url;
+      ban.targetUrl = 'http://signup.looselines.ag/ll_Signup.aspx';
+
+
+      this.banners.push(ban);
+    }
+
+
+
+    for (let i = 1; i <= 120; i++) {
+      let ban = new Banner();
+      ban.bannerId = 18 + i;
+      ban.bannerTitle = 'Jazz-' + i;
+      ban.bannerType = 'Static';
+      ban.book = 'Jazz';
+      ban.description = 'Random generated description';
+      ban.language = i % 5 == 0 ? 'English' : 'Español';
+      ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
+      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' : i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg' : 'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
+      ban.targetUrl = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
+
+
+      this.banners.push(ban);
+    }
+
     this.bannersToDisplay = this.banners;
 
     this.sportsfilter = this.sports.slice();
@@ -118,7 +183,7 @@ export class MarketingComponent extends Localization implements OnInit {
   }
 
 
-   onChangeBannerTypeFilter() {
+  onChangeBannerTypeFilter() {
     this.loading = true;
     this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
       && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
@@ -140,6 +205,51 @@ export class MarketingComponent extends Localization implements OnInit {
 
 
 
+}
 
 
+@Component({
+  selector: 'marketing-modal',
+  template: `
+  <div (click)="hide()" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
+       [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <ng-content select=".app-modal-header"></ng-content>
+        </div>
+        <div class="modal-body">
+          <ng-content select=".app-modal-body"></ng-content>
+        </div>
+        <div class="modal-footer">
+          <ng-content select=".app-modal-footer"></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+  `
+})
+export class MarketingModalComponent {
+
+  public visible = false;
+  private visibleAnimate = false;
+  public code: string = '<>';
+
+
+  // public code =  ` &lt;a href="http://stackoverflow.com/questions/2820453/display-html-code-in-html"&gt;
+  //     &lt;img src="http://stackoverflow.com/questions/2820453/display-html-code-in-html.jpg"&gt;
+  //     &lt;/a&gt; `
+
+
+  public show(banner: Banner): void {
+    this.visible = true;
+    console.log(banner);
+    this.code = '<a href="' + banner.targetUrl + '" ><img src="' + banner.imageUrl + '"></a>';
+    setTimeout(() => this.visibleAnimate = true);
+  }
+
+  public hide(): void {
+    this.visibleAnimate = false;
+    setTimeout(() => this.visible = false, 300);
+  }
 }

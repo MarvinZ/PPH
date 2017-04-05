@@ -10,6 +10,7 @@ export class Banner {
     public language: string;
     public sport: string;
     public imageUrl: string;
+    public targetUrl: string;
     public description: string;
     public height?: number;
     public width?: number;

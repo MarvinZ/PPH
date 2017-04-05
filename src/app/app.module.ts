@@ -65,7 +65,7 @@ import { ActionByPlayerComponent } from './action-by-player/action-by-player.com
 import { PlayerTotalsComponent } from './player-totals/player-totals.component';
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
-import { MarketingComponent } from './marketing/marketing.component';
+import { MarketingComponent, MarketingModalComponent } from './marketing/marketing.component';
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { TermsOfServicePphComponent } from './terms-of-service-pph/terms-of-service-pph.component';
@@ -116,7 +116,7 @@ import { OnlineMessagesComponent } from './online-messages/online-messages.compo
 
 import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
 
-import { BannerFarmComponent } from './banner-farm/banner-farm.component'
+import { BannerFarmComponent, BannerModalComponent } from './banner-farm/banner-farm.component'
 
 
 
@@ -152,7 +152,7 @@ import { BannerFarmComponent } from './banner-farm/banner-farm.component'
     PlayerTotalsComponent,
     PlayerOpenBetsComponent,
     PlayerHistoryComponent,
-    MarketingComponent,
+    MarketingComponent,MarketingModalComponent,
     PlayerStandingsComponent,
     TermsOfServiceComponent,
     TermsOfServicePphComponent,
@@ -193,7 +193,7 @@ import { BannerFarmComponent } from './banner-farm/banner-farm.component'
     DepositsAndWithdrawalsComponent,
     OnlineMessagesComponent,
     AgentPaymentsComponent,
-    BannerFarmComponent
+    BannerFarmComponent,BannerModalComponent
   ],
   imports: [
     AlertModule.forRoot(),
