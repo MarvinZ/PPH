@@ -21,7 +21,7 @@ export class AuthService {
 
   constructor(private router: Router, private http: Http) { }
   currentUser: IUser
-  siteName: string = 'Admin'//'PPH', 'Admin', 'Affiliates', 'Agent'
+  siteName: string = 'Affiliates'//'PPH', 'Admin', 'Affiliates', 'Agent'
   // loginUser(userName: string, password: string) { }
 
 
