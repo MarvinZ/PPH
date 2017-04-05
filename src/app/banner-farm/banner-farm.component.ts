@@ -15,9 +15,9 @@ import { } from '../../../ng2-file-upload';
 
 
 // const URL = '/api/';
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
+// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
-
+const URL = 'http://localhost:3902/api/Image?site='
 @Component({
   selector: 'app-banner-farm',
   templateUrl: './banner-farm.component.html',
@@ -58,7 +58,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   imgUrl: string = 'http:\\\\'
 
-  public uploader: FileUploader = new FileUploader({ url: URL, isHTML5: true });
+  public uploader: FileUploader = new FileUploader({ url: URL + this.ddlBook, isHTML5: true });
   public hasBaseDropZoneOver: boolean = false;
 
   public fileOverBase(e: any): void {
@@ -78,7 +78,10 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   public books = [
     { value: 'Jazz', display: 'Jazz' },
-    { value: 'ABC', display: 'ABC' }
+    { value: 'ABC', display: 'ABC' },
+    { value: 'Looselines', display: 'Looselines' }
+
+
   ];
 
 
@@ -123,9 +126,9 @@ export class BannerFarmComponent extends Localization implements OnInit {
       ban.description = 'Random generated description';
       ban.language = i % 5 == 0 ? 'English' : 'Español';
       ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg':  i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg':'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
-      
-      
+      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' : i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg' : 'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
+
+
       this.banners.push(ban);
     }
     this.bannersToDisplay = this.banners;
@@ -143,9 +146,9 @@ export class BannerFarmComponent extends Localization implements OnInit {
     this.bannerTypesFilter.push({ value: 'All', display: 'All' });
 
     this.ddlBannerType = 'Static'
-    this.ddlBook  = 'Jazz'
-    this.ddlSports  = 'NFL'
-    this.ddlLanguages  = 'English'
+    this.ddlBook = 'Jazz'
+    this.ddlSports = 'NFL'
+    this.ddlLanguages = 'English'
 
 
   }
