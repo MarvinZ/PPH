@@ -6,12 +6,17 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
+import { AppSettings } from '../app-settings';
+
 
 
 @Injectable()
 export class AffiliateService {
   StatsObject: any
-  _url: string = "http://panmora.com/twapi/api/temp/"
+  _url: string = AppSettings.API_ENDPOINT;
+
+  _url2 = 'http://panmora.com/twapi/api/AgentReports/';
+
   constructor(private _http: Http) { }
 
   // GET api/temp/AffiliateLogin?agent={agent}&password={password}
@@ -242,8 +247,66 @@ export class AffiliateService {
     return Observable.throw(error.json().error || 'Server error');
   }
 
+  //POST api/temp/InsertPreAffiliate
 
+  GetWebvsPhoneReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentWebVsPhone', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+  GetSettledFiguresReport(IdAgent: number, StartDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentSettledFigure', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+  //TO DO
+  GetMonthlySummaryReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentWebVsPhone', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
 }
+
 
 
 

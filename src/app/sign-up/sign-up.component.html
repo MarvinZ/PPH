@@ -107,6 +107,26 @@
       </div>
 
       <div class="form-group col-xs-4">
+        <label for="targetBook">{{'Product:' | translate:lang}}</label>
+        <em *ngIf="signupForm.controls.targetBook?.invalid && (signupForm.controls.targetBook?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook" (change)="changeBook($event.target.value)">
+          <option *ngFor="let book of books" [value]="book.value">{{book.value}}</option>
+            </select>
+        <br>
+        <img [src]="bookImg" alt="book" [ngClass]="myClass">
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="form-group col-xs-6">
+        <re-captcha site_key="6Lc53xoUAAAAAG1YAD_1dB_UC-Nf-qoh9G24N0zi" (captchaResponse)="handleCorrectCaptcha($event)" #recaptcha></re-captcha>
+      </div>
+
+
+      <div class="form-group col-xs-6">
         <div class="row">
 
 
@@ -120,17 +140,7 @@
           </div>
         </div>
       </div>
-
     </div>
-
-    <div class="row">
-
-      <div class="form-group col-xs-4">
-        <re-captcha site_key="6Lc53xoUAAAAAG1YAD_1dB_UC-Nf-qoh9G24N0zi" (captchaResponse)="handleCorrectCaptcha($event)" #recaptcha></re-captcha>
-      </div>
-    </div>
-
-
 
   </form>
 

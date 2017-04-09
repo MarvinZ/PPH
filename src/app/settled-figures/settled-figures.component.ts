@@ -34,6 +34,7 @@ export class SettledFiguresComponent extends Localization implements OnInit {
 
 
   response: any
+  totals: totalObject[] = []
   errorMessage: string
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
     public vcr: ViewContainerRef, public locale: LocaleService,
@@ -60,31 +61,73 @@ export class SettledFiguresComponent extends Localization implements OnInit {
   go() {
     this.response = null;
     this.loading = true;
+    let startDate = this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day;
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.toastr.error('This query took ' + (t1 - t0) + ' milliseconds..', 'Method not implemented!');
+    this.affiliateService.GetSettledFiguresReport(this.auth.currentUser.id, startDate)
+      .subscribe(response => {
+        this.response = response;
+        this.totals = this.calculateTotals(response);
+        this.loading = false;
 
-    // this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
-
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
 
+  calculateTotals(data) {
 
+    let result: totalObject[] = []
+    for (let entry of data) {
+      let Pmts = 0;
+      let CurrentBalance = 0;
+      let TotalWeek = 0;
+      let SettledFigure = 0;
+      for (let player of entry.DetailList) {
+        Pmts += +player.Pmts;
+        CurrentBalance = CurrentBalance + +player.CurrentBalance;
+        TotalWeek += +player.TotalWeek;
+        SettledFigure += +player.SettledFigure;
+      }
+      let newAgent = new totalObject();
+      newAgent = {
+        Agent: entry.Agent,
+        Pmts: Pmts,
+        CurrentBalance: CurrentBalance,
+        TotalWeek: TotalWeek,
+        SettledFigure: SettledFigure
+      }
+      result.push(newAgent)
+
+      console.log(result); // 1, "string", false
+    }
+
+    return result;
+  }
+
+
+   getTotalCurrentBalance(agent: string) {
+    return this.totals.find(e => e.Agent == agent).CurrentBalance;
+  }
+  getTotalTotalWeek(agent: string) {
+    return this.totals.find(e => e.Agent == agent).TotalWeek;
+  }
+  getTotalPmts(agent: string) {
+    return this.totals.find(e => e.Agent == agent).Pmts;
+  }
+  getTotalSettledFigure(agent: string) {
+    return this.totals.find(e => e.Agent == agent).SettledFigure;
+  }
   ExportToExcel() {
     let res = []
 
-    for (let agent of this.response.AgentList) {
-      if (agent.PlayerList) {
-        for (let player of agent.PlayerList) {
+    for (let agent of this.response) {
+      if (agent.DetailList) {
+        for (let player of agent.DetailList) {
           res.push(player);
         }
       }
@@ -97,7 +140,7 @@ export class SettledFiguresComponent extends Localization implements OnInit {
       };
       var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-      new Angular2Csv(res, 'GrossWeek' + displayDate, options);
+      new Angular2Csv(res, 'Settled Figures' + displayDate, options);
     } catch (error) {
       alert(error);
     }
@@ -106,3 +149,12 @@ export class SettledFiguresComponent extends Localization implements OnInit {
 
 }  //end of class
 
+export class totalObject {
+  Agent: string;
+  Pmts: number;
+  CurrentBalance: number;
+  TotalWeek: number;
+  SettledFigure: number;
+
+  constructor() { }
+}

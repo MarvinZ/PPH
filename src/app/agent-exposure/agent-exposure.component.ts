@@ -116,7 +116,6 @@ export class AgentExposureComponent extends Localization implements OnInit {
 
 
   openModal(play: string, wagertype: string, idgame: string) {
-    alert('holiiis');
     //this.modal.show();
     // try {
     //   //$scope.isBusy = true;

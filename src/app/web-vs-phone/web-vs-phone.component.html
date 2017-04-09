@@ -30,7 +30,7 @@
     </div>
   </form>
 
-  <div *ngIf="response?.CashFlowList?.length > 0">
+  <div *ngIf="response?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
@@ -38,13 +38,11 @@
     <table class="table table-hover">
       <thead>
         <tr>
-
           <th>{{'Agent' | translate:lang}}</th>
           <th>{{'Phone Volume' | translate:lang}}</th>
           <th>{{'Phone Bets ' | translate:lang}}</th>
           <th>{{'Phone Players' | translate:lang}}</th>
           <th>{{'On Line Volume' | translate:lang}}</th>
-          <th>{{'Date' | translate:lang}}</th>
           <th>{{'On Line Bets' | translate:lang}}</th>
           <th>{{'On Line Players' | translate:lang}}</th>
           <th>{{'Casino Volume ' | translate:lang}}</th>
@@ -52,25 +50,73 @@
           <th>{{'Casino Players' | translate:lang}}</th>
         </tr>
       </thead>
-      <!--<tbody>
-        <tr *ngFor="let PreAff of response.CashFlowList">
+      <tbody>
+        <tr *ngFor="let PreAff of response">
           <td>
-            {{PreAff.Transaction}}
+            {{PreAff.Agent}}
           </td>
           <td>
-            {{PreAff.Description}}
+            {{PreAff.PhoneVol}}
           </td>
           <td>
-            {{PreAff.Amount}}
+            {{PreAff.PhoneBets}}
           </td>
           <td>
-            {{PreAff.Balance}}
+            {{PreAff.PhonePlayers}}
           </td>
           <td>
-            {{PreAff.Date | date}}
+            {{PreAff.OnLineVolume}}
+          </td>
+          <td>
+            {{PreAff.OnLineBets}}
+          </td>
+          <td>
+            {{PreAff.OnLinePlayers}}
+          </td>
+          <td>
+            {{PreAff.CasinoVolume}}
+          </td>
+          <td>
+            {{PreAff.CasinoBets}}
+          </td>
+          <td>
+            {{PreAff.CasinoPlayers}}
           </td>
         </tr>
-      </tbody>-->
+
+        <tr>
+          
+          <td>
+            totals: </td>
+          <td>
+            {{totals.PhoneVol}}
+          </td>
+          <td>
+            {{totals.PhoneBets}}
+          </td>
+          <td>
+            {{totals.PhonePlayers}}
+          </td>
+          <td>
+            {{totals.OnLineVolume}}
+          </td>
+          <td>
+            {{totals.OnLineBets}}
+          </td>
+          <td>
+            {{totals.OnLinePlayers}}
+          </td>
+          <td>
+            {{totals.CasinoVolume}}
+          </td>
+          <td>
+            {{totals.CasinoBets}}
+          </td>
+          <td>
+            {{totals.CasinoPlayers}}
+          </td>
+        </tr>
+      </tbody>
     </table>
 
   </div>

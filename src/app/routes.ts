@@ -65,6 +65,7 @@ import { OnlineMessagesComponent } from './online-messages/online-messages.compo
 import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
 
 import { BannerFarmComponent } from './banner-farm/banner-farm.component'
+import { AdCenterComponent } from './ad-center/ad-center.component'
 
 
 export const appRoutes: Routes = [
@@ -131,6 +132,10 @@ export const appRoutes: Routes = [
     { path: 'onlineMessages', component: OnlineMessagesComponent },
     { path: 'agentPayments', component: AgentPaymentsComponent },
     { path: 'bannerFarm', component: BannerFarmComponent },
+    { path: 'adcenter', component: AdCenterComponent },
+
+
+
 
 
 

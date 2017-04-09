@@ -88,7 +88,6 @@ export class BannerFarmComponent extends Localization implements OnInit {
     { value: 'ABC', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
     { value: 'Looselines', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
 
-
   ];
 
 

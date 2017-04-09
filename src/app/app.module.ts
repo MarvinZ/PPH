@@ -118,6 +118,9 @@ import { AgentPaymentsComponent } from './agent-payments/agent-payments.componen
 
 import { BannerFarmComponent, BannerModalComponent } from './banner-farm/banner-farm.component'
 
+import { AdCenterComponent } from './ad-center/ad-center.component'
+
+
 
 
 
@@ -193,7 +196,8 @@ import { BannerFarmComponent, BannerModalComponent } from './banner-farm/banner-
     DepositsAndWithdrawalsComponent,
     OnlineMessagesComponent,
     AgentPaymentsComponent,
-    BannerFarmComponent,BannerModalComponent
+    BannerFarmComponent,BannerModalComponent,
+    AdCenterComponent
   ],
   imports: [
     AlertModule.forRoot(),

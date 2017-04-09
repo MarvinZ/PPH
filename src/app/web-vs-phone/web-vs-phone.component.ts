@@ -34,6 +34,7 @@ export class WebVsPhoneComponent extends Localization implements OnInit {
 
 
   response: any
+  totals: any
   errorMessage: string
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
     public vcr: ViewContainerRef, public locale: LocaleService,
@@ -66,6 +67,8 @@ export class WebVsPhoneComponent extends Localization implements OnInit {
 
   }
 
+
+
   go() {
     this.response = null;
     this.loading = true;
@@ -74,21 +77,22 @@ export class WebVsPhoneComponent extends Localization implements OnInit {
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.toastr.error('Not implemented', 'Error!');
-    // this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
+    //   this.toastr.error('Not implemented', 'Error!');
+    this.affiliateService.GetWebvsPhoneReport(this.auth.currentUser.id, startDate, endDate)
+      .subscribe(response => {
+        this.response = response;
+        this.totals = this.calculateTotals(response);
+        this.loading = false;
 
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
   ExportToExcel() {
-    console.log(this.response.CashFlowList);
+    console.log(this.response);
     try {
       var options = {
         showLabels: true
@@ -99,6 +103,45 @@ export class WebVsPhoneComponent extends Localization implements OnInit {
     } catch (error) {
       alert(error);
     }
+  }
+
+  calculateTotals(data) {
+    let PhoneVol = 0;
+    let PhoneBets = 0;
+
+
+    let PhonePlayers = 0;
+    let OnLineVolume = 0;
+    let OnLineBets = 0;
+    let OnLinePlayers = 0;
+    let CasinoVolume = 0;
+    let CasinoBets = 0;
+    let CasinoPlayers = 0;
+
+    for (let entry of data) {
+
+      PhonePlayers += entry.PhonePlayers;
+      OnLineVolume += entry.OnLineVolume;
+      OnLineBets += entry.OnLineBets;
+      OnLinePlayers += entry.OnLinePlayers;
+      CasinoVolume += entry.CasinoVolume;
+      CasinoBets += entry.CasinoBets;
+      CasinoPlayers += entry.CasinoPlayers;
+
+      // console.log(entry); // 1, "string", false
+    }
+
+    return {
+      PhoneVol: PhoneVol,
+      PhoneBets: PhoneBets,
+      PhonePlayers: PhonePlayers,
+      OnLineVolume: OnLineVolume,
+      OnLineBets: OnLineBets,
+      OnLinePlayers: OnLinePlayers,
+      CasinoVolume: CasinoVolume,
+      CasinoBets: CasinoBets,
+      CasinoPlayers: CasinoPlayers
+    };
   }
 
 

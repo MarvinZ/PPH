@@ -1,4 +1,6 @@
 import { Component, ViewContainerRef, OnInit, ViewChild } from '@angular/core';
+import { animate, style, state, transition, trigger} from '@angular/animations';
+
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
@@ -16,7 +18,15 @@ import { ReCaptchaComponent } from 'angular2-recaptcha/lib/captcha.component';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css',  
+  ],
+  // animations: [
+  //   trigger("fadeInOut", [
+  //     state("open", style({opacity: 1})),
+  //     state("closed", style({opacity: 0})),
+  //     transition("open <=> closed", animate( "3000ms" )),
+  //   ])
+  // ]
 })
 export class SignUpComponent extends Localization implements OnInit {
   @ViewChild(ReCaptchaComponent) captcha: ReCaptchaComponent;
@@ -12072,6 +12082,19 @@ export class SignUpComponent extends Localization implements OnInit {
       "area": 390757
     }
   ];
+  public books = [
+    { value: 'Jazz', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
+    { value: 'ABC', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
+    { value: 'Looselines', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
+
+  ];
+  ddlBook: string = 'Jazz';
+  bookImg: string = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
+
+  myClass: string[] = ['imagePreview', 'fade-in'];
+
+  // state = 'open';
+  // timeOutRef;
 
 
   isSuccessfulSignup: Boolean = false;
@@ -12150,6 +12173,35 @@ export class SignUpComponent extends Localization implements OnInit {
     this.router.navigate(['home'])
   }
 
+  // beginAnim() {
+  //    // toggle state to kickstart animation
+  //     this.state = this.state === 'open' ? 'closed' : 'open';
+  // }
+
+  changeBook(book) {
+    // alert(book);
+    switch (book) {
+      case 'Jazz': {
+        this.bookImg = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
+        break;
+      }
+      case 'ABC': {
+        this.bookImg = 'http://www.abcislands.ag/img/logo.png';
+        break;
+      }
+      case 'Looselines': {
+        this.bookImg = 'http://www.looselines.ag/img/logo.png';
+        break;
+      }
+      default: {
+        this.bookImg = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
+        break;
+      }
+    }
+    this.myClass.pop();
+
+    this.myClass.push('fade-in');
+  }
 
   handleCorrectCaptcha($event) {
     console.log($event);
