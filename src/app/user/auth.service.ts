@@ -12,6 +12,8 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
+import { AppSettings } from '../app-settings';
+
 
 
 @Injectable()
@@ -21,16 +23,11 @@ export class AuthService {
 
   constructor(private router: Router, private http: Http) { }
   currentUser: IUser
-  siteName: string = 'Affiliates'//'PPH', 'Admin', 'Affiliates', 'Agent'
-  // loginUser(userName: string, password: string) { }
+  siteName: string = AppSettings.SITE;  //'Affiliates'//'PPH', 'Admin', 'Affiliates', 'Agent'
 
-
-  // Add a new comment
   loginUser(userName: string, password: string): Observable<LoginResponse> {
-    // let bodyString = JSON.stringify(body); // Stringify payload
-    // let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    // let options = new RequestOptions({ headers: headers }); // Create a request option
-    let url = 'http://panmora.com/twapi/api/Agent/LoginPPh';
+
+    let url = AppSettings.API_ENDPOINT + '/Agent/LoginPPh';
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -59,13 +56,6 @@ export class AuthService {
     return this.siteName === 'PPH';
   }
   ////////////////////////////
-
-
-  // hasAgentAccess() {
-  //   return this.currentUser.userType === 'AGENT' || this.currentUser.userType === 'PPH';
-
-  // }
-
   isAuthenticated() {
     return !!this.currentUser;
   }

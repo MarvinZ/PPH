@@ -103,7 +103,7 @@ export class SettledFiguresComponent extends Localization implements OnInit {
       }
       result.push(newAgent)
 
-      console.log(result); // 1, "string", false
+      // console.log(result); // 1, "string", false
     }
 
     return result;

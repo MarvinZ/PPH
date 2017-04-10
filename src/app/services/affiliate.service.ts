@@ -13,9 +13,9 @@ import { AppSettings } from '../app-settings';
 @Injectable()
 export class AffiliateService {
   StatsObject: any
-  _url: string = AppSettings.API_ENDPOINT;
+  _url: string = AppSettings.API_ENDPOINT+'temp/';
 
-  _url2 = 'http://panmora.com/twapi/api/AgentReports/';
+  _url2 : string = AppSettings.API_ENDPOINT+'AgentReports/';
 
   constructor(private _http: Http) { }
 

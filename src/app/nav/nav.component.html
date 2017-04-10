@@ -276,18 +276,18 @@ authorized-->
       </ul>
 
     </div>
-    <form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
+    <!--<form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
       <div class="form-group">
         <input type="text" class="form-control" placeholder="Search">
       </div>
       <button class="btn btn-default">
           {{ 'Search'| translate:lang}}
         </button>
-    </form>
+    </form>-->
     <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
       <ul class="nav navbar-nav">
 
-        <li><a [routerLink]="['/contactus']" routerLinkActive="active">{{ 'Contact us' | translate:lang }}</a></li>
+        <li><a [routerLink]="['/contactus']" routerLinkActive="active"><span class="glyphicon glyphicon-envelope"></span> {{ ' Contact us' | translate:lang }}</a></li>
       </ul>
     </div>
 
