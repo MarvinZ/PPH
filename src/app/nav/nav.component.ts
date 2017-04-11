@@ -8,16 +8,20 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent  extends Localization  implements OnInit {
+export class NavComponent extends Localization implements OnInit {
 
   constructor(private auth: AuthService, public locale: LocaleService, public translation: TranslationService) {
-        super(locale, translation);
-   }
+    super(locale, translation);
+  }
 
   logout(): void {
-      this.auth.logout();
-    }
+    this.auth.logout();
+  }
+
+  stopViewingAs() {
+    this.auth.stopViewingAs();
     
+  }
   ngOnInit() {
   }
 

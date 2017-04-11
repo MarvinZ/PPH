@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <div class="makeMeWhiteAndNice">
-      <img src="http://www.jazzaffiliates.com/img/logo.png" alt="">
+        <img src="http://www.jazzaffiliates.com/img/logo.png" alt="">
 
       </div>
       <!--<a class="navbar-brand">{{auth.siteName}} Site Beta</a>-->
@@ -121,6 +121,8 @@ not authorized
 authorized-->
 
       <li *ngIf="auth.isAuthenticated()"><a [routerLink]="['/main']" routerLinkActive="active">{{ 'Dashboard' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated()"><a [routerLink]="['/myAgents']" routerLinkActive="active">{{ 'My Agents' | translate:lang }}</a></li>
+
       <!--<li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/mainpph']" routerLinkActive="active">{{ 'Main PPH' | translate:lang }}</a></li>
 
       <li *ngIf="auth.isAuthenticated() && auth.hasAgentAccess()"><a [routerLink]="['/affiliatemain']" routerLinkActive="active">{{ 'Affiliate Main' | translate:lang }}</a></li>
@@ -275,6 +277,8 @@ authorized-->
         </li>
       </ul>
 
+
+
     </div>
     <!--<form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
       <div class="form-group">
@@ -289,6 +293,12 @@ authorized-->
 
         <li><a [routerLink]="['/contactus']" routerLinkActive="active"><span class="glyphicon glyphicon-envelope"></span> {{ ' Contact us' | translate:lang }}</a></li>
       </ul>
+    </div>
+
+    <div *ngIf="auth.viewingAs != ''" class="makeMeWhiteAndNice">
+      {{'Viewing as' | translate:lang}}: {{auth.viewingAs}}
+      <button class="btn btn-danger" (click)="stopViewingAs()"><span class="glyphicon glyphicon-remove-sign"></span> {{' Stop'| translate:lang}}</button>
+
     </div>
 
 

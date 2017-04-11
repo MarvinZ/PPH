@@ -120,6 +120,8 @@ import { BannerFarmComponent, BannerModalComponent } from './banner-farm/banner-
 
 import { AdCenterComponent } from './ad-center/ad-center.component'
 
+import { MyAgentsComponent } from './my-agents/my-agents.component'
+
 
 
 
@@ -197,7 +199,8 @@ import { AdCenterComponent } from './ad-center/ad-center.component'
     OnlineMessagesComponent,
     AgentPaymentsComponent,
     BannerFarmComponent,BannerModalComponent,
-    AdCenterComponent
+    AdCenterComponent,
+    MyAgentsComponent
   ],
   imports: [
     AlertModule.forRoot(),

@@ -67,8 +67,12 @@ import { AgentPaymentsComponent } from './agent-payments/agent-payments.componen
 import { BannerFarmComponent } from './banner-farm/banner-farm.component'
 import { AdCenterComponent } from './ad-center/ad-center.component'
 
+import { MyAgentsComponent } from './my-agents/my-agents.component'
+
+
 
 export const appRoutes: Routes = [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'things', component: ThingsComponent },
     { path: 'wagers', component: WagersComponent },
@@ -79,7 +83,6 @@ export const appRoutes: Routes = [
     { path: 'contactus', component: ContactComponent },
     { path: 'players', component: PlayersComponent },
     { path: 'genericReport2', component: GenericReport2Component },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'user', loadChildren: 'app/user/user.module#UserModule' },
     { path: '404', component: Error404Component },
     { path: 'thing/:id', canActivate: [ThingDetailGuard], component: ThingDetailComponent },
@@ -133,7 +136,10 @@ export const appRoutes: Routes = [
     { path: 'agentPayments', component: AgentPaymentsComponent },
     { path: 'bannerFarm', component: BannerFarmComponent },
     { path: 'adcenter', component: AdCenterComponent },
+    { path: 'myAgents', component: MyAgentsComponent },
 
+
+    { path: '**', component: Error404Component },
 
 
 

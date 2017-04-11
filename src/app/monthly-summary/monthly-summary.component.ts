@@ -74,7 +74,7 @@ export class MonthlySummaryComponent extends Localization implements OnInit {
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
 
-     let currentDateStart = new Date();
+    let currentDateStart = new Date();
     currentDateStart.setDate(currentDateStart.getDate() - 7);
 
     let day2 = currentDateStart.getDate();
@@ -92,21 +92,23 @@ export class MonthlySummaryComponent extends Localization implements OnInit {
   go() {
     this.response = null;
     this.loading = true;
+    let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
+    let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
+
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.toastr.error('This query took ' + (t1 - t0) + ' milliseconds..', 'Method not implemented!');
+    this.affiliateService.GetMonthlysummaryReport(this.auth.currentUser.id, startDate, endDate)
+      .subscribe(response => {
+        this.response = response;
+        //    this.totals = this.calculateTotals(response);
+        this.loading = false;
 
-    // this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
-
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
 
@@ -118,13 +120,13 @@ export class MonthlySummaryComponent extends Localization implements OnInit {
       };
       var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-      new Angular2Csv(this.response.CashFlowList, 'WeeklyBalances' + displayDate, options);
+      new Angular2Csv(this.response.CashFlowList, 'MonthlySummary' + displayDate, options);
     } catch (error) {
       alert(error);
     }
   }
 
-  
-  
+
+
 }  //end of class
 

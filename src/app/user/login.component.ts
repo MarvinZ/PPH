@@ -44,7 +44,8 @@ export class LoginComponent {
           firstName: formValues.userName,
           lastName: 'Test',
           userType: 'PPH',
-          selectedSubagent: 0
+          selectedSubagent: 0,
+          originalId: this.tempRes.ResponseAgentInfo.IdAgent
         }
 
         this.router.navigate(['main']);

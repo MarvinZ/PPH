@@ -13,9 +13,9 @@ import { AppSettings } from '../app-settings';
 @Injectable()
 export class AffiliateService {
   StatsObject: any
-  _url: string = AppSettings.API_ENDPOINT+'temp/';
+  _url: string = AppSettings.API_ENDPOINT + 'temp/';
 
-  _url2 : string = AppSettings.API_ENDPOINT+'AgentReports/';
+  _url2: string = AppSettings.API_ENDPOINT + 'AgentReports/';
 
   constructor(private _http: Http) { }
 
@@ -286,8 +286,48 @@ export class AffiliateService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
-  //TO DO
-  GetMonthlySummaryReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+
+
+
+  GetAgentdistributionReport(Agent: number): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+
+      "Agent": Agent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentDistribution', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetagentHistoryReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent,
+      "Filter": 1 //?????
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentHistory', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetAgentAdjustmentReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -301,10 +341,68 @@ export class AffiliateService {
     }
     console.log(payload);
 
-    return this._http.post(this._url2 + 'Report_AgentWebVsPhone', payload, options) // ...using post request
+    return this._http.post(this._url2 + 'Report_ReportAgentPlayerAdjustment', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
+
+  GetdepositsAndwithdrawalsReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentDepositsAndWithdrawals', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetAgentHoldPercentReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentHoldPercent', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetMonthlysummaryReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentMonthlySummary', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
 }
 
 

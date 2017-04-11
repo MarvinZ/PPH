@@ -25,6 +25,8 @@ export class AuthService {
   currentUser: IUser
   siteName: string = AppSettings.SITE;  //'Affiliates'//'PPH', 'Admin', 'Affiliates', 'Agent'
 
+  viewingAs: string = ''
+
   loginUser(userName: string, password: string): Observable<LoginResponse> {
 
     let url = AppSettings.API_ENDPOINT + '/Agent/LoginPPh';
@@ -69,6 +71,22 @@ export class AuthService {
     this.currentUser = null;
     this.router.navigate(['home']);
   }
+
+
+  public viewAs(idAgent: number) {
+    this.currentUser.selectedSubagent = idAgent;
+    this.currentUser.id = idAgent;
+  }
+
+  public stopViewingAs() {
+    this.currentUser.selectedSubagent = 0;
+    this.currentUser.id = this.currentUser.originalId;
+    this.viewingAs = '';
+    this.router.navigate(['myAgents']);
+
+
+  }
+
 
   singup(name: string, email: string, phone: string): any {
     console.log(name, phone, email);

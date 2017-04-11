@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>{{'My sub-agents' | translate:lang }}</h2>
+
+  <div *ngIf="response">
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+
+          <th>{{'Agent' | translate:lang}}</th>
+          <th>{{'Password' | translate:lang}}</th>
+          <th>{{'Enable' | translate:lang}}</th>
+          <th>{{'Name' | translate:lang}}</th>
+          <th>{{'Email' | translate:lang}}</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let PreAff of response">
+          <td>
+            {{PreAff.Agent}}
+          </td>
+          <td>
+            {{PreAff.Password}}
+          </td>
+          <td>
+            {{PreAff.Enable}}
+          </td>
+          <td>
+            {{PreAff.Name}}
+          </td>
+          <td>
+            {{PreAff.Email }}
+          </td>
+          <td>
+            <button class="btn btn-default" (click)="viewAs(PreAff.IdAgent,PreAff.Agent )">View as</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="deactivateAgent(PreAff.IdAgent)">Disable</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>
+
+<pre>
+  {{response | json}}
+</pre>

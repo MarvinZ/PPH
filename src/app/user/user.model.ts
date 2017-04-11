@@ -5,4 +5,5 @@ export class IUser {
   userName: string
   userType: string
   selectedSubagent: number
+  originalId: number
 }

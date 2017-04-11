@@ -68,25 +68,25 @@ export class AgentAdjustmentsComponent  extends Localization implements OnInit {
 
 
   go() {
-    this.response = null;
+ this.response = null;
     this.loading = true;
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
 
+
     let t0 = performance.now();
     let t1 = performance.now();
-    this.toastr.error('This query took ' + (t1 - t0) + ' milliseconds..', 'Method not implemented!');
+    this.affiliateService.GetAgentAdjustmentReport(this.auth.currentUser.id, startDate, endDate)
+      .subscribe(response => {
+        this.response = response;
+        //    this.totals = this.calculateTotals(response);
+        this.loading = false;
 
-    // this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
-
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
   ExportToExcel() {
