@@ -1,4 +1,4 @@
-<div class="navbar navbar-default">
+<div class="navbar navbar-default noAni">
   <div class="container-fluid">
     <div class="navbar-header">
       <div class="makeMeWhiteAndNice">
@@ -181,7 +181,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated()">
+      <li *ngIf="auth.isAuthenticated()" class="alwaysOnTop">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">

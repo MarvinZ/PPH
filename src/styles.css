@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* Fade transition */
+ .animateme div {
+    animation-duration: .75s;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+    transition: transform .75s ease;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.selector{
+    opacity: 1!important;
+    z-index: 10000;
+}
+
+/* Slide transition */
+/*
+pm-app div.panel.panel-primary {
+    animation-duration: .5s;
+    animation-name: slideIn;
+    animation-fill-mode: forwards;
+    transition: transform .5s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-200px);
+  }
+
+  to {
+    transform: translate(0px);
+  }
+}
+
+*/

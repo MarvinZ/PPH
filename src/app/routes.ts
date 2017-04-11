@@ -72,7 +72,7 @@ import { MyAgentsComponent } from './my-agents/my-agents.component'
 
 
 export const appRoutes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+
     { path: 'home', component: HomeComponent },
     { path: 'things', component: ThingsComponent },
     { path: 'wagers', component: WagersComponent },
@@ -138,7 +138,7 @@ export const appRoutes: Routes = [
     { path: 'adcenter', component: AdCenterComponent },
     { path: 'myAgents', component: MyAgentsComponent },
 
-
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: Error404Component },
 
 
