@@ -11,15 +11,20 @@
     </pre>
 
 
+
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="modal.hide()">{{'Cancel'| translate:lang }}</button>
-    <button type="button" class="btn btn-primary">{{'COpy Code' | translate:lang}}</button>
+    <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="modal.code" (cbOnSuccess)="isCopied1 = true">{{'Copy Code' | translate:lang}}</button>
   </div>
 </marketing-modal>
 
 
 <div *ngIf="banners">
+
+
+
+
 
   <div class="row">
     <label>{{'Filters:'| translate:lang  }}</label>
@@ -59,7 +64,7 @@
   <div class="row">
     <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
  {{'Clear filters'| translate:lang }} </button>
-<br>
+    <br>
   </div>
   <div class="row">
     Total banners found: {{bannersToDisplay.length}}

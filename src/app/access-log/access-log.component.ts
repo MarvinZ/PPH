@@ -51,18 +51,7 @@ export class AccessLogComponent extends Localization implements OnInit {
     let day = currentDate.getDate();
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
-
-    let currentDateStart = new Date();
-    currentDateStart.setDate(currentDateStart.getDate() - 7);
-
-    let day2 = currentDateStart.getDate();
-    let month2 = currentDateStart.getMonth() + 1;
-    let year2 = currentDateStart.getFullYear();
-
-    this.dateModel = {
-      beginDate: { year: year2, month: month2, day: day2 },
-      endDate: { year: year, month: month, day: day }
-    };
+    this.dateModel = { date: { year: year, month: month, day: day } };
 
   }
 
@@ -71,23 +60,21 @@ export class AccessLogComponent extends Localization implements OnInit {
   go() {
     this.response = null;
     this.loading = true;
-    let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
-    let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
+    let startDate = this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day;
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.toastr.error('This query took ' + (t1 - t0) + ' milliseconds..', 'Method not implemented!');
+    this.affiliateService.GetAccessLogReport(this.auth.currentUser.id, startDate)
+      .subscribe(response => {
+        this.response = response;
+        //  this.totals = this.calculateTotals(response);
+        this.loading = false;
 
-    // this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
-
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
   ExportToExcel() {

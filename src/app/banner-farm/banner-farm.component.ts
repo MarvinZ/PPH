@@ -38,7 +38,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
   isEditMode: Boolean = false;
   showBannerPreview: Boolean = false;
   customSize: Boolean = false;
-
+  isCopied1: boolean = false;
 
   imgHeight: number = 250;
   imgWidth: number = 250;

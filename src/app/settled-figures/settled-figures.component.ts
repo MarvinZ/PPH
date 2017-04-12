@@ -110,7 +110,7 @@ export class SettledFiguresComponent extends Localization implements OnInit {
   }
 
 
-   getTotalCurrentBalance(agent: string) {
+  getTotalCurrentBalance(agent: string) {
     return this.totals.find(e => e.Agent == agent).CurrentBalance;
   }
   getTotalTotalWeek(agent: string) {

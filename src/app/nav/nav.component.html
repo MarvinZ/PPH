@@ -11,7 +11,7 @@
           20+ years in business
         </p>
         <p>
-          +1.800.681.1066
+          <span class="glyphicon glyphicon-phone-alt"> </span>+1.800.681.1066
         </p>
       </div>
     </div>
@@ -32,11 +32,11 @@
 
       <ul class="nav navbar-nav">
         <li>
-          <a [routerLink]="['user/adminLogin']" *ngIf="!auth.isAuthenticated()">{{ 'Admin Login' | translate:lang}}</a>
+          <a [routerLink]="['user/adminLogin']" *ngIf="!auth.isAuthenticated()"><span class="glyphicon glyphicon-log-in"></span>{{ ' Admin Login' | translate:lang}}</a>
 
         </li>
         <li>
-          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout">{{ 'Log out'| translate:lang}} </a>
+          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
         </li>
 
       </ul>
@@ -269,11 +269,11 @@ authorized-->
     <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
       <ul class="nav navbar-nav">
         <li>
-          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">{{ 'Login' | translate:lang}}</a>
+          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']"><span class="glyphicon glyphicon-log-in"></span>{{ ' Login' | translate:lang}}</a>
           <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">{{ 'Welcome ' | translate:lang}}{{auth.currentUser.firstName}}</a>
         </li>
         <li>
-          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout">{{ 'Log out'| translate:lang}} </a>
+          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
         </li>
       </ul>
 

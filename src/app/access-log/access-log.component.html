@@ -4,8 +4,8 @@
     <div class="row">
 
       <div class="col-xs-3 form-group">
-        <label>{{'Select Date range:' | translate:lang  }}</label>
-        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
       </div>
       <div class="col-xs-3 form-group">
         <label>{{'Currency:'| translate:lang  }}</label>
@@ -32,22 +32,21 @@
   </form>
 
   <div *ngIf="response?.CashFlowList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <!--<h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>-->
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
     <table class="table table-hover">
       <thead>
         <tr>
 
-          <th>{{'Transaction' | translate:lang}}</th>
-          <th>{{'Description' | translate:lang}}</th>
-          <th>{{'Amount' | translate:lang}}</th>
-          <th>{{'Balance' | translate:lang}}</th>
-          <th>{{'Date' | translate:lang}}</th>
+          <th>{{'Agent' | translate:lang}}</th>
+          <th>{{'Access Date/Time (PST)' | translate:lang}}</th>
+          <th>{{'url' | translate:lang}}</th>
+          <th>{{'IP' | translate:lang}}</th>
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <!--<tbody>
         <tr *ngFor="let PreAff of response.CashFlowList">
           <td>
             {{PreAff.Transaction}}
@@ -65,7 +64,7 @@
             {{PreAff.Date | date}}
           </td>
         </tr>
-      </tbody>
+      </tbody>-->
     </table>
 
   </div>

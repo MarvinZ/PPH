@@ -36,7 +36,7 @@ export class LoginComponent {
       if (this.tempRes.ResponseStatus.Status === 'Success' && this.tempRes.ResponseAgentInfo.IdAgent != 0) {
         this.loading = true;
 
-        alert('Plese contact Joe ASAP...');
+        // alert('Plese contact Joe ASAP...');
 
         this.authService.currentUser = {
           id: this.tempRes.ResponseAgentInfo.IdAgent,
@@ -45,7 +45,8 @@ export class LoginComponent {
           lastName: 'Test',
           userType: 'PPH',
           selectedSubagent: 0,
-          originalId: this.tempRes.ResponseAgentInfo.IdAgent
+          originalId: this.tempRes.ResponseAgentInfo.IdAgent,
+          bookId: 1
         }
 
         this.router.navigate(['main']);

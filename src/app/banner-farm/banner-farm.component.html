@@ -14,7 +14,7 @@
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="modal.hide()">{{'Cancel'| translate:lang }}</button>
-    <button type="button" class="btn btn-primary">{{'COpy Code' | translate:lang}}</button>
+    <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="modal.code" (cbOnSuccess)="isCopied1 = true">{{'Copy Code' | translate:lang}}</button>
   </div>
 </bannerfarm-modal>
 
@@ -70,6 +70,7 @@
     <div class="row">
       <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
  {{'Clear filters'| translate:lang }} </button>
+      <br>
 
     </div>
     <div class="row">
@@ -84,7 +85,7 @@
 
       <table class="table table-responsive  table-hover">
         <tr>
-          <th>Title</th>
+          <th>Banner code</th>
           <th>Book</th>
           <th>Type</th>
           <th>Language</th>
@@ -108,9 +109,9 @@
           <td>
             <button class="btn btn-default" (click)="goToEditMode(banner)" [disabled]="banner.bannerType === 'Static'"> <span class="glyphicon glyphicon-picture"></span>
  {{'Modify' | translate:lang}} </button>
-          <td><button class="btn btn-danger" (click)="deactivateBanner()"> <span class="glyphicon glyphicon-remove-sign"></span>
+            <td><button class="btn btn-danger" (click)="deactivateBanner()"> <span class="glyphicon glyphicon-remove-sign"></span>
  {{'Deactivate' | translate:lang}} </button>
-          </td>
+            </td>
         </tr>
       </table>
     </div>
@@ -127,44 +128,44 @@
 
 
     <form #myForm="ngForm" novalidate>
-<!--dropdowns-->
-<label >Step 1: Select the categories of the new banner</label>
-        <div class="row">
-          <div class="col-xs-3 form-group">
-            <label>{{'Target Book:'| translate:lang  }}</label>
-            <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook" (change)="onBookChange()" [disabled]="uploader.queue !=0">
+      <!--dropdowns-->
+      <label>Step 1: Select the categories of the new banner</label>
+      <div class="row">
+        <div class="col-xs-3 form-group">
+          <label>{{'Target Book:'| translate:lang  }}</label>
+          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook" (change)="onBookChange()" [disabled]="uploader.queue !=0">
             <option *ngFor="let b of books" [value]="b.value"  >{{b.display}}</option>
             </select>
-          </div>
-          <div class="col-xs-3 form-group">
-            <label>{{'Banner Type:'| translate:lang  }}</label>
-            <select name="ddlBannerType" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerType" [disabled]="uploader.queue !=0">
+        </div>
+        <div class="col-xs-3 form-group">
+          <label>{{'Banner Type:'| translate:lang  }}</label>
+          <select name="ddlBannerType" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerType" [disabled]="uploader.queue !=0">
             <option *ngFor="let bt of bannerTypes" [value]="bt.value">{{bt.display}}</option>
             </select>
-          </div>
-          <div class="col-xs-3 form-group">
-            <label>{{'Language:'| translate:lang  }}</label>
-            <select name="ddlLanguages" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguages" [disabled]="uploader.queue !=0">
+        </div>
+        <div class="col-xs-3 form-group">
+          <label>{{'Language:'| translate:lang  }}</label>
+          <select name="ddlLanguages" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguages" [disabled]="uploader.queue !=0">
           <option *ngFor="let language of languages" [value]="language.value">{{language.display}}</option>
             </select>
-          </div>
-          <div class="col-xs-3 form-group">
-            <label>{{'Sports:'| translate:lang  }}</label> 
-            <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports" [disabled]="uploader.queue !=0" >
+        </div>
+        <div class="col-xs-3 form-group">
+          <label>{{'Sports:'| translate:lang  }}</label>
+          <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports" [disabled]="uploader.queue !=0">
           <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
             </select>
-          </div>
         </div>
-              <br>
+      </div>
+      <br>
 
-<!--upload image-->
-<label >Step 2: Select an image from the web or your computer</label>
+      <!--upload image-->
+      <label>Step 2: Select an image from the web or your computer</label>
 
       <div class="row" *ngIf="uploader.queue==0">
         <div class="col-xs-4 form-group">
           <label>{{'Image url'| translate:lang  }}</label>
-          <input [(ngModel)]="imgUrl" name="imgUrl" required id="imgUrl" type="text" class="form-control" placeholder="image url..." [disabled]="ddlBannerType === 'Dynamic'"
-            (blur)="showPreview()">
+          <input [(ngModel)]="imgUrl" name="imgUrl" required id="imgUrl" type="text" class="form-control" placeholder="image url..."
+            [disabled]="ddlBannerType === 'Dynamic'" (blur)="showPreview()">
           <div *ngIf="!showBannerPreview">
             invalid image
           </div>

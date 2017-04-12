@@ -35,7 +35,8 @@ export class AdminLoginComponent {
       lastName: 'Admin',
       userType: 'Admin',
       selectedSubagent: 0,
-      originalId: 999
+      originalId: 999,
+      bookId: 1
     }
     this.router.navigate(['preAffiliates']);
 

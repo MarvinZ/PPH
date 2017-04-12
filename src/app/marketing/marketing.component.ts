@@ -35,7 +35,8 @@ export class MarketingComponent extends Localization implements OnInit {
   booksFilter: any = []
   sportsfilter: any = []
 
-  public code = '<perrito>';
+  isCopied1: boolean = false;
+
 
   public bannerTypes = [
     { value: 'Static', display: 'Static' },
@@ -251,5 +252,9 @@ export class MarketingModalComponent {
   public hide(): void {
     this.visibleAnimate = false;
     setTimeout(() => this.visible = false, 300);
+  }
+
+  copyHTML(code: string) {
+    alert(code);
   }
 }

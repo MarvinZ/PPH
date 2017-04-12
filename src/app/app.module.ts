@@ -123,6 +123,8 @@ import { AdCenterComponent } from './ad-center/ad-center.component'
 import { MyAgentsComponent } from './my-agents/my-agents.component'
 
 
+import { ClipboardModule } from 'ngx-clipboard';
+
 
 
 
@@ -157,7 +159,7 @@ import { MyAgentsComponent } from './my-agents/my-agents.component'
     PlayerTotalsComponent,
     PlayerOpenBetsComponent,
     PlayerHistoryComponent,
-    MarketingComponent,MarketingModalComponent,
+    MarketingComponent, MarketingModalComponent,
     PlayerStandingsComponent,
     TermsOfServiceComponent,
     TermsOfServicePphComponent,
@@ -198,7 +200,7 @@ import { MyAgentsComponent } from './my-agents/my-agents.component'
     DepositsAndWithdrawalsComponent,
     OnlineMessagesComponent,
     AgentPaymentsComponent,
-    BannerFarmComponent,BannerModalComponent,
+    BannerFarmComponent, BannerModalComponent,
     AdCenterComponent,
     MyAgentsComponent
   ],
@@ -218,7 +220,8 @@ import { MyAgentsComponent } from './my-agents/my-agents.component'
     MyDateRangePickerModule,
     BrowserAnimationsModule,
     ReCaptchaModule,
-    FileUploadModule
+    FileUploadModule,
+    ClipboardModule
 
 
   ],
