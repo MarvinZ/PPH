@@ -34,10 +34,7 @@
             </select>
       </div>
       <div class="col-xs-3 form-group">
-        <!--<label>{{'Currency:'| translate:lang  }}</label>
-        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
-            </select>-->
+
       </div>
       <div class="col-xs-3 form-group">
 
@@ -53,7 +50,7 @@
   </form>
 
   <div *ngIf="response?.AgentList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+    <h2>{{'Period ' | translate:lang}} From {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
     <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
     <hr />
     <div *ngFor=" let Item of response.AgentList;">
@@ -63,90 +60,70 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3">
-          <div class="col-md-4">Player</div>
-          <div class="col-md-4">Name</div>
-          <div class="col-md-4">BalFwd</div>
-        </div>
-        <div class="col-md-3">
-          <div class="col-md-3">Mon</div>
-          <div class="col-md-3">Tue</div>
-          <div class="col-md-3">Wed</div>
-          <div class="col-md-3">Thu</div>
-        </div>
-        <div class="col-md-3">
-          <div class="col-md-3">Fri</div>
-          <div class="col-md-3">Sat</div>
-          <div class="col-md-3">Sun</div>
-          <div class="col-md-3">This Week</div>
-        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <td>Player</td>
+              <td>Name</td>
+              <td>BalFwd</td>
+              <td>Mon</td>
+              <td>Tue</td>
+              <td>Wed</td>
+              <td>Thu</td>
+              <td>Fri</td>
+              <td>Sat</td>
+              <td>Sun</td>
+              <td>This Week</td>
+              <td>Pending</td>
+              <td>Pmts</td>
+              <td>Balance</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ItemDetailPlayer of Item.PlayerList;">
+              <td>{{ItemDetailPlayer._Player}}</td>
+              <td>{{ItemDetailPlayer._Name}}</td>
+              <td>{{ItemDetailPlayer._BalFwd | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._Ptms | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</td>
+            </tr>
 
-        <div class="col-md-1">Pending</div>
-        <div class="col-md-1">Pmts</div>
-        <div class="col-md-1">Balance</div>
+            <tr style="background-color: lightgray">
+              <td>Total: {{Item.ListPlayer?.length}}</td>
+              <td></td>
+              <td>{{Item._BalFwd | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay1 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay2 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay3 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay4 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay5 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay6 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._WeekDay7 | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._ThisWeek | currency:'USD':true:'1.2-2'}}</td>
+              <td>--</td>
+              <td>{{Item._Ptms | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{Item._Balance | currency:'USD':true:'1.2-2'}}</td>
+            </tr>
 
+          </tbody>
+        </table>
+        <br>
       </div>
-
-      <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
-
-        <div class="row">
-          <div class="col-md-3">
-            <div class="col-md-4">{{ItemDetailPlayer._Player}}</div>
-            <div class="col-md-4">{{ItemDetailPlayer._Name}}</div>
-            <div class="col-md-4" style="text-align: right;">{{ItemDetailPlayer._BalFwd | currency:'USD':true:'1.2-2'}}</div>
-          </div>
-
-          <div class="col-md-3" style="text-align: right;">
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'1.2-2'}}</div>
-          </div>
-          <div class="col-md-3" style="text-align: right;">
-
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-3" style="text-align: right;">{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'1.2-2'}}</div>
-          </div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Ptms | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</div>
-        </div>
-      </div>
-
-      <div class="row" style="background-color: lightgray">
-        <div class="col-md-3">
-          <div class="col-md-4"></div>
-          <div class="col-md-4"></div>
-          <div class="col-md-4" style="text-align: right;">{{Item._BalFwd | currency:'USD':true:'1.2-2'}}</div>
-        </div>
-        <div class="col-md-3">
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay1 | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay2 | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay3 | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay4 | currency:'USD':true:'1.2-2'}}</div>
-        </div>
-        <div class="col-md-3">
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay5 | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay6 | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-3" style="text-align: right;">{{Item._WeekDay7 | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-3" style="text-align: right;"></div>
-        </div>
-
-        <div class="col-md-1" style="text-align: right;">-</div>
-        <div class="col-md-1" style="text-align: right;">{{Item._Ptms | currency:'USD':true:'1.2-2'}}</div>
-        <div class="col-md-1" style="text-align: right;">{{Item._Balance | currency:'USD':true:'1.2-2'}}</div>
-      </div>
-
     </div>
   </div>
-  <hr />
 
-  <pre>
+  <!--<pre>
   {{response | json}}
-</pre>
-
+</pre>-->
 </div>
 
 <div *ngIf="loading">

@@ -34,51 +34,52 @@
   <div *ngIf="response?.length > 0">
     <!--<h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>-->
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
-
+<br>
     <div *ngFor="let Item of response">
 
       <div class="row" style="text-align: center; color: white; background-color: black;">
         {{Item.Agent}}
       </div>
-      <div class="row" style="background-color: lightgray">
-        <div class="col-md-3">Player</div>
-        <div class="col-md-1">Carry Over</div>
-        <div class="col-md-1">This Week</div>
-        <div class="col-md-1">Pmts</div>
-        <div class="col-md-1">Current Balance</div>
 
-      </div>
+      <table class="table">
+        <thead>
+          <tr style="background-color: lightgray">
+            <td>Player</td>
+            <td>Carry Over</td>
+            <td>This Week</td>
+            <td>Pmts</td>
+            <td>Current Balance</td>
+          </tr>
 
-      <div *ngFor="let ItemDetailPlayer of Item.DetailList">
+        </thead>
+        <tbody>
+          <tr *ngFor="let ItemDetailPlayer of Item.DetailList">
 
-        <div class="row table-hover">
-          <div class="col-md-3">{{ItemDetailPlayer.Player}}</div>
-          <div class="col-md-1">{{ItemDetailPlayer.SettledFigure}}</div>
-          <div class="col-md-1">{{ItemDetailPlayer.TotalWeek | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1">{{ItemDetailPlayer.Pmts | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1">{{ItemDetailPlayer.CurrentBalance | currency:'USD':true:'1.2-2'}}</div>
+            <td>{{ItemDetailPlayer.Player}}</td>
+            <td>{{ItemDetailPlayer.SettledFigure}}</td>
+            <td>{{ItemDetailPlayer.TotalWeek | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{ItemDetailPlayer.Pmts | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{ItemDetailPlayer.CurrentBalance | currency:'USD':true:'1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>{{Item.DetailList.length}} {{'Players' | translate:lang }}</td>
+            <td>{{getTotalSettledFigure(Item.Agent) | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{getTotalTotalWeek(Item.Agent) | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{getTotalPmts(Item.Agent) | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{getTotalCurrentBalance(Item.Agent) | currency:'USD':true:'1.2-2'}}</td>
+          </tr>
 
+        </tbody>
+      </table>
 
-        </div>
-
-      </div>
-      <div class="row table-hover" style="background-color: lightgray">
-        <div class="col-md-3">{{Item.DetailList.length}} {{'Players' | translate:lang }}</div>
-        <div class="col-md-1">{{getTotalSettledFigure(Item.Agent) | currency:'USD':true:'1.2-2'}}</div>
-        <div class="col-md-1">{{getTotalTotalWeek(Item.Agent) | currency:'USD':true:'1.2-2'}}</div>
-        <div class="col-md-1">{{getTotalPmts(Item.Agent) | currency:'USD':true:'1.2-2'}}</div>
-        <div class="col-md-1">{{getTotalCurrentBalance(Item.Agent) | currency:'USD':true:'1.2-2'}}</div>
-
-
-      </div>
       <br>
     </div>
   </div>
 
 
-  <pre>
+  <!--<pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 

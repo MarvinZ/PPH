@@ -22,38 +22,7 @@ export class MonthlySummaryComponent extends Localization implements OnInit {
   loading: boolean = false;
   Showfutures: Boolean = false;
 
-  // ddlSports :string = 'NFL'
-  // ddlTransType: string = '-1'
-  // ddlCurrency: string = '1'
-
-  // public sports  = [
-  // 	{ value: 'NFL', display: 'NFL' },
-  // 	{ value: 'MU', display: 'MU' },
-  // 	{ value: 'MLB', display: 'MLB' },
-  // 	{ value: 'CBB', display: 'CBB' },
-  // 	{ value: 'CFB', display: 'CFB' },
-  // 	{ value: 'PROP', display: 'PROP' },
-  // 	{ value: 'CBB', display: 'CBB' },
-  // 	{ value: 'NBA', display: 'NBA' },
-  // 	{ value: 'SOC', display: 'SOC' },
-  // 	{ value: 'TNT', display: 'TNT' },
-  // 	{ value: 'NHL', display: 'NHL' },
-  // 	{ value: 'All', display: 'ALL' }
-  // ];
-
-  // public currencies = [
-  // 	{ value: '1', display: 'USD' },
-  // 	{ value: '2', display: 'MXN' },
-  // 	{ value: '3', display: 'GBP' },
-  // 	{ value: '4', display: 'EUR' }
-  // ];
-
-  // public transactionTypes = [
-  // 	{ value: '-1', display: 'All' },
-  // 	{ value: '0', display: 'Sports' },
-  // 	{ value: '1', display: 'Casino' },
-  // 	{ value: '2', display: 'Racing' }
-  // ];
+ 
 
   response: any
   errorMessage: string

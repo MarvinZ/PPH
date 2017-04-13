@@ -39,7 +39,7 @@
   <div *ngIf="response?.AgentList?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
-
+    <br>
 
     <div *ngFor=" let Item of response.AgentList;">
 
@@ -93,9 +93,9 @@
   </div>
 
 
-  <pre>
+  <!--<pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 
