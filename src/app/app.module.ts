@@ -72,6 +72,12 @@ import { TermsOfServicePphComponent } from './terms-of-service-pph/terms-of-serv
 
 import { MyDatePickerModule } from 'mydatepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
+
+import { DatePickerModule } from 'ng2-datepicker';
+
+
+
+
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignUpPphComponent } from './sign-up-pph/sign-up-pph.component';
 
@@ -221,7 +227,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     BrowserAnimationsModule,
     ReCaptchaModule,
     FileUploadModule,
-    ClipboardModule
+    ClipboardModule,
+    DatePickerModule 
 
 
   ],

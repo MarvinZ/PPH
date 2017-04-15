@@ -19,7 +19,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row controlcitos">
 
       <div class="col-xs-3 form-group">
         <label>{{'Select Date:' | translate:lang  }}</label>
@@ -37,6 +37,8 @@
 
       </div>
       <div class="col-xs-3 form-group">
+        <label>{{'Select Date:' | translate:lang  }}</label>
+        <ng2-datepicker name="date" [options]="options" [(ngModel)]="date" class="form-control"></ng2-datepicker>
 
       </div>
     </div>

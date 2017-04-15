@@ -203,7 +203,7 @@ authorized-->
         </a>
       </li>
 
-      <li *ngIf="auth.isAuthenticated()">
+      <!--<li *ngIf="auth.isAuthenticated()">
         <a>
           <div dropdown class="dropdown">
             <div dropdownToggle class="dropdown-toggle">
@@ -260,7 +260,7 @@ authorized-->
             </div>
           </div>
         </a>
-      </li>
+      </li>-->
 
       <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
 

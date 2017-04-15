@@ -9,6 +9,9 @@ import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
 import { Angular2Csv } from 'angular2-csv/angular2-csv';
 
+import { DatePickerOptions, DateModel } from 'ng2-datepicker';
+
+
 
 
 @Component({
@@ -21,6 +24,11 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 		// other options...
 		dateFormat: 'yyyy-mm-dd',
 	};
+
+	date: DateModel;
+	options: DatePickerOptions;
+
+
 	private dateModel: any
 	loading: boolean = false;
 
@@ -49,6 +57,8 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 		public locale: LocaleService, public translation: TranslationService, private auth: AuthService) {
 		super(locale, translation);
 		this.toastr.setRootViewContainerRef(vcr);
+		this.options = new DatePickerOptions();
+
 	}
 
 	ngOnInit() {

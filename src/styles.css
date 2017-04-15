@@ -22,6 +22,9 @@
     z-index: 10000;
 }
 
+.mydp .selector, .mydrp .selector {
+  position: relative!important;
+}
 /* Slide transition */
 /*
 pm-app div.panel.panel-primary {
