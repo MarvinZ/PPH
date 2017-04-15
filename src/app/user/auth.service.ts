@@ -59,6 +59,24 @@ export class AuthService {
   }
   ////////////////////////////
   isAuthenticated() {
+    if (!!this.currentUser) {
+      return true;
+    }
+    else {
+      if ((Number(localStorage.getItem('agentId')) > 0) && !this.expired()) {
+        this.currentUser = {
+          id: Number(localStorage.getItem('agentId')),
+          userName: localStorage.getItem('userName'),
+          firstName: localStorage.getItem('firstName'),
+          lastName: localStorage.getItem('lastName'),
+          userType: localStorage.getItem('userType'),
+          selectedSubagent: 0,
+          originalId: Number(localStorage.getItem('agentId')),
+          bookId: 1
+        }
+      }
+
+    }
     return !!this.currentUser;
   }
 
@@ -72,6 +90,11 @@ export class AuthService {
     this.router.navigate(['home']);
   }
 
+  expired() {
+    // let time = (new Date()).valueOf() - (new Date(localStorage.getItem('timestamp'))).valueOf()
+    // return time > 1000000;
+    return false;
+  }
 
   public viewAs(idAgent: number) {
     this.currentUser.selectedSubagent = idAgent;

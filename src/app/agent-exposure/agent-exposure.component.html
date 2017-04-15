@@ -62,7 +62,7 @@
     </div>
 
 
-    <div *ngFor="let Item of response.ListExposure">
+    <div *ngFor="let Item of response.ListExposure" class="makeMeSmaller">
 
       <div class="row">
         <!--Visitor-->
@@ -112,29 +112,29 @@
 
         <div class="col-md-2" style="cursor: pointer;">
           <!--Straights-->
-          <div class="col-md-4" (click)="modal.show('H1', 'SB', Item._IdGame);">{{Item._StraightbetHSpread}}</div>
-          <div class="col-md-4" (click)="modal.show('H3', 'SB', Item._IdGame);">{{Item._StraightbetHTotal}}</div>
-          <div class="col-md-4" (click)="modal.show('H5', 'SB', Item._IdGame);">{{Item._StraightbetHMoney}}</div>
+          <div class="col-md-4" (click)="modal.show('H1', 'SB', Item._IdGame);">{{Item._StraightbetHSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'SB', Item._IdGame);">{{Item._StraightbetHTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'SB', Item._IdGame);">{{Item._StraightbetHMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
         <div class="col-md-2" style="cursor: pointer;">
           <!--Parlays-->
-          <div class="col-md-4" (click)="modal.show('H1', 'PB', Item._IdGame);">{{Item._ParlayHSpread}}</div>
-          <div class="col-md-4" (click)="modal.show('H3', 'PB', Item._IdGame);">{{Item._ParlayHTotal}}</div>
-          <div class="col-md-4" (click)="modal.show('H5', 'PB', Item._IdGame);">{{Item._ParlayHMoney}}</div>
+          <div class="col-md-4" (click)="modal.show('H1', 'PB', Item._IdGame);">{{Item._ParlayHSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'PB', Item._IdGame);">{{Item._ParlayHTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'PB', Item._IdGame);">{{Item._ParlayHMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
         <div class="col-md-2" style="cursor: pointer;">
           <!--Teasers-->
-          <div class="col-md-4" (click)="modal.show('H1', 'TB', Item._IdGame);">{{Item._TeaserHSpread}}</div>
-          <div class="col-md-4" (click)="modal.show('H3', 'TB', Item._IdGame);">{{Item._TeaserHTotal}}</div>
-          <div class="col-md-4" (click)="modal.show('H5', 'TB', Item._IdGame);">{{Item._TeaserHMoney}}</div>
+          <div class="col-md-4" (click)="modal.show('H1', 'TB', Item._IdGame);">{{Item._TeaserHSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'TB', Item._IdGame);">{{Item._TeaserHTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'TB', Item._IdGame);">{{Item._TeaserHMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
         <div class="col-md-2" style="cursor: pointer;">
           <!--Reverses-->
-          <div class="col-md-4" (click)="modal.show('H1', 'RB', Item._IdGame);">{{Item._ReversesHSpread}}</div>
-          <div class="col-md-4" (click)="modal.show('H3', 'RB', Item._IdGame);">{{Item._ReversesHTotal}}</div>
-          <div class="col-md-4" (click)="modal.show('H5', 'RB', Item._IdGame);">{{Item._ReversesHMoney}}</div>
+          <div class="col-md-4" (click)="modal.show('H1', 'RB', Item._IdGame);">{{Item._ReversesHSpread | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H3', 'RB', Item._IdGame);">{{Item._ReversesHTotal | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-4" (click)="modal.show('H5', 'RB', Item._IdGame);">{{Item._ReversesHMoney | currency:'USD':true:'1.2-2'}}</div>
         </div>
 
       </div>
@@ -142,9 +142,9 @@
     </div>
   </div>
 
-  <pre>
+  <!--<pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 
@@ -186,9 +186,9 @@
     </div>
 
 
-    <pre>
+    <!--<pre>
   {{modal.response | json}}
-</pre>
+</pre>-->
   </div>
    <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length == 0"> 
      there is nothing to show!

@@ -289,7 +289,7 @@ export class AffiliateService {
 
 
 
-  GetAgentdistributionReport(Agent: number): Observable<any> {
+  GetAgentdistributionReport(Agent: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -421,6 +421,49 @@ export class AffiliateService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
+
+    GetAgentCardReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentCardTransaction', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+      GetBeatTheLineReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": StartDate,
+      "EndDate": EndDate,
+      "IdAgent": IdAgent,
+      "BeatOnly": true,
+      "IdPlayer":999
+    }
+    console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentBeatTheLine', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+
 
 
 

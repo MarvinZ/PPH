@@ -31,10 +31,10 @@
     </div>
   </form>
 
-  <div *ngIf="response?.CashFlowList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+  <div *ngIf="response?.length > 0">
 
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+    <br>
     <table class="table table-hover">
       <thead>
         <tr>

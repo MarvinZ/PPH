@@ -16,6 +16,7 @@ export class NavComponent extends Localization implements OnInit {
 
   logout(): void {
     this.auth.logout();
+    localStorage.clear();
   }
 
   stopViewingAs() {

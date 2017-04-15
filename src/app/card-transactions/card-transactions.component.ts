@@ -62,24 +62,24 @@ export class CardTransactionsComponent extends Localization implements OnInit {
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
 
+
     let t0 = performance.now();
     let t1 = performance.now();
-    this.toastr.error('This query took ' + (t1 - t0) + ' milliseconds..', 'Method not implemented!');
+    this.affiliateService.GetAgentCardReport(this.auth.currentUser.id, startDate, endDate)
+      .subscribe(response => {
+        this.response = response;
+        //    this.totals = this.calculateTotals(response);
+        this.loading = false;
 
-    // this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
-
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
   ExportToExcel() {
-    console.log(this.response.CashFlowList);
+    console.log(this.response);
     try {
       var options = {
         showLabels: true

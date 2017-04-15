@@ -25,10 +25,10 @@ export class HomeComponent extends Localization implements OnInit {
   public tempRes: ContactusResponse;
   public errorMessage: string;
 
-public contactRequestSubmitted: Boolean = false;
+  public contactRequestSubmitted: Boolean = false;
 
-  constructor(public locale: LocaleService, public translation: TranslationService, 
-  private contactService: ContactService, private router: Router, public toastr: ToastsManager, public vcr: ViewContainerRef) {
+  constructor(public locale: LocaleService, public translation: TranslationService,
+    private contactService: ContactService, private router: Router, public toastr: ToastsManager, public vcr: ViewContainerRef) {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
     this.tempRes = new ContactusResponse('', '', '');
@@ -93,5 +93,27 @@ public contactRequestSubmitted: Boolean = false;
       error => this.errorMessage = <any>error);
 
   }
+
+  testSession() {
+    // alert('voy');
+    // localStorage.setItem('whatever', 'something holiiiiis');
+    // localStorage.removeItem('whatever');
+    // alert(localStorage.getItem('whatever'));
+
+   // console.log (     - (new Date(localStorage.getItem('timestamp'))).valueOf() );
+    
+
+
+  }
+
+  showSession() {
+    alert('voy');
+
+    let currentUser = JSON.parse(localStorage.getItem('whatever'));
+    alert(currentUser);
+
+    console.log(currentUser);
+  }
+
 
 }

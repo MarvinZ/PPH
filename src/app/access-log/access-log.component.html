@@ -8,10 +8,7 @@
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
       </div>
       <div class="col-xs-3 form-group">
-        <label>{{'Currency:'| translate:lang  }}</label>
-        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
-            </select>
+ 
 
       </div>
       <div class="col-xs-3 form-group">
@@ -31,10 +28,10 @@
     </div>
   </form>
 
-  <div *ngIf="response?.CashFlowList?.length > 0">
+  <div *ngIf="response?.length > 0">
     <!--<h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>-->
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
-
+    <br>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -46,32 +43,30 @@
           <th></th>
         </tr>
       </thead>
-      <!--<tbody>
-        <tr *ngFor="let PreAff of response.CashFlowList">
+      <tbody>
+        <tr *ngFor="let PreAff of response">
           <td>
-            {{PreAff.Transaction}}
+            {{PreAff.agent}}
           </td>
           <td>
-            {{PreAff.Description}}
+            {{PreAff.LoginDateTime}}
           </td>
           <td>
-            {{PreAff.Amount}}
+            {{PreAff.url}}
           </td>
           <td>
-            {{PreAff.Balance}}
+            {{PreAff.ip}}
           </td>
-          <td>
-            {{PreAff.Date | date}}
-          </td>
+
         </tr>
-      </tbody>-->
+      </tbody>
     </table>
 
   </div>
-
+<!--
   <pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 

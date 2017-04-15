@@ -75,98 +75,11 @@
         </tbody>
     </table>
 
-
-
-    <!--<div *ngIf="response2">
-        <p>My sub-agents</p>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-
-                    <th>{{'Agent' | translate:lang}}</th>
-                    <th>{{'Password' | translate:lang}}</th>
-                    <th>{{'Enable' | translate:lang}}</th>
-                    <th>{{'Name' | translate:lang}}</th>
-                    <th>{{'Email' | translate:lang}}</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let PreAff of response2">
-                    <td>
-                        {{PreAff.Agent}}
-                    </td>
-                    <td>
-                        {{PreAff.Password}}
-                    </td>
-                    <td>
-                        {{PreAff.Enable}}
-                    </td>
-                    <td>
-                        {{PreAff.Name}}
-                    </td>
-                    <td>
-                        {{PreAff.Email }}
-                    </td>
-                    <td>
-                        <button class="btn btn-default">View as</button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger">Disable</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>-->
-
-
-    <div *ngIf="response?.CashFlowList?.length > 0">
-        <h2>{{'Period' | translate:lang}} {{response.From | date: 'MM/dd/yyyy'}} To {{response.To | date: 'MM/dd/yyyy'}}</h2>
-        <p></p>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-
-                    <th>{{'Transaction' | translate:lang}}</th>
-                    <th>{{'Description' | translate:lang}}</th>
-                    <th>{{'Amount' | translate:lang}}</th>
-                    <th>{{'Balance' | translate:lang}}</th>
-                    <th>{{'Date' | translate:lang}}</th>
-                    <th></th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let PreAff of response.CashFlowList">
-                    <td>
-                        {{PreAff.Transaction}}
-                    </td>
-                    <td>
-                        {{PreAff.Description}}
-                    </td>
-                    <td>
-                        {{PreAff.Amount}}
-                    </td>
-                    <td>
-                        {{PreAff.Balance}}
-                    </td>
-                    <td>
-                        {{PreAff.Date | date}}
-                    </td>
-
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <pre>
+    <!--<pre>
   {{response | json}}
-</pre>
+</pre>-->
 
-    <pre>
-  {{response2 | json}}
-</pre>
+
 </div>
 
 <div *ngIf="!response">

@@ -82,7 +82,7 @@ export class MonthlySummaryComponent extends Localization implements OnInit {
 
 
   ExportToExcel() {
-    console.log(this.response.CashFlowList);
+    console.log(this.response);
     try {
       var options = {
         showLabels: true

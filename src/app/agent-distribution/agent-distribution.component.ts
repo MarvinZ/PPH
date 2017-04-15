@@ -50,7 +50,7 @@ export class AgentDistributionComponent extends Localization implements OnInit {
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.affiliateService.GetAgentdistributionReport(this.auth.currentUser.id)
+    this.affiliateService.GetAgentdistributionReport(this.auth.currentUser.userName)
       .subscribe(response => {
         this.response = response;
         //    this.totals = this.calculateTotals(response);
