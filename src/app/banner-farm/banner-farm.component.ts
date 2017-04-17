@@ -13,10 +13,6 @@ import { } from '../../../ng2-file-upload';
 
 
 
-
-// const URL = '/api/';
-// const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-
 // const URL = 'http://localhost:40939/api/Image?site='
 const URL = 'http://panmora.com/twapi/api/image/Upload?site='
 
@@ -73,8 +69,8 @@ export class BannerFarmComponent extends Localization implements OnInit {
   }
 
   public bannerTypes = [
-    { value: 'Static', display: 'Static' },
-    { value: 'Dynamic', display: 'Dynamic' },
+    { value: 'STATIC', display: 'Static' },
+    { value: 'DYNAMIC', display: 'Dynamic' },
 
   ];
 
@@ -85,8 +81,8 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   public books = [
     { value: 'Jazz', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
-    { value: 'ABC', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
-    { value: 'Looselines', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
+    { value: '4', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
+    { value: '1', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
 
   ];
 
@@ -133,6 +129,8 @@ export class BannerFarmComponent extends Localization implements OnInit {
     { url: 'http://media.Betimages.com/media/banner/LooselinesBanners/LL-728x90.gif' }
   ]
   response: any
+  response2: any
+
   errorMessage: string
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
     public vcr: ViewContainerRef, public locale: LocaleService,
@@ -147,81 +145,12 @@ export class BannerFarmComponent extends Localization implements OnInit {
     // }
 
 
-    for (let i = 1; i <= 9; i++) {
-      let ban = new Banner();
-      ban.bannerId = i;
-      ban.bannerTitle = 'ABC-' + i;
-      ban.bannerType = 'Static'
-      ban.book = 'ABC';
-      ban.description = 'Random generated description';
-      ban.language = i % 5 == 0 ? 'English' : 'Español';
-      ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = this.realBannersABC[i - 1].url;
-      ban.targetUrl = 'http://signup.abcislands.ag/abc_signupnew.aspx';
-
-
-      this.banners.push(ban);
-    }
-
-
-    for (let i = 1; i <= 9; i++) {
-      let ban = new Banner();
-      ban.bannerId = 9 + i;
-      ban.bannerTitle = 'Looselines-' + i;
-      ban.bannerType = 'Static'
-      ban.book = 'Looselines';
-      ban.description = 'Random generated description';
-      ban.language = i % 5 == 0 ? 'Español' : 'English';
-      ban.sport = i % 4 == 0 ? 'NFL' : 'NBA';
-      ban.imageUrl = this.realBannerLooselines[i - 1].url;
-      ban.targetUrl = 'http://signup.looselines.ag/ll_Signup.aspx';
-
-
-      this.banners.push(ban);
-    }
-
-
-
-    for (let i = 1; i <= 120; i++) {
-      let ban = new Banner();
-      ban.bannerId = 18 + i;
-      ban.bannerTitle = 'Jazz-' + i;
-      ban.bannerType = 'Static';
-      ban.book = 'Jazz';
-      ban.description = 'Random generated description';
-      ban.language = i % 5 == 0 ? 'English' : 'Español';
-      ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' : i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg' : 'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
-      ban.targetUrl = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
-
-
-      this.banners.push(ban);
-    }
-
-
-    // let ban = new Banner();
-    //   ban.bannerId = 18 + i;
-    //   ban.bannerTitle = 'Jazz-' + i;
-    //   ban.bannerType = 'Static';
-    //   ban.book = 'Jazz';
-    //   ban.description = 'Random generated description';
-    //   ban.language = i % 5 == 0 ? 'English' : 'Español';
-    //   ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-    //   ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' : i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg' : 'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
-    //   ban.targetUrl = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
-
-
-    //   this.banners.push(ban);
-
-
-
-    this.bannersToDisplay = this.banners;
 
     this.sportsfilter = this.sports.slice();
     this.sportsfilter.push({ value: 'All', display: 'All' });
 
     this.booksFilter = this.books.slice();
-    this.booksFilter.push({ value: 'All', display: 'All' });
+    this.booksFilter.push({ value: '0', display: 'All' });
 
     this.languagesFilter = this.languages.slice();
     this.languagesFilter.push({ value: 'All', display: 'All' });
@@ -234,47 +163,39 @@ export class BannerFarmComponent extends Localization implements OnInit {
     this.ddlSports = 'NFL'
     this.ddlLanguages = 'English'
 
-    this.targetUrl = this.books.find(e => e.value == this.ddlBook).url;
+    //  this.targetUrl = this.books.find(e => e.value == this.ddlBook).url;
 
+    this.response = null;
+    this.loading = true;
 
-    if (this.ddlBannerType === 'Dynamic') {
-      alert('holiiiis');
+    let t0 = performance.now();
+    //   this.toastr.error('Not implemented', 'Error!');
+    this.affiliateService.GetBannerInfoByBannerCode('', '', 'abc', 1, '')
+      .subscribe(response => {
+        this.response = response;
+        this.banners = this.response;
+        this.bannersToDisplay = this.banners;
+        this.loading = false;
 
-    }
-
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
   }
 
   goToEditMode(banner?: Banner) {
     if (banner) {
-      this.bannerId = banner.bannerId;
-      this.imgUrl = banner.imageUrl;
-      this.ddlBannerType = this.bannerTypes.find(e => e.display == banner.bannerType).value
-      this.ddlLanguages = this.languages.find(e => e.display == banner.language).value
-      this.ddlBook = this.books.find(e => e.display == banner.book).value
-      this.ddlSports = banner.sport;
+      this.bannerId = banner.IdBanner;
+      this.imgUrl = banner.ImageUrl;
+      this.ddlBannerType = this.bannerTypes.find(e => e.display == banner.BannerType).value
+      // this.ddlLanguages = this.languages.find(e => e.display == banner.LanguageId).value
+      this.ddlBook = this.books.find(e => e.value == banner.IdBook.toString()).value
+      // this.ddlSports = banner.SportId;
       this.showBannerPreview = true;
     }
     this.isEditMode = !this.isEditMode;
   }
-  // go() {
-  //   this.response = null;
-  //   this.loading = true;
-  //   //  let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
-  //   // let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
-
-  //   let t0 = performance.now();
-  //   this.affiliateService.GetWeeklyTransactions(this.auth.currentUser.id, this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day)
-  //     .subscribe(response => {
-  //       this.response = response;
-  //       this.loading = false;
-
-  //       console.log(this.response);
-  //       let t1 = performance.now();
-  //       this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-  //     },
-  //     error => this.errorMessage = <any>error);
-  // }
-
 
   showPreview() {
     if (this.imgUrl.match(/\.(jpeg|jpg|gif|png)$/) != null) {
@@ -304,17 +225,38 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
     if (this.showBannerPreview) {
       let ban = new Banner();
-      ban.bannerId = this.bannerId;
-      ban.bannerTitle = 'A title';
-      ban.bannerType = this.ddlBannerType;
-      ban.book = this.ddlBook;
-      ban.description = 'bla  bla bla bla';
-      ban.language = this.ddlLanguages;
-      ban.sport = this.ddlSports;
-      ban.imageUrl = this.imgUrl;
+      ban.IdBanner = 0;//this.bannerId;
+      ban.BannerCode = 'BAN102';
+      ban.BannerType = this.ddlBannerType;
+      ban.IdBook = 1;//Number(this.ddlBook);
+      ban.BannerDescription = 'bla  bla bla bla';
+      ban.LanguageId = 0;//this.ddlLanguages;
+      ban.SportId = 4;//this.ddlSports;
+      ban.ImageUrl = this.imgUrl;
+      ban.TargetUrl = 'http://academiacostarica.com/';
 
       this.banners.push(ban);
-      this.toastr.success('Your banner has been created!', 'Success');
+
+      let t0 = performance.now();
+
+      this.affiliateService.AddBanner(ban)
+        .subscribe(response => {
+          this.response = response;
+          //  this.totals = this.calculateTotals(response);
+          this.loading = false;
+
+          console.log(this.response);
+          let t1 = performance.now();
+          if (this.response > 0) {
+            this.toastr.success('Your banner has been created!', 'Success');
+          }
+          else {
+            this.toastr.error('ERROR!', '-1');
+          }
+        },
+        error => this.errorMessage = <any>error);
+
+
       this.resetform();
       this.isEditMode = false;
 
@@ -322,6 +264,30 @@ export class BannerFarmComponent extends Localization implements OnInit {
     else {
       this.toastr.error('Please enter a valid image url', 'Error')
     }
+
+    /*
+
+     go() {
+    this.response = null;
+    this.loading = true;
+    let startDate = this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day;
+
+    let t0 = performance.now();
+    let t1 = performance.now();
+    this.affiliateService.GetAccessLogReport(this.auth.currentUser.id, startDate)
+      .subscribe(response => {
+        this.response = response;
+        //  this.totals = this.calculateTotals(response);
+        this.loading = false;
+
+        console.log(this.response);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
+  }
+
+  */
 
   }
 
@@ -339,10 +305,10 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   onChangeBannerTypeFilter() {
     this.loading = true;
-    this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
-      && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
-      && (e.sport === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
-      && (e.book === this.ddlBookFilter || this.ddlBookFilter === 'All'))
+    // this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
+    //   && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
+    //   && (e.sport === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
+    //   && (e.book === this.ddlBookFilter || this.ddlBookFilter === 'All'))
     this.loading = false;
 
 
@@ -399,6 +365,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   }
 }  //end of class
+//////////////////////////////////////////////////////////////////////////////////////////////////
 @Component({
   selector: 'bannerfarm-modal',
   template: `
@@ -435,7 +402,7 @@ export class BannerModalComponent {
   public show(banner: Banner): void {
     this.visible = true;
     console.log(banner);
-    this.code = '<a href="' + banner.targetUrl + '" ><img src="' + banner.imageUrl + '"></a>';
+    this.code = '<a href="' + banner.TargetUrl + '" ><img src="' + banner.ImageUrl + '"></a>';
     setTimeout(() => this.visibleAnimate = true);
   }
 

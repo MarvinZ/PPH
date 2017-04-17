@@ -115,56 +115,56 @@ export class MarketingComponent extends Localization implements OnInit {
     // this.dateModel = { date: { year: year, month: month, day: day } };
 
 
-    for (let i = 1; i <= 9; i++) {
-      let ban = new Banner();
-      ban.bannerId = i;
-      ban.bannerTitle = 'ABC-' + i;
-      ban.bannerType = 'Static'
-      ban.book = 'ABC';
-      ban.description = 'Random generated description';
-      ban.language = i % 5 == 0 ? 'English' : 'Español';
-      ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = this.realBannersABC[i - 1].url;
-      ban.targetUrl = 'http://signup.abcislands.ag/abc_signupnew.aspx';
+    // for (let i = 1; i <= 9; i++) {
+    //   let ban = new Banner();
+    //   ban.bannerId = i;
+    //   ban.bannerTitle = 'ABC-' + i;
+    //   ban.bannerType = 'Static'
+    //   ban.book = 'ABC';
+    //   ban.description = 'Random generated description';
+    //   ban.language = i % 5 == 0 ? 'English' : 'Español';
+    //   ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
+    //   ban.imageUrl = this.realBannersABC[i - 1].url;
+    //   ban.targetUrl = 'http://signup.abcislands.ag/abc_signupnew.aspx';
 
 
-      this.banners.push(ban);
-    }
+    //   this.banners.push(ban);
+    // }
 
 
-    for (let i = 1; i <= 9; i++) {
-      let ban = new Banner();
-      ban.bannerId = 9 + i;
-      ban.bannerTitle = 'Looselines-' + i;
-      ban.bannerType = 'Static'
-      ban.book = 'Looselines';
-      ban.description = 'Random generated description';
-      ban.language = i % 5 == 0 ? 'Español' : 'English';
-      ban.sport = i % 4 == 0 ? 'NFL' : 'NBA';
-      ban.imageUrl = this.realBannerLooselines[i - 1].url;
-      ban.targetUrl = 'http://signup.looselines.ag/ll_Signup.aspx';
+    // for (let i = 1; i <= 9; i++) {
+    //   let ban = new Banner();
+    //   ban.bannerId = 9 + i;
+    //   ban.bannerTitle = 'Looselines-' + i;
+    //   ban.bannerType = 'Static'
+    //   ban.book = 'Looselines';
+    //   ban.description = 'Random generated description';
+    //   ban.language = i % 5 == 0 ? 'Español' : 'English';
+    //   ban.sport = i % 4 == 0 ? 'NFL' : 'NBA';
+    //   ban.imageUrl = this.realBannerLooselines[i - 1].url;
+    //   ban.targetUrl = 'http://signup.looselines.ag/ll_Signup.aspx';
 
 
-      this.banners.push(ban);
-    }
+    //   this.banners.push(ban);
+    // }
 
 
 
-    for (let i = 1; i <= 120; i++) {
-      let ban = new Banner();
-      ban.bannerId = 18 + i;
-      ban.bannerTitle = 'Jazz-' + i;
-      ban.bannerType = 'Static';
-      ban.book = 'Jazz';
-      ban.description = 'Random generated description';
-      ban.language = i % 5 == 0 ? 'English' : 'Español';
-      ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
-      ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' : i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg' : 'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
-      ban.targetUrl = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
+    // for (let i = 1; i <= 120; i++) {
+    //   let ban = new Banner();
+    //   ban.bannerId = 18 + i;
+    //   ban.bannerTitle = 'Jazz-' + i;
+    //   ban.bannerType = 'Static';
+    //   ban.book = 'Jazz';
+    //   ban.description = 'Random generated description';
+    //   ban.language = i % 5 == 0 ? 'English' : 'Español';
+    //   ban.sport = i % 4 == 0 ? 'MLB' : 'NFL';
+    //   ban.imageUrl = i % 2 == 0 ? 'http://www.jazzsports.ag/images/sportsbook/sportsbook-promo.jpg' : i % 3 == 0 ? 'http://www.aestheticsofessex.co.uk/wp-content/uploads/2016/05/Liposuction-2.png' : i % 5 == 0 ? 'http://noahjags.org/wp-content/uploads/2014/04/Volleyball-banner.jpg' : 'http://questgarden.com/97/47/3/100301103814/images/Olympic%20Truce%20Emblem.jpg';
+    //   ban.targetUrl = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
 
 
-      this.banners.push(ban);
-    }
+    //   this.banners.push(ban);
+    // }
 
     this.bannersToDisplay = this.banners;
 
@@ -185,12 +185,12 @@ export class MarketingComponent extends Localization implements OnInit {
 
 
   onChangeBannerTypeFilter() {
-    this.loading = true;
-    this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
-      && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
-      && (e.sport === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
-      && (e.book === this.ddlBookFilter || this.ddlBookFilter === 'All'))
-    this.loading = false;
+    // this.loading = true;
+    // this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
+    //   && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
+    //   && (e.sport === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
+    //   && (e.book === this.ddlBookFilter || this.ddlBookFilter === 'All'))
+    // this.loading = false;
 
 
   }
@@ -245,7 +245,7 @@ export class MarketingModalComponent {
   public show(banner: Banner): void {
     this.visible = true;
     console.log(banner);
-    this.code = '<a href="' + banner.targetUrl + '" ><img src="' + banner.imageUrl + '"></a>';
+    this.code = '<a href="' + banner.TargetUrl + '" ><img src="' + banner.ImageUrl + '"></a>';
     setTimeout(() => this.visibleAnimate = true);
   }
 
