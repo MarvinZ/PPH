@@ -1,10 +1,11 @@
 import { Component, ViewContainerRef, OnInit, ViewChild } from '@angular/core';
 import { ReportResponse } from './../models/api';
 import { AffiliateService } from './../services/affiliate.service'
+import { AuthService } from '../user/auth.service'
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
-import { AuthService } from '../user/auth.service'
+
 import { Router } from '@angular/router'
 import { Banner } from './../models/banner';
 import { FileUploader } from 'ng2-file-upload';
@@ -47,7 +48,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
   ddlLanguages: string = 'English'
 
   ddlBannerTypeFilter: string = 'All'
-  ddlBookFilter: string = 'All'
+  ddlBookFilter: string = '0'
   ddlSportsFilter: string = 'All'
   ddlLanguagesFilter: string = 'All'
 
@@ -75,12 +76,12 @@ export class BannerFarmComponent extends Localization implements OnInit {
   ];
 
   public languages = [
-    { value: 'English', display: 'English' },
-    { value: 'Español', display: 'Español' }
+    { value: '0', display: 'English' },
+    { value: '1', display: 'Español' }
   ];
 
   public books = [
-    { value: 'Jazz', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
+    { value: '3', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
     { value: '4', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
     { value: '1', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
 
@@ -159,7 +160,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
     this.bannerTypesFilter.push({ value: 'All', display: 'All' });
 
     this.ddlBannerType = 'Static'
-    this.ddlBook = 'Jazz'
+    this.ddlBook = '0'
     this.ddlSports = 'NFL'
     this.ddlLanguages = 'English'
 
@@ -230,8 +231,8 @@ export class BannerFarmComponent extends Localization implements OnInit {
       ban.BannerType = this.ddlBannerType;
       ban.IdBook = 1;//Number(this.ddlBook);
       ban.BannerDescription = 'bla  bla bla bla';
-      ban.LanguageId = 0;//this.ddlLanguages;
-      ban.SportId = 4;//this.ddlSports;
+      ban.IdLanguage = Number(this.ddlLanguages);
+      ban.SportId = this.ddlSports;
       ban.ImageUrl = this.imgUrl;
       ban.TargetUrl = 'http://academiacostarica.com/';
 
@@ -263,38 +264,11 @@ export class BannerFarmComponent extends Localization implements OnInit {
     }
     else {
       this.toastr.error('Please enter a valid image url', 'Error')
-    }
-
-    /*
-
-     go() {
-    this.response = null;
-    this.loading = true;
-    let startDate = this.dateModel.date.year + '-' + this.dateModel.date.month + '-' + this.dateModel.date.day;
-
-    let t0 = performance.now();
-    let t1 = performance.now();
-    this.affiliateService.GetAccessLogReport(this.auth.currentUser.id, startDate)
-      .subscribe(response => {
-        this.response = response;
-        //  this.totals = this.calculateTotals(response);
-        this.loading = false;
-
-        console.log(this.response);
-        let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-      },
-      error => this.errorMessage = <any>error);
-  }
-
-  */
-
+    } 
   }
 
   goBack() {
-
-    this.resetform()
-
+    this.resetform();
     this.isEditMode = false;
   }
 
@@ -305,10 +279,10 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   onChangeBannerTypeFilter() {
     this.loading = true;
-    // this.bannersToDisplay = this.banners.filter(e => (e.bannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
-    //   && (e.language === this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
-    //   && (e.sport === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
-    //   && (e.book === this.ddlBookFilter || this.ddlBookFilter === 'All'))
+    this.bannersToDisplay = this.banners.filter(e => (e.BannerType === this.ddlBannerTypeFilter || this.ddlBannerTypeFilter === 'All')
+      && (e.IdLanguage == +this.ddlLanguagesFilter || this.ddlLanguagesFilter === 'All')
+      && (e.SportId === this.ddlSportsFilter || this.ddlSportsFilter === 'All')
+      && (e.IdBook == +this.ddlBookFilter || this.ddlBookFilter === '0'))
     this.loading = false;
 
 
@@ -318,7 +292,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
   clearFilters() {
     this.bannersToDisplay = this.banners;
     this.ddlBannerTypeFilter = 'All'
-    this.ddlBookFilter = 'All'
+    this.ddlBookFilter = '0'
     this.ddlSportsFilter = 'All'
     this.ddlLanguagesFilter = 'All'
   }
@@ -362,6 +336,19 @@ export class BannerFarmComponent extends Localization implements OnInit {
     this.uploader.options.url = URL + this.ddlBook;
     this.targetUrl = this.books.find(e => e.value == this.ddlBook).url;
     // console.log(this.uploader.options.url);
+
+  }
+
+
+  getLanguageName(id: string) {
+    let lang = this.languages.find(e => e.value == id);
+    if (lang) {
+      return lang.display;
+    }
+    else {
+      return 'Undefined';
+
+    }
 
   }
 }  //end of class
@@ -410,4 +397,6 @@ export class BannerModalComponent {
     this.visibleAnimate = false;
     setTimeout(() => this.visible = false, 300);
   }
+
+
 }

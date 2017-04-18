@@ -1,5 +1,8 @@
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {OnInit, OnDestroy, Component} from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { OnInit, OnDestroy, Component } from '@angular/core';
+
+import { AffiliateService } from './../services/affiliate.service'
+import { AuthService } from '../user/auth.service'
 
 @Component({
   selector: 'app-ad-center',
@@ -8,24 +11,43 @@ import {OnInit, OnDestroy, Component} from '@angular/core';
 })
 export class AdCenterComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  BannerCode: string;
+  Affiliatecode: string;
+  Site: string;
+
+  response: any
+  errorMessage: string
+
+  constructor(private activatedRoute: ActivatedRoute, private affiliateService: AffiliateService, private auth: AuthService) { }
 
   ngOnInit() {
     // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
-        let site = params['site']; //bannerId ;param1=value1;param2=value2
-        console.log(site);
-        this.goToSite(site);
-      });
+      this.Site = params['site']; //bannerId ;param1=value1;param2=value2
+      this.BannerCode = params['bannercode']; //bannerId ;param1=value1;param2=value2
+      this.Affiliatecode = params['affiliatecode']; //bannerId ;param1=value1;param2=value2
 
-      //this.activatedRoute.queryParams
+
+
+      console.log(this.Site);
+      this.goToSite(this.Site);
+    });
+
+    //this.activatedRoute.queryParams
   }
 
 
   goToSite(site: string) {
-  //  alert(site); //add to counter
+    //  alert(site); //add to counter
     switch (site) {
       case 'jazz': {
+        this.affiliateService.AddBannerClick(this.BannerCode, this.Affiliatecode)
+          .subscribe(response => {
+            this.response = response;
+
+            // console.log(this.response);
+          },
+          error => this.errorMessage = <any>error);
         window.location.href = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
         break;
       }
@@ -39,6 +61,8 @@ export class AdCenterComponent implements OnInit {
       }
       default: {
         //statements; 
+        window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
+
         break;
       }
     }

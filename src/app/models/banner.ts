@@ -7,8 +7,8 @@ export class Banner {
     public BannerCode: string;
     public IdBook: number;
     public BannerType: string;
-    public LanguageId: number;
-    public SportId: number;
+    public IdLanguage: number;
+    public SportId: string;
     public ImageUrl: string;
     public TargetUrl: string;
     public BannerDescription: string;

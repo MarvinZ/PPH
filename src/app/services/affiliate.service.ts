@@ -482,7 +482,7 @@ export class AffiliateService {
       "LanguageId": banner.LanguageId,
       "ImageUrl": banner.ImageUrl,
       "TargetUrl": banner.TargetUrl,
-      "Description": banner.Description,
+      "Description": banner.BannerDescription,
       "Width": banner.Width,
       "Height": banner.Height
     }
@@ -648,6 +648,126 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
+
+
+
+
+
+
+  GetDistributorAgentsAndPlayersDetails(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetDistributorAgentsAndPlayersDetails', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+
+
+  GetDistributorAgentsAndPlayers(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetDistributorAgentsAndPlayers', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetAgentPlayersWithDetails(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAgentPlayersWithDetails', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+  GetAgentPlayer(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAgentPlayer', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetAgenthierarchy(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string, Agent:string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor,
+      "Agent": Agent
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAgenthierarchy', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
 
 
 }

@@ -101,8 +101,8 @@
           <td>{{banner.BannerCode}}</td>
           <td>{{banner.IdBook}}</td>
           <td>{{banner.BannerType}}</td>
-          <td>LANGUAGE</td>
-          <td>SPORT</td>
+          <td>{{getLanguageName(banner.IdLanguage)}}</td>
+          <td>{{banner.SportId}}</td>
 
           <td><img src="{{banner.ImageUrl}}" class="imagePreview"></td>
           <td><button class="btn btn-default" (click)="modal.show(banner)"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>

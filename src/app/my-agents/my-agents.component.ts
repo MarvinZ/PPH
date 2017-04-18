@@ -38,7 +38,19 @@ export class MyAgentsComponent extends Localization implements OnInit {
     }
     this.loading = true;
     let t0 = performance.now();
-    this.affiliateService.GetMyAgents(this.auth.currentUser.id)
+    // this.affiliateService.GetMyAgents(this.auth.currentUser.id)
+    //   .subscribe(response => {
+    //     this.response = response;
+    //     this.loading = false;
+
+    //     console.log(this.response);
+    //     let t1 = performance.now();
+    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+    //   },
+    //   error => this.errorMessage = <any>error);
+
+      
+          this.affiliateService.GetAgenthierarchy('', '', '', null, '','test1')
       .subscribe(response => {
         this.response = response;
         this.loading = false;
@@ -48,6 +60,7 @@ export class MyAgentsComponent extends Localization implements OnInit {
         this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
+      
 
   }
 
