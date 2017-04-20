@@ -19,13 +19,11 @@
   </div>
 </marketing-modal>
 
-
 <div *ngIf="banners">
-
+  <h2>{{'My Banners' | translate:lang }}</h2>
+  <br>
   <div class="row">
     <label>{{'Filters:'| translate:lang  }}</label>
-
-
   </div>
 
   <div class="row">
@@ -64,7 +62,7 @@
   <div class="row">
     Total banners found: {{bannersToDisplay.length}}
   </div>
-
+  <br>
   <div *ngIf="loading">
     <app-loading> </app-loading>
   </div>
@@ -80,8 +78,8 @@
         <th>Sport</th>
         <th>Preview</th>
         <th>Get the code!</th>
-
-
+        <th>Total clicks</th>
+        <th>Total signups</th>
       </tr>
 
       <tr *ngFor="let banner of bannersToDisplay;">
@@ -93,13 +91,17 @@
 
         <td><img src="{{banner.ImageUrl}}" class="imagePreview"></td>
         <td><button class="btn btn-default" (click)="modal.show(banner)"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>
-
+        <th>999</th>
+        <th>999</th>
       </tr>
     </table>
   </div>
 
 </div>
-
+<div *ngIf="!banners">
+  <p> We didnt find any banner with clicks :(
+  </p>
+</div>
 <pre>
   {{banners | json}}
 </pre>

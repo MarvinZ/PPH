@@ -66,6 +66,8 @@ import { PlayerTotalsComponent } from './player-totals/player-totals.component';
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent, MarketingModalComponent } from './marketing/marketing.component';
+import { MyBannersComponent, MyBannersModalComponent } from './my-banners/my-banners.component';
+
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { TermsOfServicePphComponent } from './terms-of-service-pph/terms-of-service-pph.component';
@@ -208,7 +210,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     AgentPaymentsComponent,
     BannerFarmComponent, BannerModalComponent,
     AdCenterComponent,
-    MyAgentsComponent
+    MyAgentsComponent,
+    MyBannersComponent, MyBannersModalComponent
   ],
   imports: [
     AlertModule.forRoot(),

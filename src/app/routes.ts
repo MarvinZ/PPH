@@ -29,6 +29,7 @@ import { HoldPercentageComponent } from './hold-percentage/hold-percentage.compo
 import { PlayerOpenBetsComponent } from './player-open-bets/player-open-bets.component';
 import { PlayerHistoryComponent } from './player-history/player-history.component';
 import { MarketingComponent } from './marketing/marketing.component';
+import { MyBannersComponent, MyBannersModalComponent } from './my-banners/my-banners.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignUpPphComponent } from './sign-up-pph/sign-up-pph.component';
 import { DemoComponent } from './demo/demo.component';
@@ -108,6 +109,7 @@ export const appRoutes: Routes = [
     { path: 'crossIP', component: CrossIpComponent },
     { path: 'topPlayers', component: TopPlayersComponent },
     { path: 'marketing', component: MarketingComponent },
+    { path: 'myBanners', component: MyBannersComponent },
     { path: 'webVsPhone', component: WebVsPhoneComponent },
     { path: 'monthlySummary', component: MonthlySummaryComponent },
     { path: 'settledFigures', component: SettledFiguresComponent },

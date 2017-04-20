@@ -28,17 +28,25 @@ export class AdminLoginComponent {
 
   login(formValues) {
     this.loading = true;
-    this.authService.currentUser = {
-      id: 999,
-      userName: 'Admin',
-      firstName: 'Admin',
-      lastName: 'Admin',
-      userType: 'Admin',
-      selectedSubagent: 0,
-      originalId: 999,
-      bookId: 1
+    if (formValues.userName.toUpperCase() == 'TEST') {
+      this.authService.currentUser = {
+        id: 999,
+        userName: 'Admin',
+        firstName: 'Admin',
+        lastName: 'Admin',
+        userType: 'Admin',
+        selectedSubagent: 0,
+        originalId: 999,
+        bookId: 1,
+        affCode: 'TESTCODE'
+      }
+      this.router.navigate(['preAffiliates']);
     }
-    this.router.navigate(['preAffiliates']);
+    else {
+      this.loading = false;
+      this.showInvalidCredentials = true;
+    }
+
 
 
     //login admin user

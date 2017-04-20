@@ -11,13 +11,13 @@ import { Banner } from './../models/banner';
 
 
 @Component({
-  selector: 'app-marketing',
-  templateUrl: './marketing.component.html',
-  styleUrls: ['./marketing.component.css']
+  selector: 'app-my-banners',
+  templateUrl: './my-banners.component.html',
+  styleUrls: ['./my-banners.component.css']
 })
-export class MarketingComponent extends Localization implements OnInit {
-  @ViewChild('MarketingModalComponent')
-  public readonly modal: MarketingModalComponent
+export class MyBannersComponent extends Localization implements OnInit {
+  @ViewChild('MyBannersModalComponent')
+  public readonly modal: MyBannersModalComponent
   private myDatePickerOptions: IMyOptions = {
     // other options...
     dateFormat: 'yyyy-mm-dd',
@@ -69,7 +69,7 @@ export class MarketingComponent extends Localization implements OnInit {
     { value: 'NHL', display: 'NHL' }
   ];
 
-
+  
   public banners: Banner[] = [];
   public bannersToDisplay: Banner[] = [];
   response: any
@@ -106,7 +106,7 @@ export class MarketingComponent extends Localization implements OnInit {
 
     let t0 = performance.now();
     //   this.toastr.error('Not implemented', 'Error!');
-    this.affiliateService.GetBannerInfoByBannerCode('', '', 'abc', 1, '')
+    this.affiliateService.GetAllBannersWithStatisticsByAffiliate('', '', 'abc', 1, '') //GetAllBannersWithStatisticsByAffiliate
       .subscribe(response => {
         this.response = response;
         this.banners = this.response;
@@ -118,7 +118,6 @@ export class MarketingComponent extends Localization implements OnInit {
         this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
-
 
   }
 
@@ -158,7 +157,7 @@ export class MarketingComponent extends Localization implements OnInit {
 
 
 @Component({
-  selector: 'marketing-modal',
+  selector: 'my-banner-modal',
   template: `
   <div (click)="hide()" class="modal fade" tabindex="-1" [ngClass]="{'in': visibleAnimate}"
        [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}">
@@ -178,7 +177,7 @@ export class MarketingComponent extends Localization implements OnInit {
   </div>
   `
 })
-export class MarketingModalComponent {
+export class MyBannersModalComponent {
 
   constructor (private auth: AuthService) {
 

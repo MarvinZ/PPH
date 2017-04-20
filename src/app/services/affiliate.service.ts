@@ -479,7 +479,7 @@ export class AffiliateService {
       "IdBook": banner.IdBook,
       "SportId": banner.SportId,
       "BannerType": banner.BannerType,
-      "LanguageId": banner.LanguageId,
+      "LanguageId": banner.IdLanguage,
       "ImageUrl": banner.ImageUrl,
       "TargetUrl": banner.TargetUrl,
       "Description": banner.BannerDescription,

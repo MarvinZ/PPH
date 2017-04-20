@@ -50,7 +50,7 @@ export class MyAgentsComponent extends Localization implements OnInit {
     //   error => this.errorMessage = <any>error);
 
       
-          this.affiliateService.GetAgenthierarchy('', '', '', null, '','test1')
+          this.affiliateService.GetAgenthierarchy('', '', '', null, '', this.auth.currentUser.userName)
       .subscribe(response => {
         this.response = response;
         this.loading = false;

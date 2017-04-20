@@ -262,7 +262,20 @@ authorized-->
         </a>
       </li>-->
 
-      <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Marketing' | translate:lang }}</a></li>
+      <li *ngIf="auth.isAuthenticated() ">
+        <a>
+          <div dropdown class="dropdown">
+            <div dropdownToggle class="dropdown-toggle">
+              {{'Marketing' | translate:lang}}
+              <span class="caret"></span>
+            </div>
+            <div dropdownMenu class="dropdown-menu">
+              <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Banner Farm' | translate:lang }}</a></li>
+              <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/myBanners']" routerLinkActive="active">{{ 'My Banners' | translate:lang }}</a></li>
+            </div>
+          </div>
+        </a>
+      </li>
 
 
     </ul>
@@ -276,7 +289,6 @@ authorized-->
           <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
         </li>
       </ul>
-
 
 
     </div>
@@ -300,8 +312,6 @@ authorized-->
       <button class="btn btn-danger" (click)="stopViewingAs()"><span class="glyphicon glyphicon-remove-sign"></span> {{' Stop'| translate:lang}}</button>
 
     </div>
-
-
 
 
   </div>

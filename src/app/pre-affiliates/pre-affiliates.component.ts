@@ -105,7 +105,6 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
         }
         else {
           this.toastr.error('The agent has not been created!', 'Error');
-
         }
 
 
