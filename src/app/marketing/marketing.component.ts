@@ -180,7 +180,7 @@ export class MarketingComponent extends Localization implements OnInit {
 })
 export class MarketingModalComponent {
 
-  constructor (private auth: AuthService) {
+  constructor(private auth: AuthService) {
 
   }
 
@@ -203,7 +203,8 @@ export class MarketingModalComponent {
   public show(banner: Banner): void {
     this.visible = true;
     console.log(banner);
-    this.code = '<a href="' + /*banner.TargetUrl*/ 'http://signup.looselines.ag/ll_Signup.aspx?AffCode='+this.auth.currentUser.affCode+'&BannerCode='+banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
+    this.code = '<a href="http://localhost:4200/adcenter;book=' + banner.IdBook + ';bannercode=' + this.auth.currentUser.affCode + ';affiliatecode=' + banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
+    // + /*banner.TargetUrl*/ 'http://signup.looselines.ag/ll_Signup.aspx?AffCode='+this.auth.currentUser.affCode+'&BannerCode='+banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
     setTimeout(() => this.visibleAnimate = true);
   }
 
