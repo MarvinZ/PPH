@@ -12,5 +12,8 @@
     color:whitesmoke;
     display: inline-block;
 }
+.navbar {
+    margin-bottom: 0;
+}
 
 
