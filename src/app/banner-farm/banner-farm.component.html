@@ -98,16 +98,16 @@
         </tr>
 
         <tr *ngFor="let banner of bannersToDisplay;">
-          <td>{{banner.bannerTitle}}</td>
-          <td>{{banner.book}}</td>
-          <td>{{banner.bannerType}}</td>
-          <td>{{banner.language}}</td>
-          <td>{{banner.sport}}</td>
+          <td>{{banner.BannerCode}}</td>
+          <td>{{banner.IdBook}}</td>
+          <td>{{banner.BannerType}}</td>
+          <td>{{getLanguageName(banner.IdLanguage)}}</td>
+          <td>{{banner.SportId}}</td>
 
-          <td><img src="{{banner.imageUrl}}" class="imagePreview"></td>
+          <td><img src="{{banner.ImageUrl}}" class="imagePreview"></td>
           <td><button class="btn btn-default" (click)="modal.show(banner)"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>
           <td>
-            <button class="btn btn-default" (click)="goToEditMode(banner)" [disabled]="banner.bannerType === 'Static'"> <span class="glyphicon glyphicon-picture"></span>
+            <button class="btn btn-default" (click)="goToEditMode(banner)" [disabled]="banner.BannerType === 'STATIC'"> <span class="glyphicon glyphicon-picture"></span>
  {{'Modify' | translate:lang}} </button>
             <td><button class="btn btn-danger" (click)="deactivateBanner()"> <span class="glyphicon glyphicon-remove-sign"></span>
  {{'Deactivate' | translate:lang}} </button>
@@ -316,5 +316,10 @@
   <pre>
   {{response | json}}
 </pre>
+
+  <!--<pre>
+  {{response2 | json}}
+</pre>-->
+
 
 </div>

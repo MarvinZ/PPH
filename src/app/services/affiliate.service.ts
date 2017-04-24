@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { ReportResponse } from './../models/api';
+import { Banner } from './../models/banner';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -16,6 +17,9 @@ export class AffiliateService {
   _url: string = AppSettings.API_ENDPOINT + 'temp/';
 
   _url2: string = AppSettings.API_ENDPOINT + 'AgentReports/';
+
+  _url3: string = AppSettings.API_ENDPOINT + 'AfsBanner/';
+
 
   constructor(private _http: Http) { }
 
@@ -56,7 +60,8 @@ export class AffiliateService {
   //POST api/temp/InsertPreAffiliate
 
   InsertPreAffiliate(FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
-    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string): Observable<any> {
+    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string,
+    IdBook: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -75,7 +80,8 @@ export class AffiliateService {
       "BusinessName": BusinessName,
       "LanguageId": LanguageId,
       "AgentName": AgentName,
-      "AgentPassword": AgentPassword
+      "AgentPassword": AgentPassword,
+      "IdBook":IdBook
     }
 
     console.log(payload);
@@ -87,8 +93,41 @@ export class AffiliateService {
 
   }
 
-  //TO do
+ 
 
+  //POST api/temp/InsertPreAffiliate
+
+  RejectPreAffiliate(id: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+
+    let payload = {
+      "Id": id,
+      "FirstName":'' ,
+      "LastName": '',
+      "Email": '',
+      "CountryName": '',
+      "CountryDialCode": '',
+      "Address1": '',
+      "Address2": '',
+      "Phone": '',
+      "City": '',
+      "ZipCode": '',
+      "BusinessName": '',
+      "LanguageId": '',
+      "AgentName": '',
+      "AgentPassword": '',
+      "IdBook":''
+    }
+
+    console.log(payload);
+
+    return this._http.post(this._url + "RejectPreAffiliate", payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+
+
+  }
   //GET api/temp/GetPreaffiliates
   GetPreaffiliates(): Observable<any> {
     return this._http.get(this._url + "GetPreaffiliates")
@@ -404,7 +443,7 @@ export class AffiliateService {
   }
 
 
-    GetAccessLogReport(IdAgent: number, StartDate: string): Observable<any> {
+  GetAccessLogReport(IdAgent: number, StartDate: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -422,7 +461,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-    GetAgentCardReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+  GetAgentCardReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -441,7 +480,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-      GetBeatTheLineReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
+  GetBeatTheLineReport(IdAgent: number, StartDate: string, EndDate: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -453,7 +492,7 @@ export class AffiliateService {
       "EndDate": EndDate,
       "IdAgent": IdAgent,
       "BeatOnly": true,
-      "IdPlayer":999
+      "IdPlayer": 999
     }
     console.log(payload);
 
@@ -462,9 +501,308 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
+  //banners
+  AddBanner(banner: Banner): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": banner.BannerCode,
+      "IdBook": banner.IdBook,
+      "SportId": banner.SportId,
+      "BannerType": banner.BannerType,
+      "LanguageId": banner.IdLanguage,
+      "ImageUrl": banner.ImageUrl,
+      "TargetUrl": banner.TargetUrl,
+      "Description": banner.BannerDescription,
+      "Width": banner.Width,
+      "Height": banner.Height
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'AddBanner', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
 
 
 
+  AddBannerClick(BannerCode: string, AffilaiteCode: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'AddBannerClick', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+    GetAllBannersWithStatisticsByAffiliate(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAllBannersWithStatisticsByAffiliate', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+    GetAllBannersWithStatisticsByBanner(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAllBannersWithStatisticsByBanner', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+      GetAllBannersWithStatistics(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAllBannersWithStatistics', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+      GetBannerInfoByBook(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetBannerInfoByBook', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetBannerInfoByBannerCode(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetBannerInfoByBannerCode', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+  GetDistribuitorAgentsAndPlayers(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetDistribuitorAgentsAndPlayers', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+
+
+
+
+
+  GetDistributorAgentsAndPlayersDetails(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetDistributorAgentsAndPlayersDetails', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+
+
+  GetDistributorAgentsAndPlayers(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetDistributorAgentsAndPlayers', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetAgentPlayersWithDetails(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAgentPlayersWithDetails', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+  GetAgentPlayer(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAgentPlayer', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+  GetAgenthierarchy(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distribuitor: string, Agent:string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": BannerCode,
+      "AffilaiteCode": AffilaiteCode,
+      "book": book,
+      "idbook": idbook, 
+      "Distribuitor": Distribuitor,
+      "Agent": Agent
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetAgenthierarchy', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
 
 
 }

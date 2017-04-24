@@ -83,13 +83,13 @@ footer.frontend-footer {
 /* FRONTEND STYLES ENDS HERE */
 
 /* Fade transition */
- .animateme div {
+ /*.animateme div {
     animation-duration: .75s;
     opacity: 0;
     animation-name: fadeIn;
     animation-fill-mode: forwards;
     transition: transform .75s ease;
-}
+}*/
 @keyframes fadeIn {
   from {
     opacity: 0;

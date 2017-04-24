@@ -21,6 +21,15 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
   loading: boolean = false;
   showDetails: Boolean = false;
 
+
+  public books = [
+    { value: '6', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
+    { value: '4', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
+    { value: '1', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
+
+  ];
+  ddlBook: string = '1';
+
   preAffiliate = {
     "Id": 0,
     "FirstName": "",
@@ -36,9 +45,11 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
     "BusinessName": "",
     "LanguageId": 1,
     "AgentName": "",
-    "AgentPassword": ""
+    "AgentPassword": "",
+    "IdBook": ""
   };
 
+  bookImg: string = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
 
   response: any
   errorMessage: string
@@ -78,7 +89,25 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
     this.showDetails = false;
   }
   reject() {
-    alert('rejected!!!!!');
+    alert('here we go!!!!!!');
+    console.log(this.preAffiliate.Id);
+
+
+    this.affiliateService.RejectPreAffiliate(this.preAffiliate.Id.toString()).subscribe(val => {
+      // needs state or province
+      console.log(val);
+      if (val) {
+        this.toastr.success('The pre affiliate applications has been rejected!', 'Success');
+        this.getData();
+        //this.closeDetails();
+
+      }
+      else {
+        this.toastr.error('The application has not been rejected!', 'Error');
+      }
+
+
+    });
     this.showDetails = false;
   }
 
@@ -105,7 +134,6 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
         }
         else {
           this.toastr.error('The agent has not been created!', 'Error');
-
         }
 
 
@@ -118,6 +146,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
     try {
       this.showDetails = true;
       this.preAffiliate = info;
+      this.ddlBook = this.preAffiliate.Id.toString();
 
 
       // $cookies.putObject("affPre", info);
@@ -129,7 +158,28 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
 
   }
 
-
+  changeBook(book) {
+    // alert(book);
+    switch (book) {
+      case 'Jazz': {
+        this.bookImg = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
+        break;
+      }
+      case 'ABC': {
+        this.bookImg = 'http://www.abcislands.ag/img/logo.png';
+        break;
+      }
+      case 'Looselines': {
+        this.bookImg = 'http://www.looselines.ag/img/logo.png';
+        break;
+      }
+      default: {
+        this.bookImg = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
+        break;
+      }
+    }
+ 
+  }
 
 
 

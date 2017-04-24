@@ -6,5 +6,6 @@ export class IUser {
   userType: string
   selectedSubagent: number
   originalId: number
-  bookId:number
+  bookId: number
+  affCode: string
 }

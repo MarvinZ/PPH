@@ -3,17 +3,17 @@
 
 export class Banner {
 
-    public bannerId?: number;
-    public bannerTitle: string;
-    public book: string;
-    public bannerType: string;
-    public language: string;
-    public sport: string;
-    public imageUrl: string;
-    public targetUrl: string;
-    public description: string;
-    public height?: number;
-    public width?: number;
+    public IdBanner?: number;
+    public BannerCode: string;
+    public IdBook: number;
+    public BannerType: string;
+    public IdLanguage: number;
+    public SportId: string;
+    public ImageUrl: string;
+    public TargetUrl: string;
+    public BannerDescription: string;
+    public Height?: number;
+    public Width?: number;
 
     constructor() { }
 }

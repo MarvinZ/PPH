@@ -46,7 +46,8 @@ export class LoginComponent {
           userType: 'PPH',
           selectedSubagent: 0,
           originalId: this.tempRes.ResponseAgentInfo.IdAgent,
-          bookId: 1
+          bookId: 1,
+          affCode:'TESTCODE'
         }
         localStorage.setItem('agentId',  this.authService.currentUser.id.toString());
         localStorage.setItem('userName',  this.authService.currentUser.userName);

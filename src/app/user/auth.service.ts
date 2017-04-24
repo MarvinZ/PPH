@@ -72,7 +72,9 @@ export class AuthService {
           userType: localStorage.getItem('userType'),
           selectedSubagent: 0,
           originalId: Number(localStorage.getItem('agentId')),
-          bookId: 1
+          bookId: 1,
+          affCode: 'TESTCODE'
+
         }
       }
 

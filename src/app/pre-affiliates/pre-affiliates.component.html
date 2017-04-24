@@ -43,138 +43,147 @@
       </table>
 
     </div>
-
-    <div *ngIf="!response?.length > 0">
-      <p>
-        There are no new affiliate applications :( 
-      </p>
-    </div>
-
-
-    <div *ngIf="showDetails">
+  </div>
+  <div *ngIf="!loading && !response?.length > 0">
+    <p>
+      There are no new affiliate applications :(
+    </p>
+  </div>
 
 
-      <h3>Preaffiliate Details</h3>
-
-      <form #signupForm="ngForm" (ngSubmit)="CreateAgent(signupForm.value)" autocomplete="off" novalidate>
-
-        <div class="row">
-          <div class="form-group col-xs-6">
-            <label for="name">{{'First name:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.name?.invalid && (signupForm.controls.name?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.FirstName" name="name" required id="name" type="text" class="form-control" placeholder="Name..."
-            />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="lastname">{{'Last name:' | translate:lang}} </label>
-            <em *ngIf="signupForm.controls.lastname?.invalid && (signupForm.controls.lastname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.LastName" name="lastname" required id="lastname" type="text" class="form-control" placeholder="Lastname..."
-            />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="email">{{'Email:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.email?.invalid && (signupForm.controls.email?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.Email" name="email" required id="email" type="email" class="form-control" placeholder="email..."
-            />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="countryName">{{'Country:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.countryName?.invalid && (signupForm.controls.countryName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.CountryName" name="countryName" required id="countryName" type="text" class="form-control"
-              placeholder="country Name..." />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="businessName">{{'Business name:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.businessName?.invalid && (signupForm.controls.businessName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.BusinessName" name="businessName" required id="businessName" type="text" class="form-control"
-              placeholder="Business Name..." />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="addressLine1">{{'Address line 1:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.addressLine1?.invalid && (signupForm.controls.addressLine1?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.Address1" name="addressLine1" required id="addressLine1" type="text" class="form-control"
-              placeholder="Address Line 1..." />
-          </div>
+  <div *ngIf="showDetails">
 
 
-          <div class="form-group col-xs-6">
-            <label for="addressLine2">{{'Address line 2:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.addressLine2?.invalid && (signupForm.controls.addressLine2?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.Address2" name="addressLine2" required id="addressLine2" type="text" class="form-control"
-              placeholder="Address Line 2..." />
-          </div>
+    <h3>Preaffiliate Details</h3>
 
-          <div class="form-group col-xs-6">
-            <label for="city">{{'City:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.city?.invalid && (signupForm.controls.city?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.City" name="city" required id="city" type="text" class="form-control" placeholder="Address Line 2..."
-            />
-          </div>
+    <form #signupForm="ngForm" (ngSubmit)="CreateAgent(signupForm.value)" autocomplete="off" novalidate>
+
+      <div class="row">
+        <div class="form-group col-xs-6">
+          <label for="name">{{'First name:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.name?.invalid && (signupForm.controls.name?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.FirstName" name="name" required id="name" type="text" class="form-control" placeholder="Name..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="lastname">{{'Last name:' | translate:lang}} </label>
+          <em *ngIf="signupForm.controls.lastname?.invalid && (signupForm.controls.lastname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.LastName" name="lastname" required id="lastname" type="text" class="form-control" placeholder="Lastname..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="email">{{'Email:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.email?.invalid && (signupForm.controls.email?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.Email" name="email" required id="email" type="email" class="form-control" placeholder="email..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="countryName">{{'Country:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.countryName?.invalid && (signupForm.controls.countryName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.CountryName" name="countryName" required id="countryName" type="text" class="form-control"
+            placeholder="country Name..." />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="businessName">{{'Business name:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.businessName?.invalid && (signupForm.controls.businessName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.BusinessName" name="businessName" required id="businessName" type="text" class="form-control"
+            placeholder="Business Name..." />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="addressLine1">{{'Address line 1:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.addressLine1?.invalid && (signupForm.controls.addressLine1?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.Address1" name="addressLine1" required id="addressLine1" type="text" class="form-control"
+            placeholder="Address Line 1..." />
+        </div>
 
 
-          <div class="form-group col-xs-6">
-            <label for="zip">{{'Zip:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.zip?.invalid && (signupForm.controls.zip?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.ZipCode" name="zip" required id="zip" type="text" class="form-control" placeholder="Address Line 2..."
-            />
-          </div>
+        <div class="form-group col-xs-6">
+          <label for="addressLine2">{{'Address line 2:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.addressLine2?.invalid && (signupForm.controls.addressLine2?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.Address2" name="addressLine2" required id="addressLine2" type="text" class="form-control"
+            placeholder="Address Line 2..." />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="city">{{'City:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.city?.invalid && (signupForm.controls.city?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.City" name="city" required id="city" type="text" class="form-control" placeholder="Address Line 2..."
+          />
+        </div>
 
 
-
-          <div class="form-group col-xs-6">
-            <label for="CountryDialCode">{{'Country code:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.CountryDialCode?.invalid && (signupForm.controls.CountryDialCode?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.CountryDialCode" name="CountryDialCode" required id="CountryDialCode" type="text" class="form-control"
-              placeholder="Address Line 2..." />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="phone">{{'Phone:' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.phone?.invalid && (signupForm.controls.phone?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="preAffiliate.Phone" name="phone" required id="phone" type="text" class="form-control" placeholder="phone..."
-            />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.nickname?.invalid && (signupForm.controls.nickname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="nickname" name="nickname" required id="nickname" type="text" class="form-control" placeholder="nickname..."
-            />
-          </div>
-
-          <div class="form-group col-xs-6">
-            <label for="password">{{'Desired password' | translate:lang}}</label>
-            <em *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-            <input [(ngModel)]="password" name="password" required id="password" type="text" class="form-control" placeholder="password..."
-            />
-          </div>
-          <div class="form-group col-xs-6">
-            <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
-      <button type="submit" [disabled]="signupForm.invalid" class="btn btn-success">Create Affiliate</button>
-    </span>
-            <button type="button" (click)="reject()" class="btn btn-danger">{{'Reject' | translate:lang}}</button>
-
-            <button type="button" (click)="closeDetails()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>
-
-          </div>
-
+        <div class="form-group col-xs-6">
+          <label for="zip">{{'Zip:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.zip?.invalid && (signupForm.controls.zip?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.ZipCode" name="zip" required id="zip" type="text" class="form-control" placeholder="Address Line 2..."
+          />
         </div>
 
 
 
+        <div class="form-group col-xs-6">
+          <label for="CountryDialCode">{{'Country code:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.CountryDialCode?.invalid && (signupForm.controls.CountryDialCode?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.CountryDialCode" name="CountryDialCode" required id="CountryDialCode" type="text" class="form-control"
+            placeholder="Address Line 2..." />
+        </div>
 
-      </form>
+        <div class="form-group col-xs-6">
+          <label for="phone">{{'Phone:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.phone?.invalid && (signupForm.controls.phone?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.Phone" name="phone" required id="phone" type="text" class="form-control" placeholder="phone..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.nickname?.invalid && (signupForm.controls.nickname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="nickname" name="nickname" required id="nickname" type="text" class="form-control" placeholder="nickname..."
+          />
+        </div>
+
+              <div class="form-group col-xs-6">
+        <label for="targetBook">{{'Product:' | translate:lang}}</label>
+        <em *ngIf="signupForm.controls.targetBook?.invalid && (signupForm.controls.targetBook?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook" (change)="changeBook($event.target.value)">
+          <option *ngFor="let book of books" [value]="book.value">{{book.display}}</option>
+            </select>
+        <br>
+        <img [src]="bookImg" alt="book" [ngClass]="myClass">
+
+      </div>
+
+        <div class="form-group col-xs-6">
+          <label for="password">{{'Desired password' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="password" name="password" required id="password" type="text" class="form-control" placeholder="password..."
+          />
+        </div>
+        <div class="form-group col-xs-6">
+          <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+      <button type="submit" [disabled]="signupForm.invalid" class="btn btn-success">Create Affiliate</button>
+    </span>
+          <button type="button" (click)="reject()" class="btn btn-danger">{{'Reject' | translate:lang}}</button>
+
+          <button type="button" (click)="closeDetails()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>
+
+        </div>
+
+      </div>
 
 
-    </div>
+    </form>
 
-    <pre>
+
+  </div>
+
+  <pre>
   {{response | json}}
 </pre>
 
-  </div>
+</div>
