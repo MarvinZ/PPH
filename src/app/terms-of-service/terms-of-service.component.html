@@ -1,99 +1,212 @@
-<p>
-  terms-of-service works!
-</p>
+<section class="page-content">
 
+  <div class="container">
+    <h3 class="padding-top">Affiliate Terms of Service</h3>
+     <accordion>
+      <accordion-group [isOpen]="status.isFirstOpen" #group2 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group2?.isOpen, 'glyphicon-chevron-right': !group2?.isOpen}"></i> 
+          Enrollment to the Affiliate Program</h4>
+        </div>
+        <ul>
+          <li>You must submit a completed application through our Affiliate website affiliates.Jazz Affiliates.com in order to enroll in our affiliate program. An Affiliate Manager will review it and either approve or reject your application at our sole discretion.</li>
+          <li>By applying you are stating that you are over the legal age of your jurisdiction and that your domain is not designed to appeal to minors.</li>
+          <li>The personal information you provide must be accurate, complete and authentic.</li>
+          <li>You must provide a list of domain names or proposed domains where you intend to promote Jazz Affiliates.</li>
+          <li>One Jazz Affiliates account, per player or affiliate.</li>
+          <li>Affiliates cannot have a separate wagering account. If an affiliate wants to use the Sportsbook services, they may do so through their affiliate account.</li>
+          <li>One account per household.</li>
+          <li>One account per IP Address.</li>
+          <li>One user per account (The registered name on the account only).</li>
+          <li>As an Affiliate, you are entitled to register Second-Tier Affiliates. You are not allowed to register any entity in which you have any shareholding whatsoever.</li>
+          <li>In case of CC; it must belong to the account holder.</li>
+          <li>To become a 2nd Tier Affiliate and collect commission on referred Affiliates please contact the Jazz Affiliates Affiliate department. We will set up a separate account for you to promote and sign up Affiliates.</li>
+          <li>Each application is reviewed individually within 3 working days. Jazz Affiliates affiliates department will notify you by email as to whether or not your application has been successful.</li>
+          <li>Each affiliate will receive a welcoming letter with the new affiliate username and password. We do not accept customers from France or Singapore.</li>
+          <li>We may terminate this Agreement if we determine (at our sole discretion) that your site is unsuitable or inappropriate. Unsuitable sites include, but are not limited to, those that: are aimed at children, display pornography or other illegal sexual acts, promote violence, promote discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age, promote illegal activities or violate intellectual property rights or breach any relevant advertising regulations or codes of practice.</li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group1 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group1?.isOpen, 'glyphicon-chevron-right': !group1?.isOpen}"></i> 
+          Advertising of your Affiliation with Jazz Affiliates</h4>
+        </div>
+        <ul>
+          <li>We will provide the affiliate with access to a link generator, Co-branded banners,XML odds feeds, tracking tools and all needed material in order to accomplish the promotion. The affiliate may not modify links obtained from Jazz Affiliates without prior written authorization.</li>
+          <li>Jazz Affiliates will grant the affiliate a non-exclusive, non-transferable, non-sub-licensable, revocable right to use Jazz Affiliates logos and text solely for the purpose of the affiliate program.</li>
+          <li>The affiliate will be responsible only for the development, operation, and maintenance of his/her site.</li>
+          <li>The banners provided by Jazz Affiliates are hosted on our servers and we reserve the right to update these banners at any time and without previous notice.</li>
+          <li>We reserve the right to monitor all websites promoting Jazz Affiliates in order to determine if you are in compliance with our terms and conditions and consequently, take the proper actions at our discretion.</li>
+          <li>Affiliates should use best marketing reasonable efforts to actively and effectively advertise, market and promote Jazz Affiliates as widely and aggressively as possible in order to maximize the financial benefit for both, affiliate and Jazz Affiliates.</li>
+          <li>Jazz Affiliates boasts a Sales and Retention Team that will guarantee you see action from your players on a daily basis in order for you to get the utmost out of your traffic.</li>
+          <li>Players must be properly tagged to an Affiliate. Should this tag be improperly inserted or the steps not followed correctly, the player registration and purchases will not be assigned to you.</li>
+          <li>Jazz Affiliates reserves the right to refuse players or end the contract with them if necessary to comply with the website’s terms and conditions.</li>
+          <li>We will not be liable for any indirect, special, or consequential damages or losses incurred by the affiliate or a customer referred by the affiliate, arising in connection with this agreement or the affiliate program.</li>
+          <li>Jazz Affiliates will not be responsible for any contest or promotion not authorized by our affiliate Department.</li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i> 
+          Relationship of Parties</h4>
+        </div>
+        <ul>
+          <li>
+						The affiliate and Jazz Affiliates are independent contractors, and nothing in this agreement will create any partnership, joint venture, agency, franchise, sales representative, or employment relationship between the parties.
+					</li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group3 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group3?.isOpen, 'glyphicon-chevron-right': !group3?.isOpen}"></i> 
+          Spam Policy</h4>
+        </div>
+        <ul>
+          <li>
+						Under no circumstances shall the affiliate send commercial electronic mail messages as defined in the new Federal spam law, the CAN-SPAM Act of 2003 [the “Act”], with respect to the Jazz Affiliates Affiliate Program. To clarify, this does not prohibit the affiliate from sending transactional or relationship messages as defined in the Act.
+					</li>
+          <li>
+						Any unacceptable behavior (including the use of spam) will be cause for immediate termination of this agreement.
+					</li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group4 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group4?.isOpen, 'glyphicon-chevron-right': !group4?.isOpen}"></i> 
+          Referred players</h4>
+        </div>
+        <ul>
+          <li>It is prohibited for you and your relatives such as spouse, partner, parent, child or sibling, to be referred to Jazz Affiliates by you, making you ineligible to receive commissions for their or your net losses.</li>
+          <li>The number of referred players per individual household computer is strictly limited to one (1) , per IP</li>
+          <li>You will be able to keep track of your referred players, activity generated, commissions and the payments you are entitled to receive through our Affiliate website. You will be able to review these statistics to in order improve your promoting campaigns or keep track of them.</li>
+          <li>All Jazz Affiliates affiliates are required to refer a minimum of 5 active Customers within a month period of joining the program with a 25% starting commission. Should an affiliate not reach this requirement the affiliate account may be closed with prior notice. If the Affiliate chooses to close the affiliate account before reaching the required 5 active players, any/all commissions will be removed.</li>
+          <li>After the one month trial, affiliate commissions will be paid using the following chart:</li>
+          <table class="table table-striped" style="width: 50%;" align="center">
+          <tbody><tr>
+          <th>Amount of Players</th>
+          </tr>
+          <tr>
+          <td>5 to 10 players = 10% Commission</td>
+          </tr>
+          <tr>
+          <td>11 to 20 players = 20% Commission</td>
+          </tr>
+          <tr>
+          <td>21 to 30 players = 30% Commission</td>
+          </tr>
+          <tr>
+          <td>31 or more players = 35% Commission</td>
+          </tr>
+          </tbody></table>
+          <li>To become a 2nd Tier Affiliate and collect up to 5% commission on referred Affiliates please contact the Jazz Affiliates Affiliate department. We will set up a separate account for you to promote and sign up Affiliates.</li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group5 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group5?.isOpen, 'glyphicon-chevron-right': !group5?.isOpen}"></i> 
+          Commission</h4>
+        </div>
+        <ul>
+          <li>
+						Jazz Affiliates will pay the affiliate a commission based on the players’ net losses. These players must have signed up through your Affiliate website or tracking ID.
+					</li>
+          <li>
+						Net losses are calculated the following way:
+					</li>
+          </ul>
+          <table class="table table-striped affiliates_commission_table_calculated" style="width: 50%;" align="center">
+          <tbody>
+          <tr>
+          <td class="first">1</td>
+          <td class="second">$1100</td>
+          <td class="thirth">Sixers -3</td>
+          <td class="four">-1100 (Loss)</td>
+          </tr>
+          <tr>
+          <td class="first">2</td>
+          <td class="second">$1200</td>
+          <td class="thirth">Pacers +4</td>
+          <td class="four">+1200 (Win)</td>
+          </tr>
+          <tr>
+          <td class="affiliates_calculated_table_last first">3</td>
+          <td class="affiliates_calculated_table_last second">$1,100</td>
+          <td class="affiliates_calculated_table_last thirth">Pistons -6</td>
+          <td class="affiliates_calculated_table_last four">-1,100 (Loss)</td>
+          </tr>
+          <tr>
+          <th colspan="3" class="five"><span class="bolder">Total Player Loss:</span></th>
+          <th class="six"><span class="bolder">-1,000</span></th>
+          </tr>
+          </tbody>
+          </table>
+          <ul>
+          <li>
+						The affiliate will not receive commissions on his own losses or deposits.
+					</li>
+          <li>
+						Jazz Affiliates Affiliates could have a negative carry-over figure on players if net win is higher than net loses as commissions are based on net losses.
+					</li>
+          <li>
+						Commission calculations are processed at the end of each week on Mondays and applied to yoursportsbook account on a weekly basis.
+					</li>
+          <li>
+						If you desire to offer extra incentives to potential referred players, you are required to receive our written approval; otherwise, commissions generated by such unauthorized incentive will be void.
+					</li>
+          <li>
+						It is required for the referred player to make a real money deposit in order for the Affiliate to receive commissions over his/her net losses.
+					</li>
+          <li>
+						In case fraudulent activity is detected by the referred player or the Affiliate, we reserve the right to terminate this agreement and hold any commission generated through fraud at our own discretion.
+					</li>
+          <li>
+						CCPP – Credit Card Processing Payment fees will apply depending on Affiliate commission structure.
+					</li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group6 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group6?.isOpen, 'glyphicon-chevron-right': !group6?.isOpen}"></i> 
+          Payouts</h4>
+        </div>
+        <ul>
+          <li>Affiliates can request their payouts on the 1st week of each month starting on Monday via email to affiliates@Jazz Affiliates.com. The Affiliate’s Commission percentage is calculated on a weekly basis and credited into the Affiliate’s account every Monday. </li>
+          <li>Your affiliate account must have a minimum of 3 active referred Customers in the last 30 days before you will be eligible for a Commission payment. Jazz Affiliates reserves the right to hold payouts on affiliate commission earnings from Affiliates with stunted growth after reaching any posted minimums.</li>
+          <li>Affiliates can cash out the first week of the month, using the following payout methods:
+          <p>– Cashier’s checks</p>
+          <p>– BitCoin</p>
+          <p>– Person to Person Transfers</p>
+          <p>– Bank wire as manager discretion</p>
+          <p>– Minimum Payout amount $150
+          </p></li>
+        </ul>
+      </accordion-group>
+      <accordion-group #group7 [isOpen]="status.isOpen">
+        <div accordion-heading>
+          <h4><i class="glyphicon" [ngClass]="{'glyphicon-chevron-down': group7?.isOpen, 'glyphicon-chevron-right': !group7?.isOpen}"></i> 
+          Entire agreement</h4>
+        </div>
+        <ul>
+          <li>We may modify the Terms and Conditions at any time and at our sole discretion and without prior notice.</li>
+          <li>All Affiliate terms and rules apply to Master Accounts as well.</li>
+          <li>Jazz Affiliates Affiliate reserves the right to terminate this agreement at our sole discretion; consequently, the Affiliate must remove all our banners, links and any other content.</li>
+        </ul>
+      </accordion-group>
+    </accordion>
+  </div>
 
-Our Revenue share works on 3 tiered system which rewards affiliates as their business grows. Net Revenue is calculated on
-monies from wagers in Sportsbook, Casino, and Racebook minus all processing fees. Commissions are calculated on a weekly
-basis and credited to Affiliates account every Monday. Payouts can be requested on the 1st Monday of every month. Jazz utilizes
-a Sales and Retention team that will keep your players active and guarantee you continuous earnings.
+</section>
 
-
-
-
-Terms and conditions of Service
-JAZZ AFFILIATES AGREEMENT
-This affiliate agreement (hereinafter "Agreement"), sets out the complete terms and conditions between ___________ , whose registered office is located in San Jose Costa Rica (hereinafter "Jazz") and you, the affiliate (hereinafter "Affiliate", "you", "your"), regarding your request to participate as an Affiliate in the Jazz Affiliate program (hereinafter "Affiliate Program").
-It is important that you read and understand this Agreement. You may also wish to print it for future reference. By downloading a Banner, Text Link, Marketing Materials, or any information pertaining to the Affiliate Program and placing it on your website(s), you agree to be bound by all the terms and conditions set out in this Agreement.
-ENROLLMENT
-If you wish to participate in our Affiliate Program, you will first have to register by completing the online application form (“Affiliate Sign-up Form”) and accept the Affiliate Program terms and conditions. 
-Upon approval, an Affiliate Tracking Code will be assigned to you. Players, who register for an account at Jazz via your Affiliate Link on your website, will be registered to you.
-Please note that all new Affiliates start on our lowest Percentage Commission structure for an evaluation period of 30 days at which time the account is eligible for review.
-TERMS & CONDITIONS OF AFFILIATE PROGRAM
-
-DEFINITIONS AND INTERPRETATION
-1.	The definitions and rules of interpretation in this paragraph apply in these Terms and Conditions.
-“Affiliate Account"	means the account that is accessible to you by logging on with your user code and associated password, which provides certain 'members only' functionality, including facilities to check relevant statistics. It is accessed at www.Jazzaffiliates.com;
-"Affiliate Commission"	means the amount due and payable to you, as calculated based solely on our system's data and in accordance with the terms of this Agreement and the applicable Commission Structure;
-"Affiliate Commission Account"	means the account into which your commission payment is credited. It is accessed at www.Jazzaffiliates.com;
-“Affiliate Network”	means the network of affiliates connected to Jazz;
-"Affiliate Tracking Code"	means the unique user identification code assigned to you when you signed up as a participant in the Affiliate Program;
-"Affiliate Website"	means the website where the Affiliate will display Jazz Banners, Text Links and other Marketing Materials;
-"Banners" and "Text Links"	means the graphical artwork or text that includes Xcodes, Bonus Codes and odds feeds (API/XML) that are made available by us, that you may use to connect players to our Services from the Affiliate Website (or other electronic method) or using other Marketing Materials;
-"Business Day"	means any day (excluding Saturdays and Sundays) on which banks generally are open in the City of San Jose, Costa rica for the transaction of normal banking;
-“Deposit”	means funds deposited with Jazz;
-“Fees”	means the percentage of internal promotion expenses each Affiliate is required to pay including the net fees for all Real Money Player promotional bonuses, rebates, 30% of the total banking fees incurred on deposits and withdrawals, charge backs, fraud, and bad debt by any Real Money Players referred by the Affiliate.;
-"Financial Data"	means the credit and debit card numbers, bank account numbers, credit limits, balances, and deposit and withdrawal amounts and history of the Players;
-"Fraud Traffic"	means deposits, revenues, commission, royalties or traffic generated on the Services through illegal means or any other action committed in bad faith to defraud us (as determined by us in our sole discretion), regardless of whether or not it actually causes us harm, including but not limited to: deposits generated on stolen credit cards, affiliate or Player collusion, manipulation of the service or system, bonuses or other promotional abuse, creation of false accounts for the purpose of generating Affiliate Accruals, and unauthorised use of any third-party accounts, copyrights, trademarks and other third-party Intellectual Property Rights (that, for the avoidance of doubt, include our Intellectual Property Rights);
-“Lifetime Value”	The lifetime of an affiliated player is deemed to be as long as there is an active, ongoing relationship between An “active” affiliate account and is defined as an affiliate sending through a minimum of 1 new active player account per 12 month period and maintaining an active website with active Jazz  banners/promotions. A new active player is defined as a player who has registered, made at least one deposit, and placed 1 wager during the 12 month period.
-“Jazz Website”	means www.Jazzsports.com or any other online site or platform that are owned, operated or controlled by or on behalf of us from time to time and each of its related pages through which a Player opens a Player Account and/or accesses our Services;
-"Player"	means any person using any products or services on any Jazz supported Website whether attached to your Xcode or not who wagers through a Jazz Website;
-"Player Account"	means a uniquely assigned account that is created for a Player when he/she successfully registers for the Services via a Tracking URL or sign-up bonus code;
-"RealMoney Player"	means any person who is attached to your Xcode and (i) has not been a Player with us before; (ii) is not located in a Restricted Territory; (iii) who has made a Deposit; (iv) is accepted as a Player under any applicable sign up or identity verification procedure which we may require; and (v) has adequately fulfilled any other qualification criteria that we may introduce from time to time. Notwithstanding any other provisions contained elsewhere in this Agreement, we reserve the right to alter the above-mentioned qualifying criteria at any time by virtue of placing notice on Jazz Website. It is the responsibility of the Affiliate to check for any updates to the Terms and Conditions;
-“Restricted Countries"	means the following countries:
-•	American Samoa;
-•	Czech Republic;
-•	Denmark;
-•	France & French Territories;
-•	German state of Baden-Wurttemberg;
-•	Germany;
-•	Guam;
-•	Netherlands;
-•	Northern Mariana Islands;
-•	Poland;
-•	Puerto Rico;
-•	Republic of Ireland;
-•	Singapore;
-•	Slovenia;
-•	Spain;
-•	Sudan;
-•	The Democratic People's Republic of Korea;
-•	Turkey;
-•	Any other country which may prohibit the offering on online gambling to its residents or to any person within such country.
-This list may be updated at any time and, and it is the responsibility of the Affiliate to check for any updates to the Terms and Conditions.
-"Services"	means any product or service offered to Players on a Jazz Website;
-“Sign-up Bonus Code”	means a Bonus Code made available to a Player on registration with Jazz;
-“SportsBook Cumulative Net Revenue”	the sum of all Real Money Players’ wins and losses in the sports book less Fees;
-"Tracking URL"	means a unique hyperlink or other linking tool for referencing a Jazz Website or Services through which you refer potential Real Money Players. When the relevant Player opens their Player Account, our system automatically logs the Tracking URL and records you as the Affiliate;
-"Xcode"	means the unique tracking code that we provide exclusively to you, through which we track Players' and Real Money Players' activities and calculate Affiliate Commission.
-
-
-AFFILIATE COMMISSION, REPORTS & PAYMENTS
-1.	We will track and report Player activity for the purposes of calculating your Affiliate Commissions based on your Commission Structure. Reports will be made available online for you to review new Real Money Players per Xcode. We hereby exclude any and all liability for the accuracy or completeness of any such reports.
-2.	Affiliate Commissions are paid into your Affiliate Commission account every Monday. The transfer of Affiliate Commission to your nominated player or company account is the responsibility of the Affiliate.
-3.	In the instance that any new player account is not automatically tagged to the correct affiliate, we will endeavor to tag the new account to the correct affiliate as soon as possible. Retroactive commission adjustments will not be made for activity that occurred during a period for which commission has already been paid. Players will not be moved after the two week period from the date the account initially signed up.
-4.	Affiliates are eligible for payment on the balance of their sports or casino commission earnings. Negative commission balances in sports or casino will be deducted from available commissions. All payments to you will be due and payable in US Dollars or such other currency as we will determine, regardless of the currency any Players assigned to your Xcode may have played in. If no Personal Betting Account is open in the name of the registered account holder, Affiliate Commissions may be withdrawn directly from the Affiliate Commission Account. In the event that the Affiliate also has a Personal Betting Account, Affiliate Commissions must be transferred from your Affiliate Commission Account to your Jazz Personal Betting Account. You may then withdraw money via your choice of any of the payment methods supported by Jazzsports. You are entitled to one free payout per month and any additional payout request will incur charges that will be deducted from your account balance. For the avoidance of doubt, we have no liability to pay any currency conversion charges or any charges associated with the transfer of monies from your account.
-5.	In the event that, at our sole discretion, we suspect any Fraud Traffic, then we may delay payment of the Affiliate Commission to you for up to 90 days (90) days while we investigate and verify the relevant transactions. We are not obligated to pay Affiliate Commission in respect of Real Money Players who, at our sole discretion, are not verifiably who they claim to be or are otherwise involved with Fraud Traffic. In the event that we determine any activity to constitute Fraud Traffic, or to otherwise be in contravention of this Agreement, then at our sole discretion we may: (i) pay the Affiliate Commissions in full, (ii) recalculate them in light of such suspected Fraud Traffic and/or (iii) forfeit your future Affiliate Commissions in respect of Fraud Traffic (as appropriate) and/or (iv) suspend or terminate this Agreement.
-6.	You understand and agree that potential Real Money Players must link through to the Jazz Website using your Xcode (or any other applicable tracking link) or use your Sign-Up Bonus Code in order for you to receive Affiliate Commissions. In no event are we liable for your failure to correctly implement tracking from an Affiliate Website to a Pinnacle Website or for potential Real Money Player's failure to properly enter valid Sign-up Bonus Codes. Notwithstanding any other provision herein, we may at any time and at our sole discretion alter our tracking system and reporting format.
-7.	If you disagree with the Monthly commission amount, do NOT accept payment for such amount and immediately send us written notice of your dispute. Dispute notices must be received within thirty (30) days of our making available the disputed commission amount or your right to dispute such report or payment will be deemed waived and you shall have no claims in such regard. Notwithstanding the foregoing, if any overpayment is made in the calculation of your Affiliate Commission, we reserve the right to correct such calculation at any time and to reclaim from you any overpayment made by us to you.
-8.	You shall comply with all applicable laws and any policy notified by us through our Website or otherwise in relation to money laundering and/or the proceeds of criminal activities.
-9.	All taxes due in connection with any payments to you are your sole liability. You are responsible for complying with the tax rules applicable in your jurisdiction, if any, for registering for and paying income tax and similar taxes in respect of your income from this agreement and for collecting and paying the income tax and other tax contributions in respect of any staff employed by you.
-
-DISCLAIMERS
-We make no express or implied warranties or representations with respect to the Affiliate Program or commission arrangements (including, without limitation, their functionality, warranties of fitness, merchantability, legality, non-infringement, or any implied warranties arising out of a course of performance, dealing or trade usage). In addition, we make no representation that the operation of our site will be uninterrupted, virus or error free and will not be liable for the consequences of any interruptions, viruses or errors.
-TERMINATION
-1.	You may terminate this Agreement, with or without cause, immediately upon written notice to us that you may send by email marked "Termination" to info@jazzaffiliates.com. For the avoidance of doubt, termination of the Agreement will end your participation in the Affiliate program. In the event that you elect to terminate this Agreement, you must withdraw all monies in your Affiliate Commission Account within thirty (30) days of sending the above-mentioned email. If such monies have not been withdrawn by such time then they shall be deemed forfeited and shall revert to us.
-2.	In addition to any other remedies provided in this Agreement or by operation of law, we may terminate this Agreement without cause, in whole or in part, for convenience, upon written notice to you by email to such email address you have provided to us. In the event we terminate the Agreement as a whole, we shall be entitled to automatically render any Xcodes inoperative. For the avoidance of doubt, on termination of this Agreement, you will no longer receive any Affiliate Commissions. If we terminate a specific Xcode, you will no longer receive any Affiliate Commissions through that Xcode; however, your remaining Xcode(s) will not be affected.
-3.	We may terminate this Agreement for good cause, upon the following:
-1.	If you are in material breach of any of your obligations under this Agreement and either that breach is (1) incapable of being cured, or (2) remains uncured for 90 days after receiving written notice of the breach;
-2.	If you become insolvent or are otherwise unable to pay your debts in the ordinary course of business;
-3.	If you are dissolved (other than by way of a re-organization), or file for bankruptcy, or otherwise cease to engage in your normal business operations and are unable thereby to fulfill your obligations under this Agreement;
-4.	In the event that your website is aimed at children under the age of 18, promotes discrimination based on race, sex, religion, nationality disability or sexual orientation, promotes illegal activities, or violates intellectual property rights as defined in this Agreement;
-5.	If you are guilty of, after any unsuccessful appeal process, violating in the course of its performance hereunder, any local, state or federal laws, rules and regulations pertaining to gambling on the internet;
-6.	In the event of repeated attempts by you or any of your employees or contractors, to gain unauthorized access to the Pinnacle Website or customer data base; and
-7.	We have reason to suspect you of attempting to defraud us by any of the methods listed under Fraud Traffic;
-
-4.	We may suspend this Agreement, in whole or in part, upon the following:
-1.	In any circumstance where we are entitled to terminate this Agreement or terminate any specific Xcode, we may at our sole discretion and without prejudice to our further rights and remedies, suspend the Agreement or any specific Xcode. During the period of any suspension, we may withhold the payment of any Affiliate Commissions that relate to any affected Xcodes. Payment of any withheld Affiliate Commissions will be made to you on the lifting of the suspension.
-2.	In any circumstance where we are entitled to terminate this Agreement for cause, we may suspend your right to use the Jazz name or any other such similar trademark, if you or the company that is using any Jazz brand becomes part of any criminal or securities investigation, is indicted or criminally charged in any crime, files for bankruptcy or becomes insolvent, is a defendant in a lawsuit that seeks injunctive relief, your gaming license is suspended or terminated by any governmental authority, or you are involved in any scandalous matter which the press is investigating and which may adversely affect the good will of any Pinnacle a. Marks.
-
+<footer class="frontend-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="http://www.jazzaffiliates.com/img/logo-opacity-dark.png" />
+      </div>
+      <div class="col-md-6">
+        <p>&copy; 2017. « <a href="/">Jazz Affiliates</a> » All Rights Reserved.<br>
+        Affiliate System Software</p>
+      </div>
+    </div>
+  </div>
+</footer>

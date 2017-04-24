@@ -11,61 +11,53 @@
 <p>{{ value | localeCurrency:defaultLocale:currency:true:'1.2-2' }}</p>-->
 
 
-<div class="row">
-  <div class="col-md-8">
-    <carousel>
+<div class="row main-section">
+    <!--<carousel>
       <slide>
-        <img src="http://i2.cdn.turner.com/money/dam/assets/150119131035-green-bay-seattle-nfl-1024x576.jpg" alt="First slide" width="700px" height="350px">
+        <img src="http://i2.cdn.turner.com/money/dam/assets/150119131035-green-bay-seattle-nfl-1024x576.jpg" alt="First slide" width="100%" height="350px">
         <div class="carousel-caption">
           <h3> Watch Your Earnings Take Off!</h3>
           <p>Higher conversions and higher retention rates with Jazz Affiliates.</p>
         </div>
       </slide>
-      <slide>
-        <img src="http://res.cloudinary.com/simpleview/image/upload/v1467824436/clients/lanecounty/VOLLEYBALL_AT_WILLAMALANE_9_16dff142-77f9-4703-903c-261d5426d228.jpg" alt="Second slide">
-        <div class="carousel-caption">
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </slide>
-      <slide>
-        <img src="http://www.spox.com/de/sport/ussport/nba/1704/Bilder/westbrook-970.jpg" alt="Third slide">
-        <div class="carousel-caption">
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </slide>
-    </carousel>
-    <div>
-      Established in 1994, Jazz Affiliate Program provides new and established affiliates a positive platform in which to grow
-      their business. Get to know us
-    </div>
+    </carousel>-->
+
     <!--<button (click)="testSession()">Store</button>-->
-        <!--<button (click)="showSession()">Show</button>-->
+    <!--<button (click)="showSession()">Show</button>-->
+
+    <div class="cloud1"><img src="http://www.jazzaffiliates.com/img_external/revolution-slider/cloud-1.png" /></div>
+    <div class="cloud2"><img src="http://www.jazzaffiliates.com/img_external/revolution-slider/cloud-2.png" /></div>
+    <div class="cloud3"><img src="http://www.jazzaffiliates.com/img_external/revolution-slider/cloud-3.png" /></div>
+    <div class="slider-player"><img src="http://www.jazzaffiliates.com/img_external/revolution-slider/rocket-1.png" /></div>
+
+    <div class="col-md-8">
+      <h2>Watch Your Earnings Take Off! </h2>
+      <p>Higher conversions and higher retention rates with Jazz Affiliates </p>
+      <a class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Get Started!</a>
+    </div>
 
 
-  </div>
-  <div class="col-md-4 form-group" *ngIf="!contactRequestSubmitted">
-    <h2>GET STARTED NOW!</h2>
+    <div class="col-md-4 form-group" *ngIf="!contactRequestSubmitted">
+    <h3>GET STARTED NOW!!</h3>
     <p>Fill the form and our agent will contact you as soon as possible</p>
     <div class="form-group">
       <form #contactForm="ngForm" (ngSubmit)="contactus(contactForm.value)" autocomplete="off" novalidate>
         <div class="form-group">
-          <label for="userName">Name:</label>
+          <label class="control-label" for="userName">Name:</label>
           <em *ngIf="contactForm.controls.userName?.invalid && (contactForm.controls.userName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
           <input (ngModel)="username" name="userName" required id="userName" type="text" class="form-control" placeholder="User Name..."
           />
         </div>
         <div class="form-group">
-          <label for="email">Email:</label>
+          <label class="control-label" for="email">Email:</label>
           <em *ngIf="contactForm.controls.email?.invalid && (contactForm.controls.email?.touched || mouseoverContact) || contactForm.controls.email?.pattern==false">Required, format incorret</em>
           <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="Email..." pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"
           />
         </div>
         <div class="form-group">
-          <label for="phone">Phone:</label>
+          <label class="control-label" for="phone">Phone:</label>
           <em *ngIf="contactForm.controls.phone?.invalid && (contactForm.controls.phone?.touched || mouseoverContact)">{{'Required' | translate:lang}}</em>
-          <input (ngModel)="phone" name="phone" required id="name" type="number" class="form-control" placeholder="Phone..." />
+          <input (ngModel)="phone" name="phone" required id="name" type="text" class="form-control" placeholder="Phone..." />
         </div>
         <!--<div class="form-group">
           <label for="message">Message:</label>
@@ -74,15 +66,158 @@
         </div>-->
 
         <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
-      <button type="submit" [disabled]="contactForm.invalid" class="btn btn-default">Submit</button>
+      <button type="submit" [disabled]="contactForm.invalid" class="btn btn-block btn-success">Send Information</button>
     </span>
         <!--<button type="button" (click)="cancel()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>-->
       </form>
     </div>
   </div>
-
-
   <div class="col-md-4 form-group" *ngIf="contactRequestSubmitted">
     I dont know what to display here.. but the contact form worked :)
   </div>
-</div>
+</div><!-- DIV main-section -->
+
+<section class="page-content">
+
+  <section class="main-aboutus">
+    <div class="container">
+      <p class="text-24"><span>Established in 1994</span>, Jazz Affiliate Program provides new and established affiliates a positive platform in which to grow their business. <a href="#"><em>Get to know us ></em></a></p>
+    </div>
+  </section>
+
+  <section class="main-commission">
+    <div class="container">
+      <h3 class="ja-text-center">Commission Schedule</h3>
+      <p class="ja-text-center text-16">Want to earn unlimited commissions with a respected sportsbook? You've come to the right spot! With Jazz Affiliates you can earn up to 40% for life! We pay affiliate commissions every month based on net losses. Below is our commission schedule. </p>
+
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <div class="commission-box commission-purple">
+            <h4>0 - 50 Players</h4>
+            <h5>30<span>%</span></h5>
+            <p>Percentage based on monthly net losses.</p>
+            <a href="#" class="btn btn-default btn-block">Sign Up</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="commission-box commission-blue">
+            <h4>51 - 100 Players</h4>
+            <h5>35<span>%</span></h5>
+            <p>Percentage based on monthly net losses.</p>
+            <a href="#" class="btn btn-default btn-block">Sign Up</a>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="commission-box commission-aqua">
+            <h4>101 or more Players</h4>
+            <h5>40<span>%</span></h5>
+            <p>Percentage based on monthly net losses.</p>
+            <a href="#" class="btn btn-default btn-block">Sign Up</a>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><span class="glyphicon glyphicon-expand"></span> Affiliate Commission Terms</div>
+          <div class="panel-body">
+            <ul>
+              <li><span class="glyphicon glyphicon-chevron-right"></span> Our Revenue share works on 3 tiered system which rewards affiliates as their business grows.</li>
+              <li><span class="glyphicon glyphicon-chevron-right"></span> Net Revenue is calculated on monies from wagers in Sportsbook, Casino, and Racebook minus all processing fees.</li>
+              <li><span class="glyphicon glyphicon-chevron-right"></span> Commissions are calculated on a weekly basis and credited to Affiliates account every Monday. Payouts can be requested on the 1st Monday of every month.</li>
+              <li><span class="glyphicon glyphicon-chevron-right"></span> Jazz utilizes a Sales and Retention team that will keep your players active and guarantee you continuous earnings.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="main-contactus">
+    <div class="container">
+      <p class="text-24">Have more questions about our affiliate program? <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-envelope"></span> Contact Us </a></p>
+    </div>
+  </section>
+
+  <section class="main-tools">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Reports and Live Track Tools</h3>
+          <p class="text-16">Real time tracking and detailed Player reporting</p>
+          <ul class="list-group">
+            <li class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span> Weekly Commission Report with Monthly payouts</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span> No minimum player count</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span> One of the highest player retention rates in the industry</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span> Aggressive sales team to convert your players and keep them active</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span> 24/7 customer service and wagering for your players</li>
+            <li class="list-group-item"><span class="glyphicon glyphicon-ok-sign"></span> Easy Withdrawals</li>
+          </ul>
+        </div>
+      
+        <div class="col-md-6 ja-text-center">
+          <img src="http://www.jazzaffiliates.com/img/apple-devices-2.png" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-products">
+    <div class="container">
+      <h3>Player Features</h3>
+      <p class="text-16">From our world class live in-game platform to our interactive sports betting offerings, your players will love spending time with either of our respected brands.</p>
+    
+      <div class="row">
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/sportsbookthumb.jpg" />
+          <h4>Sportsbook</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/casinothumb.jpg" />
+          <h4>Casino</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/livedealer.jpg" />
+          <h4>Live Casino</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/racebookthumb.jpg" />
+          <h4>Racebook</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/squaresparlay.jpg" />
+          <h4>Betting Options</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/livewagerthumb.jpg" />
+          <h4>Live Wagering</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/agentsthumb.jpg" />
+          <h4>Mobile Wagering</h4>
+        </div>
+        <div class="col-md-3">
+          <img src="http://www.jazzaffiliates.com/img/products/bracket.jpg" />
+          <h4>Contest</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</section> <!-- page-content -->
+
+<footer class="frontend-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="http://www.jazzaffiliates.com/img/logo-opacity-dark.png" />
+      </div>
+      <div class="col-md-6">
+        <p>&copy; 2017. « <a href="/">Jazz Affiliates</a> » All Rights Reserved.<br>
+        Affiliate System Software</p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,6 +1,199 @@
-em { float:right; color:#E05C65; padding-left:10px; }
     input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+/* -- */
+
+.row.main-section {
+  position: relative;
+  background: #333 url(http://www.jazzaffiliates.com/img_external/revolution-slider/back-3.jpg) no-repeat top center;
+  height: 500px;
+  padding: 0 5%;
+  overflow: hidden;
+}
+  .row.main-section .col-md-8 {
+    color: #FFF;
+    height: 500px;
+  }
+    .row.main-section .cloud1,
+    .row.main-section .cloud2,
+    .row.main-section .cloud3,
+    .row.main-section .slider-player {
+      right: 26%;
+      bottom: -150px;
+      position: absolute;
+    }
+    .row.main-section .cloud1 {
+      right: 53%;
+      bottom: -80px;
+    }
+    .row.main-section .cloud2 {
+      right: 35%;
+      bottom: -100px;
+    }
+    .row.main-section .cloud3 {
+      right: 10%;
+      bottom: -65px;
+    }
+
+    .row.main-section .col-md-8 h2 {
+      font-size: 52px;
+      margin: 14% 0 1% 10%;
+      text-shadow: 2px 2px 8px #000;
+    }
+    .row.main-section .col-md-8 p {
+      font-size: 14px;
+      margin: 0 0 5% 10%;
+      text-shadow: 2px 2px 8px #000;
+    }
+    .row.main-section .col-md-8 a {
+      margin: 0 0 0 10%;
+    }
+
+  .row.main-section .col-md-4.form-group {
+    color: #EEE;
+    background: #2980b9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(bottom, #2c3e50, #2980b9);
+    background: -moz-linear-gradient(bottom, #2c3e50, #2980b9);
+    background: -o-linear-gradient(bottom, #2c3e50, #2980b9);
+    background: linear-gradient(to top, #2c3e50, #2980b9);
+    border-radius: 5px;
+    margin: 55px 0 0 0;
+  }
+  .col-md-4.form-group h2 {
+    font-weight: 600;
+    text-shadow: 1px 1px #0f4a81;
+  }
+  .col-md-4.form-group em {
+    float:right;
+    color:#fce370;
+    padding-left:10px;
+  }
+
+section.main-aboutus {
+  color: #FFF;
+  margin: 0 -15px;
+  text-align: center;
+  background: #21252b url(http://www.jazzaffiliates.com/img/hexagon.png) repeat 0 0;
+}
+  section.main-aboutus p {
+    font-weight: 300;
+    padding: 50px 0;
+  }
+  section.main-aboutus p span {color:#62A9E7;}
+  
+section.main-commission {
+  padding-top: 50px;
+}
+.commission-box {
+  color: #FFF;
+  padding: 25px;
+  margin: 50px 0;
+  text-align: center;
+  background: #8463a9;
+  border-radius: 4px;
+  border: 1px solid #77579e;
+}
+  .commission-box h4 {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .commission-box h5 {
+    margin: 0;
+    font: 64px 'Open Sans', san-serif;
+  }
+  .commission-box h5 span {font-size: 48px;}
+
+  .commission-box p {
+    margin: 20px 0;
+    font-size:12px;
+  }
+  .commission-purple .btn-default {
+    background: #694b8b;
+    border: 1px solid #5d407e;
+    box-shadow: 0 1px 0 #755895 inset;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  }
+    .commission-purple .btn-default:hover {
+      background: #5d3f7e;
+      border: 1px solid #473062;
+    }
+  .commission-blue {
+    background: #609ddb;
+    border-color: #5491d5;
+  }
+    .commission-blue .btn-default {
+      background: #487ab9;
+      border: 1px solid #4070b1;
+      box-shadow: 0 1px 0 #4f86c0 inset;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    }
+      .commission-blue .btn-default:hover {
+        background: #4370a9;
+        border: 1px solid #38629a;
+      }
+  .commission-aqua {
+    background: #0dc0c0;
+    border-color: #05b5b6;
+  }
+    .commission-aqua .btn-default {
+      background: #009ca8;
+      border: 1px solid #0092a0;
+      box-shadow: 0 1px 0 #00a6b1 inset;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    }
+      .commission-aqua .btn-default:hover {
+        background: #018b96;
+        border: 1px solid #02828e;
+      }
+
+.panel-default > .panel-heading {
+  color: #FFF;
+  background: #2d323A !important;
+}
+.panel-default > .panel-body ul {
+  margin: 0;
+  padding: 20px;
+  list-style: none;
+}
+.panel-default > .panel-body ul li {
+  line-height: 30px;
+}
+
+section.main-contactus {
+  color: #FFF;
+  margin: 0 -15px;
+  text-align: center;
+  background: #21252b url(http://www.jazzaffiliates.com/img/hexagon.png) repeat 0 0;
+}
+  section.main-contactus p {
+    font-weight: 300;
+    padding: 50px 0;
+  }
+    section.main-contactus p a {
+      margin-left:30px;
+    }
+
+section.main-tools {
+  margin: 0 -15px;
+  padding: 75px 0;
+  background: url(http://www.jazzaffiliates.com/img/wave.png) repeat 0 0;
+}
+  section.main-tools p {
+    margin-bottom: 50px;
+  }
+
+section.main-products p {
+  margin-bottom: 35px;
+}
+section.main-products img {
+  border-radius: 5px;
+}
+section.main-products h4 {
+  margin-bottom: 50px;
+  text-transform: uppercase;
 }

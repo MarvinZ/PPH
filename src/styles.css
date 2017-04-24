@@ -1,3 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Oswald:400,600');
+
+/* GLOBAL STYLES STARTS HERE */
+body {
+  font-family: 'Open Sans', sans-serif !important; 
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+  font-family: 'Oswald', sans-serif !important;
+}
+
+a {
+    color: #609ddb !important;
+}
+a:hover {
+  color: #487ab9 !important;
+  text-decoration: none !important;
+}
+a.btn {
+  color: #FFF !important;
+}
+img {max-width: 100%;}
+
+.ja-left {
+    float: left;
+    margin: 20px 20px 20px 0;
+}
+.ja-right {
+    float: right;
+    margin: 20px 0 20px 20px;
+}
+.ja-center {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+}
+.ja-text-left {
+    text-align: left;
+}
+.ja-text-right {
+    text-align: right;
+}
+.ja-text-center {
+    text-align: center;
+}
+.text-16 {font-size: 16px;line-height: 32px;}
+
+.text-24 {font-size: 24px;line-height: 40px;}
+
+.padding-top {padding-top: 50px;}
+.padding-bottom {padding-bottom: 50px;}
+.no-padding {padding: 0 !important;}
+.no-padding-top {padding-top: 0 !important;}
+.no-padding-bottom {padding-bottom: 0 !important;}
+
+
+/* GLOBAL STYLES ENDS HERE */
+
+/* FRONTEND STYLES STARTS HERE */
+
+.page-content {
+  padding-bottom: 50px;
+}
+.page-content h3 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 35px;
+  text-transform: uppercase;
+}
+
+footer.frontend-footer {
+  color: #FFF;
+  margin: 0 -15px;
+  background: #21252b;
+}
+  footer.frontend-footer img {
+    height: 100px;
+  }
+  footer.frontend-footer p {
+    padding: 30px 10px;
+  }
+
+/* FRONTEND STYLES ENDS HERE */
 
 /* Fade transition */
  .animateme div {

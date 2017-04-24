@@ -9,6 +9,11 @@ export class TermsOfServiceComponent implements OnInit {
 
   constructor() { }
 
+  public status: any = {
+    isFirstOpen: true,
+    isOpen: false
+  };
+
   ngOnInit() {
   }
 

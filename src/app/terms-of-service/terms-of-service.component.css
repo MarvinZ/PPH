@@ -1,0 +1,8 @@
+accordion h4 {
+    text-transform: uppercase;
+}
+accordion li {
+    line-height: 24px;
+    text-align: justify;
+    padding: 0 25px 10px 0;
+}

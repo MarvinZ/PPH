@@ -1,0 +1,51 @@
+.aboutus-section {
+    color: #FFF;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    background: url(http://www.jazzaffiliates.com/img/headers/team-smiling.jpg) no-repeat top center;
+    background-size: cover;
+}
+.overlay {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
+.aboutus-section span.glyphicon {
+    font-size:40px;
+    padding: 20px;
+    margin: 70px 0;
+    background: #609ddb;
+    border-radius: 50%;
+}
+.aboutus-section h2 {
+    font-size: 52px;
+    margin: 0 0 20px 0;
+    text-shadow: 2px 2px 8px #222;
+}
+.aboutus-section p {
+    color: #94d4ed;
+    font-size: 18px;
+    margin: 0;
+    text-shadow: 2px 2px 8px #222;
+}
+.aboutus-access {
+    color: #FFF;
+    padding: 50px 0; 
+    text-align: center;
+    position: relative;
+    margin: 50px -15px 0 -15px;
+    background: url(http://www.jazzaffiliates.com/img/bg/partner.jpg) no-repeat center center;
+    background-size: cover;
+}
+.aboutus-access h3 {
+    font: bold 20px 'Open Sans', san-serif !important;
+}
+.aboutus-access h4 {
+    color: #609ddb;
+    margin: 25px 0 0 0;
+    text-transform: uppercase;
+}
