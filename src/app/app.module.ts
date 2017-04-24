@@ -130,6 +130,7 @@ import { AdCenterComponent } from './ad-center/ad-center.component'
 
 import { MyAgentsComponent } from './my-agents/my-agents.component'
 
+import { FooterComponent } from './footer/footer.component'
 
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -211,7 +212,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     BannerFarmComponent, BannerModalComponent,
     AdCenterComponent,
     MyAgentsComponent,
-    MyBannersComponent, MyBannersModalComponent
+    MyBannersComponent, MyBannersModalComponent,
+    FooterComponent
   ],
   imports: [
     AlertModule.forRoot(),
