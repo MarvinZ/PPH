@@ -35,6 +35,7 @@ export class AdCenterComponent implements OnInit {
 
       console.log([this.Book, this.BannerCode, this.Affiliatecode]);
       this.getIPAddress();
+      this.addclick();
 
       //  this.goToSite(this.Book);
     });
@@ -46,9 +47,9 @@ export class AdCenterComponent implements OnInit {
     this.affiliateService.AddBannerClick(this.BannerCode, this.Affiliatecode)
       .subscribe(response => {
         this.response = response;
-        // console.log('Response:');
+          console.log('Response:');
 
-        // console.log(response);
+        console.log(response);
         //http://localhost:4200/adcenter;book=1;bannercode=GOKU;affiliatecode=LL101
 
       },
@@ -62,7 +63,7 @@ export class AdCenterComponent implements OnInit {
   getIPAddress() {
     this._http.get("https://jsonip.com").subscribe(response => {
       this.response = response;
-      console.log(this.response._body);
+   //   console.log(this.response._body);
       let mmm = this.response._body.split(',');
       console.log(mmm[0].substring(7, mmm[0].length-1));
 
@@ -106,3 +107,6 @@ export class AdCenterComponent implements OnInit {
   }
 
 }
+
+
+

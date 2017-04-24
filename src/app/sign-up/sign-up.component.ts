@@ -12083,12 +12083,12 @@ export class SignUpComponent extends Localization implements OnInit {
     }
   ];
   public books = [
-    { value: 'Jazz', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
-    { value: 'ABC', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
-    { value: 'Looselines', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
+    { value: '6', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
+    { value: '4', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
+    { value: '1', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
 
   ];
-  ddlBook: string = 'Jazz';
+  ddlBook: string = '1';
   bookImg: string = 'https://karolmonge.files.wordpress.com/2015/01/jazz-mobile-logo.png';
 
   myClass: string[] = ['imagePreview', 'fade-in'];
@@ -12134,7 +12134,7 @@ export class SignUpComponent extends Localization implements OnInit {
       this.affiliateService.InsertPreAffiliate(formValues.name, formValues.lastname,
         formValues.email, formValues.ddlCountries, formValues.countryCode, formValues.addressLine1, formValues.addressLine2,
         formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
-        formValues.nickname, formValues.password).subscribe(val => {
+        formValues.nickname, formValues.password, formValues.ddlBook).subscribe(val => {
           // needs state or province
           console.log(val);
           if (val > 0) {

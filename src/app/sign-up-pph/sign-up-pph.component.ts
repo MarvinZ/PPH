@@ -12098,7 +12098,7 @@ export class SignUpPphComponent extends Localization implements OnInit {
     this.affiliateService.InsertPreAffiliate(formValues.name, formValues.lastname,
       formValues.email, formValues.ddlCountries, formValues.countryCode, formValues.addressLine1, formValues.addressLine2,
       formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
-      formValues.nickname, formValues.password).subscribe(val => {
+      formValues.nickname, formValues.password, formValues.ddlBook).subscribe(val => {
         console.log(val);
         if (val > 0) {
           this.toastr.success('Your application has been submitted!', 'Success');

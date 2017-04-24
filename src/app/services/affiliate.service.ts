@@ -60,7 +60,8 @@ export class AffiliateService {
   //POST api/temp/InsertPreAffiliate
 
   InsertPreAffiliate(FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
-    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string): Observable<any> {
+    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string,
+    IdBook: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -79,7 +80,8 @@ export class AffiliateService {
       "BusinessName": BusinessName,
       "LanguageId": LanguageId,
       "AgentName": AgentName,
-      "AgentPassword": AgentPassword
+      "AgentPassword": AgentPassword,
+      "IdBook":IdBook
     }
 
     console.log(payload);
@@ -91,8 +93,41 @@ export class AffiliateService {
 
   }
 
-  //TO do
+ 
 
+  //POST api/temp/InsertPreAffiliate
+
+  RejectPreAffiliate(id: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+
+    let payload = {
+      "Id": id,
+      "FirstName":'' ,
+      "LastName": '',
+      "Email": '',
+      "CountryName": '',
+      "CountryDialCode": '',
+      "Address1": '',
+      "Address2": '',
+      "Phone": '',
+      "City": '',
+      "ZipCode": '',
+      "BusinessName": '',
+      "LanguageId": '',
+      "AgentName": '',
+      "AgentPassword": '',
+      "IdBook":''
+    }
+
+    console.log(payload);
+
+    return this._http.post(this._url + "RejectPreAffiliate", payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+
+
+  }
   //GET api/temp/GetPreaffiliates
   GetPreaffiliates(): Observable<any> {
     return this._http.get(this._url + "GetPreaffiliates")
