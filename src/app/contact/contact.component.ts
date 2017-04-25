@@ -9,10 +9,8 @@ import { Router } from '@angular/router';
 @Component({
   //selector: 'app-contact',
   templateUrl: './contact.component.html',
-  //styleUrls: ['./contact.component.css']
-    styles: [`
-    em { float:right; color:#E05C65; padding-left:10px; }
-    `]
+  styleUrls: ['./contact.component.css']
+
 })
 export class ContactComponent extends Localization implements OnInit {
 

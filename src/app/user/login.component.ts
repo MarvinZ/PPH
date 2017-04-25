@@ -10,8 +10,9 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 @Component({
   templateUrl: './login.component.html',
   styles: [`
-    em { float:right; color:#E05C65; padding-left:10px; }
-    
+    em { float:right; color:#E05C65; padding:0 20px; font-weight:bold; font-size:12px; }
+    .login-form {padding:65px 0;margin-bottom:60px;}
+    form {margin-bottom:20px;}
   `]
 })
 export class LoginComponent {

@@ -1,10 +1,24 @@
-    input[type=number]::-webkit-inner-spin-button, 
+#signup-form {
+	border:1px solid #CCC;
+	border-radius: 5px;
+	padding: 20px;
+	background: #EEE;
+	margin: 25px 0;
+}
+.form-group em {
+	color: #900;
+	font-weight: bold;
+	font-size: 13px;
+}
+.form-group button {
+	margin-top: 20px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
-
-
 
 .imagePreview {
   display: block;
