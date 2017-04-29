@@ -58,26 +58,26 @@
           <tr *ngFor="let ItemDetailPlayer of Item.PlayerList">
             <td>{{ItemDetailPlayer._player}}</td>
             <td>{{ItemDetailPlayer._name}}</td>
-            <td [style.color]="ItemDetailPlayer._balfwd < 0 ? 'red' : 'green'">{{ItemDetailPlayer._balfwd | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="ItemDetailPlayer._pmts < 0 ? 'red' : 'green'">{{ItemDetailPlayer._pmts | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="ItemDetailPlayer._casinoweek < 0 ? 'red' : 'green'">{{ItemDetailPlayer._casinoweek | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="ItemDetailPlayer._sportsweek < 0 ? 'red' : 'green'">{{ItemDetailPlayer._sportsweek | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="ItemDetailPlayer._horsesweek < 0 ? 'red' : 'green'">{{ItemDetailPlayer._horsesweek | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getLineTotal(ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) < 0 ? 'red' : 'green'">{{getLineTotal(ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getLineTotalTotal(ItemDetailPlayer._balfwd,ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) < 0 ? 'red' : 'green'">{{getLineTotalTotal(ItemDetailPlayer._balfwd,ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek)
+            <td [ngClass]="(ItemDetailPlayer._balfwd < 0 )?'redNumber':'greenNumber'" >{{ItemDetailPlayer._balfwd | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._pmts < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._pmts | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._casinoweek < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._casinoweek | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._sportsweek < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._sportsweek | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._horsesweek < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._horsesweek | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(getLineTotal(ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) < 0 )? 'redNumber' : 'greenNumber'">{{getLineTotal(ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(getLineTotalTotal(ItemDetailPlayer._balfwd,ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek) < 0 )? 'redNumber' : 'greenNumber'">{{getLineTotalTotal(ItemDetailPlayer._balfwd,ItemDetailPlayer._sportsweek, ItemDetailPlayer._horsesweek, ItemDetailPlayer._casinoweek)
               | currency:'USD':true:'1.2-2'}}</td>
 
           </tr>
           <tr>
             <td>{{Item.PlayerList.length}} {{'Players' | translate:lang }}</td>
             <td></td>
-            <td [style.color]="getTotal(Item, '_balfwd') < 0 ? 'red' : 'green'">{{getTotal(Item, '_balfwd') | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getTotal(Item, '_pmts')  < 0 ? 'red' : 'green'">{{getTotal(Item, '_pmts') | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getTotal(Item, '_casinoweek') < 0 ? 'red' : 'green'">{{getTotal(Item, '_casinoweek') | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getTotal(Item, '_sportsweek') < 0 ? 'red' : 'green'">{{getTotal(Item, '_sportsweek') | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getTotal(Item, '_horsesweek') < 0 ? 'red' : 'green'">{{getTotal(Item, '_horsesweek') | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getTotal(Item, '_allweek')  < 0 ? 'red' : 'green'">{{getTotal(Item, '_allweek') | currency:'USD':true:'1.2-2'}}</td>
-            <td [style.color]="getTotalTotal(Item, '_allweek')< 0 ? 'red' : 'green'">{{getTotalTotal(Item, '_allweek') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_balfwd') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_balfwd') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_pmts')  < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_pmts') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_casinoweek') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_casinoweek') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_sportsweek') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_sportsweek') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_horsesweek') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_horsesweek') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_allweek')  < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_allweek') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotalTotal(Item, '_allweek')< 0 ? 'redNumber' : 'greenNumber'">{{getTotalTotal(Item, '_allweek') | currency:'USD':true:'1.2-2'}}</td>
 
           </tr>
 
