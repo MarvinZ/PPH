@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>{{'cash Flow' | translate:lang }}</h2>
+  <h2>{{'Cash Flow' | translate:lang }}</h2>
   <form #myForm="ngForm" novalidate>
     <div class="row">
 
@@ -38,35 +38,40 @@
   <div *ngIf="response?.ListAgent?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
     <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
-
+    <br><br>
     <div *ngFor=" let Item of response.ListAgent;">
       <div class="row" style="text-align: center; color: white; background-color: black;">
         {{Item._agent}}
       </div>
-      <div class="row" style="background-color: lightgray">
-        <div class="col-md-1">Player</div>
-        <div class="col-md-2">Placed</div>
-        <div class="col-md-2">Payment Method</div>
-        <div class="col-md-1">Reference</div>
-        <div class="col-md-3">Description</div>
-        <div class="col-md-1">Amount</div>
-        <div class="col-md-1">Fee</div>
-        <div class="col-md-1">Bonus</div>
-      </div>
-      <div *ngFor="let ItemDetailPlayer of Item.ListDetail">
 
-        <div class="row table-hover">
-          <div class="col-md-1">{{ItemDetailPlayer._player}}</div>
-          <div class="col-md-2">{{ItemDetailPlayer._placed}}</div>
-          <div class="col-md-2">{{ItemDetailPlayer._paymentmethod}}</div>
-          <div class="col-md-1">{{ItemDetailPlayer._reference}}</div>
-          <div class="col-md-3">{{ItemDetailPlayer._description}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._amount | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._fee | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._bonus | currency:'USD':true:'1.2-2'}}</div>
-        </div>
 
-      </div>
+      <table class="table">
+        <thead>
+          <tr style="background-color: lightgray">
+            <td>Player</td>
+            <td>Placed</td>
+            <td>Payment Method</td>
+            <td>Reference</td>
+            <td>Description</td>
+            <td>Amount</td>
+            <td>Fee</td>
+            <td>Bonus</td>
+          </tr>
+        </thead>
+        <tr *ngFor="let ItemDetailPlayer of Item.ListDetail">
+          <td>{{ItemDetailPlayer._player}}</td>
+          <td>{{ItemDetailPlayer._placed}}</td>
+          <td>{{ItemDetailPlayer._paymentmethod}}</td>
+          <td>{{ItemDetailPlayer._reference}}</td>
+          <td>{{ItemDetailPlayer._description}}</td>
+          <td>{{ItemDetailPlayer._amount | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ItemDetailPlayer._fee | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ItemDetailPlayer._bonus | currency:'USD':true:'1.2-2'}}</td>
+        </tr>
+
+      </table>
+
+
     </div>
   </div>
 

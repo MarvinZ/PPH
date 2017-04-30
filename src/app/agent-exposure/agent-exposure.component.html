@@ -148,7 +148,9 @@
 
 </div>
 
-<div *ngIf="loading">    <app-loading> </app-loading> </div>
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>
 
 
 <exposure-modal #modal>
@@ -157,42 +159,47 @@
   </div>
   <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length > 0">
 
-    <div class="row">
-      <div class="col-md-1 text-center">Player</div>
-      <div class="col-md-2 text-center">Ticket#</div>
-      <div class="col-md-2 text-center">Placed Date</div>
-      <div class="col-md-4 text-center">Line</div>
-      <div class="col-md-1 text-center">Risk</div>
-      <div class="col-md-1 text-center">ToWin</div>
-    </div>
 
-    <div *ngFor="let ItemDetails of modal.response.ListDetail">
-      <div class="row">
-        <div class="col-md-1 text-center">{{ItemDetails._player}}</div>
-        <div class="col-md-2 text-center">{{ItemDetails._ticket}}</div>
-        <div class="col-md-2 text-center">{{ItemDetails._placeddate}}</div>
-        <div class="col-md-4 text-center">{{ItemDetails._line}}</div>
-        <div class="col-md-1 text-center">{{ItemDetails._riskamount | currency:'USD':true:'1.2-2'}}</div>
-        <div class="col-md-1 text-center">{{ItemDetails._winamount | currency:'USD':true:'1.2-2'}}</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-1 text-center"></div>
-      <div class="col-md-2 text-center"></div>
-      <div class="col-md-2 text-center"></div>
-      <div class="col-md-4 text-center">Total:</div>
-      <div class="col-md-1 text-center">{{modal.totalRisk | currency:'USD':true:'1.2-2'}}</div>
-      <div class="col-md-1 text-center">{{modal.totalWin | currency:'USD':true:'1.2-2'}}</div>
-    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Player</td>
+          <td>Ticket#</td>
+          <td>Placed Date</td>
+          <td>Line</td>
+          <td>Risk</td>
+          <td>To Win</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ItemDetails of modal.response.ListDetail">
+          <td>{{ItemDetails._player}}</td>
+          <td>{{ItemDetails._ticket}}</td>
+          <td>{{ItemDetails._placeddate}}</td>
+          <td>{{ItemDetails._line}}</td>
+          <td>{{ItemDetails._riskamount | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ItemDetails._winamount | currency:'USD':true:'1.2-2'}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Total:</td>
+          <td>{{modal.totalRisk | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{modal.totalWin | currency:'USD':true:'1.2-2'}}</td>
+        </tr>
+      </tbody>
+    </table>
+
 
 
     <!--<pre>
   {{modal.response | json}}
 </pre>-->
   </div>
-   <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length == 0"> 
-     there is nothing to show!
-   </div>
+  <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length == 0">
+    there is nothing to show!
+  </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
   </div>
