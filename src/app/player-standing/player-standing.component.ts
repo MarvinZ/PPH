@@ -25,6 +25,9 @@ export class PlayerStandingComponent extends Localization implements OnInit {
 
 	ddlCurrency: string = '1'
 
+	showAllPlayers: Boolean = false;
+
+
 
 	public currencies = [
 		{ value: '1', display: 'USD' },

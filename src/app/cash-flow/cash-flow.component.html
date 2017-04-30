@@ -39,6 +39,13 @@
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
     <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
     <br><br>
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text' [(ngModel)]='descFilter' />
+      </div>
+    </div>
+    <br>
     <div *ngFor=" let Item of response.ListAgent;">
       <div class="row" style="text-align: center; color: white; background-color: black;">
         {{Item._agent}}
@@ -58,7 +65,7 @@
             <td>Bonus</td>
           </tr>
         </thead>
-        <tr *ngFor="let ItemDetailPlayer of Item.ListDetail">
+        <tr *ngFor="let ItemDetailPlayer of Item.ListDetail | cashFlowFilter:descFilter">
           <td>{{ItemDetailPlayer._player}}</td>
           <td>{{ItemDetailPlayer._placed}}</td>
           <td>{{ItemDetailPlayer._paymentmethod}}</td>

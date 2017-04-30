@@ -70,6 +70,7 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 		let month = currentDate.getMonth() + 1;
 		let year = currentDate.getFullYear();
 		this.dateModel = { date: { year: year, month: month, day: day } };
+		this.go();
 	}
 
 	go() {

@@ -41,7 +41,13 @@
 
   <div *ngIf="response?.CashFlowList?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.From | date: 'MM/dd/yyyy'}} To {{response.To | date: 'MM/dd/yyyy'}}</h2>
-    <p></p>
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text' [(ngModel)]='descFilter' />
+      </div>
+    </div>
+
     <table class="table table-hover">
       <thead>
         <tr>
@@ -55,7 +61,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let PreAff of response.CashFlowList">
+        <tr *ngFor="let PreAff of response.CashFlowList | thingFilter:descFilter">
           <td>
             {{PreAff.Transaction}}
           </td>
@@ -75,7 +81,7 @@
       </tbody>
     </table>
     <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
-
+    <br><br>
   </div>
 
   <!--<pre>

@@ -39,6 +39,7 @@ import { ThingDetailGuard } from './guards/thing-detail-guard'
 
 
 import { LocalizationModule } from 'angular-l10n';
+import { CashFlowFilterPipe } from './filters/cash-flow-filter.pipe'
 
 import { ThingFilterPipe } from './filters/thing-filter.pipe'
 
@@ -149,6 +150,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     GenericReport2Component,
     Error404Component,
     ThingFilterPipe,
+    CashFlowFilterPipe,
     ThingDetailComponent,
     StarComponent,
     FaqComponent,

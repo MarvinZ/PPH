@@ -24,6 +24,9 @@ export class CashFlowComponent extends Localization implements OnInit {
   //private dateModel: any
   loading: boolean = false;
 
+  descFilter: string = "";
+
+
   // ddlSports :string
   ddlTransType: string = '0'
   ddlCurrency: string = '1'
@@ -38,7 +41,7 @@ export class CashFlowComponent extends Localization implements OnInit {
 
 
 
-    public transactionTypes = [
+  public transactionTypes = [
     { value: '0', display: 'All' },
     { value: '1', display: 'Receipts' },
     { value: '2', display: 'Disbursement' },
@@ -94,29 +97,29 @@ export class CashFlowComponent extends Localization implements OnInit {
   }
 
 
-  	ExportToExcel() {
-		let res = []
+  ExportToExcel() {
+    let res = []
 
-		for (let agent of this.response.ListAgent) {
-			if (agent.ListDetail) {
-				for (let player of agent.ListDetail) {
-					res.push(player);
-				}
-			}
-		}
-		console.log(res);
+    for (let agent of this.response.ListAgent) {
+      if (agent.ListDetail) {
+        for (let player of agent.ListDetail) {
+          res.push(player);
+        }
+      }
+    }
+    console.log(res);
 
-		try {
-			var options = {
-				showLabels: true
-			};
-			var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+    try {
+      var options = {
+        showLabels: true
+      };
+      var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-			new Angular2Csv(res, 'WeeklyBalances' + displayDate, options);
-		} catch (error) {
-			alert(error);
-		}
-	}
+      new Angular2Csv(res, 'WeeklyBalances' + displayDate, options);
+    } catch (error) {
+      alert(error);
+    }
+  }
 
 
 }

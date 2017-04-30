@@ -21,6 +21,7 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 	};
 	private dateModel: any
 	loading: boolean = false;
+	descFilter: string = "";
 
 	// ddlSports :string
 	// ddlTransType: string
@@ -94,6 +95,7 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 			},
 			error => this.errorMessage = <any>error);
 	}
+
 
 
 	ExportToExcel() {

@@ -42,33 +42,36 @@
     <p></p>
     <div *ngFor="let Item of response.ListGame">
 
-      <div class="row">
-        <div class="col-md-2">{{Item._title1}}:{{Item._gamedatetime}}</div>
-        <div class="col-md-1">{{Item._title2}}</div>
-        <div class="col-md-1">{{Item._title3}}</div>
-        <div class="col-md-1">{{Item._title4}}</div>
-        <div class="col-md-1">{{Item._title5}}</div>
-        <div class="col-md-1">{{Item._title6}}</div>
-        <div class="col-md-1">{{Item._title7}}</div>
-        <div class="col-md-1">{{Item._title8}}</div>
-        <div class="col-md-1">{{Item._title9}}</div>
-      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>{{Item._title1}}:{{Item._gamedatetime}}</td>
+            <td>{{Item._title2}}</td>
+            <td>{{Item._title3}}</td>
+            <td>{{Item._title4}}</td>
+            <td>{{Item._title5}}</td>
+            <td>{{Item._title6}}</td>
+            <td>{{Item._title7}}</td>
+            <td>{{Item._title8}}</td>
+            <td>{{Item._title9}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ItemDetail of Item.ListDetail">
+            <td>{{parceFrac(ItemDetail._title1)}}</td>
+            <td>{{parceFrac(ItemDetail._title2)}}</td>
+            <td>{{parceFrac(ItemDetail._title3)}}</td>
+            <td>{{parceFrac(ItemDetail._title4)}}</td>
+            <td>{{parceFrac(ItemDetail._title5)}}</td>
+            <td>{{parceFrac(ItemDetail._title6)}}</td>
+            <td>{{parceFrac(ItemDetail._title7)}}</td>
+            <td>{{parceFrac(ItemDetail._title8)}}</td>
+            <td>{{parceFrac(ItemDetail._title9)}}</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <div *ngFor="let ItemDetail of Item.ListDetail">
 
-        <div class="row">
-          <div class="col-md-2">{{parceFrac(ItemDetail._title1)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title2)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title3)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title4)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title5)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title6)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title7)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title8)}}</div>
-          <div class="col-md-1">{{parceFrac(ItemDetail._title9)}}</div>
-        </div>
-
-      </div>
 
       <hr/>
 

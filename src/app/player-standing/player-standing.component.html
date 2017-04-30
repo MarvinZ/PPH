@@ -16,6 +16,9 @@
 
       </div>
       <div class="col-xs-3 form-group">
+        <label>{{'Show all players:'| translate:lang  }}</label>
+        <input type="checkbox" name="Showfutures" [(ngModel)]="showAllPlayers" class="form-control">
+
 
       </div>
       <div class="col-xs-3 form-group">
@@ -56,18 +59,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
+          <ng-container *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
+            <tr *ngIf="showAllPlayers || ItemDetailPlayer._thisweek != 0">
 
-            <td>{{ItemDetailPlayer._player}}</td>
-            <td>{{ItemDetailPlayer._creditlimit | currency:'USD':true:'1.2-2'}}</td>
-            <td>{{ItemDetailPlayer._thisweek | currency:'USD':true:'1.2-2'}}</td>
-            <td>{{ItemDetailPlayer._atrisk | currency:'USD':true:'1.2-2'}}</td>
-            <td>{{ItemDetailPlayer._currentbalance | currency:'USD':true:'1.2-2'}}</td>
-            <td>{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'1.2-2'}}</td>
-            <td>{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'1.2-2'}}</td>
-            <td>{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._player}}</td>
+              <td>{{ItemDetailPlayer._creditlimit | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._thisweek | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._atrisk | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._currentbalance | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'1.2-2'}}</td>
+              <td>{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'1.2-2'}}</td>
 
-          </tr>
+            </tr>
+          </ng-container>
           <tr style="background-color: lightgray;">
             <td>Total: {{Item.ListPlayer?.length}}</td>
             <td>{{Item._creditlimittotal | currency:'USD':true:'1.2-2'}}</td>
