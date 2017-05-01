@@ -85,18 +85,18 @@
             <tr *ngFor="let ItemDetailPlayer of Item.PlayerList;">
               <td>{{ItemDetailPlayer._Player}}</td>
               <td>{{ItemDetailPlayer._Name}}</td>
-              <td>{{ItemDetailPlayer._BalFwd | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._Ptms | currency:'USD':true:'1.2-2'}}</td>
-              <td>{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._BalFwd < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._BalFwd | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay1 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay1 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay2 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay2 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay3 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay3 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay4 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay4 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay5 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay5 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay6 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay6 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._WeekDay7 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._WeekDay7 | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._ThisWeek < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._ThisWeek | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._AmountAtRisk < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._AmountAtRisk | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._Ptms < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._Ptms | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(ItemDetailPlayer._Balance < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</td>
             </tr>
 
             <tr style="background-color: lightgray">

@@ -62,26 +62,26 @@
 
           <div class="row table-hover">
             <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day1 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day2 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day3 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day4 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day5 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day6 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._day7 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day1 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day1 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day2 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day2 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day3 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day3 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day4 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day4 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day5 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day5 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day6 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day6 | currency:'USD':true:'1.2-2'}}</div>
+            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day7 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day7 | currency:'USD':true:'1.2-2'}}</div>
           </div>
 
         </div>
 
         <div class="row table-hover" style="background-color: lightgray">
           <div class="col-md-2">{{Item.PlayerList.length}} {{'Players' | translate:lang }}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day1') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day2') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day3') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day4') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day5') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day6') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{getTotal(Item, '_day7') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day1') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day1') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day2') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day2') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day3') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day3') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day4') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day4') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day5') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day5') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day6') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day6') | currency:'USD':true:'1.2-2'}}</div>
+          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day7') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day7') | currency:'USD':true:'1.2-2'}}</div>
 
         </div>
 

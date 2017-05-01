@@ -68,10 +68,10 @@
           <td>
             {{PreAff.Description}}
           </td>
-          <td>
+          <td [ngClass]="(PreAff.Amount  < 0 )?'redNumber':'greenNumber'">
             {{PreAff.Amount | currency:'USD':true:'1.2-2'}}
           </td>
-          <td>
+          <td [ngClass]="(PreAff.Balance < 0 )?'redNumber':'greenNumber'">
             {{PreAff.Balance | currency:'USD':true:'1.2-2'}}
           </td>
           <td>

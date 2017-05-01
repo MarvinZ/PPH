@@ -71,7 +71,7 @@
           <td>{{ItemDetailPlayer._paymentmethod}}</td>
           <td>{{ItemDetailPlayer._reference}}</td>
           <td>{{ItemDetailPlayer._description}}</td>
-          <td>{{ItemDetailPlayer._amount | currency:'USD':true:'1.2-2'}}</td>
+          <td [ngClass]="(ItemDetailPlayer._amount < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._amount | currency:'USD':true:'1.2-2'}}</td>
           <td>{{ItemDetailPlayer._fee | currency:'USD':true:'1.2-2'}}</td>
           <td>{{ItemDetailPlayer._bonus | currency:'USD':true:'1.2-2'}}</td>
         </tr>

@@ -128,3 +128,12 @@ pm-app div.panel.panel-primary {
 }
 
 */
+.redNumber {
+color:red;
+font-weight: bold;
+}
+
+.greenNumber {
+    /*color:green;*/
+    font-weight: bold;
+}
