@@ -37,7 +37,7 @@ export class AdCenterComponent implements OnInit {
       this.getIPAddress();
       this.addclick();
 
-      //  this.goToSite(this.Book);
+        this.goToSite(this.Book);
     });
 
     //this.activatedRoute.queryParams
@@ -82,23 +82,23 @@ export class AdCenterComponent implements OnInit {
     switch (site) {
       case '19': {
         this.addclick();
-        //    window.location.href = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
+            window.location.href = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
         break;
       }
       case '4': {
         this.addclick();
-        //       window.location.href = 'http://signup.abcislands.ag/abc_signupnew.aspx';
+               window.location.href = 'http://signup.abcislands.ag/abc_signupnew.aspx';
         break;
       }
       case '1': {
         this.addclick();
-        //     window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
+             window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
         break;
       }
       default: {
         //statements; 
         this.addclick();
-        //       window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
+               window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
 
         break;
       }
