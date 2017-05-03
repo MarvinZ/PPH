@@ -24,7 +24,7 @@
     </div>
   </form>
 
-  <div *ngIf="response?.CashFlowList?.length > 0">
+  <div *ngIf="response?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
     <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
 
@@ -37,7 +37,6 @@
           <th>{{'Amount' | translate:lang}}</th>
           <th>{{'Depositor' | translate:lang}}</th>
           <th>{{'Player Card' | translate:lang}}</th>
-          <th>{{'Agent' | translate:lang}}</th>
           <th>{{'Player' | translate:lang}}</th>
           <th>{{'Date Entered' | translate:lang}}</th>
           <th>{{'Deposit Date' | translate:lang}}</th>
@@ -47,23 +46,22 @@
         </tr>
       </thead>
       <tbody>
-        <!--<tr *ngFor="let PreAff of response.CashFlowList">
-          <td>
-            {{PreAff.Transaction}}
-          </td>
-          <td>
-            {{PreAff.Description}}
-          </td>
-          <td>
-            {{PreAff.Amount}}
-          </td>
-          <td>
-            {{PreAff.Balance}}
-          </td>
-          <td>
-            {{PreAff.Date | date}}
-          </td>
-        </tr>-->
+        <tr *ngFor="let item of response">
+
+
+
+          <td>{{item.Transaction_number }}</td>
+          <td>{{item.Bank_name }}</td>
+          <td [ngClass]="(item.Amount < 0 )?'redNumber':'greenNumber'">{{item.Amount | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{item.DepositorName }}</td>
+          <td>{{item.Player_card }}</td>
+          <td>{{item.nomp }}</td>
+          <td>{{item.Lastmodification }}</td>
+          <td>{{item.DepositDate }}</td>
+          <td>{{item.Transaction_type === 'R' ?'Deposit':'Withdrawal' }}</td>
+          <td>{{item.Image }}</td>
+          <td>{{item.Checked }}</td>
+        </tr>
       </tbody>
     </table>
   </div>

@@ -139,13 +139,8 @@ export const appRoutes: Routes = [
     { path: 'bannerFarm', component: BannerFarmComponent },
     { path: 'adcenter', component: AdCenterComponent },
     { path: 'myAgents', component: MyAgentsComponent },
-
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: Error404Component },
-
-
-
-
 
 
 ]

@@ -67,7 +67,7 @@ export class MonthlySummaryComponent extends Localization implements OnInit {
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.affiliateService.GetMonthlysummaryReport(this.auth.currentUser.id, startDate, endDate)
+    this.affiliateService.GetMonthlysummaryReport(this.auth.currentUser.userName, startDate, endDate)
       .subscribe(response => {
         this.response = response;
         //    this.totals = this.calculateTotals(response);

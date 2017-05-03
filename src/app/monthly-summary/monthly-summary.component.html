@@ -28,8 +28,7 @@
     </div>
   </form>
 
-  <div *ngIf="response?.CashFlowList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
+  <div *ngIf="response?.length > 0">
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
     <table class="table table-hover">
@@ -46,32 +45,41 @@
           <th>{{'Horse Win Loss' | translate:lang}}</th>
         </tr>
       </thead>
-      <!--<tbody>
-        <tr *ngFor="let PreAff of response.CashFlowList">
+      <tbody>
+        <tr *ngFor="let item of response">
           <td>
-            {{PreAff.Transaction}}
+            {{item.DayDate | date }}
           </td>
           <td>
-            {{PreAff.Description}}
+            {{item.AllPlayers}}
           </td>
-          <td>
-            {{PreAff.Amount}}
+          <td [ngClass]="(item.SportWin < 0 )?'redNumber':'greenNumber'">
+            {{item.SportWin}}
           </td>
-          <td>
-            {{PreAff.Balance}}
+          <td [ngClass]="(item.SportLoss < 0 )?'redNumber':'greenNumber'">
+            {{item.SportLoss}}
           </td>
-          <td>
-            {{PreAff.Date | date}}
+          <td [ngClass]="(item.SportWinLoss < 0 )?'redNumber':'greenNumber'">
+            {{item.SportWinLoss}}
+          </td>
+          <td [ngClass]="(item.HorseWin < 0 )?'redNumber':'greenNumber'">
+            {{item.HorseWin}}
+          </td>
+          <td [ngClass]="(item.HorseLoss < 0 )?'redNumber':'greenNumber'">
+            {{item.HorseLoss}}
+          </td>
+          <td [ngClass]="(item.HorseWinLoss < 0 )?'redNumber':'greenNumber'">
+            {{item.HorseWinLoss}}
           </td>
         </tr>
-      </tbody>-->
+      </tbody>
     </table>
 
   </div>
 
-  <pre>
+  <!--<pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 
