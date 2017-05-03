@@ -1,92 +1,88 @@
-<div class="container">
+<div class="container" id="reportContent">
   <h2>{{'Player Standings' | translate:lang }}</h2>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
-
-      <div class="col-xs-3 form-group">
+    <div class="row well">
+      <div class="col-md-3 form-group">
         <label>{{'Select Date:' | translate:lang  }}</label>
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
       </div>
 
-      <div class="col-xs-3 form-group">
+      <div class="col-md-3 form-group">
         <label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
                 <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
             </select>
 
       </div>
-      <div class="col-xs-3 form-group">
-        <label>{{'Show all players:'| translate:lang  }}</label>
-        <input type="checkbox" name="Showfutures" [(ngModel)]="showAllPlayers" class="form-control">
-
-
-      </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
+      <div class="col-md-6">
+        <div class="col-xs-6 form-group">
+          <label>{{'Show all players:'| translate:lang  }}</label>
+          <input type="checkbox" name="Showfutures" [(ngModel)]="showAllPlayers" class="form-control">
+        </div>
+        <div class="col-xs-6 form-group padding-top-small">
+          <button class="btn btn-success btn-block" (click)="go()">GO!</button>
+        </div>
       </div>
     </div>
+
   </form>
 
   <div *ngIf="response?.ListAgent?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
-    <br><br>
-    <div *ngFor="let Item of response.ListAgent;">
 
-
-      <div class="row" style="text-align: center; color: white; background-color: black;">
-        {{Item._agent}}
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
       </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">Export to Excel</button>
+      </div>
+    </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <td>Player</td>
-            <td>Credit Limit</td>
-            <td>This Week</td>
-            <td>At Risk</td>
-            <td>Current Balance</td>
-            <td>This Week Sports</td>
-            <td>This Week Horses</td>
-            <td>This Week Casino</td>
-          </tr>
-        </thead>
-        <tbody>
-          <ng-container *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
-            <tr *ngIf="showAllPlayers || ItemDetailPlayer._thisweek != 0">
-
-              <td>{{ItemDetailPlayer._player}}</td>
-              <td>{{ItemDetailPlayer._creditlimit | currency:'USD':true:'1.2-2'}}</td>
-              <td [ngClass]="(ItemDetailPlayer._thisweek < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweek | currency:'USD':true:'1.2-2'}}</td>
-              <td [ngClass]="(ItemDetailPlayer._atrisk < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._atrisk | currency:'USD':true:'1.2-2'}}</td>
-              <td [ngClass]="(ItemDetailPlayer._currentbalance < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'1.2-2'}}</td>
-              <td [ngClass]="(ItemDetailPlayer._thisweeksports < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'1.2-2'}}</td>
-              <td [ngClass]="(ItemDetailPlayer._thisweekhorses < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'1.2-2'}}</td>
-              <td [ngClass]="(ItemDetailPlayer._thisweekcasino < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'1.2-2'}}</td>
-
+    <div *ngFor="let Item of response.ListAgent;">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <caption><i class="fa fa-chevron-down" aria-hidden="true"></i> {{Item._agent}}</caption>
+          <thead>
+            <tr>
+              <th>Player</th>
+              <th>Credit Limit</th>
+              <th>This Week</th>
+              <th>At Risk</th>
+              <th>Current Balance</th>
+              <th>This Week Sports</th>
+              <th>This Week Horses</th>
+              <th>This Week Casino</th>
             </tr>
-          </ng-container>
-          <tr style="background-color: lightgray;">
-            <td>Total: {{Item.ListPlayer?.length}}</td>
-            <td [ngClass]="(Item._creditlimittotal < 0 )?'redNumber':'greenNumber'">{{Item._creditlimittotal | currency:'USD':true:'1.2-2'}}</td>
-            <td [ngClass]="(Item._thisweektotal < 0 )?'redNumber':'greenNumber'">{{Item._thisweektotal | currency:'USD':true:'1.2-2'}}</td>
-            <td [ngClass]="(Item._atrisktotal < 0 )?'redNumber':'greenNumber'">{{Item._atrisktotal | currency:'USD':true:'1.2-2'}}</td>
-            <td [ngClass]="(Item._currentbalancetotal < 0 )?'redNumber':'greenNumber'">{{Item._currentbalancetotal | currency:'USD':true:'1.2-2'}}</td>
-            <td [ngClass]="(Item._thissportstotal < 0 )?'redNumber':'greenNumber'">{{Item._thissportstotal | currency:'USD':true:'1.2-2'}}</td>
-            <td [ngClass]="(Item._thishorsestotal < 0 )?'redNumber':'greenNumber'">{{Item._thishorsestotal | currency:'USD':true:'1.2-2'}}</td>
-            <td [ngClass]="(Item._thiscasinototal < 0 )?'redNumber':'greenNumber'">{{Item._thiscasinototal | currency:'USD':true:'1.2-2'}}</td>
-          </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let ItemDetailPlayer of Item.ListPlayer;">
+              <tr *ngIf="showAllPlayers || ItemDetailPlayer._thisweek != 0">
 
-        </tbody>
-      </table>
+                <td>{{ItemDetailPlayer._player}}</td>
+                <td>{{ItemDetailPlayer._creditlimit | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._thisweek < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweek | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._atrisk < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._atrisk | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._currentbalance < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._thisweeksports < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweeksports | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._thisweekhorses < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweekhorses | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._thisweekcasino < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._thisweekcasino | currency:'USD':true:'1.2-2'}}</td>
 
+              </tr>
+            </ng-container>
+            <tr style="background-color: lightgray;">
+              <td>Total: {{Item.ListPlayer?.length}}</td>
+              <td [ngClass]="(Item._creditlimittotal < 0 )?'redNumber':'greenNumber'">{{Item._creditlimittotal | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(Item._thisweektotal < 0 )?'redNumber':'greenNumber'">{{Item._thisweektotal | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(Item._atrisktotal < 0 )?'redNumber':'greenNumber'">{{Item._atrisktotal | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(Item._currentbalancetotal < 0 )?'redNumber':'greenNumber'">{{Item._currentbalancetotal | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(Item._thissportstotal < 0 )?'redNumber':'greenNumber'">{{Item._thissportstotal | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(Item._thishorsestotal < 0 )?'redNumber':'greenNumber'">{{Item._thishorsestotal | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(Item._thiscasinototal < 0 )?'redNumber':'greenNumber'">{{Item._thiscasinototal | currency:'USD':true:'1.2-2'}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
 
     </div>
   </div>

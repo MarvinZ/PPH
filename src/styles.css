@@ -48,6 +48,7 @@ img {max-width: 100%;}
 .text-24 {font-size: 24px;line-height: 40px;}
 
 .padding-top {padding-top: 50px;}
+.padding-top-small {padding-top: 20px;}
 .padding-bottom {padding-bottom: 50px;}
 .no-padding {padding: 0 !important;}
 .no-padding-top {padding-top: 0 !important;}
@@ -81,6 +82,48 @@ footer.frontend-footer {
   }
 
 /* FRONTEND STYLES ENDS HERE */
+
+/* REPORTS STYLES STARTS HERE */
+
+#reportContent.container {
+  padding: 0 !important; 
+}
+#reportContent.container .row {
+  margin-left: 0 !important; 
+  margin-right: 0 !important;
+}
+#reportContent.container h3 {
+  margin: 0 !important;
+}
+#reportContent input[type="checkbox"] {
+  width: 35px;
+  height: 35px;
+}
+#reportContent input[type="checkbox"].form-control:focus {
+    border:none !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+#reportContent .col-md-6 .col-xs-6:first-child {
+  padding-left: 0 !important;
+}
+#reportContent .col-md-6 .col-xs-6:last-child {
+  padding-right: 0 !important;
+}
+#reportContent table {
+  margin: 25px 0;
+}
+#reportContent table caption {
+  background: #b0bec5;
+  border-top: 2px solid #eee;
+  color: #333;
+  font: 600 18px "Oswald";
+  padding: 8px 10px;
+  text-shadow: 1px 1px #cfd8dc;
+  text-transform: uppercase;
+}
+
+/* REPORTS STYLES ENDS HERE */
 
 /* Fade transition */
  /*.animateme div {
