@@ -82,4 +82,28 @@ export class PlayerTotalsComponent extends Localization implements OnInit {
       error => this.errorMessage = <any>error);
   }
 
+  getTotal(Item: any, cat: string) {
+    let result = 0;
+    //  console.log(Item);
+    if (Item.PlayerList.length > 0) {
+      for (let entry of Item.PlayerList) {
+        if (cat === '_totalriskopen')
+          result = result + Number(entry._totalriskopen);
+        if (cat === '_totalriskgraded')
+          result = result + Number(entry._totalriskgraded);
+        if (cat === '_win')
+          result = result + Number(entry._win);
+        if (cat === '_lose')
+          result = result + Number(entry._lose);
+        if (cat === '_net')
+          result = result + Number(entry._net);
+        if (cat === '_allweek')
+          result = result + Number(entry._sportsweek) + Number(entry._horsesweek) + Number(entry._casinoweek);
+        // console.log(entry);
+      }
+    }
+    return result;
+  }
+
+
 } //end of class

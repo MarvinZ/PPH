@@ -40,52 +40,51 @@
       <div class="row" style="text-align: center; color: white; background-color: black;">
         {{Item._agent}}
       </div>
-      <div class="row" style="background-color: lightgray">
-        <div class="col-xs-2">Player</div>
-        <div class="col-md-3">Last Wager</div>
-        <div class="col-md-1">Open Bets</div>
-        <div class="col-md-1">Graded Bets Amount</div>
-        <div class="col-md-1">Win</div>
-        <div class="col-md-1">Los</div>
-        <div class="col-md-1">Net</div>
-        <div class="col-md-1">Currency</div>
-        <div class="col-md-1">Current Balance</div>
-        <!--<div class="col-md-1">Adjustment</div>
-            <div class="col-md-1">Horse Adjustment</div>
-            <div class="col-md-1">Total</div>-->
-      </div>
 
-      <div *ngFor="let ItemDetailPlayer of Item.PlayerList">
+      <table class="table table-responsive">
+        <thead>
+          <tr style="background-color: lightgray">
+            <td>Player</td>
+            <td>Last Wager</td>
+            <td>Open Bets</td>
+            <td>Graded Bets Amount</td>
+            <td>Win</td>
+            <td>Loss</td>
+            <td>Net</td>
+            <td>Currency</td>
+            <td>Current Balance</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ItemDetailPlayer of Item.PlayerList">
+            <td>{{ItemDetailPlayer._player}}</td>
+            <td>{{ItemDetailPlayer._lastwager}}</td>
+            <td [ngClass]="(ItemDetailPlayer._totalriskopen < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._totalriskopen | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._totalriskgraded < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._totalriskgraded | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._win < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._win | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._lose < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._lose | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._net < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._net | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._current < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._current}}</td>
+            <td [ngClass]="(ItemDetailPlayer._currentbalance < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'1.2-2'}}</td>
+          </tr>
 
-        <div class="row table-hover">
-          <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
-          <div class="col-md-3">{{ItemDetailPlayer._lastwager}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._totalriskopen | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._totalriskgraded | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._win | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._lose | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._net | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._current}}</div>
-          <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._currentbalance | currency:'USD':true:'1.2-2'}}</div>
-          <!--<div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._horseadjustment | currency:'USD':true:'1.2-2'}}</div>
-                <div class="col-md-1" style="text-align: right;">{{ItemDetailPlayer._total | currency:'USD':true:'1.2-2'}}</div>-->
-        </div>
+          <tr>
+            <td>Total Players: {{Item.PlayerList.length}}</td>
+            <td></td>
+            <td [ngClass]="(getTotal(Item, '_totalriskopen'))?'redNumber':'greenNumber'">{{getTotal(Item, '_totalriskopen') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(getTotal(Item, '_totalriskgraded'))?'redNumber':'greenNumber'">{{getTotal(Item, '_totalriskgraded') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(getTotal(Item, '_win'))?'redNumber':'greenNumber'">{{getTotal(Item, '_win') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(getTotal(Item, '_lose'))?'redNumber':'greenNumber'">{{getTotal(Item, '_lose') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(getTotal(Item, '_net'))?'redNumber':'greenNumber'">{{getTotal(Item, '_net') | currency:'USD':true:'1.2-2'}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
 
-      </div>
-      <div class="row" style="background-color: lightgray;">
-        <div class="col-md-2">Total Players: {{Item.PlayerList.length}}</div>
-        <div class="col-md-3"></div>
-        <div class="col-md-1" style="text-align: right;"></div>
-        <div class="col-md-1" style="text-align: right;"></div>
-        <div class="col-md-1" style="text-align: right;"></div>
-        <div class="col-md-1" style="text-align: right;"></div>
-        <div class="col-md-1" style="text-align: right;"></div>
-        <div class="col-md-1" style="text-align: right;"></div>
-      </div>
+
 
 
       <hr />
-
 
     </div>
 
