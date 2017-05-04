@@ -228,6 +228,7 @@ export class AffiliateService {
 
   // GET api/temp/GetPlayerTotalsReport?prmIdAgent={prmIdAgent}&prmStartDate={prmStartDate}&prmEndDate={prmEndDate}&prmIdCurrency={prmIdCurrency}
   GetPlayerTotalsReport(prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
+    console.log(this._url + "GetPlayerTotalsReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency);
     return this._http.get(this._url + "GetPlayerTotalsReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
       .do(data => console.log('All: ' + JSON.stringify(data)))
