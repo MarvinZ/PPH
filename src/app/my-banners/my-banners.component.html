@@ -1,3 +1,112 @@
+<div class="container">
+
+
+  <h2>
+    {{'My link' | translate:lang }}</h2>
+  {{qrAddress}}
+  <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="qrAddress" (cbOnSuccess)="isCopied1 = true">{{'Copy link' | translate:lang}}</button>
+
+
+  <h2>{{'My QR' | translate:lang }}</h2>
+<!--<a href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>-->
+
+  <div>
+    <qr-code [value]="qrAddress" [size]="350"></qr-code>
+  </div>
+
+  <!--<button type="button" class="btn btn-primary">{{'Download QRCode' | translate:lang}}</button>-->
+
+Right click and save image as...
+  <div *ngIf="banners">
+    <h2>{{'My Banners' | translate:lang }}</h2>
+    <br>
+    <div class="row">
+      <label>{{'Filters:'| translate:lang  }}</label>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+        <label>{{'Banner Type:'| translate:lang  }}</label>
+        <select name="ddlBannerTypeFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerTypeFilter" (change)="onChangeBannerTypeFilter()">
+
+            <option *ngFor="let bt of bannerTypesFilter" [value]="bt.value">{{bt.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Language:'| translate:lang  }}</label>
+        <select name="ddlLanguagesFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguagesFilter" (change)="onChangeBannerTypeFilter()"> 
+
+          <option *ngFor="let language of languagesFilter" [value]="language.value">{{language.display}}</option>
+            </select>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Sports:'| translate:lang  }}</label>
+        <select name="ddlSportsFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlSportsFilter" (change)="onChangeBannerTypeFilter()">
+
+          <option *ngFor="let sport of sportsfilter" [value]="sport.value">{{sport.display}}</option>
+            </select>
+      </div>
+
+      <div class="col-xs-3 form-group">
+
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
+ {{'Clear filters'| translate:lang }} </button>
+      <br>
+    </div>
+    <div class="row">
+      Total banners found: {{bannersToDisplay.length}}
+    </div>
+    <br>
+    If you dont see the banner images please pause your adblocker
+    <div *ngIf="loading">
+      <app-loading> </app-loading>
+    </div>
+
+    <div *ngIf="!loading">
+
+      <table class="table table-responsive  table-hover">
+        <tr>
+          <th>Banner code</th>
+          <th>Book</th>
+          <th>Type</th>
+          <th>Language</th>
+          <th>Sport</th>
+          <th>Preview</th>
+          <th>Get the code!</th>
+          <th>Total clicks</th>
+          <th>Total unique clicks</th>
+          <th>Total signups</th>
+        </tr>
+
+        <tr *ngFor="let banner of bannersToDisplay;">
+          <td>{{banner.BannerCode}}</td>
+          <td>{{banner.IdBook}}</td>
+          <td>{{banner.BannerType}}</td>
+          <td>{{getLanguageName(banner.IdLanguage)}}</td>
+          <td>{{banner.SportId}}</td>
+
+          <td><img src="{{banner.ImageUrl}}" class="imagePreview"></td>
+          <td><button class="btn btn-default" (click)="modal.show(banner)"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>
+          <th>999</th>
+          <th>999</th>
+          <th>999</th>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+  <div *ngIf="!banners">
+    <p> We didnt find any banner with clicks :(
+    </p>
+  </div>
+  <pre>
+  {{banners | json}}
+</pre>
+</div>
 <marketing-modal #modal>
   <div class="app-modal-header">
     {{'Get the code' | translate:lang }} !
@@ -11,99 +120,9 @@
     </pre>
 
 
-
   </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-default" (click)="modal.hide()">{{'Cancel'| translate:lang }}</button>
     <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="modal.code" (cbOnSuccess)="isCopied1 = true">{{'Copy Code' | translate:lang}}</button>
   </div>
 </marketing-modal>
-
-<div *ngIf="banners">
-  <h2>{{'My Banners' | translate:lang }}</h2>
-  <br>
-  <div class="row">
-    <label>{{'Filters:'| translate:lang  }}</label>
-  </div>
-
-  <div class="row">
-
-    <div class="col-xs-3 form-group">
-      <label>{{'Banner Type:'| translate:lang  }}</label>
-      <select name="ddlBannerTypeFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlBannerTypeFilter" (change)="onChangeBannerTypeFilter()">
-
-            <option *ngFor="let bt of bannerTypesFilter" [value]="bt.value">{{bt.display}}</option>
-            </select>
-    </div>
-    <div class="col-xs-3 form-group">
-      <label>{{'Language:'| translate:lang  }}</label>
-      <select name="ddlLanguagesFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlLanguagesFilter" (change)="onChangeBannerTypeFilter()"> 
-
-          <option *ngFor="let language of languagesFilter" [value]="language.value">{{language.display}}</option>
-            </select>
-    </div>
-    <div class="col-xs-3 form-group">
-      <label>{{'Sports:'| translate:lang  }}</label>
-      <select name="ddlSportsFilter" class="form-control" style="height: 40px;" [(ngModel)]="ddlSportsFilter" (change)="onChangeBannerTypeFilter()">
-
-          <option *ngFor="let sport of sportsfilter" [value]="sport.value">{{sport.display}}</option>
-            </select>
-    </div>
-
-    <div class="col-xs-3 form-group">
-
-    </div>
-  </div>
-  <div class="row">
-    <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
- {{'Clear filters'| translate:lang }} </button>
-    <br>
-  </div>
-  <div class="row">
-    Total banners found: {{bannersToDisplay.length}}
-  </div>
-  <br>
-  <div *ngIf="loading">
-    <app-loading> </app-loading>
-  </div>
-
-  <div *ngIf="!loading">
-
-    <table class="table table-responsive  table-hover">
-      <tr>
-        <th>Banner code</th>
-        <th>Book</th>
-        <th>Type</th>
-        <th>Language</th>
-        <th>Sport</th>
-        <th>Preview</th>
-        <th>Get the code!</th>
-        <th>Total clicks</th>
-        <th>Total unique clicks</th>
-        <th>Total signups</th>
-      </tr>
-
-      <tr *ngFor="let banner of bannersToDisplay;">
-        <td>{{banner.BannerCode}}</td>
-        <td>{{banner.IdBook}}</td>
-        <td>{{banner.BannerType}}</td>
-        <td>{{getLanguageName(banner.IdLanguage)}}</td>
-        <td>{{banner.SportId}}</td>
-
-        <td><img src="{{banner.ImageUrl}}" class="imagePreview"></td>
-        <td><button class="btn btn-default" (click)="modal.show(banner)"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>
-        <th>999</th>
-        <th>999</th>
-        <th>999</th>
-      </tr>
-    </table>
-  </div>
-
-</div>
-<div *ngIf="!banners">
-  <p> We didnt find any banner with clicks :(
-  </p>
-</div>
-<pre>
-  {{banners | json}}
-</pre>

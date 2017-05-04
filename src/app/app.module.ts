@@ -134,10 +134,7 @@ import { MyAgentsComponent } from './my-agents/my-agents.component'
 import { FooterComponent } from './footer/footer.component'
 
 import { ClipboardModule } from 'ngx-clipboard';
-
-
-
-
+import { QRCodeModule } from 'angular2-qrcode';
 
 
 @NgModule({
@@ -235,6 +232,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     ReCaptchaModule,
     FileUploadModule,
     ClipboardModule,
+    QRCodeModule,
     DatePickerModule 
 
 

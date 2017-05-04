@@ -37,6 +37,8 @@ export class MyBannersComponent extends Localization implements OnInit {
 
   isCopied1: boolean = false;
 
+  qrAddress:string ='https://smile.amazon.com/gp/product/B0051BOEGE/ref=ox_sc_act_title_2?ie=UTF8&psc=1&smid=ATVPDKIKX0DER';
+
 
   public bannerTypes = [
     { value: 'Static', display: 'Static' },
