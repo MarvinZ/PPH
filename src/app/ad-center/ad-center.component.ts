@@ -31,13 +31,15 @@ export class AdCenterComponent implements OnInit {
       this.BannerCode = params['bannercode']; //bannerId ;param1=value1;param2=value2
       this.Affiliatecode = params['affiliatecode']; //bannerId ;param1=value1;param2=value2
 
+      if (!this.BannerCode) this.BannerCode = '0';
+
 
 
       console.log([this.Book, this.BannerCode, this.Affiliatecode]);
       this.getIPAddress();
       this.addclick();
 
-        this.goToSite(this.Book);
+      this.goToSite(this.Book);
     });
 
     //this.activatedRoute.queryParams
@@ -47,7 +49,7 @@ export class AdCenterComponent implements OnInit {
     this.affiliateService.AddBannerClick(this.BannerCode, this.Affiliatecode)
       .subscribe(response => {
         this.response = response;
-          console.log('Response:');
+        console.log('Response:');
 
         console.log(response);
         //http://localhost:4200/adcenter;book=1;bannercode=GOKU;affiliatecode=LL101
@@ -63,9 +65,9 @@ export class AdCenterComponent implements OnInit {
   getIPAddress() {
     this._http.get("https://jsonip.com").subscribe(response => {
       this.response = response;
-   //   console.log(this.response._body);
+      //   console.log(this.response._body);
       let mmm = this.response._body.split(',');
-      console.log(mmm[0].substring(7, mmm[0].length-1));
+      console.log(mmm[0].substring(7, mmm[0].length - 1));
 
 
     }, error => {
@@ -82,23 +84,25 @@ export class AdCenterComponent implements OnInit {
     switch (site) {
       case '19': {
         this.addclick();
-            window.location.href = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
+        //             window.location.href = 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/';
+
+        window.location.href = 'http://signup.jazzsports.ag/signupjazz.aspx?affiliatecode=' + this.Affiliatecode + '&bannercode=' + this.BannerCode;
         break;
       }
       case '4': {
         this.addclick();
-               window.location.href = 'http://signup.abcislands.ag/abc_signupnew.aspx';
+        window.location.href = 'http://signup.abcislands.ag/abc_signupnew.aspx?affiliatecode=' + this.Affiliatecode + '&bannercode=' + this.BannerCode;
         break;
       }
       case '1': {
         this.addclick();
-             window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
+        window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx?affiliatecode=' + this.Affiliatecode + '&bannercode=' + this.BannerCode; 
         break;
       }
       default: {
         //statements; 
         this.addclick();
-               window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx';
+        window.location.href = 'http://signup.looselines.ag/ll_Signup.aspx?affiliatecode=' + this.Affiliatecode + '&bannercode=' + this.BannerCode; 
 
         break;
       }

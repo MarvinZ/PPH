@@ -2,13 +2,14 @@
 
 
   <h2>
-    {{'My link' | translate:lang }}</h2>
-  {{qrAddress}}
+    {{'My shareable link' | translate:lang }}</h2>
+  <div class="well well-sm"> {{qrAddress}}
+  </div>
   <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="qrAddress" (cbOnSuccess)="isCopied1 = true">{{'Copy link' | translate:lang}}</button>
 
 
   <h2>{{'My QR' | translate:lang }}</h2>
-<!--<a href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>-->
+  <!--<a href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>-->
 
   <div>
     <qr-code [value]="qrAddress" [size]="350"></qr-code>
@@ -16,7 +17,7 @@
 
   <!--<button type="button" class="btn btn-primary">{{'Download QRCode' | translate:lang}}</button>-->
 
-Right click and save image as...
+  Right click and save image as...
   <div *ngIf="banners">
     <h2>{{'My Banners' | translate:lang }}</h2>
     <br>
@@ -60,8 +61,7 @@ Right click and save image as...
     <div class="row">
       Total banners found: {{bannersToDisplay.length}}
     </div>
-    <br>
-    If you dont see the banner images please pause your adblocker
+    <br> If you dont see the banner images please pause your adblocker
     <div *ngIf="loading">
       <app-loading> </app-loading>
     </div>

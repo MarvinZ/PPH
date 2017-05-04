@@ -7,6 +7,8 @@ import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
 import { Banner } from './../models/banner';
+import { AppSettings } from '../app-settings';
+
 
 
 
@@ -24,6 +26,9 @@ export class MarketingComponent extends Localization implements OnInit {
   };
   //	private dateModel: any
   loading: boolean = false;
+
+  domain: string = AppSettings.DOMAIN;
+
 
   ddlBannerTypeFilter: string = 'All'
   ddlBookFilter: string = 'All'
@@ -183,6 +188,8 @@ export class MarketingModalComponent {
   constructor(private auth: AuthService) {
 
   }
+  domain: string = AppSettings.DOMAIN;
+
 
   public visible = false;
   private visibleAnimate = false;
@@ -203,7 +210,7 @@ export class MarketingModalComponent {
   public show(banner: Banner): void {
     this.visible = true;
     console.log(banner);
-    this.code = '<a href="http://localhost:4200/adcenter;book=' + banner.IdBook + ';bannercode=' + this.auth.currentUser.affCode + ';affiliatecode=' + banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
+    this.code = '<a href="http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId+';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl + '"></a>';
     // + /*banner.TargetUrl*/ 'http://signup.looselines.ag/ll_Signup.aspx?AffCode='+this.auth.currentUser.affCode+'&BannerCode='+banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
     setTimeout(() => this.visibleAnimate = true);
   }

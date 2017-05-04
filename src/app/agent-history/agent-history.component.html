@@ -59,7 +59,7 @@
           <td>
             Balance Forward
           </td>
-          <td>
+          <td [ngClass]="response.BalanceFw < 0 ? 'redNumber' : 'greenNumber'">
             {{response.BalanceFw}}
           </td>
           <td>

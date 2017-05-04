@@ -39,30 +39,42 @@
       <thead>
         <tr>
 
-          <th>{{'Transaction' | translate:lang}}</th>
-          <th>{{'Description' | translate:lang}}</th>
-          <th>{{'Amount' | translate:lang}}</th>
-          <th>{{'Balance' | translate:lang}}</th>
           <th>{{'Date' | translate:lang}}</th>
-          <th></th>
+          <th>{{'Agent' | translate:lang}}</th>
+
+          <th>{{'Reference' | translate:lang}}</th>
+          <th>{{'Type' | translate:lang}}</th>
+          <th>{{'Description' | translate:lang}}</th>
+          <th>{{'User' | translate:lang}}</th>
+          <th>{{'Placed Date' | translate:lang}}</th>
+          <th>{{'Amount' | translate:lang}}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let PreAff of response.CashFlowList">
+        <tr *ngFor="let PreAff of response">
           <td>
-            {{PreAff.Transaction}}
+            {{PreAff.Date}}
+          </td>
+          <td>
+            {{PreAff.Agent}}
+          </td>
+          <td>
+            {{PreAff.Reference}}
+          </td>
+          <td>
+            {{PreAff.Type === 'A' ? 'Adjustment':PreAff.Type }}
           </td>
           <td>
             {{PreAff.Description}}
           </td>
           <td>
+            {{PreAff.User}}
+          </td>
+          <td>
+            {{PreAff.PlacedDate}}
+          </td>
+          <td>
             {{PreAff.Amount}}
-          </td>
-          <td>
-            {{PreAff.Balance}}
-          </td>
-          <td>
-            {{PreAff.Date | date}}
           </td>
         </tr>
       </tbody>
@@ -70,9 +82,9 @@
 
   </div>
 
-  <pre>
+  <!--<pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 

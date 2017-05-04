@@ -7,6 +7,8 @@ import { IMyOptions } from 'mydatepicker';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
 import { Banner } from './../models/banner';
+import { AppSettings } from '../app-settings';
+
 
 
 
@@ -24,6 +26,8 @@ export class MyBannersComponent extends Localization implements OnInit {
   };
   //	private dateModel: any
   loading: boolean = false;
+  domain: string = AppSettings.DOMAIN;
+
 
   ddlBannerTypeFilter: string = 'All'
   ddlBookFilter: string = 'All'
@@ -37,7 +41,7 @@ export class MyBannersComponent extends Localization implements OnInit {
 
   isCopied1: boolean = false;
 
-  qrAddress:string ='https://smile.amazon.com/gp/product/B0051BOEGE/ref=ox_sc_act_title_2?ie=UTF8&psc=1&smid=ATVPDKIKX0DER';
+  qrAddress: string = 'http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId +';affiliatecode=' + this.auth.currentUser.affCode
 
 
   public bannerTypes = [
@@ -71,7 +75,7 @@ export class MyBannersComponent extends Localization implements OnInit {
     { value: 'NHL', display: 'NHL' }
   ];
 
-  
+
   public banners: Banner[] = [];
   public bannersToDisplay: Banner[] = [];
   response: any
@@ -181,9 +185,12 @@ export class MyBannersComponent extends Localization implements OnInit {
 })
 export class MyBannersModalComponent {
 
-  constructor (private auth: AuthService) {
+  constructor(private auth: AuthService) {
 
   }
+
+  domain: string = AppSettings.DOMAIN;
+
 
   public visible = false;
   private visibleAnimate = false;
@@ -204,7 +211,7 @@ export class MyBannersModalComponent {
   public show(banner: Banner): void {
     this.visible = true;
     console.log(banner);
-    this.code = '<a href="http://localhost:4200/adcenter;book=' + banner.IdBook + ';bannercode=' + this.auth.currentUser.affCode + ';affiliatecode=' + banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
+    this.code = '<a href="http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId+';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl + '"></a>';
     // + /*banner.TargetUrl*/ 'http://signup.looselines.ag/ll_Signup.aspx?AffCode='+this.auth.currentUser.affCode+'&BannerCode='+banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
     setTimeout(() => this.visibleAnimate = true);
   }
