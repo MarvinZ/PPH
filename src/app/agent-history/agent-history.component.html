@@ -34,7 +34,7 @@
     </div>
   </form>
 
-  <div>
+  <div *ngIf="response">
     <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
     <br>
     <table class="table table-hover">
@@ -50,31 +50,47 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let PreAff of response">
+        <tr>
           <td>
-            {{PreAff.LastModification | date}}
           </td>
           <td>
-            {{PreAff.TransactionType}}
+
+          </td>
+          <td>
+            Balance Forward
+          </td>
+          <td>
+            {{response.BalanceFw}}
+          </td>
+          <td>
+
+          </td>
+        </tr>
+        <tr *ngFor="let PreAff of response.HistoryData">
+          <td>
+            {{PreAff.Date | date}}
+          </td>
+          <td>
+            {{PreAff.TypeTrans === 'T'?'XFER':PreAff.TypeTrans}}
           </td>
           <td>
             {{PreAff.Description}}
           </td>
-          <td>
+          <td [ngClass]="PreAff.Amount < 0 ? 'redNumber' : 'greenNumber'">
             {{PreAff.Amount}}
           </td>
-          <td>
-            ??
+          <td [ngClass]="PreAff.Balance < 0 ? 'redNumber' : 'greenNumber'">
+            {{PreAff.Balance}}
           </td>
         </tr>
       </tbody>
     </table>
 
   </div>
-
+<!--
   <pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>
 

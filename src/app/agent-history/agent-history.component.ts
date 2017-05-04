@@ -98,14 +98,14 @@ export class AgentHistoryComponent extends Localization implements OnInit {
   }
 
   ExportToExcel() {
-    console.log(this.response.CashFlowList);
+    console.log(this.response.HistoryData);
     try {
       var options = {
         showLabels: true
       };
       var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-      new Angular2Csv(this.response.CashFlowList, 'WeeklyBalances' + displayDate, options);
+      new Angular2Csv(this.response.HistoryData, 'AgentHistory' + displayDate, options);
     } catch (error) {
       alert(error);
     }

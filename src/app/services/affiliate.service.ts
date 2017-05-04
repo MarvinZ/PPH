@@ -138,7 +138,8 @@ export class AffiliateService {
 
   //POST api/temp/CreateAgents
   CreateAgents(FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
-    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string): Observable<any> {
+    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string, 
+    IdBook: number): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -157,9 +158,9 @@ export class AffiliateService {
       "BusinessName": BusinessName,
       "LanguageId": LanguageId,
       "AgentName": AgentName,
-      "AgentPassword": AgentPassword
+      "AgentPassword": AgentPassword,
+      "IdBook":IdBook
     }
-    console.log('xxxxxxxxxxxxx');
     console.log(payload);
 
     return this._http.post(this._url + "CreateAgents", payload, options) // ...using post request
