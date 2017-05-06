@@ -43,17 +43,17 @@ export class HoldPercentageComponent extends Localization implements OnInit {
   // ];
 
   public currencies = [
-  	{ value: '1', display: 'USD' },
-  	{ value: '2', display: 'MXN' },
-  	{ value: '3', display: 'GBP' },
-  	{ value: '4', display: 'EUR' }
+    { value: '1', display: 'USD' },
+    { value: '2', display: 'MXN' },
+    { value: '3', display: 'GBP' },
+    { value: '4', display: 'EUR' }
   ];
 
   public transactionTypes = [
-  	{ value: '-1', display: 'All' },
-  	{ value: '0', display: 'Sports' },
-  	{ value: '1', display: 'Casino' },
-  	{ value: '2', display: 'Racing' }
+    { value: '-1', display: 'All' },
+    { value: '0', display: 'Sports' },
+    { value: '1', display: 'Casino' },
+    { value: '2', display: 'Racing' }
   ];
 
   response: any
@@ -75,7 +75,7 @@ export class HoldPercentageComponent extends Localization implements OnInit {
     let month = currentDate.getMonth() + 1;
     let year = currentDate.getFullYear();
 
-     let currentDateStart = new Date();
+    let currentDateStart = new Date();
     currentDateStart.setDate(currentDateStart.getDate() - 7);
 
     let day2 = currentDateStart.getDate();
@@ -90,15 +90,15 @@ export class HoldPercentageComponent extends Localization implements OnInit {
   }
 
   go() {
- this.response = null;
+    this.response = null;
     this.loading = true;
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
-
+    let playerId = 0;
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.affiliateService.GetAgentHoldPercentReport(this.auth.currentUser.id, startDate, endDate)
+    this.affiliateService.GetAgentHoldPercentReport(this.auth.currentUser.id, startDate, endDate, playerId)
       .subscribe(response => {
         this.response = response;
         //    this.totals = this.calculateTotals(response);
@@ -124,7 +124,7 @@ export class HoldPercentageComponent extends Localization implements OnInit {
       alert(error);
     }
   }
- 
+
 
 
 }  //end of class

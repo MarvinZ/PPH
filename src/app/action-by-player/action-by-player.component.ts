@@ -83,5 +83,68 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
 
 
 
+
+  getTotal(Item: any, cat: string) {
+    let result = 0;
+    //  console.log(Item);
+    if (Item.ListPlayer.length > 0) {
+      for (let entry of Item.ListPlayer) {
+        if (cat === '_straightbet')
+          result = result + Number(entry._straightbet);
+        if (cat === '_parlay')
+          result = result + Number(entry._parlay);
+        if (cat === '_teaser')
+          result = result + Number(entry._teaser);
+        if (cat === '_reverse')
+          result = result + Number(entry._reverse);
+        if (cat === '_casino')
+          result = result + Number(entry._casino);
+        if (cat === '_horses')
+          result = result + Number(entry._horses);
+        if (cat === '_otherwagers')
+          result = result + Number(entry._otherwagers);
+        if (cat === '_otherabjustment')
+          result = result + Number(entry._otherabjustment);
+        if (cat === '_horseadjustment')
+          result = result + Number(entry._horseadjustment);
+
+        if (cat === '_total')
+          result = result + Number(entry._total);
+
+        // console.log(entry);
+      }
+    }
+    return result;
+  }
+
+
+
+
+  ExportToExcel() {
+    let res = []
+
+    for (let agent of this.response.ListData) {
+      if (agent.ListPlayer) {
+        for (let player of agent.ListPlayer) {
+          res.push(player);
+        }
+      }
+    }
+    console.log(res);
+
+    try {
+      var options = {
+        showLabels: true
+      };
+      var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
+
+      new Angular2Csv(res, 'ActionByPlayer' + displayDate, options);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+
+
 }  //end of class
 

@@ -27,7 +27,7 @@ export class MarketingComponent extends Localization implements OnInit {
   //	private dateModel: any
   loading: boolean = false;
 
-  domain: string = AppSettings.DOMAIN;
+  domain: string = AppSettings.ADCENTER;
 
 
   ddlBannerTypeFilter: string = 'All'
@@ -188,7 +188,7 @@ export class MarketingModalComponent {
   constructor(private auth: AuthService) {
 
   }
-  domain: string = AppSettings.DOMAIN;
+  domain: string = AppSettings.ADCENTER;
 
 
   public visible = false;

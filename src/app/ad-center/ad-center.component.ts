@@ -2,7 +2,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { OnInit, OnDestroy, Component } from '@angular/core';
 
 import { AffiliateService } from './../services/affiliate.service'
-import { AuthService } from '../user/auth.service'
+// import { AuthService } from '../user/auth.service'
 
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
@@ -21,7 +21,7 @@ export class AdCenterComponent implements OnInit {
   response: any
   errorMessage: string
 
-  constructor(private activatedRoute: ActivatedRoute, private affiliateService: AffiliateService, private auth: AuthService,
+  constructor(private activatedRoute: ActivatedRoute, private affiliateService: AffiliateService/*, private auth: AuthService*/,
     private _http: Http) { }
 
   ngOnInit() {

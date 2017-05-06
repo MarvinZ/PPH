@@ -31,18 +31,80 @@
     </div>
   </form>
 
-  <!--<div *ngIf="response?.CashFlowList?.length > 0">
+  <div *ngIf="response?.ListData?.length > 0">
     <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <p></p>
+    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+    <br> <br>
+    <div *ngFor="let Item of response.ListData">
 
-  </div>-->
+      <div class="row" style="text-align: center; color: white; background-color: black;">
+        {{Item._agent}}
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <td>Player</td>
+            <td>Straight</td>
+            <td>Parlay</td>
+            <td>Teaser</td>
+            <td>Reverse</td>
+            <td>Casino</td>
+            <td>Horses</td>
+            <td>Other Wagers</td>
+            <td>Adjustment</td>
+            <td>Horse Adjustment</td>
+            <td>Total</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ItemDetailPlayer of Item.ListPlayer">
+            <td>{{ItemDetailPlayer._player}}</td>
+            <td [ngClass]="(ItemDetailPlayer._straightbet < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._straightbet | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._parlay < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._parlay | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._teaser < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._teaser | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._reverse < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._reverse | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._casino < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._casino | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._horses < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._horses | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._otherwagers < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._otherwagers | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._otherabjustment < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._otherabjustment | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._horseadjustment < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._horseadjustment | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="(ItemDetailPlayer._total < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer._horseadjustment | currency:'USD':true:'1.2-2'}}</td>
 
+
+          </tr>
+          <tr>
+            <td>{{Item.ListPlayer.length}} {{'Players' | translate:lang }}</td>
+            <td [ngClass]="getTotal(Item, '_straightbet') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_straightbet') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_parlay')  < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_parlay') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_teaser') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_teaser') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_reverse') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_reverse') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_casino') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_casino') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_horses')  < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_horses') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_otherwagers')< 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_otherwagers') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_otherabjustment')< 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_otherabjustment') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_horseadjustment')< 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_horseadjustment') | currency:'USD':true:'1.2-2'}}</td>
+            <td [ngClass]="getTotal(Item, '_total')< 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, '_total') | currency:'USD':true:'1.2-2'}}</td>
+
+          </tr>
+
+        </tbody>
+      </table>
+      <br>
+
+
+      <!--
   <pre>
+  {{response | json}}
+</pre>-->
+
+    </div>
+
+    <pre>
   {{response | json}}
 </pre>
 
-</div>
+  </div>
 
-<div *ngIf="loading">
-  <app-loading> </app-loading>
-</div>
+  <div *ngIf="loading">
+    <app-loading> </app-loading>
+  </div>

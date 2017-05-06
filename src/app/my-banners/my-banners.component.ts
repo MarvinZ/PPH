@@ -11,7 +11,6 @@ import { AppSettings } from '../app-settings';
 
 
 
-
 @Component({
   selector: 'app-my-banners',
   templateUrl: './my-banners.component.html',
@@ -26,7 +25,7 @@ export class MyBannersComponent extends Localization implements OnInit {
   };
   //	private dateModel: any
   loading: boolean = false;
-  domain: string = AppSettings.DOMAIN;
+  domain: string = AppSettings.ADCENTER;
 
 
   ddlBannerTypeFilter: string = 'All'
@@ -189,7 +188,7 @@ export class MyBannersModalComponent {
 
   }
 
-  domain: string = AppSettings.DOMAIN;
+  domain: string = AppSettings.ADCENTER;
 
 
   public visible = false;
