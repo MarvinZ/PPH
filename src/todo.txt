@@ -1,0 +1,11 @@
+
+preaffiliate no se trae bookId
+ni nickname ni password
+incorrect book
+preaffiliate approve no lleva a lista
+traer affCode y book de la bd
+hold percentage
+los otros 2 reportes
+traer los banners que son nada mas tanto en banner farm como en marketing por book
+traer los stats por metodo que consuma SP CORE_AFS_GETSTATS
+add player/agent

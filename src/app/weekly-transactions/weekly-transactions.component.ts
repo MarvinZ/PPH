@@ -112,5 +112,17 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 		}
 	}
 
-
+	getTotal(cat: string) {
+		let result = 0;
+		//  console.log(Item);
+		if (this.response.CashFlowList.length > 0) {
+			for (let entry of this.response.CashFlowList) {
+				if (cat === 'Amount')
+					result = result + Number(entry.Amount);
+				if (cat === 'Balance')
+					result = result + Number(entry.Balance);
+			}
+		}
+		return result
+	}
 }

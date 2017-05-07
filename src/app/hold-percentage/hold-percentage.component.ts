@@ -94,7 +94,7 @@ export class HoldPercentageComponent extends Localization implements OnInit {
     this.loading = true;
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
-    let playerId = 0;
+    let playerId = -1;
 
     let t0 = performance.now();
     let t1 = performance.now();
@@ -112,17 +112,47 @@ export class HoldPercentageComponent extends Localization implements OnInit {
   }
 
   ExportToExcel() {
-    console.log(this.response.CashFlowList);
+    let res = []
+
+    for (let agent of this.response) {
+      if (agent.DetailList) {
+        for (let player of agent.DetailList) {
+          player.agent = agent.Agent;
+          res.push(player);
+        }
+      }
+    }
+    console.log(res);
+
     try {
       var options = {
         showLabels: true
       };
       var displayDate = '-D:' + new Date().toLocaleDateString() + 'T:' + new Date().toLocaleTimeString();
 
-      new Angular2Csv(this.response.CashFlowList, 'WeeklyBalances' + displayDate, options);
+      new Angular2Csv(res, 'HoldPercent' + displayDate, options);
     } catch (error) {
       alert(error);
     }
+  }
+
+
+  getTotal(Item: any, cat: string) {
+    let result = 0;
+    //  console.log(Item);
+    if (Item.DetailList.length > 0) {
+      for (let entry of Item.DetailList) {
+        if (cat === 'Amount')
+          result = result + Number(entry.Amount);
+        if (cat === 'WinLoss')
+          result = result + Number(entry.WinLoss);
+        if (cat === 'Hold')
+          result = result + Number(entry.Hold);
+
+      }
+    }
+
+    return result
   }
 
 

@@ -78,6 +78,16 @@
             {{PreAff.Date | date}}
           </td>
         </tr>
+
+        <tr>
+          <td>{{response.CashFlowList.length}} {{'Transactions' | translate:lang }}</td>
+          <td> </td>
+          <td [ngClass]="getTotal( 'Amount')  < 0 ? 'redNumber' : 'greenNumber'">{{getTotal('Amount') | currency:'USD':true:'1.2-2'}}</td>
+          <td [ngClass]="getTotal('Balance') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal( 'Balance') | currency:'USD':true:'1.2-2'}}</td>
+          <td ></td>
+
+        </tr>
+
       </tbody>
     </table>
     <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
