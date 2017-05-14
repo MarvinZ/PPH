@@ -139,12 +139,12 @@ export class AffiliateService {
   //POST api/temp/CreateAgents
   CreateAgents(FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
     Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string, 
-    IdBook: number): Observable<any> {
+    IdBook: string, preAffiliateId:string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
     let payload = {
-      "Id": 0,
+      "Id": preAffiliateId,
       "FirstName": FirstName,
       "LastName": LastName,
       "Email": Email,

@@ -49,8 +49,8 @@ export class MyAgentsComponent extends Localization implements OnInit {
     //   },
     //   error => this.errorMessage = <any>error);
 
-      
-          this.affiliateService.GetAgenthierarchy('', '', '', null, '', this.auth.currentUser.userName)
+
+    this.affiliateService.GetAgenthierarchy('', '', '', null, '', this.auth.currentUser.userName)
       .subscribe(response => {
         this.response = response;
         this.loading = false;
@@ -60,7 +60,7 @@ export class MyAgentsComponent extends Localization implements OnInit {
         this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
-      
+
 
   }
 
@@ -76,6 +76,10 @@ export class MyAgentsComponent extends Localization implements OnInit {
     alert(agentId);
   }
 
+  goToAddAgent() {
+    alert('implement me!');
+
+  }
 
 }  //end of class
 

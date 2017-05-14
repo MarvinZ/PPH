@@ -15,8 +15,6 @@
         </p>
       </div>
     </div>
-
-
     <ul class="nav navbar-nav" *ngIf="auth.isAdminSite()">
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PreAffiliates' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PrePPHs' | translate:lang }}</a></li>-->
@@ -25,7 +23,6 @@
 
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'Affiliates Admin' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'PPH Admin' | translate:lang }}</a></li>-->
-
 
     </ul>
     <div class="navbar-header navbar-right" *ngIf="auth.isAdminSite()">
@@ -38,7 +35,6 @@
         <li>
           <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
         </li>
-
       </ul>
     </div>
 
@@ -173,9 +169,6 @@ authorized-->
               <li><a [routerLink]="['/agentPayments']" routerLinkActive="active">{{ 'Agent Payments' | translate:lang }}(PHASE II )</a></li>
               <li *ngIf="!auth.siteName === Affiliates"><a [routerLink]="['/onlineMessages']" routerLinkActive="active">{{ 'Online Messages' | translate:lang }}</a></li>
               <li><a [routerLink]="['/webVsPhone']" routerLinkActive="active">{{ 'Web vs Phone' | translate:lang }}</a></li>
-
-
-
             </div>
           </div>
         </a>
@@ -199,7 +192,6 @@ authorized-->
               <li><a [routerLink]="['/crossIP']" routerLinkActive="active">{{ 'Cross IP' | translate:lang }}(PHASE II )</a></li>
               <li><a [routerLink]="['/topPlayers']" routerLinkActive="active">{{ 'top Players' | translate:lang }}(*In-progress* )</a></li>
               <li><a [routerLink]="['/agentBeatTheLine']" routerLinkActive="active">{{ 'Beat the line' | translate:lang }}(PHASE II )</a></li>
-
             </div>
           </div>
         </a>
@@ -279,7 +271,6 @@ authorized-->
         </a>
       </li>
 
-
     </ul>
     <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
       <ul class="nav navbar-nav">
@@ -291,7 +282,6 @@ authorized-->
           <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
         </li>
       </ul>
-
 
     </div>
     <!--<form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
@@ -312,10 +302,7 @@ authorized-->
     <div *ngIf="auth.viewingAs != ''" class="makeMeWhiteAndNice">
       {{'Viewing as' | translate:lang}}: {{auth.viewingAs}}
       <button class="btn btn-danger" (click)="stopViewingAs()"><span class="glyphicon glyphicon-remove-sign"></span> {{' Stop'| translate:lang}}</button>
-
     </div>
-
-
   </div>
 
 </div>

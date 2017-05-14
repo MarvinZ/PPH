@@ -81,9 +81,9 @@
         </div>
 
         <div class="form-group col-xs-6">
-          <label for="countryName">{{'Country:' | translate:lang}}</label>
-          <em *ngIf="signupForm.controls.countryName?.invalid && (signupForm.controls.countryName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <input [(ngModel)]="preAffiliate.CountryName" name="countryName" required id="countryName" type="text" class="form-control"
+          <label for="CountryName">{{'Country:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.CountryName?.invalid && (signupForm.controls.CountryName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.CountryName" name="CountryName" required id="CountryName" type="text" class="form-control"
             placeholder="country Name..." />
         </div>
 
@@ -142,15 +142,15 @@
 
         <div class="form-group col-xs-6">
           <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
-          <em *ngIf="signupForm.controls.nickname?.invalid && (signupForm.controls.nickname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <input [(ngModel)]="nickname" name="nickname" required id="nickname" type="text" class="form-control" placeholder="nickname..."
+          <em *ngIf="signupForm.controls.AgentName?.invalid && (signupForm.controls.AgentName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.AgentName" name="AgentName" required id="AgentName" type="text" class="form-control" placeholder="nickname..."
           />
         </div>
 
         <div class="form-group col-xs-6">
           <label for="targetBook">{{'Product:' | translate:lang}}</label>
           <em *ngIf="signupForm.controls.targetBook?.invalid && (signupForm.controls.targetBook?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook" (change)="changeBook($event.target.value)">
+          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="preAffiliate.ddlBook" (change)="changeBook($event.target.value)">
           <option *ngFor="let book of books" [value]="book.value">{{book.display}}</option>
             </select>
           <br>
@@ -159,9 +159,9 @@
         </div>
 
         <div class="form-group col-xs-6">
-          <label for="password">{{'Desired password' | translate:lang}}</label>
-          <em *ngIf="signupForm.controls.password?.invalid && (signupForm.controls.password?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <input [(ngModel)]="password" name="password" required id="password" type="text" class="form-control" placeholder="password..."
+          <label for="AgentPassword">{{'Desired password' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.AgentPassword?.invalid && (signupForm.controls.AgentPassword?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.AgentPassword" name="AgentPassword" required id="AgentPassword" type="text" class="form-control" placeholder="password..."
           />
         </div>
         <div class="form-group col-xs-6">

@@ -21,6 +21,8 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
   loading: boolean = false;
   showDetails: Boolean = false;
 
+  preAffiliateId: string = '';
+
 
   public books = [
     { value: '6', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
@@ -31,7 +33,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
   ddlBook: string = '1';
 
   preAffiliate = {
-    "Id": 0,
+    "Id": "",
     "FirstName": "",
     "LastName": "",
     "Email": "",
@@ -89,7 +91,6 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
     this.showDetails = false;
   }
   reject() {
-    alert('here we go!!!!!!');
     console.log(this.preAffiliate.Id);
 
 
@@ -114,22 +115,22 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
 
   CreateAgent(formValues) {
 
-    console.log(formValues);
+  //  console.log(formValues);
     /*
     FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
    */
 
     this.affiliateService.CreateAgents(formValues.name, formValues.lastname,
-      formValues.email, formValues.ddlCountrie, formValues.CountryDialCode, formValues.addressLine1, formValues.addressLine2,
+      formValues.email, formValues.CountryName, formValues.CountryDialCode, formValues.addressLine1, formValues.addressLine2,
       formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
-      formValues.nickname, formValues.password, 1).subscribe(val => {
+      formValues.AgentName, formValues.AgentPassword, formValues.ddlBook, this.preAffiliate.Id).subscribe(val => {
         // needs state or province
         console.log(val);
         if (val[0] > 0) {
           this.toastr.success('The agent has been created!', 'Success');
           this.getData();
-          //this.closeDetails();
+          this.closeDetails();
 
         }
         else {
@@ -144,9 +145,10 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
   DetailsAffiliate(info: any) {
 
     try {
+      console.log(info);
       this.showDetails = true;
       this.preAffiliate = info;
-      this.ddlBook = this.preAffiliate.Id.toString();
+      this.ddlBook = this.preAffiliate.IdBook.toString();
 
 
       // $cookies.putObject("affPre", info);

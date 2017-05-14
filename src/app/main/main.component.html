@@ -37,11 +37,15 @@
         </tbody>
     </table>
 
-        <h2>{{'Marketing Stats' | translate:lang }}</h2>
+    <h2>{{'Marketing Stats' | translate:lang }}</h2>
     <table class="table table-hover" *ngIf="response">
         <tbody>
             <tr>
                 <td>{{'Total clicks'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.NumPlayers | currency:'USD':true:'1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Total unique clicks'| translate:lang}}</td>
                 <td>{{response.AffiliateStatisticsInfo.NumPlayers | currency:'USD':true:'1.2-2'}}</td>
             </tr>
             <tr>
@@ -74,6 +78,19 @@
             </tr>-->
         </tbody>
     </table>
+
+    <div>
+        <h2>{{'Hits and signups graphic' | translate:lang }}</h2>
+
+
+    </div>
+
+    <div>
+        <h2>{{'Last visits by IP' | translate:lang }}</h2>
+
+    </div>
+
+
 
     <!--<pre>
   {{response | json}}

@@ -1,5 +1,12 @@
 <div class="container">
   <h2>{{'My sub-agents' | translate:lang }}</h2>
+  <div class="row">
+    <div class="pull-right">
+      <button class="btn btn-default" (click)="goToAddAgent()">  <span class="glyphicon glyphicon-plus"></span>
+ {{'New agent' | translate:lang }} </button>
+    </div>
+  </div>
+<br>
 
   <div *ngIf="response">
 
