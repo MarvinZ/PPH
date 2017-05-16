@@ -265,7 +265,7 @@ authorized-->
             </div>
             <div dropdownMenu class="dropdown-menu">
               <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/marketing']" routerLinkActive="active">{{ 'Banner Farm' | translate:lang }}</a></li>
-              <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/myBanners']" routerLinkActive="active">{{ 'My Banners' | translate:lang }}</a></li>
+              <li *ngIf="auth.isAuthenticated() && auth.isAffiliateSite()"> <a [routerLink]="['/myBanners']" routerLinkActive="active">{{ 'Affiliate Center' | translate:lang }}</a></li>
             </div>
           </div>
         </a>

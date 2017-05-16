@@ -40,7 +40,7 @@ export class MyBannersComponent extends Localization implements OnInit {
 
   isCopied1: boolean = false;
 
-  qrAddress: string = 'http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId +';affiliatecode=' + this.auth.currentUser.affCode
+  qrAddress: string = 'http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId + ';affiliatecode=' + this.auth.currentUser.affCode
 
 
   public bannerTypes = [
@@ -194,6 +194,8 @@ export class MyBannersModalComponent {
   public visible = false;
   private visibleAnimate = false;
   public code: string = '<>';
+  public codeHTTP: string = '<>';
+  public codeHTTPS: string = '<>';
 
   public languages = [
     { value: '0', display: 'English' },
@@ -210,8 +212,9 @@ export class MyBannersModalComponent {
   public show(banner: Banner): void {
     this.visible = true;
     console.log(banner);
-    this.code = '<a href="http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId+';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl + '"></a>';
-    // + /*banner.TargetUrl*/ 'http://signup.looselines.ag/ll_Signup.aspx?AffCode='+this.auth.currentUser.affCode+'&BannerCode='+banner.BannerCode+ '" ><img src="' + banner.ImageUrl + '"></a>';
+    this.codeHTTP = '<a href="http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId + ';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl + '"></a>';
+    this.codeHTTPS = '<a href="https://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId + ';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl.slice(0, 4) + 's' + banner.ImageUrl.slice(4); + '"></a>';
+    this.code = this.codeHTTP;
     setTimeout(() => this.visibleAnimate = true);
   }
 
@@ -222,6 +225,16 @@ export class MyBannersModalComponent {
 
   copyHTML(code: string) {
     alert(code);
+  }
+
+
+  onChange(event) {
+    if (this.code === this.codeHTTPS) {
+      this.code = this.codeHTTP;
+    }
+    else {
+      this.code = this.codeHTTPS;
+    }
   }
 
 

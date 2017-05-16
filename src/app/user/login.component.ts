@@ -24,7 +24,7 @@ export class LoginComponent {
 
 
   constructor(private authService: AuthService, private router: Router) {
-    this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0));
+    this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0, '',0));
   }
 
   login(formValues) {
@@ -36,7 +36,7 @@ export class LoginComponent {
 
       if (this.tempRes.ResponseStatus.Status === 'Success' && this.tempRes.ResponseAgentInfo.IdAgent != 0) {
         this.loading = true;
-
+        console.log(this.tempRes.ResponseAgentInfo);
         // alert('Plese contact Joe ASAP...');
 
         this.authService.currentUser = {
@@ -47,15 +47,20 @@ export class LoginComponent {
           userType: 'PPH',
           selectedSubagent: 0,
           originalId: this.tempRes.ResponseAgentInfo.IdAgent,
-          bookId: 1,
-          affCode:'TESTCODE'
+          bookId: this.tempRes.ResponseAgentInfo.Idbook,
+          affCode: this.tempRes.ResponseAgentInfo.AffiliateCode
+          
         }
-        localStorage.setItem('agentId',  this.authService.currentUser.id.toString());
-        localStorage.setItem('userName',  this.authService.currentUser.userName);
-        localStorage.setItem('firstName',  this.authService.currentUser.firstName);
-        localStorage.setItem('lastName',  this.authService.currentUser.lastName);
-        localStorage.setItem('userType',  this.authService.currentUser.userType);
-      //  localStorage.setItem('timestamp', new Date().getTime().toString())
+        localStorage.setItem('agentId', this.authService.currentUser.id.toString());
+        localStorage.setItem('userName', this.authService.currentUser.userName);
+        localStorage.setItem('firstName', this.authService.currentUser.firstName);
+        localStorage.setItem('lastName', this.authService.currentUser.lastName);
+        localStorage.setItem('userType', this.authService.currentUser.userType);
+        localStorage.setItem('affCode', this.authService.currentUser.affCode);
+                localStorage.setItem('bookId', this.authService.currentUser.affCode);
+
+
+        //  localStorage.setItem('timestamp', new Date().getTime().toString())
         this.router.navigate(['main']);
       }
       else {
