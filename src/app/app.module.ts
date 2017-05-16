@@ -136,6 +136,8 @@ import { FooterComponent } from './footer/footer.component'
 import { ClipboardModule } from 'ngx-clipboard';
 import { QRCodeModule } from 'angular2-qrcode';
 
+import { UiSwitchModule } from 'angular2-ui-switch'
+
 
 @NgModule({
   declarations: [
@@ -233,7 +235,8 @@ import { QRCodeModule } from 'angular2-qrcode';
     FileUploadModule,
     ClipboardModule,
     QRCodeModule,
-    DatePickerModule 
+    DatePickerModule,
+    UiSwitchModule
 
 
   ],

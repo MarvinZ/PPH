@@ -4,13 +4,14 @@
   </div>
 
   <div class="app-modal-body">
+    HTTP
+    <ui-switch [(ngModel)]="httpsON" (change)="modal.onChange($event)"></ui-switch> HTTPS
+
     <pre>
       <code>    
       {{modal.code}} 
       </code>
     </pre>
-
-
 
   </div>
   <div class="app-modal-footer">
