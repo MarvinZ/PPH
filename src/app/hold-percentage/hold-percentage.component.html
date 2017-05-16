@@ -19,14 +19,17 @@
       </div>
       <div class="col-xs-3 form-group">
         <label>{{'Agent:'| translate:lang  }}</label>
-        <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
-            <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
+        <select name="ddlAgent" class="form-control" style="height: 40px;" [(ngModel)]="ddlAgent" (change)="onChangeagentDdl()">
+        <option value="-1" selected>All</option>
+
+            <option *ngFor="let agent of response2" [value]="agent.IdAgent">{{agent.Agent}}</option>
             </select>
       </div>
       <div class="col-xs-3 form-group">
         <label>{{'Player:'| translate:lang  }}</label>
-        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+        <select name="ddlPlayer" class="form-control" style="height: 40px;" [(ngModel)]="ddlPlayer">
+          <option value="-1" selected> All</option>
+                <option *ngFor="let playo of players" [value]="playo.IdPlayer">{{playo.Player}}</option>
             </select>
       </div>
     </div>
@@ -88,6 +91,10 @@
 
   <pre>
   {{response | json}}
+</pre>
+
+  <pre>
+  {{response2 | json}}
 </pre>
 
 </div>

@@ -22,10 +22,12 @@ export class HoldPercentageComponent extends Localization implements OnInit {
   private dateModel: any
   loading: boolean = false;
   viewDetail: Boolean = false;
+  players: any = [];
 
   // ddlSports :string = 'NFL'
   // ddlTransType: string = '-1'
-  ddlCurrency: string = '1'
+  ddlAgent: number = -1
+  ddlPlayer: number = -1
 
   // public sports  = [
   // 	{ value: 'NFL', display: 'NFL' },
@@ -42,21 +44,9 @@ export class HoldPercentageComponent extends Localization implements OnInit {
   // 	{ value: 'All', display: 'ALL' }
   // ];
 
-  public currencies = [
-    { value: '1', display: 'USD' },
-    { value: '2', display: 'MXN' },
-    { value: '3', display: 'GBP' },
-    { value: '4', display: 'EUR' }
-  ];
-
-  public transactionTypes = [
-    { value: '-1', display: 'All' },
-    { value: '0', display: 'Sports' },
-    { value: '1', display: 'Casino' },
-    { value: '2', display: 'Racing' }
-  ];
 
   response: any
+  response2: any
   errorMessage: string
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
     public vcr: ViewContainerRef, public locale: LocaleService,
@@ -87,18 +77,39 @@ export class HoldPercentageComponent extends Localization implements OnInit {
       endDate: { year: year, month: month, day: day }
     };
 
+    //get agents and players
+
+    let t0 = performance.now();
+    let t1 = performance.now();
+    this.affiliateService.GetDistributorAgentsAndPlayers('', '', '', 0, this.auth.currentUser.userName)
+      .subscribe(response2 => {
+        this.response2 = response2;
+        this.loading = false;
+
+        console.log(this.response2);
+        let t1 = performance.now();
+        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+      },
+      error => this.errorMessage = <any>error);
+
   }
+
 
   go() {
     this.response = null;
     this.loading = true;
     let startDate = this.dateModel.beginDate.year + '-' + this.dateModel.beginDate.month + '-' + this.dateModel.beginDate.day;
     let endDate = this.dateModel.endDate.year + '-' + this.dateModel.endDate.month + '-' + this.dateModel.endDate.day;
-    let playerId = -1;
+    let playerId = this.ddlPlayer;
+    let agentId = this.ddlAgent;
+    if (agentId === -1) {
+      agentId = this.auth.currentUser.id
+    }
+
 
     let t0 = performance.now();
     let t1 = performance.now();
-    this.affiliateService.GetAgentHoldPercentReport(this.auth.currentUser.id, startDate, endDate, playerId)
+    this.affiliateService.GetAgentHoldPercentReport(agentId, startDate, endDate, playerId)
       .subscribe(response => {
         this.response = response;
         //    this.totals = this.calculateTotals(response);
@@ -155,7 +166,11 @@ export class HoldPercentageComponent extends Localization implements OnInit {
     return result
   }
 
-
+  onChangeagentDdl() {
+    alert(this.ddlAgent);
+    this.players = this.response2.filter(e => e.IdAgent == this.ddlAgent)[0].PlayerList
+    console.log(this.players);
+  }
 
 }  //end of class
 
