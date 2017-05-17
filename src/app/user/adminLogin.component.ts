@@ -23,7 +23,7 @@ export class AdminLoginComponent {
 
 
   constructor(private authService: AuthService, private router: Router) {
-    this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0));
+    this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0,'', 0));
   }
 
   login(formValues) {

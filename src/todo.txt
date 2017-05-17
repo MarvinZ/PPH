@@ -1,11 +1,9 @@
 
 
-
-hold percentage
-
 los otros 2 reportes
 
 traer los banners que son nada mas tanto en banner farm como en marketing por book
+
 traer los stats por metodo que consuma SP CORE_AFS_GETSTATS
 
 add agent

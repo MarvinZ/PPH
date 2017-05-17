@@ -25,7 +25,7 @@
       <label>{{'Filters:'| translate:lang  }}</label>
     </div>
 
-    <div class="row">
+    <!--<div class="row">
 
       <div class="col-xs-3 form-group">
         <label>{{'Banner Type:'| translate:lang  }}</label>
@@ -57,11 +57,11 @@
       <button class="btn btn-default" (click)="clearFilters()">  <span class="glyphicon glyphicon-filter"></span>
  {{'Clear filters'| translate:lang }} </button>
       <br>
-    </div>
+    </div>-->
     <div class="row">
-      Total banners found: {{bannersToDisplay.length}}
+      Total banners with hits: {{bannersToDisplay.length}}
     </div>
-    <br> If you dont see the banner images please pause your adblocker
+    <br>
     <div *ngIf="loading">
       <app-loading> </app-loading>
     </div>
@@ -71,29 +71,24 @@
       <table class="table table-responsive  table-hover">
         <tr>
           <th>Banner code</th>
-          <th>Book</th>
-          <th>Type</th>
-          <th>Language</th>
           <th>Sport</th>
-          <th>Preview</th>
-          <th>Get the code!</th>
           <th>Total clicks</th>
           <th>Total unique clicks</th>
           <th>Total signups</th>
         </tr>
-
+        <tr>
+          <td>Link / QR</td>
+          <td> </td>
+          <th>{{1256}}</th>
+          <th>{{154}}</th>
+          <th>{{52}}</th>
+        </tr>
         <tr *ngFor="let banner of bannersToDisplay;">
           <td>{{banner.BannerCode}}</td>
-          <td>{{banner.IdBook}}</td>
-          <td>{{banner.BannerType}}</td>
-          <td>{{getLanguageName(banner.IdLanguage)}}</td>
           <td>{{banner.SportId}}</td>
-
-          <td><img src="{{banner.ImageUrl}}" class="imagePreview"></td>
-          <td><button class="btn btn-default" (click)="modal.show(banner)"> <span class="glyphicon glyphicon-cloud-download"></span> {{'Copy HTML code' | translate:lang}} </button></td>
-          <th>999</th>
-          <th>999</th>
-          <th>999</th>
+          <th>{{banner.TotalClicks}}</th>
+          <th>{{banner.TotalUniqueClicks}}</th>
+          <th>{{banner.TotalSignups}}</th>
         </tr>
       </table>
     </div>
@@ -113,13 +108,14 @@
   </div>
 
   <div class="app-modal-body">
-       HTTP <ui-switch [(ngModel)]="httpsON" (change)="modal.onChange($event)"></ui-switch> HTTPS
+    HTTP
+    <ui-switch [(ngModel)]="httpsON" (change)="modal.onChange($event)"></ui-switch> HTTPS
 
-    <pre>
+    <!--<pre>
       <code>    
       {{modal.code}} 
       </code>
-    </pre>
+    </pre>-->
 
 
   </div>

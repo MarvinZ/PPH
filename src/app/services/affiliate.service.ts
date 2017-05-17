@@ -534,7 +534,7 @@ export class AffiliateService {
 
 
 
-  AddBannerClick(BannerCode: string, AffilaiteCode: string): Observable<any> {
+  AddBannerClick(BannerCode: string, AffiliateCode: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -543,7 +543,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode
+      "AffiliateCode": AffiliateCode
     }
     console.log(payload);
 
@@ -552,7 +552,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-    GetAllBannersWithStatisticsByAffiliate(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+    GetAllBannersWithStatisticsByAffiliate(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -561,7 +561,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode,
+      "AffiliateCode": AffiliateCode, //'469ED6',
       "book": book,
       "idbook": idbook, 
       "Distributor": Distributor
@@ -575,7 +575,7 @@ export class AffiliateService {
   }
 
 
-    GetAllBannersWithStatisticsByBanner(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+    GetAllBannersWithStatisticsByBanner(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -584,7 +584,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode,
+      "AffiliateCode": AffiliateCode,
       "book": book,
       "idbook": idbook, 
       "Distributor": Distributor
@@ -598,7 +598,7 @@ export class AffiliateService {
   }
 
 
-      GetAllBannersWithStatistics(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+      GetAllBannersWithStatistics(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -607,7 +607,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode,
+      "AffiliateCode": AffiliateCode,
       "book": book,
       "idbook": idbook, 
       "Distributor": Distributor
@@ -620,7 +620,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-      GetBannerInfoByBook(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+      GetBannerInfoByBook(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -629,7 +629,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode,
+      "AffiliateCode": AffiliateCode,
       "book": book,
       "idbook": idbook, 
       "Distributor": Distributor
@@ -642,7 +642,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-  GetBannerInfoByBannerCode(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+  GetBannerInfoByBannerCode(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -651,7 +651,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode,
+      "AffiliateCode": AffiliateCode,
       "book": book,
       "idbook": idbook, 
       "Distributor": Distributor
@@ -664,7 +664,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-  GetDistributorAgentsAndPlayersDetails(BannerCode: string, AffilaiteCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+  GetDistributorAgentsAndPlayersDetails(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -673,7 +673,7 @@ export class AffiliateService {
         "DomainName": "pph",
       },
       "BannerCode": BannerCode,
-      "AffilaiteCode": AffilaiteCode,
+      "AffiliateCode": AffiliateCode,
       "book": book,
       "idbook": idbook, 
       "Distributor": Distributor

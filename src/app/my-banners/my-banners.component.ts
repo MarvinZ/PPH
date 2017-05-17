@@ -111,7 +111,7 @@ export class MyBannersComponent extends Localization implements OnInit {
 
     let t0 = performance.now();
     //   this.toastr.error('Not implemented', 'Error!'); //GetAllBannersWithStatisticsByAffiliate
-    this.affiliateService.GetBannerInfoByBannerCode('', '', 'abc', 1, '')
+    this.affiliateService.GetAllBannersWithStatisticsByAffiliate('', this.auth.currentUser.affCode, '', 1, '')
       .subscribe(response => {
         this.response = response;
         this.banners = this.response;
