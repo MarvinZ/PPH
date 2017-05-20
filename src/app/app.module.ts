@@ -136,8 +136,7 @@ import { FooterComponent } from './footer/footer.component'
 import { ClipboardModule } from 'ngx-clipboard';
 import { QRCodeModule } from 'angular2-qrcode';
 
-import { UiSwitchModule } from 'angular2-ui-switch'
-
+import { UiSwitchModule } from '../../node_modules/angular2-ui-switch/src';
 
 @NgModule({
   declarations: [

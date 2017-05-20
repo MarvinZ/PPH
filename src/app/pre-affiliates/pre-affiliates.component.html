@@ -150,7 +150,7 @@
         <div class="form-group col-xs-6">
           <label for="targetBook">{{'Product:' | translate:lang}}</label>
           <em *ngIf="signupForm.controls.targetBook?.invalid && (signupForm.controls.targetBook?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="preAffiliate.ddlBook" (change)="changeBook($event.target.value)">
+          <select name="ddlBook" class="form-control" style="height: 40px;" [(ngModel)]="ddlBook" (change)="changeBook($event.target.value)">
           <option *ngFor="let book of books" [value]="book.value">{{book.display}}</option>
             </select>
           <br>
@@ -181,9 +181,9 @@
 
 
   </div>
-
+<!--
   <pre>
   {{response | json}}
-</pre>
+</pre>-->
 
 </div>

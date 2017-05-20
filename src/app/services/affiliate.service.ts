@@ -81,7 +81,7 @@ export class AffiliateService {
       "LanguageId": LanguageId,
       "AgentName": AgentName,
       "AgentPassword": AgentPassword,
-      "IdBook":IdBook
+      "IdBook": IdBook
     }
 
     console.log(payload);
@@ -93,7 +93,7 @@ export class AffiliateService {
 
   }
 
- 
+
 
   //POST api/temp/InsertPreAffiliate
 
@@ -103,7 +103,7 @@ export class AffiliateService {
 
     let payload = {
       "Id": id,
-      "FirstName":'' ,
+      "FirstName": '',
       "LastName": '',
       "Email": '',
       "CountryName": '',
@@ -117,7 +117,7 @@ export class AffiliateService {
       "LanguageId": '',
       "AgentName": '',
       "AgentPassword": '',
-      "IdBook":''
+      "IdBook": ''
     }
 
     console.log(payload);
@@ -138,8 +138,8 @@ export class AffiliateService {
 
   //POST api/temp/CreateAgents
   CreateAgents(FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
-    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string, 
-    IdBook: string, preAffiliateId:string): Observable<any> {
+    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string,
+    IdBook: string, preAffiliateId: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
 
@@ -159,7 +159,7 @@ export class AffiliateService {
       "LanguageId": LanguageId,
       "AgentName": AgentName,
       "AgentPassword": AgentPassword,
-      "IdBook":IdBook
+      "IdBook": IdBook
     }
     console.log(payload);
 
@@ -417,8 +417,8 @@ export class AffiliateService {
       "StartDate": StartDate,
       "EndDate": EndDate,
       "IdAgent": IdAgent,
-      "IdPlayer":IdPlayer,
-      "ViewDetail":true
+      "IdPlayer": IdPlayer,
+      "ViewDetail": true
     }
     console.log(payload);
 
@@ -552,7 +552,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-    GetAllBannersWithStatisticsByAffiliate(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+  GetAllBannersWithStatisticsByAffiliate(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -563,7 +563,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode, //'469ED6',
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -575,7 +575,7 @@ export class AffiliateService {
   }
 
 
-    GetAllBannersWithStatisticsByBanner(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+  GetAllBannersWithStatisticsByBanner(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -586,7 +586,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -598,7 +598,7 @@ export class AffiliateService {
   }
 
 
-      GetAllBannersWithStatistics(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+  GetAllBannersWithStatistics(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -609,7 +609,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -620,7 +620,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-      GetBannerInfoByBook(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
+  GetBannerInfoByBook(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -631,7 +631,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -653,7 +653,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -663,6 +663,56 @@ export class AffiliateService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
+
+  GetMarketingStats(Agent: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": '',
+      "AffiliateCode": '',
+      "book": '',
+      "idbook": '',
+      "Distributor": '',
+      "Agent": Agent
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetMarketingStats', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
+  GetLastVisits(AffiliateCode: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "BannerCode": '',
+      "AffiliateCode": AffiliateCode,
+      "book": '',
+      "idbook": '',
+      "Distributor": '',
+      "Agent": AffiliateCode
+
+
+    }
+    console.log(payload);
+
+    return this._http.post(this._url3 + 'GetLastVisits', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
+
+
 
   GetDistributorAgentsAndPlayersDetails(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
@@ -675,7 +725,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -700,7 +750,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -722,7 +772,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -745,7 +795,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor
 
     }
@@ -756,7 +806,7 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-  GetAgenthierarchy(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string, Agent:string): Observable<any> {
+  GetAgenthierarchy(BannerCode: string, AffiliateCode: string, book: string, idbook: number, Distributor: string, Agent: string): Observable<any> {
     let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
     let options = new RequestOptions({ headers: headers }); // Create a request option
     let payload = {
@@ -767,7 +817,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode,
       "book": book,
-      "idbook": idbook, 
+      "idbook": idbook,
       "Distributor": Distributor,
       "Agent": Agent
 

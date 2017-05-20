@@ -149,6 +149,8 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
       this.showDetails = true;
       this.preAffiliate = info;
       this.ddlBook = this.preAffiliate.IdBook.toString();
+      this.changeBook(this.books.find(e => e.value === this.ddlBook).display)
+      
 
 
       // $cookies.putObject("affPre", info);

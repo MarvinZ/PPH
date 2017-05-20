@@ -38,19 +38,19 @@
     </table>
 
     <h2>{{'Marketing Stats' | translate:lang }}</h2>
-    <table class="table table-hover" *ngIf="response">
+    <table class="table table-hover" *ngIf="response2">
         <tbody>
             <tr>
                 <td>{{'Total clicks'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumPlayers | currency:'USD':true:'1.2-2'}}</td>
+                <td>{{response2?.TotalClicks }}</td>
             </tr>
             <tr>
                 <td>{{'Total unique clicks'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumPlayers | currency:'USD':true:'1.2-2'}}</td>
+                <td>{{response2?.TotalUniqueClicks }}</td>
             </tr>
             <tr>
                 <td>{{'Total signups'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumPlayers | currency:'USD':true:'1.2-2'}}</td>
+                <td>{{response2?.TotalSignups }}</td>
             </tr>
             <!--<tr>
                 <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
@@ -82,11 +82,25 @@
     <div>
         <h2>{{'Hits and signups graphic' | translate:lang }}</h2>
 
-
+        in progress...
     </div>
 
     <div>
         <h2>{{'Last visits by IP' | translate:lang }}</h2>
+
+        <table class="table" *ngIf="response3">
+            <tr>
+                <td>Date</td>
+                <td>Banner</td>
+                <td>IP</td>
+            </tr>
+            <tr *ngFor="let item of response3">
+                <td>{{item.Date | date: 'MM/dd/yyyy hh:mm:ss'}}</td>
+                <td>{{item.BannerCode == 0 ?'QR / Link': item.BannerCode }}</td>
+                <td>{{item.IP }}</td>
+
+            </tr>
+        </table>
 
     </div>
 
@@ -94,6 +108,12 @@
 
     <!--<pre>
   {{response | json}}
+</pre>
+    <pre>
+  {{response2 | json}}
+</pre>-->
+    <!--<pre>
+  {{response3 | json}}
 </pre>-->
 
 

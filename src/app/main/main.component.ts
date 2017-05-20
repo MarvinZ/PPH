@@ -16,6 +16,7 @@ export class MainComponent extends Localization implements OnInit {
 
 	response: any
 	response2: any
+	response3: any
 
 	errorMessage: string
 	constructor(private affiliateService: AffiliateService, public toastr: ToastsManager,
@@ -46,14 +47,30 @@ export class MainComponent extends Localization implements OnInit {
 
 
 
-		// this.affiliateService.GetMyAgents(this.auth.currentUser.id)
-		// 	.subscribe(response2 => {
-		// 		this.response2 = response2;
-		// 		let t1 = performance.now();
-		// 		this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-		// 	},
-		// 	error => this.errorMessage = <any>error);
+		let t2 = performance.now();
+		//   this.toastr.error('Not implemented', 'Error!'); //GetAllBannersWithStatisticsByAffiliate
+		this.affiliateService.GetMarketingStats(this.auth.currentUser.userName)
+			.subscribe(response2 => {
+				this.response2 = response2;
 
+				console.log(this.response2);
+				let t3 = performance.now();
+				this.toastr.success('This query took ' + (t3 - t2) + ' milliseconds..', 'Success');
+			},
+			error => this.errorMessage = <any>error);
+
+
+		let t4 = performance.now();
+		//   this.toastr.error('Not implemented', 'Error!'); //GetAllBannersWithStatisticsByAffiliate
+		this.affiliateService.GetLastVisits(this.auth.currentUser.affCode)
+			.subscribe(response3 => {
+				this.response3 = response3;
+
+				console.log(this.response3);
+				let t5 = performance.now();
+				this.toastr.success('This query took ' + (t5 - t4) + ' milliseconds..', 'Success');
+			},
+			error => this.errorMessage = <any>error);
 
 
 	}
