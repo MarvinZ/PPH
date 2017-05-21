@@ -18,7 +18,26 @@ export class MyAgentsComponent extends Localization implements OnInit {
 
   loading: boolean = false;
 
+  isEditMode: Boolean = false;
 
+  preAffiliate = {
+    "Id": "",
+    "FirstName": "",
+    "LastName": "",
+    "Email": "",
+    "CountryName": "",
+    "CountryDialCode": "",
+    "Address1": "",
+    "Address2": "",
+    "Phone": "",
+    "City": "",
+    "ZipCode": "",
+    "BusinessName": "",
+    "LanguageId": 1,
+    "AgentName": "",
+    "AgentPassword": "",
+    "IdBook": ''
+  };
 
 
   response: any
@@ -36,6 +55,11 @@ export class MyAgentsComponent extends Localization implements OnInit {
     if (!this.auth.currentUser) {
       this.router.navigate(['/user/login']);
     }
+    this.getData();
+
+
+  }
+  getData() {
     this.loading = true;
     let t0 = performance.now();
     // this.affiliateService.GetMyAgents(this.auth.currentUser.id)
@@ -77,9 +101,51 @@ export class MyAgentsComponent extends Localization implements OnInit {
   }
 
   goToAddAgent() {
-    alert('implement me!');
+
+    this.isEditMode = !this.isEditMode;
+  }
+
+  goBack() {
+    // this.resetform();
+    this.closeDetails();
+  }
+  closeDetails() {
+    this.isEditMode = false;
+
 
   }
+
+  // signup(formValues) {
+  //   alert('holis');
+  //   console.log(formValues);
+  // }
+
+
+  signup(formValues) { //Create new agent
+    console.log(formValues);
+    /*
+    FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
+   Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
+   */
+    this.affiliateService.CreateSubAgent(formValues.name, formValues.lastname,
+      formValues.email, '', '', '', '',
+      formValues.phone, '', '', '', 1 /*formValues.LanguageId*/,
+      formValues.AgentName, formValues.AgentPassword, this.auth.currentUser.bookId.toString(), this.auth.currentUser.id.toString()).subscribe(val => {
+        // needs state or province
+        console.log(val);
+        if (val[0] > 0) {
+          this.toastr.success('The agent has been created!', 'Success');
+          this.getData();
+          this.closeDetails();
+
+        }
+        else {
+          this.toastr.error('The agent has not been created!', 'Error');
+        }
+
+      });
+  }
+
 
 }  //end of class
 

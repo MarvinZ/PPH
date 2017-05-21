@@ -1,65 +1,68 @@
 <div class="container">
-  <h2>{{'My sub-agents' | translate:lang }}</h2>
-  <div class="row">
-    <div class="pull-right">
-      <button class="btn btn-default" (click)="goToAddAgent()">  <span class="glyphicon glyphicon-plus"></span>
+  <h2>{{'My agents' | translate:lang }}</h2>
+  <div *ngIf="isEditMode;then editMode  else listMode"> </div>
+  <ng-template #listMode>
+
+    <div class="row">
+      <div class="pull-right">
+        <button class="btn btn-default" (click)="goToAddAgent()">  <span class="glyphicon glyphicon-plus"></span>
  {{'New agent' | translate:lang }} </button>
+      </div>
     </div>
-  </div>
-<br>
+    <br>
 
-  <div *ngIf="response">
+    <div *ngIf="response">
 
-    <div *ngFor="let agent of response">
-      <div *ngIf="agent.SubAgents?.length > 0" class="table">
-        <div *ngFor="let subagent of agent.SubAgents" class="agent1">
-          <div class="row">
-            <div class="col-xs-3 form-group">
-              {{subagent.Agent}}
+      <div *ngFor="let agent of response">
+        <div *ngIf="agent.SubAgents?.length > 0" class="table">
+          <div *ngFor="let subagent of agent.SubAgents" class="agent1">
+            <div class="row">
+              <div class="col-xs-3 form-group">
+                {{subagent.Agent}}
+              </div>
+              <div class="col-xs-3 form-group">
+              </div>
+              <div class="col-xs-3 form-group">
+                <button class="btn btn-default" (click)="viewAs(subagent.IdAgent,subagent.Agent )">View as</button>
+              </div>
+              <div class="col-xs-3 form-group">
+                <button class="btn btn-danger" (click)="deactivateAgent(subagent.IdAgent)">Disable</button>
+              </div>
             </div>
-            <div class="col-xs-3 form-group">
-            </div>
-            <div class="col-xs-3 form-group">
-              <button class="btn btn-default" (click)="viewAs(subagent.IdAgent,subagent.Agent )">View as</button>
-            </div>
-            <div class="col-xs-3 form-group">
-              <button class="btn btn-danger" (click)="deactivateAgent(subagent.IdAgent)">Disable</button>
-            </div>
-          </div>
-          <div *ngIf="subagent.SubAgents?.length > 0">
-            <div *ngFor="let subsubagent of subagent.SubAgents" class="agent2">
-              <div class="row">
-                <div class="col-xs-3 form-group">
-                </div>
-                <div class="col-xs-3 form-group">
-                  {{subsubagent.Agent}}
-                </div>
-                <div class="col-xs-3 form-group">
-                  <button class="btn btn-default" (click)="viewAs(subsubagent.IdAgent,subsubagent.Agent)">View as</button>
-                </div>
-                <div class="col-xs-3 form-group">
-                  <button class="btn btn-danger" (click)="deactivateAgent(subsubagent.IdAgent)">Disable</button>
+            <div *ngIf="subagent.SubAgents?.length > 0">
+              <div *ngFor="let subsubagent of subagent.SubAgents" class="agent2">
+                <div class="row">
+                  <div class="col-xs-3 form-group">
+                  </div>
+                  <div class="col-xs-3 form-group">
+                    {{subsubagent.Agent}}
+                  </div>
+                  <div class="col-xs-3 form-group">
+                    <button class="btn btn-default" (click)="viewAs(subsubagent.IdAgent,subsubagent.Agent)">View as</button>
+                  </div>
+                  <div class="col-xs-3 form-group">
+                    <button class="btn btn-danger" (click)="deactivateAgent(subsubagent.IdAgent)">Disable</button>
+                  </div>
                 </div>
               </div>
             </div>
+            <br>
+
           </div>
-          <br>
-
         </div>
-      </div>
-      <br>
+        <br>
 
-      <!--<div *ngIf="agent.PlayerList?.length > 0">
+        <!--<div *ngIf="agent.PlayerList?.length > 0">
         players
         <div *ngFor="let player of agent.PlayerList">
           {{player.Player}}
         </div>
       </div>-->
-      <br>
+        <br>
 
-    </div>
+      </div>
 
-    <!--<table class="table table-hover">
+      <!--<table class="table table-hover">
       <thead>
         <tr>
 
@@ -98,7 +101,92 @@
         </tr>
       </tbody>
     </table>-->
-  </div>
+    </div>
+  </ng-template>
+
+
+  <ng-template #editMode>
+    <div class="row">
+      <div class="pull-right">
+        <button class="btn btn-default" (click)="goBack()"> <span class="glyphicon glyphicon-arrow-left"></span> {{'Back' | translate:lang}} </button>
+
+      </div>
+    </div>
+
+
+    <form id="signup-form" #signupForm="ngForm" (ngSubmit)="signup(signupForm.value)" autocomplete="off" novalidate>
+      <!--<label>Step 1: Select the categories of the new banner</label>-->
+
+      <div class="row">
+        <div class="form-group col-xs-6">
+          <label for="name">{{'First name:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.name?.invalid && (signupForm.controls.name?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.FirstName" name="name" required id="name" type="text" class="form-control" placeholder="Name..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="lastname">{{'Last name:' | translate:lang}} </label>
+          <em *ngIf="signupForm.controls.lastname?.invalid && (signupForm.controls.lastname?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.LastName" name="lastname" required id="lastname" type="text" class="form-control" placeholder="Lastname..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="email">{{'Email:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.email?.invalid && (signupForm.controls.email?.touched || mouseoverContact) || signupForm.controls.email?.pattern==false">Required,  incorrect email format</em>
+          <input (ngModel)="email" name="email" required id="email" type="email" class="form-control" placeholder="Email..." pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$"
+          />
+        </div>
+
+
+        <div class="form-group col-xs-6">
+          <label for="phone">{{'Phone:' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.phone?.invalid && (signupForm.controls.phone?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.Phone" name="phone" required id="phone" type="text" class="form-control" placeholder="phone..."
+          />
+        </div>
+
+        <div class="form-group col-xs-6">
+          <label for="nickname">{{'Desired nickname' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.AgentName?.invalid && (signupForm.controls.AgentName?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.AgentName" name="AgentName" required id="AgentName" type="text" class="form-control" placeholder="nickname..."
+          />
+        </div>
+
+
+
+        <div class="form-group col-xs-6">
+          <label for="AgentPassword">{{'Desired password' | translate:lang}}</label>
+          <em *ngIf="signupForm.controls.AgentPassword?.invalid && (signupForm.controls.AgentPassword?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+          <input [(ngModel)]="preAffiliate.AgentPassword" name="AgentPassword" required id="AgentPassword" type="text" class="form-control"
+            placeholder="password..." />
+        </div>
+        <!--<div class="form-group col-xs-6">
+          <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+      <button type="submit" [disabled]="signupForm.invalid" class="btn btn-success">Create Affiliate</button>
+    </span>
+          <button type="button" (click)="reject()" class="btn btn-danger">{{'Reject' | translate:lang}}</button>
+
+          <button type="button" (click)="closeDetails()" class="btn btn-default">{{'Cancel' | translate:lang}}</button>
+
+        </div>-->
+
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <button type="button" (click)="goBack()" class="btn btn-default btn-block">{{'Cancel' | translate:lang}}</button>
+        </div>
+        <div class="form-group col-md-6">
+          <span (mouseenter)="mouseoverLogin=true" (mouseleave)="mouseoverLogin=false">
+              <button type="submit" [disabled]="signupForm.invalid" class="btn btn-success btn-block">Create Agent!</button>
+            </span>
+        </div>
+      </div>
+    </form>
+
+  </ng-template>
+
 
 </div>
 <div *ngIf="loading">
