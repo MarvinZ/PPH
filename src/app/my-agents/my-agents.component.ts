@@ -6,14 +6,12 @@ import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
 
-
 @Component({
   selector: 'app-my-agents',
   templateUrl: './my-agents.component.html',
   styleUrls: ['./my-agents.component.css']
 })
 export class MyAgentsComponent extends Localization implements OnInit {
-
 
 
   loading: boolean = false;
@@ -39,7 +37,6 @@ export class MyAgentsComponent extends Localization implements OnInit {
     "IdBook": ''
   };
 
-
   response: any
   errorMessage: string
 
@@ -62,18 +59,6 @@ export class MyAgentsComponent extends Localization implements OnInit {
   getData() {
     this.loading = true;
     let t0 = performance.now();
-    // this.affiliateService.GetMyAgents(this.auth.currentUser.id)
-    //   .subscribe(response => {
-    //     this.response = response;
-    //     this.loading = false;
-
-    //     console.log(this.response);
-    //     let t1 = performance.now();
-    //     this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
-    //   },
-    //   error => this.errorMessage = <any>error);
-
-
     this.affiliateService.GetAgenthierarchy('', '', '', null, '', this.auth.currentUser.userName)
       .subscribe(response => {
         this.response = response;
@@ -84,8 +69,6 @@ export class MyAgentsComponent extends Localization implements OnInit {
         this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
-
-
   }
 
 
@@ -111,15 +94,7 @@ export class MyAgentsComponent extends Localization implements OnInit {
   }
   closeDetails() {
     this.isEditMode = false;
-
-
   }
-
-  // signup(formValues) {
-  //   alert('holis');
-  //   console.log(formValues);
-  // }
-
 
   signup(formValues) { //Create new agent
     console.log(formValues);

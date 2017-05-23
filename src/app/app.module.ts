@@ -121,7 +121,9 @@ import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.co
 import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
 import { ReCaptchaModule } from 'angular2-recaptcha';
 
+import { EventsCalendarComponent } from './events-calendar/events-calendar.component'
 import { OnlineMessagesComponent } from './online-messages/online-messages.component'
+
 
 import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
 
@@ -137,6 +139,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { QRCodeModule } from 'angular2-qrcode';
 
 import { UiSwitchModule } from '../../node_modules/angular2-ui-switch/src';
+
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   declarations: [
@@ -213,7 +217,8 @@ import { UiSwitchModule } from '../../node_modules/angular2-ui-switch/src';
     AdCenterComponent,
     MyAgentsComponent,
     MyBannersComponent, MyBannersModalComponent,
-    FooterComponent
+    FooterComponent,
+    EventsCalendarComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -235,7 +240,8 @@ import { UiSwitchModule } from '../../node_modules/angular2-ui-switch/src';
     ClipboardModule,
     QRCodeModule,
     DatePickerModule,
-    UiSwitchModule
+    UiSwitchModule,
+    CalendarModule.forRoot()
 
 
   ],

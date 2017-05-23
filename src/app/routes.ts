@@ -70,6 +70,7 @@ import { AdCenterComponent } from './ad-center/ad-center.component'
 
 import { MyAgentsComponent } from './my-agents/my-agents.component'
 
+import { EventsCalendarComponent } from './events-calendar/events-calendar.component'
 
 
 export const appRoutes: Routes = [
@@ -137,6 +138,7 @@ export const appRoutes: Routes = [
     { path: 'onlineMessages', component: OnlineMessagesComponent },
     { path: 'agentPayments', component: AgentPaymentsComponent },
     { path: 'bannerFarm', component: BannerFarmComponent },
+    { path: 'calendar', component: EventsCalendarComponent },
     { path: 'adcenter', component: AdCenterComponent },
     { path: 'myAgents', component: MyAgentsComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },

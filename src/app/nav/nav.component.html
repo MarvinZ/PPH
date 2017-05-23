@@ -107,6 +107,8 @@
       <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/ToS']" routerLinkActive="active">{{ 'Terms of Service' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/ToSpph']" routerLinkActive="active">{{ 'Terms of Service PPH' | translate:lang }}</a></li>
 
+      <li><a [routerLink]="['/calendar']" routerLinkActive="active">{{ 'Calendar' | translate:lang }}</a></li>
+
 
       <li *ngIf="!auth.isAuthenticated()  && !auth.isAffiliateSite() && auth.isPPHSite()"><a [routerLink]="['/signuppph']" routerLinkActive="active">{{ 'Sign up PPH' | translate:lang }}</a></li>
       <li *ngIf="!auth.isAuthenticated()  && auth.isAffiliateSite() && !auth.isPPHSite()"><a [routerLink]="['/signup']" routerLinkActive="active">{{ 'Sign up' | translate:lang }}</a></li>
