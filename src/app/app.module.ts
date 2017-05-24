@@ -142,6 +142,9 @@ import { UiSwitchModule } from '../../node_modules/angular2-ui-switch/src';
 
 import { CalendarModule } from 'angular-calendar';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -241,7 +244,8 @@ import { CalendarModule } from 'angular-calendar';
     QRCodeModule,
     DatePickerModule,
     UiSwitchModule,
-    CalendarModule.forRoot()
+    CalendarModule.forRoot(),
+    NgxChartsModule
 
 
   ],

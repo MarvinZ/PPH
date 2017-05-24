@@ -79,13 +79,17 @@
         </tbody>
     </table>
 
-    <div>
+    <div class="row">
         <h2>{{'Hits and signups graphic' | translate:lang }}</h2>
 
-        in progress...
+        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+            [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" (select)="onSelect($event)">
+        </ngx-charts-line-chart>
+
     </div>
 
-    <div>
+    <div class="row">
         <h2>{{'Last visits by IP' | translate:lang }}</h2>
 
         <table class="table" *ngIf="response3">
@@ -116,6 +120,9 @@
   {{response3 | json}}
 </pre>-->
 
+    <pre>
+  {{multi | json}}
+</pre>
 
 </div>
 

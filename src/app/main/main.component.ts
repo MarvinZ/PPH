@@ -5,6 +5,9 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { AuthService } from '../user/auth.service'
 import { Router } from '@angular/router'
+import { BrowserModule } from '@angular/platform-browser';
+//import {BrowserAnimationsModule} from '@angular/platform-browser-animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @Component({
@@ -18,12 +21,79 @@ export class MainComponent extends Localization implements OnInit {
 	response2: any
 	response3: any
 
+
+	multi: any = [
+		{
+			"name": "Hits",
+			"series": [
+				{
+					"name": "2010",
+					"value": 7300000
+				},
+				{
+					"name": "2011",
+					"value": 8940000
+				}
+			]
+		},
+
+		{
+			"name": "Unique clicks",
+			"series": [
+				{
+					"name": "2010",
+					"value": 7870000
+				},
+				{
+					"name": "2011",
+					"value": 8270000
+				}
+			]
+		},
+
+		{
+			"name": "Signups",
+			"series": [
+				{
+					"name": "2010",
+					"value": 5000002
+				},
+				{
+					"name": "2011",
+					"value": 5800000
+				}
+			]
+		}
+	];
+	view: any[] = [700, 400];
+
+	// options
+	showXAxis = true;
+	showYAxis = true;
+	gradient = false;
+	showLegend = true;
+	showXAxisLabel = true;
+	xAxisLabel = 'Year';
+	showYAxisLabel = true;
+	yAxisLabel = '';
+
+	colorScheme = {
+		domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+	};
+
+	// line, area
+	autoScale = true;
+
+
 	errorMessage: string
 	constructor(private affiliateService: AffiliateService, public toastr: ToastsManager,
 		public vcr: ViewContainerRef, public locale: LocaleService, private router: Router,
 		public translation: TranslationService, private auth: AuthService) {
 		super(locale, translation);
 		this.toastr.setRootViewContainerRef(vcr);
+
+		//Object.assign(this, {this.single, this.multi})   
+
 	}
 
 	ngOnInit() {
@@ -76,3 +146,5 @@ export class MainComponent extends Localization implements OnInit {
 	}
 
 }
+
+
