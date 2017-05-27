@@ -1,43 +1,69 @@
 <div class="navbar navbar-default noAni">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="makeMeWhiteAndNice">
-        <img src="http://www.jazzaffiliates.com/img/logo.png" alt="">
+  <div class="top-nav">
+      <div class="container">
+        <ul class="nav-info">
+          <li><a href="tel:8006811066"><span class="glyphicon glyphicon-phone-alt"></span> +1.800.681.1066</a></li>
+          <li class="hidden-xxs"><a href="mailto:info@jazzaffiliates.com"><span class="glyphicon glyphicon-envelope"></span> info@jazzaffiliates.com</a></li>
+          <li>
+            <div class="top-nav-help" *ngIf="!auth.isAdminSite()">
+              <ul>
+                <li><a [routerLink]="['/contactus']" routerLinkActive="active"><span class="glyphicon glyphicon-question-sign"></span> {{ ' Need Help?' | translate:lang }}</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <div class="top-nav-right" *ngIf="!auth.isAdminSite()">
+          <ul>
+            <li>
+              <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']" class="btn btn-login"><span class="glyphicon glyphicon-log-in"></span>{{ ' Login' | translate:lang}}</a>
+              <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']" class="btn btn-welcome"><span class="glyphicon glyphicon-user"></span> {{ 'Welcome ' | translate:lang}}{{auth.currentUser.firstName}}</a>
+            </li>
+            <li>
+              <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="btn btn-signup"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
+            </li>
+            <li><a href="/signup" class="btn btn-signup"><span class="glyphicon glyphicon-ok"></span> Sign me up</a></li>
+          </ul>
+        </div>
 
+        <div class="top-nav-right" *ngIf="auth.isAdminSite()">
+          <ul>
+            <li>
+              <a [routerLink]="['user/adminLogin']" *ngIf="!auth.isAuthenticated()"><span class="glyphicon glyphicon-log-in"></span>{{ ' Admin Login' | translate:lang}}</a>
+
+            </li>
+            <li>
+              <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
+            </li>
+          </ul>
+        </div>
+        <!--<form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button class="btn btn-default">
+              {{ 'Search'| translate:lang}}
+            </button>
+        </form>-->
+        <div *ngIf="auth.viewingAs != ''" class="makeMeWhiteAndNice">
+          {{'Viewing as' | translate:lang}}: {{auth.viewingAs}}
+          <button class="btn btn-danger" (click)="stopViewingAs()"><span class="glyphicon glyphicon-remove-sign"></span> {{' Stop'| translate:lang}}</button>
+        </div>
       </div>
-      <!--<a class="navbar-brand">{{auth.siteName}} Site Beta</a>-->
-      <div class="makeMeWhiteAndNice">
-        <p>
-          20+ years in business
-        </p>
-        <p>
-          <span class="glyphicon glyphicon-phone-alt"> </span>+1.800.681.1066
-        </p>
-      </div>
+  </div>
+  <div class="container">
+    
+    <div class="navbar-header">
+        <img src="http://www.jazzaffiliates.com/img/logo.png" alt="">
     </div>
     <ul class="nav navbar-nav" *ngIf="auth.isAdminSite()">
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PreAffiliates' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/preAffiliates']" routerLinkActive="active">{{ 'PrePPHs' | translate:lang }}</a></li>-->
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/bannerFarm']" routerLinkActive="active">{{ 'Banner farm' | translate:lang }}</a></li>
 
-
       <li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'Affiliates Admin' | translate:lang }}</a></li>
       <!--<li *ngIf="auth.isAuthenticated()"> <a [routerLink]="['/affiliatesAdmin']" routerLinkActive="active">{{ 'PPH Admin' | translate:lang }}</a></li>-->
 
     </ul>
-    <div class="navbar-header navbar-right" *ngIf="auth.isAdminSite()">
-
-      <ul class="nav navbar-nav">
-        <li>
-          <a [routerLink]="['user/adminLogin']" *ngIf="!auth.isAuthenticated()"><span class="glyphicon glyphicon-log-in"></span>{{ ' Admin Login' | translate:lang}}</a>
-
-        </li>
-        <li>
-          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
-        </li>
-      </ul>
-    </div>
-
     <ul class="nav navbar-nav" *ngIf="!auth.isAdminSite()">
       <li *ngIf="!auth.isAuthenticated() && auth.isAffiliateSite()">
         <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate:lang }} </a>
@@ -274,37 +300,7 @@ authorized-->
       </li>
 
     </ul>
-    <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
-      <ul class="nav navbar-nav">
-        <li>
-          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']"><span class="glyphicon glyphicon-log-in"></span>{{ ' Login' | translate:lang}}</a>
-          <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">{{ 'Welcome ' | translate:lang}}{{auth.currentUser.firstName}}</a>
-        </li>
-        <li>
-          <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="logout"><span class="glyphicon glyphicon-log-out"></span>{{ ' Log out'| translate:lang}} </a>
-        </li>
-      </ul>
-
-    </div>
-    <!--<form id="searchForm" class="navbar-form navbar-right" *ngIf="!auth.isAdminSite()">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button class="btn btn-default">
-          {{ 'Search'| translate:lang}}
-        </button>
-    </form>-->
-    <div class="navbar-header navbar-right" *ngIf="!auth.isAdminSite()">
-      <ul class="nav navbar-nav">
-
-        <li><a [routerLink]="['/contactus']" routerLinkActive="active"><span class="glyphicon glyphicon-envelope"></span> {{ ' Contact us' | translate:lang }}</a></li>
-      </ul>
-    </div>
-
-    <div *ngIf="auth.viewingAs != ''" class="makeMeWhiteAndNice">
-      {{'Viewing as' | translate:lang}}: {{auth.viewingAs}}
-      <button class="btn btn-danger" (click)="stopViewingAs()"><span class="glyphicon glyphicon-remove-sign"></span> {{' Stop'| translate:lang}}</button>
-    </div>
+    
   </div>
 
 </div>
