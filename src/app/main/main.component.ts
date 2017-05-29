@@ -20,6 +20,7 @@ export class MainComponent extends Localization implements OnInit {
 	response: any
 	response2: any
 	response3: any
+	response4: any
 
 
 	multi: any = [
@@ -118,7 +119,6 @@ export class MainComponent extends Localization implements OnInit {
 
 
 		let t2 = performance.now();
-		//   this.toastr.error('Not implemented', 'Error!'); //GetAllBannersWithStatisticsByAffiliate
 		this.affiliateService.GetMarketingStats(this.auth.currentUser.userName)
 			.subscribe(response2 => {
 				this.response2 = response2;
@@ -131,7 +131,6 @@ export class MainComponent extends Localization implements OnInit {
 
 
 		let t4 = performance.now();
-		//   this.toastr.error('Not implemented', 'Error!'); //GetAllBannersWithStatisticsByAffiliate
 		this.affiliateService.GetLastVisits(this.auth.currentUser.affCode)
 			.subscribe(response3 => {
 				this.response3 = response3;
@@ -141,6 +140,18 @@ export class MainComponent extends Localization implements OnInit {
 				this.toastr.success('This query took ' + (t5 - t4) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
+
+				let t6 = performance.now();
+		this.affiliateService.GetStatsLast7Days(this.auth.currentUser.affCode)
+			.subscribe(response4 => {
+				this.response4 = response4;
+
+				console.log(this.response4);
+				let t7 = performance.now();
+				this.toastr.success('This query took ' + (t7 - t6) + ' milliseconds..', 'Success');
+			},
+			error => this.errorMessage = <any>error);
+
 
 
 	}
