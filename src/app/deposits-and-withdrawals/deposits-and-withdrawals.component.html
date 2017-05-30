@@ -1,69 +1,66 @@
-<div class="container">
-  <h2>{{'Deposits and withdrawals' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Deposits and withdrawals' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
-        <label>{{'Select Date range:' | translate:lang  }}</label>
+      <div class="col-xs-6">
+        <label>{{'Select Date range:' | translate:lang  }}</label><br>
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-      <div class="col-xs-3 form-group">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
+      <div class="col-xs-6 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">GO!</button>
       </div>
     </div>
   </form>
 
   <div *ngIf="response?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
 
-    <p></p>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>{{'Transaction Number' | translate:lang}}</th>
-          <th>{{'Bank Name' | translate:lang}}</th>
-          <th>{{'Amount' | translate:lang}}</th>
-          <th>{{'Depositor' | translate:lang}}</th>
-          <th>{{'Player Card' | translate:lang}}</th>
-          <th>{{'Player' | translate:lang}}</th>
-          <th>{{'Date Entered' | translate:lang}}</th>
-          <th>{{'Deposit Date' | translate:lang}}</th>
-          <th>{{'Deposits/Withdrawals' | translate:lang}}</th>
-          <th>{{'Image' | translate:lang}}</th>
-          <th>{{'Checked' | translate:lang}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of response">
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>{{'Transaction Number' | translate:lang}}</th>
+            <th>{{'Bank Name' | translate:lang}}</th>
+            <th>{{'Amount' | translate:lang}}</th>
+            <th>{{'Depositor' | translate:lang}}</th>
+            <th>{{'Player Card' | translate:lang}}</th>
+            <th>{{'Player' | translate:lang}}</th>
+            <th>{{'Date Entered' | translate:lang}}</th>
+            <th>{{'Deposit Date' | translate:lang}}</th>
+            <th>{{'Deposits/Withdrawals' | translate:lang}}</th>
+            <th>{{'Image' | translate:lang}}</th>
+            <th>{{'Checked' | translate:lang}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of response">
 
 
 
-          <td>{{item.Transaction_number }}</td>
-          <td>{{item.Bank_name }}</td>
-          <td [ngClass]="(item.Amount < 0 )?'redNumber':'greenNumber'">{{item.Amount | currency:'USD':true:'1.2-2'}}</td>
-          <td>{{item.DepositorName }}</td>
-          <td>{{item.Player_card }}</td>
-          <td>{{item.nomp }}</td>
-          <td>{{item.Lastmodification }}</td>
-          <td>{{item.DepositDate }}</td>
-          <td>{{item.Transaction_type === 'R' ?'Deposit':'Withdrawal' }}</td>
-          <td>{{item.Image }}</td>
-          <td>{{item.Checked }}</td>
-        </tr>
-      </tbody>
-    </table>
+            <td>{{item.Transaction_number }}</td>
+            <td>{{item.Bank_name }}</td>
+            <td [ngClass]="(item.Amount < 0 )?'redNumber':'greenNumber'">{{item.Amount | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{item.DepositorName }}</td>
+            <td>{{item.Player_card }}</td>
+            <td>{{item.nomp }}</td>
+            <td>{{item.Lastmodification }}</td>
+            <td>{{item.DepositDate }}</td>
+            <td>{{item.Transaction_type === 'R' ?'Deposit':'Withdrawal' }}</td>
+            <td>{{item.Image }}</td>
+            <td>{{item.Checked }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!--<pre>

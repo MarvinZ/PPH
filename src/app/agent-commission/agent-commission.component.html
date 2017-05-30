@@ -1,11 +1,12 @@
-<div class="container">
+<div class="container" id="reportContent">
 
-  <h2>Agent Commision</h2>
-  <hr />
+  <h1>Agent Commision</h1>
   <div class="row">
-    <!-- <div class="col-md-12 text-center">-->
-    <iframe style="position: absolute; height: 100%; width: 85%; border: none" [src]="url+alban | safe"></iframe>
-    <!-- </div> -->
+    <div class="col-md-12">
+      <div class="frame-wrap">
+        <iframe [src]="url+alban | safe" frameborder="0"></iframe>
+      </div>
+    </div>
   </div>
 
 </div>

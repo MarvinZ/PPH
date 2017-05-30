@@ -1,94 +1,94 @@
-<div class="container">
-  <h2>{{'Weekly Payments' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Weekly Payments' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
         <label>{{'Select Date:' | translate:lang  }}</label>
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
         <!--<label>{{'Select Date range:' | translate:lang  }}</label>
         <my-date-range-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model2" required></my-date-range-picker>-->
       </div>
 
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
         <label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
-            </select>
+            <option *ngFor="let cur of currencies" [value]="cur.value" >{{cur.display}}</option>
+        </select>
 
       </div>
-      <div class="col-xs-3 form-group">
-
+      <div class="col-md-4 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">GO!</button>
       </div>
-      <div class="col-xs-3 form-group">
-        <!--<label>{{'Sports:'| translate:lang  }}</label>
+      <!--<div class="col-xs-3 form-group">
+        <label>{{'Sports:'| translate:lang  }}</label>
         <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
           <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
-            </select>-->
-      </div>
+            </select>
+      </div>-->
     </div>
 
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
-      </div>
-    </div>
   </form>
 
   <div *ngIf="response?.AgentList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
-    <br>
 
-    <div *ngFor=" let Item of response.AgentList;">
-
-      <div class="row" style="text-align: center; color: white; background-color: black;">
-        {{Item._agent}}
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
       </div>
-      <div class="row" style="background-color: lightgray">
-        <div class="col-md-2">Player</div>
-        <div class="col-md-1">Monday</div>
-        <div class="col-md-1">Tuesday</div>
-        <div class="col-md-1">Wednesday</div>
-        <div class="col-md-1">Thursday</div>
-        <div class="col-md-1">Friday</div>
-        <div class="col-md-1">Saturday</div>
-        <div class="col-md-1">Sunday</div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
       </div>
-      <div *ngIf="Item.PlayerList?.length > 0">
+    </div>
 
-        <div *ngFor="let ItemDetailPlayer of Item.PlayerList;">
+    <div *ngFor="let Item of response.AgentList;">
 
-          <div class="row table-hover">
-            <div class="col-md-2">{{ItemDetailPlayer._player}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day1 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day1 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day2 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day2 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day3 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day3 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day4 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day4 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day5 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day5 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day6 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day6 | currency:'USD':true:'1.2-2'}}</div>
-            <div class="col-md-1" style="text-align: right;" [ngClass]="(ItemDetailPlayer._day7 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day7 | currency:'USD':true:'1.2-2'}}</div>
-          </div>
+      <div class="table-responsive">
+        <div *ngIf="Item.PlayerList?.length > 0">
+          <table class="table table-striped">
+            <caption><i class="fa fa-chevron-down" aria-hidden="true"></i> {{Item._agent}}</caption>
+            <thead>
+            <tr>
+              <th>Player</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let ItemDetailPlayer of Item.PlayerList;">
 
+              <tr>
+                <td>{{ItemDetailPlayer._player}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day1 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day1 | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day2 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day2 | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day3 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day3 | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day4 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day4 | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day5 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day5 | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day6 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day6 | currency:'USD':true:'1.2-2'}}</td>
+                <td [ngClass]="(ItemDetailPlayer._day7 < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._day7 | currency:'USD':true:'1.2-2'}}</td>
+              </tr>
+
+            </tbody>
+
+            <tr>
+              <td>{{Item.PlayerList.length}} {{'Players' | translate:lang }}</td>
+              <td [ngClass]="(getTotal(Item, '_day1') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day1') | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(getTotal(Item, '_day2') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day2') | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(getTotal(Item, '_day3') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day3') | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(getTotal(Item, '_day4') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day4') | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(getTotal(Item, '_day5') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day5') | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(getTotal(Item, '_day6') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day6') | currency:'USD':true:'1.2-2'}}</td>
+              <td [ngClass]="(getTotal(Item, '_day7') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day7') | currency:'USD':true:'1.2-2'}}</td>
+
+            </tr>
+
+          </table>
         </div>
-
-        <div class="row table-hover" style="background-color: lightgray">
-          <div class="col-md-2">{{Item.PlayerList.length}} {{'Players' | translate:lang }}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day1') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day1') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day2') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day2') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day3') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day3') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day4') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day4') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day5') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day5') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day6') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day6') | currency:'USD':true:'1.2-2'}}</div>
-          <div class="col-md-1" style="text-align: right;" [ngClass]="(getTotal(Item, '_day7') < 0 )?'redNumber':'greenNumber'">{{getTotal(Item, '_day7') | currency:'USD':true:'1.2-2'}}</div>
-
-        </div>
-
-
-
       </div>
-
     </div>
   </div>
 

@@ -34,7 +34,7 @@
         <h3>{{'Period ' | translate:lang}} From {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">Export to Excel</button>
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
       </div>
     </div>
 

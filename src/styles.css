@@ -92,7 +92,7 @@ footer.frontend-footer {
 /* REPORTS STYLES STARTS HERE */
 
 #reportContent.container {
-  padding: 0 !important; 
+  padding: 0 0 200px 0 !important; 
 }
 #reportContent.container .row {
   margin-left: 0 !important; 
@@ -147,6 +147,14 @@ footer.frontend-footer {
   background: #21252b !important;
   box-shadow: 0 !important;
 }
+.footerarea button.footerbtn { /* date picker*/
+  width: 100% !important;
+  color: #FFF !important;
+  background: #347930 !important;
+}
+.mydrp { /* date picker*/
+  width: 100% !important;
+}
 /*  OTHER ENDS  */
 
 @keyframes fadeIn {
@@ -180,9 +188,18 @@ font-weight: bold;
 
 /* ----- Responsive Changes Starts Here ----- */
 @media (max-width: 480px) {
-    .hidden-xxs {display:none;}
+  .hidden-xxs {display:none;}
 }
-
+@media (min-width: 768px) {
+  .modal-dialog {
+      width: 50%;
+      margin: 10% auto;
+  }
+  .modal-header {
+      background: #DDD;
+      text-shadow: 1px 1px #EEE;
+  }
+}
 /* ----- Responsive Changes Ends Here ----- */
 
 /* ----- Loader Starts Here ----- */

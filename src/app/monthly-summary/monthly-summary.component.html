@@ -1,80 +1,74 @@
-<div class="container">
-  <h2>{{'Monthly Summary' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Monthly Summary' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
-
-        <label>{{'Select Date range:' | translate:lang  }}</label>
+      <div class="col-md-6">
+        <label>{{'Select Date range:' | translate:lang  }}</label><br>
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
-      <div class="col-xs-3 form-group">
-
-
-      </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-      <div class="col-xs-3 form-group">
-
+      <div class="col-md-6 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">{{'GO!' | translate:lang}}</button>
       </div>
     </div>
 
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">{{'GO!' | translate:lang}}</button>
-      </div>
-    </div>
   </form>
 
   <div *ngIf="response?.length > 0">
-    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
 
-    <table class="table table-hover">
-      <thead>
-        <tr>
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+      </div>
+    </div>
 
-          <th>{{'Date' | translate:lang}}</th>
-          <th>{{'All Players' | translate:lang}}</th>
-          <th>{{'Sport Win' | translate:lang}}</th>
-          <th>{{'Sport Loss' | translate:lang}}</th>
-          <th>{{'Sport Win Loss' | translate:lang}}</th>
-          <th>{{'Horse Win' | translate:lang}}</th>
-          <th>{{'Horse Loss' | translate:lang}}</th>
-          <th>{{'Horse Win Loss' | translate:lang}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of response">
-          <td>
-            {{item.DayDate | date }}
-          </td>
-          <td>
-            {{item.AllPlayers}}
-          </td>
-          <td [ngClass]="(item.SportWin < 0 )?'redNumber':'greenNumber'">
-            {{item.SportWin}}
-          </td>
-          <td [ngClass]="(item.SportLoss < 0 )?'redNumber':'greenNumber'">
-            {{item.SportLoss}}
-          </td>
-          <td [ngClass]="(item.SportWinLoss < 0 )?'redNumber':'greenNumber'">
-            {{item.SportWinLoss}}
-          </td>
-          <td [ngClass]="(item.HorseWin < 0 )?'redNumber':'greenNumber'">
-            {{item.HorseWin}}
-          </td>
-          <td [ngClass]="(item.HorseLoss < 0 )?'redNumber':'greenNumber'">
-            {{item.HorseLoss}}
-          </td>
-          <td [ngClass]="(item.HorseWinLoss < 0 )?'redNumber':'greenNumber'">
-            {{item.HorseWinLoss}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>{{'Date' | translate:lang}}</th>
+            <th>{{'All Players' | translate:lang}}</th>
+            <th>{{'Sport Win' | translate:lang}}</th>
+            <th>{{'Sport Loss' | translate:lang}}</th>
+            <th>{{'Sport Win Loss' | translate:lang}}</th>
+            <th>{{'Horse Win' | translate:lang}}</th>
+            <th>{{'Horse Loss' | translate:lang}}</th>
+            <th>{{'Horse Win Loss' | translate:lang}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of response">
+            <td>
+              {{item.DayDate | date }}
+            </td>
+            <td>
+              {{item.AllPlayers}}
+            </td>
+            <td [ngClass]="(item.SportWin < 0 )?'redNumber':'greenNumber'">
+              {{item.SportWin}}
+            </td>
+            <td [ngClass]="(item.SportLoss < 0 )?'redNumber':'greenNumber'">
+              {{item.SportLoss}}
+            </td>
+            <td [ngClass]="(item.SportWinLoss < 0 )?'redNumber':'greenNumber'">
+              {{item.SportWinLoss}}
+            </td>
+            <td [ngClass]="(item.HorseWin < 0 )?'redNumber':'greenNumber'">
+              {{item.HorseWin}}
+            </td>
+            <td [ngClass]="(item.HorseLoss < 0 )?'redNumber':'greenNumber'">
+              {{item.HorseLoss}}
+            </td>
+            <td [ngClass]="(item.HorseWinLoss < 0 )?'redNumber':'greenNumber'">
+              {{item.HorseWinLoss}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <!--<pre>

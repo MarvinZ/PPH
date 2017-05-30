@@ -1,29 +1,34 @@
-<div class="container">
-  <h2>{{'Agent Distribution' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Agent Distribution' | translate:lang }}</h1>
 
-  <div>
-    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
-    <br>
-    <div>
+  <div class="row">
+      <div class="col-md-10">
+        
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+      </div>
+    </div>
+
+    <div class="table-responsive">
 
       <!--<div class="row" style="text-align: center; color: white; background-color: black;">
         {{Item.agent}}
       </div>-->
 
-      <table class="table">
+      <table class="table table-striped">
         <thead>
-          <tr style="background-color: lightgray">
-            <td>Agent</td>
-            <td>Week ending</td>
-            <td>Old make up</td>
-            <td>Gross</td>
-            <td>Net</td>
-            <td>Type</td>
-
-            <td>%</td>
-            <td>Comm Split</td>
-            <td>turn in</td>
-            <td>New make up</td>
+          <tr>
+            <th>Agent</th>
+            <th>Week ending</th>
+            <th>Old make up</th>
+            <th>Gross</th>
+            <th>Net</th>
+            <th>Type</th>
+            <th>%</th>
+            <th>Comm Split</th>
+            <th>turn in</th>
+            <th>New make up</th>
 
           </tr>
 
@@ -56,7 +61,6 @@
 
 
     </div>
-  </div>
 
   <pre>
   {{response | json}}

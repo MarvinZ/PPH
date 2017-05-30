@@ -1,23 +1,17 @@
-<div class="container">
-  <h2>{{'Hold Percent' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Hold Percent' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
-
+      <div class="col-md-3">
         <label>{{'Select Date range:' | translate:lang  }}</label>
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
-      <div class="col-xs-3 form-group">
-
-
+      <div class="col-md-2">
         <label>{{'View detail:'| translate:lang  }}</label>
         <input type="checkbox" name="viewDetail" [(ngModel)]="viewDetail" class="form-control">
-
-
-
       </div>
-      <div class="col-xs-3 form-group">
+      <div class="col-md-3">
         <label>{{'Agent:'| translate:lang  }}</label>
         <select name="ddlAgent" class="form-control" style="height: 40px;" [(ngModel)]="ddlAgent" (change)="onChangeagentDdl()">
         <option value="-1" selected>All</option>
@@ -25,39 +19,41 @@
             <option *ngFor="let agent of response2" [value]="agent.IdAgent">{{agent.Agent}}</option>
             </select>
       </div>
-      <div class="col-xs-3 form-group">
+      <div class="col-md-3">
         <label>{{'Player:'| translate:lang  }}</label>
         <select name="ddlPlayer" class="form-control" style="height: 40px;" [(ngModel)]="ddlPlayer">
           <option value="-1" selected> All</option>
                 <option *ngFor="let playo of players" [value]="playo.IdPlayer">{{playo.Player}}</option>
             </select>
       </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">{{'GO!' | translate:lang}}</button>
+      <div class="col-md-1 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">GO!</button>
       </div>
     </div>
+
   </form>
 
   <div *ngIf="response?.length > 0">
-    <button class="btn btn-success" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
-    <br> <br>
+    <div class="row">
+      <div class="col-md-10">
+        
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">{{'Export to Excel' | translate:lang}}</button>
+      </div>
+    </div>
     <div *ngFor="let Item of response">
 
-      <div class="row" style="text-align: center; color: white; background-color: black;">
-        {{Item.Agent}}
-      </div>
-      <table class="table">
+      <div class="table-responsive">
+      <table class="table table-striped">
+        <caption><i class="fa fa-chevron-down" aria-hidden="true"></i> {{Item.Agent}}</caption>
         <thead>
           <tr>
-            <td>Sport</td>
-            <td>Wager Type</td>
-            <td>Amount</td>
-            <td>Win / Lost</td>
-            <td>Hold %</td>
+            <th>Sport</th>
+            <th>Wager Type</th>
+            <th>Amount</th>
+            <th>Win / Lost</th>
+            <th>Hold %</th>
 
           </tr>
         </thead>
@@ -68,8 +64,6 @@
             <td [ngClass]="(ItemDetailPlayer.Amount < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer.Amount | currency:'USD':true:'1.2-2'}}</td>
             <td [ngClass]="(ItemDetailPlayer.WinLoss < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer.WinLoss | currency:'USD':true:'1.2-2'}}</td>
             <td [ngClass]="(ItemDetailPlayer.Hold < 0 )? 'redNumber' : 'greenNumber'">{{ItemDetailPlayer.Hold | number }}%</td>
-
-
           </tr>
           <tr>
             <td>{{Item.DetailList.length}} {{'Players' | translate:lang }}</td>
@@ -77,12 +71,11 @@
             <td [ngClass]="getTotal(Item, 'Amount')  < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, 'Amount') | currency:'USD':true:'1.2-2'}}</td>
             <td [ngClass]="getTotal(Item, 'WinLoss') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, 'WinLoss') | currency:'USD':true:'1.2-2'}}</td>
             <td [ngClass]="getTotal(Item, 'Hold') < 0 ? 'redNumber' : 'greenNumber'">{{getTotal(Item, 'Hold') | number}}%</td>
-
           </tr>
 
         </tbody>
       </table>
-      <br>
+      </div>
 
 
 

@@ -1,40 +1,34 @@
-<div class="container">
-  <h2>{{'Agent Exposure' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Agent Exposure' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
-      <div class="col-xs-3 form-group">
+    <div class="row well">
+      <div class="col-md-4">
         <label>{{'Sports:'| translate:lang  }}</label>
         <select name="ddlSports" class="form-control" style="height: 40px;" [(ngModel)]="ddlSports">
           <option *ngFor="let sport of sports" [value]="sport.value">{{sport.display}}</option>
-            </select>
+        </select>
       </div>
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
         <label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
-                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
-            </select>
+            <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+        </select>
       </div>
-      <div class="col-xs-3 form-group">
-        <!--<label>{{'Transaction Type:'| translate:lang  }}</label>
+      <!--<div class="col-xs-3 form-group">
+        <label>{{'Transaction Type:'| translate:lang  }}</label>
         <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
             <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
-            </select>-->
-      </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
+            </select>
+      </div>-->
+      <div class="col-md-4 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">GO!</button>
       </div>
     </div>
+
   </form>
 
   <div *ngIf="response?.ListExposure?.length > 0">
-    <div class="row">
+    <div class="row exposure-header">
       <div class="col-md-4">
         <div class="col-md-4">#</div>
         <div class="col-md-8">Teams</div>
@@ -64,7 +58,7 @@
 
     <div *ngFor="let Item of response.ListExposure" class="makeMeSmaller">
 
-      <div class="row">
+      <div class="row exposure-line">
         <!--Visitor-->
 
         <div class="col-md-4">
@@ -103,7 +97,7 @@
 
       </div>
 
-      <div class="row">
+      <div class="row exposure-line">
         <!--Home-->
         <div class="col-md-4">
           <div class="col-md-4">{{Item._HomeNumber}}</div>
@@ -155,42 +149,42 @@
 
 <exposure-modal #modal>
   <div class="app-modal-header">
-    Agent Exposure Detail
+    <h3>Agent Exposure Detail</h3>
   </div>
   <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length > 0">
 
-
-    <table class="table">
-      <thead>
-        <tr>
-          <td>Player</td>
-          <td>Ticket#</td>
-          <td>Placed Date</td>
-          <td>Line</td>
-          <td>Risk</td>
-          <td>To Win</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ItemDetails of modal.response.ListDetail">
-          <td>{{ItemDetails._player}}</td>
-          <td>{{ItemDetails._ticket}}</td>
-          <td>{{ItemDetails._placeddate}}</td>
-          <td>{{ItemDetails._line}}</td>
-          <td>{{ItemDetails._riskamount | currency:'USD':true:'1.2-2'}}</td>
-          <td>{{ItemDetails._winamount | currency:'USD':true:'1.2-2'}}</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>Total:</td>
-          <td>{{modal.totalRisk | currency:'USD':true:'1.2-2'}}</td>
-          <td>{{modal.totalWin | currency:'USD':true:'1.2-2'}}</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Ticket#</th>
+            <th>Placed Date</th>
+            <th>Line</th>
+            <th>Risk</th>
+            <th>To Win</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ItemDetails of modal.response.ListDetail">
+            <td>{{ItemDetails._player}}</td>
+            <td>{{ItemDetails._ticket}}</td>
+            <td>{{ItemDetails._placeddate}}</td>
+            <td>{{ItemDetails._line}}</td>
+            <td>{{ItemDetails._riskamount | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{ItemDetails._winamount | currency:'USD':true:'1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>Total:</th>
+            <th>{{modal.totalRisk | currency:'USD':true:'1.2-2'}}</th>
+            <th>{{modal.totalWin | currency:'USD':true:'1.2-2'}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
 
     <!--<pre>
@@ -198,9 +192,9 @@
 </pre>-->
   </div>
   <div class="app-modal-body" *ngIf="modal.response?.ListDetail?.length == 0">
-    there is nothing to show!
+    There is nothing to show!
   </div>
   <div class="app-modal-footer">
-    <button type="button" class="btn btn-default" (click)="modal.hide()">Close</button>
+    <button type="button" class="btn btn-danger" (click)="modal.hide()"><i class="fa fa-times-circle" aria-hidden="true"></i> Close</button>
   </div>
 </exposure-modal>

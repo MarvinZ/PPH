@@ -1,59 +1,58 @@
-<div class="container">
-  <h2>{{'Agent Position' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Agent Position' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
-        <!--<label>{{'Select Date:' | translate:lang  }}</label>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>-->
+      <div class="col-md-4">
         <label>{{'Select Date range:' | translate:lang  }}</label>
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
         <label>{{'Show futures:'| translate:lang  }}</label>
         <input type="checkbox" name="Showfutures" [(ngModel)]="Showfutures" class="form-control">
-
-
       </div>
-      <div class="col-xs-3 form-group">
-        <!--<label>{{'Transaction Type:'| translate:lang  }}</label>
+      <div class="col-md-4 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">GO!</button>
+      </div>
+      <!--<div class="col-xs-3 form-group">
+        <label>{{'Transaction Type:'| translate:lang  }}</label>
         <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
             <option *ngFor="let tt of transactionTypes" [value]="tt.value">{{tt.display}}</option>
-            </select>-->
-      </div>
-      <div class="col-xs-3 form-group">
-        <!--<label>{{'Currency:'| translate:lang  }}</label>
+            </select>
+      </div>-->
+      <!--<div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
                 <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
-            </select>-->
-      </div>
+            </select>
+      </div>-->
     </div>
 
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
-      </div>
-    </div>
   </form>
 
   <div *ngIf="response?.ListGame?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <p></p>
+
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
+      </div>
+    </div>
+
     <div *ngFor="let Item of response.ListGame">
 
-      <table class="table">
+      <div class="table-responsive">
+      <table class="table table-striped">
         <thead>
           <tr>
-            <td>{{Item._title1}}:{{Item._gamedatetime}}</td>
-            <td>{{Item._title2}}</td>
-            <td>{{Item._title3}}</td>
-            <td>{{Item._title4}}</td>
-            <td>{{Item._title5}}</td>
-            <td>{{Item._title6}}</td>
-            <td>{{Item._title7}}</td>
-            <td>{{Item._title8}}</td>
-            <td>{{Item._title9}}</td>
+            <th>{{Item._title1}}:{{Item._gamedatetime}}</th>
+            <th>{{Item._title2}}</th>
+            <th>{{Item._title3}}</th>
+            <th>{{Item._title4}}</th>
+            <th>{{Item._title5}}</th>
+            <th>{{Item._title6}}</th>
+            <th>{{Item._title7}}</th>
+            <th>{{Item._title8}}</th>
+            <th>{{Item._title9}}</th>
           </tr>
         </thead>
         <tbody>
@@ -70,11 +69,7 @@
           </tr>
         </tbody>
       </table>
-
-
-
-      <hr/>
-
+      </div>
 
     </div>
 
