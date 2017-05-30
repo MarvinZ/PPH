@@ -27,7 +27,7 @@ export class AffiliateService {
   AffiliateLogin(username: string, password: string): Observable<any> {
     return this._http.get(this._url + "AffiliateLogin?agent=" + username + "&password=" + password)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -36,16 +36,16 @@ export class AffiliateService {
   GetAffStatistics(idAgent: number, reportDate: string): Observable<any> {
     return this._http.get(this._url + "GetAffStatistics?idAgent=" + idAgent + "&reportdate=" + reportDate)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   // GET api/temp/GetWeeklyTransactions?idAgent={idAgent}&reportdate={reportdate}
   GetWeeklyTransactions(idAgent: number, reportDate: string): Observable<any> {
-    console.log(this._url + "GetWeeklyTransactions?idAgent=" + idAgent + "&reportDate=" + reportDate);
+    // console.log(this._url + "GetWeeklyTransactions?idAgent=" + idAgent + "&reportDate=" + reportDate);
     return this._http.get(this._url + "GetWeeklyTransactions?idAgent=" + idAgent + "&reportDate=" + reportDate)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -53,7 +53,7 @@ export class AffiliateService {
   GetMyAgents(idAgent: number): Observable<any> {
     return this._http.get(this._url + "GetMyAgents?idAgent=" + idAgent)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -84,7 +84,7 @@ export class AffiliateService {
       "IdBook": IdBook
     }
 
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url + "InsertPreAffiliate", payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -120,7 +120,7 @@ export class AffiliateService {
       "IdBook": ''
     }
 
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url + "RejectPreAffiliate", payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -132,7 +132,7 @@ export class AffiliateService {
   GetPreaffiliates(): Observable<any> {
     return this._http.get(this._url + "GetPreaffiliates")
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -161,7 +161,7 @@ export class AffiliateService {
       "AgentPassword": AgentPassword,
       "IdBook": IdBook
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url + "CreateAgents", payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -194,7 +194,7 @@ export class AffiliateService {
       "AgentPassword": AgentPassword,
       "IdBook": IdBook
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url + "CreateSubAgent", payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -207,7 +207,7 @@ export class AffiliateService {
   GetAllAffiliates(): Observable<any> {
     return this._http.get(this._url + "GetAllAffiliates")
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -215,7 +215,7 @@ export class AffiliateService {
   GetAgentExposureReport(idAgent: number, sport: string, idCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetAgentExposureReport?idAgent=" + idAgent + "&sport=" + sport + "&idCurrency=")
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -223,7 +223,7 @@ export class AffiliateService {
   GetAgentExposureReportDetail(idAgent: number, idgame: string, wagerType: string, play: string): Observable<any> {
     return this._http.get(this._url + "GetAgentExposureReportDetail?idAgent=" + idAgent + "&idgame=" + idgame + "&wagerType=" + wagerType + "&play=" + play)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -231,7 +231,7 @@ export class AffiliateService {
   GetAgentPositionReport(idAgent: number, prmShowFutures: Boolean, dateInit: string, dateEnd: string): Observable<any> {
     return this._http.get(this._url + "GetAgentPositionReport?idAgent=" + idAgent + "&prmShowFutures=" + prmShowFutures + "&dateInit=" + dateInit + "&dateEnd=" + dateEnd)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -239,7 +239,7 @@ export class AffiliateService {
   GetAgentComission(prmIdAgent: number, prmIdSubAgent: number, prmInitialDate: string, prmIdCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetAgentComission?prmIdAgent=" + prmIdAgent + "&prmIdSubAgent=" + prmIdSubAgent + "&prmInitialDate=" + prmInitialDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -247,7 +247,7 @@ export class AffiliateService {
   GetPlayerStandings(prmIdAgent: number, prmInitialDate: string, prmIdCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetPlayerStandings?prmIdAgent=" + prmIdAgent + "&prmInitialDate=" + prmInitialDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -255,25 +255,25 @@ export class AffiliateService {
   GetActionsByPlayer(prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetActionsByPlayer?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   // GET api/temp/GetPlayerTotalsReport?prmIdAgent={prmIdAgent}&prmStartDate={prmStartDate}&prmEndDate={prmEndDate}&prmIdCurrency={prmIdCurrency}
   GetPlayerTotalsReport(prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
-    console.log(this._url + "GetPlayerTotalsReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency);
+    // console.log(this._url + "GetPlayerTotalsReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency);
     return this._http.get(this._url + "GetPlayerTotalsReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   // GET api/temp/GetWeeklyBalanceReport?prmIsDistributor={prmIsDistributor}&prmTransactionType={prmTransactionType}&prmIdAgent={prmIdAgent}&prmStartDate={prmStartDate}&prmIdCurrency={prmIdCurrency}
   GetWeeklyBalanceReport(prmIsDistributor: string, prmTransactionType: string, prmIdAgent: number, prmStartDate: string, prmIdCurrency: string): Observable<any> {
-    console.log(this._url + "GetWeeklyBalanceReport?prmIsDistributor=" + prmIsDistributor + "&prmTransactionType=" + prmTransactionType + "&prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmIdCurrency=" + prmIdCurrency);
+    // console.log(this._url + "GetWeeklyBalanceReport?prmIsDistributor=" + prmIsDistributor + "&prmTransactionType=" + prmTransactionType + "&prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmIdCurrency=" + prmIdCurrency);
     return this._http.get(this._url + "GetWeeklyBalanceReport?prmIsDistributor=" + prmIsDistributor + "&prmTransactionType=" + prmTransactionType + "&prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -281,16 +281,16 @@ export class AffiliateService {
   GetCashFlowReport(prmTransType: string, prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetCashFlowReport?prmTransType=" + prmTransType + "&prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmEndDate=" + prmEndDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
   // GET api/temp/GetGrossWeekReport?prmIdAgent={prmIdAgent}&prmStartDate={prmStartDate}&prmIdCurrency={prmIdCurrency}
   GetGrossWeekReport(prmIdAgent: number, prmStartDate: string, prmIdCurrency: string): Observable<any> {
-    console.log(this._url + "GetGrossWeekReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "1&prmIdCurrency=" + prmIdCurrency);
+    // console.log(this._url + "GetGrossWeekReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "1&prmIdCurrency=" + prmIdCurrency);
     return this._http.get(this._url + "GetGrossWeekReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -298,7 +298,7 @@ export class AffiliateService {
   GetWeeklyPaymentsReport(prmIdAgent: number, prmStartDate: string, prmIdCurrency: string): Observable<any> {
     return this._http.get(this._url + "GetWeeklyPaymentsReport?prmIdAgent=" + prmIdAgent + "&prmStartDate=" + prmStartDate + "&prmIdCurrency=" + prmIdCurrency)
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -306,7 +306,7 @@ export class AffiliateService {
   GetThisWeekDateRange(): Observable<any> {
     return this._http.get(this._url + "GetThisWeekDateRange")
       .map((response: Response) => <any>response.json())
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data =>  console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
@@ -335,7 +335,7 @@ export class AffiliateService {
       "EndDate": EndDate,
       "IdAgent": IdAgent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentWebVsPhone', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -354,7 +354,7 @@ export class AffiliateService {
       "StartDate": StartDate,
       "IdAgent": IdAgent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentSettledFigure', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -374,7 +374,7 @@ export class AffiliateService {
 
       "Agent": Agent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentDistribution', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -394,7 +394,7 @@ export class AffiliateService {
       "IdAgent": IdAgent,
       "Filter": 1 //?????
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentHistory', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -413,7 +413,7 @@ export class AffiliateService {
       "EndDate": EndDate,
       "IdAgent": IdAgent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_ReportAgentPlayerAdjustment', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -432,7 +432,7 @@ export class AffiliateService {
       "EndDate": EndDate,
       "IdAgent": IdAgent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentDepositsAndWithdrawals', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -453,7 +453,7 @@ export class AffiliateService {
       "IdPlayer": IdPlayer,
       "ViewDetail": true
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentHoldPercent', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -472,7 +472,7 @@ export class AffiliateService {
       "EndDate": EndDate,
       "Agent": agent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentMonthlySummary', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -491,7 +491,7 @@ export class AffiliateService {
       "StartDate": StartDate,
       "IdAgent": IdAgent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentAccessLog', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -510,7 +510,7 @@ export class AffiliateService {
       "EndDate": EndDate,
       "IdAgent": IdAgent
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentCardTransaction', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -531,7 +531,7 @@ export class AffiliateService {
       "BeatOnly": true,
       "IdPlayer": 999
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url2 + 'Report_AgentBeatTheLine', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -558,7 +558,7 @@ export class AffiliateService {
       "Width": banner.Width,
       "Height": banner.Height
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'AddBanner', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -578,7 +578,7 @@ export class AffiliateService {
       "BannerCode": BannerCode,
       "AffiliateCode": AffiliateCode
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'AddBannerClick', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -600,7 +600,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetAllBannersWithStatisticsByAffiliate', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -623,7 +623,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetAllBannersWithStatisticsByBanner', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -646,7 +646,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetAllBannersWithStatistics', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -668,7 +668,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetBannerInfoByBook', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -690,7 +690,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetBannerInfoByBannerCode', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -713,7 +713,7 @@ export class AffiliateService {
       "Agent": Agent
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetMarketingStats', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -738,7 +738,7 @@ export class AffiliateService {
 
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetLastVisits', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -762,7 +762,7 @@ export class AffiliateService {
 
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetStatsLast7Days', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -785,7 +785,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetDistributorAgentsAndPlayersDetails', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -810,7 +810,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetDistributorAgentsAndPlayers', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -832,7 +832,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetAgentPlayersWithDetails', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -855,7 +855,7 @@ export class AffiliateService {
       "Distributor": Distributor
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetAgentPlayer', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -878,7 +878,7 @@ export class AffiliateService {
       "Agent": Agent
 
     }
-    console.log(payload);
+    // console.log(payload);
 
     return this._http.post(this._url3 + 'GetAgenthierarchy', payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data

@@ -74,9 +74,9 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
         this.response = response;
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
@@ -86,7 +86,7 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
 
   getTotal(Item: any, cat: string) {
     let result = 0;
-    //  console.log(Item);
+    //  // console.log(Item);
     if (Item.ListPlayer.length > 0) {
       for (let entry of Item.ListPlayer) {
         if (cat === '_straightbet')
@@ -111,7 +111,7 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
         if (cat === '_total')
           result = result + Number(entry._total);
 
-        // console.log(entry);
+        // // console.log(entry);
       }
     }
     return result;
@@ -130,7 +130,7 @@ export class ActionByPlayerComponent extends Localization implements OnInit {
         }
       }
     }
-    console.log(res);
+    // console.log(res);
 
     try {
       var options = {

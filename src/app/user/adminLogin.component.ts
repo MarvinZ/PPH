@@ -38,7 +38,7 @@ export class AdminLoginComponent {
         selectedSubagent: 0,
         originalId: 999,
         bookId: 1,
-        affCode: 'TESTCODE'
+        affCode: 'ADMINCODE'
       }
       this.router.navigate(['preAffiliates']);
     }

@@ -1,7 +1,7 @@
 import { Component, ViewContainerRef, OnInit, ViewChild } from '@angular/core';
 import { ReportResponse } from './../models/api';
 import { AffiliateService } from './../services/affiliate.service'
-import { ReportService } from './../services/report.service'
+
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
 import { IMyOptions } from 'mydatepicker';
@@ -54,7 +54,7 @@ export class AgentExposureComponent extends Localization implements OnInit {
 
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
     public vcr: ViewContainerRef, public locale: LocaleService,
-    public translation: TranslationService, private auth: AuthService, private reportService: ReportService) {
+    public translation: TranslationService, private auth: AuthService) {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
 
@@ -72,8 +72,8 @@ export class AgentExposureComponent extends Localization implements OnInit {
   //       this.response = response;
   //       if (this.response.ResponseStatus.Status === 'Success'
   //         && this.response.ResponseInfo) {
-  //         this.toastr.success('This toast will dismiss in 2 seconds.', 'Successssssssssssssssss');
-  //         console.log(this.response.ResponseInfo);
+  //         // this.toastr.success('This toast will dismiss in 2 seconds.', 'Successssssssssssssssss');
+  //         // console.log(this.response.ResponseInfo);
 
   //       }
   //       else this.toastr.error('This is not good!', 'Oops!');
@@ -92,16 +92,16 @@ export class AgentExposureComponent extends Localization implements OnInit {
         this.response = response;
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
 
 
   ExportToExcel() {
-    console.log(this.response.CashFlowList);
+    // console.log(this.response.CashFlowList);
     try {
       var options = {
         showLabels: true
@@ -207,7 +207,7 @@ export class ExposureModalComponent extends Localization {
 
   constructor(private affiliateService: AffiliateService, public toastr: ToastsManager, private router: Router,
     public vcr: ViewContainerRef, public locale: LocaleService,
-    public translation: TranslationService, private auth: AuthService, private reportService: ReportService) {
+    public translation: TranslationService, private auth: AuthService) {
     super(locale, translation);
     this.toastr.setRootViewContainerRef(vcr);
 
@@ -231,7 +231,7 @@ export class ExposureModalComponent extends Localization {
       .subscribe(response => {
         this.response = response;
 
-        console.log(this.response);
+        // console.log(this.response);
         let totalRiskCalc = 0;
         let totalWinCalc = 0;
 
@@ -243,7 +243,7 @@ export class ExposureModalComponent extends Localization {
         this.totalRisk = totalRiskCalc; //totalRisk;
         this.totalWin = totalWinCalc;//totalWin;
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }

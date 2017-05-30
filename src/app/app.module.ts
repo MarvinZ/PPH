@@ -9,34 +9,24 @@ import { FileUploadModule } from "ng2-file-upload";
 
 
 import { AppComponent } from './app.component';
-import { AlertModule, DropdownModule, AccordionModule, CarouselModule } from 'ng2-bootstrap';
+import { DropdownModule, AccordionModule, CarouselModule } from 'ng2-bootstrap';
 
 
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 
 import { HomeComponent } from './home/home.component';
-import { ThingsComponent } from './things/things.component';
+
+
 import { NavComponent } from './nav/nav.component';
 
 import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service'
-import { ThingService } from './services/thing.service'
+
 import { ContactService } from './services/contact.service'
-import { ReportService } from './services/report.service'
+
 import { AffiliateService } from './services/affiliate.service'
-
-import { CommentService } from './services/commentX.service'
-import { EmitterService } from './services/emitter.service'
-
-import { ChatService } from './services/chat.service';
-import { WebSocketService } from './services/websocket.service';
-
-
-
-import { ThingDetailGuard } from './guards/thing-detail-guard'
-
 
 import { LocalizationModule } from 'angular-l10n';
 import { CashFlowFilterPipe } from './filters/cash-flow-filter.pipe'
@@ -45,14 +35,10 @@ import { ThingFilterPipe } from './filters/thing-filter.pipe'
 
 import { } from './models'
 
-import { PlayersComponent } from './players/players.component'
-import { GenericReport2Component } from './generic-report2/generic-report2.component';
-import { ThingDetailComponent } from './thing-detail/thing-detail.component';
 import { StarComponent } from './star/star.component';
 import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
-import { WagersComponent } from './wagers/wagers.component';
 import { MainComponent } from './main/main.component';
 import { WeeklyTransactionsComponent } from './weekly-transactions/weekly-transactions.component';
 import { WeeklyBalancesComponent } from './weekly-balances/weekly-balances.component';
@@ -72,18 +58,11 @@ import { MyBannersComponent, MyBannersModalComponent } from './my-banners/my-ban
 import { PlayerStandingsComponent } from './player-standings/player-standings.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { TermsOfServicePphComponent } from './terms-of-service-pph/terms-of-service-pph.component';
-
 import { MyDatePickerModule } from 'mydatepicker';
 import { MyDateRangePickerModule } from 'mydaterangepicker';
-
 import { DatePickerModule } from 'ng2-datepicker';
-
-
-
-
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignUpPphComponent } from './sign-up-pph/sign-up-pph.component';
-
 import { DemoComponent, DemoModalComponent } from './demo/demo.component';
 import { SigningUpComponent } from './signing-up/signing-up.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -95,7 +74,6 @@ import { SettledFiguresComponent } from './settled-figures/settled-figures.compo
 import { WebVsPhoneComponent } from './web-vs-phone/web-vs-phone.component';
 import { AgentDistributionComponent } from './agent-distribution/agent-distribution.component';
 import { AgentHistoryComponent } from './agent-history/agent-history.component';
-
 import { SafePipe } from './safe-pipe.pipe';
 import { AgentAdjustmentsComponent } from './agent-adjustments/agent-adjustments.component';
 import { AccessLogComponent } from './access-log/access-log.component';
@@ -117,51 +95,34 @@ import { DailySummaryComponent } from './daily-summary/daily-summary.component';
 import { LoadingComponent } from './loading/loading.component';
 import { PreAffiliatesComponent } from './pre-affiliates/pre-affiliates.component';
 import { AffiliatesAdminComponent } from './affiliates-admin/affiliates-admin.component'
-
 import { DepositsAndWithdrawalsComponent } from './deposits-and-withdrawals/deposits-and-withdrawals.component'
 import { ReCaptchaModule } from 'angular2-recaptcha';
-
 import { EventsCalendarComponent } from './events-calendar/events-calendar.component'
 import { OnlineMessagesComponent } from './online-messages/online-messages.component'
-
-
 import { AgentPaymentsComponent } from './agent-payments/agent-payments.component'
-
 import { BannerFarmComponent, BannerModalComponent } from './banner-farm/banner-farm.component'
-
 import { AdCenterComponent } from './ad-center/ad-center.component'
-
 import { MyAgentsComponent } from './my-agents/my-agents.component'
-
 import { FooterComponent } from './footer/footer.component'
-
 import { ClipboardModule } from 'ngx-clipboard';
 import { QRCodeModule } from 'angular2-qrcode';
-
 import { UiSwitchModule } from '../../node_modules/angular2-ui-switch/src';
-
 import { CalendarModule } from 'angular-calendar';
-
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ThingsComponent,
     NavComponent,
-    PlayersComponent,
-    GenericReport2Component,
+
     Error404Component,
     ThingFilterPipe,
     CashFlowFilterPipe,
-    ThingDetailComponent,
     StarComponent,
     FaqComponent,
     ContactComponent,
     HowitworksComponent,
-    WagersComponent,
     MainComponent,
     WeeklyTransactionsComponent,
     WeeklyBalancesComponent,
@@ -224,7 +185,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     EventsCalendarComponent
   ],
   imports: [
-    AlertModule.forRoot(),
+    //  AlertModule.forRoot(),
     DropdownModule.forRoot(),
     AccordionModule.forRoot(),
     CarouselModule.forRoot(),
@@ -246,18 +207,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     UiSwitchModule,
     CalendarModule.forRoot(),
     NgxChartsModule
-
-
   ],
   providers: [
     AuthService,
-    ThingService,
-    ThingDetailGuard,
-    ReportService,
-    CommentService,
-    EmitterService,
-    WebSocketService,
-    ChatService,
     AffiliateService,
     ContactService
   ],

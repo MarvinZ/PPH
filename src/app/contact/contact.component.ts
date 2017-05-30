@@ -67,7 +67,7 @@ constructor(public locale: LocaleService, public translation: TranslationService
           "hideMethod": "fadeOut"
         }
         // http://codeseven.github.io/toastr/demo.html
-        this.toastr.success('The email has been send', 'Success');
+        // this.toastr.success('The email has been send', 'Success');
       }
 
 

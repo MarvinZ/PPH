@@ -62,9 +62,9 @@ export class GrossWeekComponent extends Localization implements OnInit {
       .subscribe(response => {
         this.response = response;
         this.loading = false;
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
@@ -80,7 +80,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
 
   getTotal(Item: any, cat: string) {
     let result = 0;
-    //  console.log(Item);
+    //  // console.log(Item);
     if (Item.PlayerList.length > 0) {
       for (let entry of Item.PlayerList) {
         if (cat === '_balfwd')
@@ -93,7 +93,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
           result = result + Number(entry._pmts);
         if (cat === '_allweek')
           result = result + Number(entry._sportsweek) + Number(entry._horsesweek) + Number(entry._casinoweek);
-        // console.log(entry);
+        // // console.log(entry);
       }
     }
     return result;
@@ -101,7 +101,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
 
   getTotalTotal(Item: any, cat: string) {
     let result = 0;
-    //  console.log(Item);
+    //  // console.log(Item);
     if (Item.PlayerList.length > 0) {
       for (let entry of Item.PlayerList) {
         if (cat === '_balfwd')
@@ -114,7 +114,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
           result = result + Number(entry._pmts);
         if (cat === '_allweek')
           result = result + Number(entry._balfwd) - Number(entry._sportsweek) + Number(entry._horsesweek) + Number(entry._casinoweek);
-        // console.log(entry);
+        // // console.log(entry);
       }
     }
     return result;
@@ -130,7 +130,7 @@ export class GrossWeekComponent extends Localization implements OnInit {
         }
       }
     }
-    console.log(res);
+    // console.log(res);
 
     try {
       var options = {

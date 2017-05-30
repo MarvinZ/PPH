@@ -178,9 +178,9 @@ export class BannerFarmComponent extends Localization implements OnInit {
         this.bannersToDisplay = this.banners;
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
@@ -246,10 +246,10 @@ export class BannerFarmComponent extends Localization implements OnInit {
           //  this.totals = this.calculateTotals(response);
           this.loading = false;
 
-          console.log(this.response);
+          // console.log(this.response);
           let t1 = performance.now();
           if (this.response > 0) {
-            this.toastr.success('Your banner has been created!', 'Success');
+            // this.toastr.success('Your banner has been created!', 'Success');
           }
           else {
             this.toastr.error('ERROR!', '-1');
@@ -299,7 +299,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
 
   test() {
     alert('vea la consola!');
-    console.log(this.uploader);
+    // console.log(this.uploader);
 
 
   }
@@ -313,7 +313,7 @@ export class BannerFarmComponent extends Localization implements OnInit {
     }
     item.upload();
     this.newImgUrl = 'http://panmora.com/twapi/images/' + this.ddlBook + '/' + this.uploader.queue[0]._file.name;
-    console.log(this.newImgUrl);
+    // console.log(this.newImgUrl);
     this.imgUrl = this.newImgUrl;
     this.showBannerPreview = true;
   }
@@ -332,10 +332,10 @@ export class BannerFarmComponent extends Localization implements OnInit {
   }
 
   onBookChange() {
-    //  console.log(this.ddlBook);
+    //  // console.log(this.ddlBook);
     this.uploader.options.url = URL + this.ddlBook;
     this.targetUrl = this.books.find(e => e.value == this.ddlBook).url;
-    // console.log(this.uploader.options.url);
+    // // console.log(this.uploader.options.url);
 
   }
 
@@ -388,7 +388,7 @@ export class BannerModalComponent {
 
   public show(banner: Banner): void {
     this.visible = true;
-    console.log(banner);
+    // console.log(banner);
     this.code = '<a href="' + banner.TargetUrl + '" ><img src="' + banner.ImageUrl + '"></a>';
     setTimeout(() => this.visibleAnimate = true);
   }

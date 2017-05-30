@@ -89,9 +89,9 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 				this.response = response;
 				this.loading = false;
 
-				console.log(this.response);
+				// console.log(this.response);
 				let t1 = performance.now();
-				this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+				// this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
 	}
@@ -99,7 +99,7 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 
 
 	ExportToExcel() {
-		console.log(this.response.CashFlowList);
+		// console.log(this.response.CashFlowList);
 		try {
 			var options = {
 				showLabels: true
@@ -114,7 +114,7 @@ export class WeeklyTransactionsComponent extends Localization implements OnInit 
 
 	getTotal(cat: string) {
 		let result = 0;
-		//  console.log(Item);
+		//  // console.log(Item);
 		if (this.response.CashFlowList.length > 0) {
 			for (let entry of this.response.CashFlowList) {
 				if (cat === 'Amount')
