@@ -41,7 +41,10 @@
 .navbar .top-nav-right ul li {
     margin: 0;
 }
-.navbar .top-nav-right a.btn {
+.navbar .top-nav-right a.btn,
+.navbar .top-nav-right span.btn,
+.navbar .top-nav-right button.btn {
+    color: #FFF;
     height: 36px;
     line-height: 36px;
     font-size: 13px;
@@ -52,6 +55,8 @@
 .navbar .top-nav-right a.btn.btn-login:hover { background: #487043;}
 .navbar .top-nav-right a.btn.btn-signup {background: #8f4444;}
 .navbar .top-nav-right a.btn.btn-signup:hover {background: #743333;}
+.navbar .top-nav-right span.btn.btn-agent { background: #0095b7;}
+.navbar .top-nav-right button.btn.btn-stop { background: #ce3939;}
 
 .nav.navbar-nav {
     height: 90px;

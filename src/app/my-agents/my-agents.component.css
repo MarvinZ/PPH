@@ -1,8 +1,43 @@
-.agent1 {
-    color:purple;
+.agent1, .agent2 {
+    text-transform: uppercase;
+}
+.agent2 {
+    padding:5px 0;
+    margin: 3px 0;
+}
+.agent2 h5 {
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(206,206,206,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(206,206,206,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(206,206,206,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#cecece',GradientType=1 ); /* IE6-9 */
+
+}
+.agent1 .btn,
+.agent2 .btn {
+    width: 100%;
+}
+.agent1 .btn.btn-danger,
+.agent2 .btn.btn-danger {
+    background: #9e3232;
+}
+.agent1 .btn.btn-default {
+    background: #2f5c6b;
+    border: 1px solid #2f5c6b;
+}
+.agent2 .btn.btn-default {
+    background: #4d8395;
+    border: 1px solid #4d8395;
+}
+.a-border {
+    border-left: 1px dashed #999;
+    border-bottom: 1px dashed #999;
 }
 
-
-.agent2 {
-    color:green;
+@media (max-width: 991px) {
+    .agent2 h5 {
+        background: none;
+    }
+    .a-border {
+        border:none;
+}
 }

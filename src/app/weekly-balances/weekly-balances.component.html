@@ -1,84 +1,64 @@
-<div class="container">
-  <h2>{{'Weekly Balances' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Weekly Balances' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
 
-    <div class="row">
-
-      <div class="col-xs-3 form-group">
-        <button class="btn btn-default" (click)="goExactly('thisWeek')">{{'This Week' | translate:lang}}</button>
-      </div>
-      <div class="col-xs-3 form-group">
-        <button class="btn btn-default" (click)="goExactly('lastWeek')">{{'Last week' | translate:lang}}</button>
-      </div>
-      <div class="col-xs-3 form-group">
-        <button class="btn btn-default" (click)="goExactly('last2Weeks')">{{'2 weeks ago' | translate:lang}}</button>
-      </div>
-      <div class="col-xs-3 form-group">
-        <button class="btn btn-default" (click)="goExactly('last3Weeks')">{{'3 weeks ago' | translate:lang}}</button>
-      </div>
-    </div>
-
-
-    <div class="row controlcitos">
-
-      <div class="col-xs-3 form-group">
+    <div class="row well">
+      <div class="col-xs-6 col-md-2 form-group">
         <label>{{'Select Date:' | translate:lang  }}</label>
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-picker>
-
       </div>
 
-      <div class="col-xs-3 form-group">
+      <div class="col-xs-6 col-md-2 form-group">
         <label>{{'Transaction Type:'| translate:lang  }}</label>
         <select name="ddlTransType" class="form-control" style="height: 40px;" [(ngModel)]="ddlTransType">
             <option *ngFor="let tt of transactionTypes" [value]="tt.value" >{{tt.display}}</option>
-            </select>
+        </select>
       </div>
-      <div class="col-xs-3 form-group">
 
-      </div>
-      <div class="col-xs-3 form-group">
-        <!--<label>{{'Select Date:' | translate:lang  }}</label>
-        <ng2-datepicker name="date" [options]="options" [(ngModel)]="date" class="form-control"></ng2-datepicker>-->
-
-      </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">{{'Go' | translate:lang }}</button>
+      <div class="col-xs-12 col-md-8 padding-top-small ja-text-right">
+          <button class="btn btn-default" (click)="goExactly('thisWeek')">{{'This Week' | translate:lang}}</button>
+          <button class="btn btn-default" (click)="goExactly('lastWeek')">{{'Last week' | translate:lang}}</button>
+          <button class="btn btn-default" (click)="goExactly('last2Weeks')">{{'2 weeks ago' | translate:lang}}</button>
+          <button class="btn btn-default" (click)="goExactly('last3Weeks')">{{'3 weeks ago' | translate:lang}}</button>
+          <button class="btn btn-success" (click)="go()">{{'Go' | translate:lang }}</button>
       </div>
     </div>
+
+      
   </form>
 
   <div *ngIf="response?.AgentList?.length > 0">
-    <h2>{{'Period ' | translate:lang}} From {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <button class="btn btn-success" (click)="ExportToExcel()">Export to Excel</button>
-    <hr />
+
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period ' | translate:lang}} From {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="ExportToExcel()">Export to Excel</button>
+      </div>
+    </div>
+
     <div *ngFor=" let Item of response.AgentList;">
 
-      <div class="row" style="text-align: center; color: white; background-color: black;">
-        {{Item._Agent}}
-      </div>
-
-      <div class="row">
-        <table class="table">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <caption><i class="fa fa-chevron-down" aria-hidden="true"></i> {{Item._Agent}}</caption>
           <thead>
             <tr>
-              <td>Player</td>
-              <td>Name</td>
-              <td>BalFwd</td>
-              <td>Mon</td>
-              <td>Tue</td>
-              <td>Wed</td>
-              <td>Thu</td>
-              <td>Fri</td>
-              <td>Sat</td>
-              <td>Sun</td>
-              <td>This Week</td>
-              <td>Pending</td>
-              <td>Pmts</td>
-              <td>Balance</td>
+              <th>Player</th>
+              <th>Name</th>
+              <th>BalFwd</th>
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+              <th>Sat</th>
+              <th>Sun</th>
+              <th>This Week</th>
+              <th>Pending</th>
+              <th>Pmts</th>
+              <th>Balance</th>
             </tr>
           </thead>
           <tbody>
@@ -99,7 +79,7 @@
               <td [ngClass]="(ItemDetailPlayer._Balance < 0 )?'redNumber':'greenNumber'">{{ItemDetailPlayer._Balance | currency:'USD':true:'1.2-2'}}</td>
             </tr>
 
-            <tr style="background-color: lightgray">
+            <tr style="background-color: lightgray;font-weight:bold;">
               <td>Total: {{Item.ListPlayer?.length}}</td>
               <td></td>
               <td>{{Item._BalFwd | currency:'USD':true:'1.2-2'}}</td>

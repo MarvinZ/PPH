@@ -98,6 +98,14 @@ footer.frontend-footer {
   margin-left: 0 !important; 
   margin-right: 0 !important;
 }
+#reportContent.container h1 {
+  font-size: 30px;
+  padding: 20px 0 5px 0;
+  text-align: center;
+  margin: 20px 0;
+  text-transform: uppercase;
+  border-bottom: 5px solid #CCC;
+}
 #reportContent.container h3 {
   margin: 0 !important;
 }
@@ -130,6 +138,16 @@ footer.frontend-footer {
 }
 
 /* REPORTS STYLES ENDS HERE */
+
+/*  OTHERS  */
+.cal-month-view .cal-event-title {
+  color: #FFF !important;
+}
+.cal-month-view .cal-open-day-events {
+  background: #21252b !important;
+  box-shadow: 0 !important;
+}
+/*  OTHER ENDS  */
 
 @keyframes fadeIn {
   from {

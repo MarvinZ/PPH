@@ -1,56 +1,55 @@
-<div class="container">
-  <h2>{{'My agents' | translate:lang }}</h2>
+<div class="container padding-top-small" id="reportContent">
+
   <div *ngIf="isEditMode;then editMode  else listMode"> </div>
   <ng-template #listMode>
 
-    <div class="row">
-      <div class="pull-right">
-        <button class="btn btn-default" (click)="goToAddAgent()">  <span class="glyphicon glyphicon-plus"></span>
- {{'New agent' | translate:lang }} </button>
-      </div>
-    </div>
-    <br>
+    <h1>{{'My agents' | translate:lang }}
+      <button class="btn btn-success pull-right" (click)="goToAddAgent()">
+        <span class="glyphicon glyphicon-plus"></span> {{'NEW AGENT' | translate:lang }}
+      </button>
+    </h1>
 
     <div *ngIf="response">
 
       <div *ngFor="let agent of response">
         <div *ngIf="agent.SubAgents?.length > 0" class="table">
-          <div *ngFor="let subagent of agent.SubAgents" class="agent1">
+          <div *ngFor="let subagent of agent.SubAgents" class="agent1 well">
             <div class="row">
-              <div class="col-xs-3 form-group">
-                {{subagent.Agent}}
+              <div class="col-md-4">
+                <h4><i class="fa fa-user-circle" aria-hidden="true"></i> {{subagent.Agent}}</h4>
               </div>
-              <div class="col-xs-3 form-group">
+              <div class="col-md-4">
               </div>
-              <div class="col-xs-3 form-group">
+              <div class="col-md-2">
                 <button class="btn btn-default" (click)="viewAs(subagent.IdAgent,subagent.Agent )">View as</button>
               </div>
-              <div class="col-xs-3 form-group">
+              <div class="col-md-2">
                 <button class="btn btn-danger" (click)="deactivateAgent(subagent.IdAgent)">Disable</button>
               </div>
             </div>
             <div *ngIf="subagent.SubAgents?.length > 0">
               <div *ngFor="let subsubagent of subagent.SubAgents" class="agent2">
                 <div class="row">
-                  <div class="col-xs-3 form-group">
+                  <div class="col-md-1">
                   </div>
-                  <div class="col-xs-3 form-group">
-                    {{subsubagent.Agent}}
+                  <div class="col-md-3 a-border">
+                    &nbsp;
                   </div>
-                  <div class="col-xs-3 form-group">
+                  <div class="col-md-4">
+                    <h5>{{subsubagent.Agent}}</h5>
+                  </div>
+                  <div class="col-xs-6 col-md-2">
                     <button class="btn btn-default" (click)="viewAs(subsubagent.IdAgent,subsubagent.Agent)">View as</button>
                   </div>
-                  <div class="col-xs-3 form-group">
+                  <div class="col-xs-6 col-md-2">
                     <button class="btn btn-danger" (click)="deactivateAgent(subsubagent.IdAgent)">Disable</button>
                   </div>
                 </div>
               </div>
             </div>
-            <br>
 
           </div>
         </div>
-        <br>
 
         <!--<div *ngIf="agent.PlayerList?.length > 0">
         players
@@ -58,7 +57,6 @@
           {{player.Player}}
         </div>
       </div>-->
-        <br>
 
       </div>
 
