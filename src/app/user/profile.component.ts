@@ -1,7 +1,7 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ReportResponse } from './../models/api';
-import { ReportService } from './../services/report.service'
+
 import { AffiliateService } from './../services/affiliate.service'
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';

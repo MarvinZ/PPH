@@ -23,13 +23,17 @@
                 <td>{{response.AffiliateStatisticsInfo.Last2WeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
             </tr>
             <tr>
+                <td>{{'Number of Sub-agents'| translate:lang}}</td>
+                <td>{{response.AffiliateStatisticsInfo.NumsubAgents}}</td>
+            </tr>
+            <tr>
                 <td>{{'Number of Players'| translate:lang}}</td>
                 <td>{{response.AffiliateStatisticsInfo.NumPlayers}}</td>
             </tr>
-            <tr>
+            <!--<tr>
                 <td>{{'Number of Players that have Wagered This Week'| translate:lang}}</td>
                 <td>{{response.AffiliateStatisticsInfo.NumPlayerWageredThisWeek}}</td>
-            </tr>
+            </tr>-->
             <tr>
                 <td>{{'Commission Percentage' | translate:lang}}</td>
                 <td>{{response.AffiliateStatisticsInfo.CommissionPercentaje}}</td>
@@ -38,6 +42,9 @@
     </table>
 
     <h2>{{'Marketing Stats' | translate:lang }}</h2>
+    <ngx-charts-number-card [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
+    </ngx-charts-number-card>
+
     <table class="table table-hover" *ngIf="response2">
         <tbody>
             <tr>
@@ -52,40 +59,20 @@
                 <td>{{'Total signups'| translate:lang}}</td>
                 <td>{{response2?.TotalSignups }}</td>
             </tr>
-            <!--<tr>
-                <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.EarningLoses | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Last Weeks Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.LastWeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Last 2 Weeks Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.Last2WeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Number of Players'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumPlayers}}</td>
-            </tr>
-            <tr>
-                <td>{{'Number of Players that have Wagered This Week'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumPlayerWageredThisWeek}}</td>
-            </tr>
-            <tr>
-                <td>{{'Commission Percentage' | translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.CommissionPercentaje}}</td>
-            </tr>-->
+
         </tbody>
     </table>
 
-    <div class="row">
-        <h2>{{'Hits and signups graphic' | translate:lang }}</h2>
+    <div class="row" *ngIf="response4">
+        <div item-width="100%">
+            <h2>{{'Hits on last 7 days' | translate:lang }}</h2>
 
-        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
-            [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-            [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" (select)="onSelect($event)">
-        </ngx-charts-line-chart>
+            <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+                [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" (select)="onSelect($event)">
+            </ngx-charts-line-chart>
+        </div>
+
 
     </div>
 
@@ -109,20 +96,23 @@
     </div>
 
 
-
-    <!--<pre>
+    <!--
+    <pre>
   {{response | json}}
 </pre>
     <pre>
   {{response2 | json}}
-</pre>-->
-    <!--<pre>
+</pre>
+    <pre>
   {{response3 | json}}
-</pre>-->
+</pre>
+    <pre>
+  {{response4 | json}}
+</pre>
 
     <pre>
   {{multi | json}}
-</pre>
+</pre>-->
 
 </div>
 

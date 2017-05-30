@@ -118,9 +118,9 @@ export class MyBannersComponent extends Localization implements OnInit {
         this.bannersToDisplay = this.banners;
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
 
@@ -211,7 +211,7 @@ export class MyBannersModalComponent {
 
   public show(banner: Banner): void {
     this.visible = true;
-    console.log(banner);
+    // console.log(banner);
     this.codeHTTP = '<a href="http://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId + ';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl + '"></a>';
     this.codeHTTPS = '<a href="https://' + this.domain + 'adcenter;book=' + this.auth.currentUser.bookId + ';bannercode=' + banner.BannerCode + ';affiliatecode=' + this.auth.currentUser.affCode + '" ><img src="' + banner.ImageUrl.slice(0, 4) + 's' + banner.ImageUrl.slice(4); + '"></a>';
     this.code = this.codeHTTP;

@@ -68,9 +68,9 @@ export class AgentPositionComponent extends Localization implements OnInit {
                 this.response = response;
                 this.loading = false;
 
-                console.log(this.response);
+                // console.log(this.response);
                 let t1 = performance.now();
-                this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+                // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
             },
             error => this.errorMessage = <any>error);
     }

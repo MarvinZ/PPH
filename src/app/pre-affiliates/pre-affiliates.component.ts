@@ -68,9 +68,9 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
         this.response = response;
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
@@ -91,14 +91,14 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
     this.showDetails = false;
   }
   reject() {
-    console.log(this.preAffiliate.Id);
+    // console.log(this.preAffiliate.Id);
 
 
     this.affiliateService.RejectPreAffiliate(this.preAffiliate.Id.toString()).subscribe(val => {
       // needs state or province
-      console.log(val);
+      // console.log(val);
       if (val) {
-        this.toastr.success('The pre affiliate applications has been rejected!', 'Success');
+        // this.toastr.success('The pre affiliate applications has been rejected!', 'Success');
         this.getData();
         //this.closeDetails();
 
@@ -115,7 +115,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
 
   CreateAgent(formValues) {
 
-  //  console.log(formValues);
+  //  // console.log(formValues);
     /*
     FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
@@ -126,9 +126,9 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
       formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
       formValues.AgentName, formValues.AgentPassword, formValues.ddlBook, this.preAffiliate.Id).subscribe(val => {
         // needs state or province
-        console.log(val);
+        // console.log(val);
         if (val[0] > 0) {
-          this.toastr.success('The agent has been created!', 'Success');
+          // this.toastr.success('The agent has been created!', 'Success');
           this.getData();
           this.closeDetails();
 
@@ -145,7 +145,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
   DetailsAffiliate(info: any) {
 
     try {
-      console.log(info);
+      // console.log(info);
       this.showDetails = true;
       this.preAffiliate = info;
       this.ddlBook = this.preAffiliate.IdBook.toString();

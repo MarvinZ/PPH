@@ -12080,7 +12080,7 @@ export class SignUpPphComponent extends Localization implements OnInit {
 
   changeCountrycode(country: string) {
     let selectedcountry = this.countries.find(x => x.name.common == country);
-    // console.log(selectedcountry.callingCode[0]);
+    // // console.log(selectedcountry.callingCode[0]);
     this.countryCode = selectedcountry.callingCode[0];
     // alert(countryCode);
   }
@@ -12090,7 +12090,7 @@ export class SignUpPphComponent extends Localization implements OnInit {
     this.router.navigate(['home']);
   }
   signup(formValues) {
-    console.log(formValues);
+    // console.log(formValues);
     /*
     FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
@@ -12099,9 +12099,9 @@ export class SignUpPphComponent extends Localization implements OnInit {
       formValues.email, formValues.ddlCountries, formValues.countryCode, formValues.addressLine1, formValues.addressLine2,
       formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
       formValues.nickname, formValues.password, formValues.ddlBook).subscribe(val => {
-        console.log(val);
+        // console.log(val);
         if (val > 0) {
-          this.toastr.success('Your application has been submitted!', 'Success');
+          // this.toastr.success('Your application has been submitted!', 'Success');
 
           this.isSuccessfulSignup = true;
           // setTimeout(this.navigateHome(), 5000);
@@ -12118,7 +12118,7 @@ export class SignUpPphComponent extends Localization implements OnInit {
 
 
     // if(result.result==='success') {
-    //   this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
+    //   // this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
     //   this.isSuccessfulSignup = true;
     // }
     // else {

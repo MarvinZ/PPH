@@ -71,9 +71,9 @@ export class SettledFiguresComponent extends Localization implements OnInit {
         this.totals = this.calculateTotals(response);
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
@@ -103,7 +103,7 @@ export class SettledFiguresComponent extends Localization implements OnInit {
       }
       result.push(newAgent)
 
-      // console.log(result); // 1, "string", false
+      // // console.log(result); // 1, "string", false
     }
 
     return result;
@@ -132,7 +132,7 @@ export class SettledFiguresComponent extends Localization implements OnInit {
         }
       }
     }
-    console.log(res);
+    // console.log(res);
 
     try {
       var options = {

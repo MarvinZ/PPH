@@ -14,7 +14,6 @@ import { ReCaptchaComponent } from 'angular2-recaptcha/lib/captcha.component';
 
 
 
-
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -12083,8 +12082,8 @@ export class SignUpComponent extends Localization implements OnInit {
     }
   ];
   public books = [
-    { value: '6', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
-    { value: '4', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
+    { value: '12', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
+    { value: '6', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
     { value: '1', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
 
   ];
@@ -12110,7 +12109,7 @@ export class SignUpComponent extends Localization implements OnInit {
 
   changeCountrycode(country: string) {
     let selectedcountry = this.countries.find(x => x.name.common == country);
-    // console.log(selectedcountry.callingCode[0]);
+    // // console.log(selectedcountry.callingCode[0]);
     this.countryCode = selectedcountry.callingCode[0];
     // alert(countryCode);
   }
@@ -12124,7 +12123,7 @@ export class SignUpComponent extends Localization implements OnInit {
   }
 
   signup(formValues) {
-    console.log(formValues);
+    // console.log(formValues);
     /*
     FirstName: string, LastName: string, Email: string, CountryName: string, CountryDialCode: string, Address1: string, Address2: string,
    Phone: string, City: string, ZipCode: string, BusinessName: string, LanguageId: number, AgentName: string, AgentPassword: string
@@ -12136,9 +12135,9 @@ export class SignUpComponent extends Localization implements OnInit {
         formValues.phone, formValues.city, formValues.zip, formValues.businessName, 1 /*formValues.LanguageId*/,
         formValues.nickname, formValues.password, formValues.ddlBook).subscribe(val => {
           // needs state or province
-          console.log(val);
+          // console.log(val);
           if (val > 0) {
-            this.toastr.success('Your application has been submitted!', 'Success');
+            // this.toastr.success('Your application has been submitted!', 'Success');
 
             this.isSuccessfulSignup = true;
             this.navigateHome()
@@ -12158,7 +12157,7 @@ export class SignUpComponent extends Localization implements OnInit {
     }
 
     // if(result.result==='success') {
-    //   this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
+    //   // this.toastr.success('Succesful singup :) NOT .', 'Successssssssssssssssss');    // this.authService.loginUser(formValues.userName, formValues.password)
     //   this.isSuccessfulSignup = true;
     // }
     // else {
@@ -12204,7 +12203,7 @@ export class SignUpComponent extends Localization implements OnInit {
   }
 
   handleCorrectCaptcha($event) {
-    console.log($event);
+    // console.log($event);
     this.isCaptchaOK = true;
   }
   // https://github.com/xmaestro/angular2-recaptcha

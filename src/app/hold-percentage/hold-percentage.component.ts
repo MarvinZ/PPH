@@ -86,9 +86,9 @@ export class HoldPercentageComponent extends Localization implements OnInit {
         this.response2 = response2;
         this.loading = false;
 
-        console.log(this.response2);
+        // console.log(this.response2);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
 
@@ -115,9 +115,9 @@ export class HoldPercentageComponent extends Localization implements OnInit {
         //    this.totals = this.calculateTotals(response);
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
@@ -133,7 +133,7 @@ export class HoldPercentageComponent extends Localization implements OnInit {
         }
       }
     }
-    console.log(res);
+    // console.log(res);
 
     try {
       var options = {
@@ -150,7 +150,7 @@ export class HoldPercentageComponent extends Localization implements OnInit {
 
   getTotal(Item: any, cat: string) {
     let result = 0;
-    //  console.log(Item);
+    //  // console.log(Item);
     if (Item.DetailList.length > 0) {
       for (let entry of Item.DetailList) {
         if (cat === 'Amount')
@@ -169,7 +169,7 @@ export class HoldPercentageComponent extends Localization implements OnInit {
   onChangeagentDdl() {
     alert(this.ddlAgent);
     this.players = this.response2.filter(e => e.IdAgent == this.ddlAgent)[0].PlayerList
-    console.log(this.players);
+    // console.log(this.players);
   }
 
 }  //end of class

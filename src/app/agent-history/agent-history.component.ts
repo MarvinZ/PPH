@@ -90,15 +90,15 @@ export class AgentHistoryComponent extends Localization implements OnInit {
         //    this.totals = this.calculateTotals(response);
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
 
   ExportToExcel() {
-    console.log(this.response.HistoryData);
+    // console.log(this.response.HistoryData);
     try {
       var options = {
         showLabels: true

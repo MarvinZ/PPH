@@ -54,7 +54,7 @@ export class HomeComponent extends Localization implements OnInit {
       "hideMethod": "fadeOut"
     }
     // http://codeseven.github.io/toastr/demo.html
-    this.toastr.success('Thank you! We will contact you soon', 'Success');
+    // this.toastr.success('Thank you! We will contact you soon', 'Success');
   }
 
   showError() {
@@ -81,7 +81,7 @@ export class HomeComponent extends Localization implements OnInit {
     this.contactService.contactEmail(formValues.name, formValues.email, formValues.phone, "Home page sign-up request")
       .subscribe(tempRes => {
         this.tempRes = tempRes;
-        console.log(this.tempRes);
+        // console.log(this.tempRes);
 
         if (this.tempRes.Status == 'Success') { //needs more work
           this.showSuccess();
@@ -112,7 +112,7 @@ export class HomeComponent extends Localization implements OnInit {
     let currentUser = JSON.parse(localStorage.getItem('whatever'));
     alert(currentUser);
 
-    console.log(currentUser);
+    // console.log(currentUser);
   }
 
 

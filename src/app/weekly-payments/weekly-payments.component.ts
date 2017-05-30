@@ -1,7 +1,7 @@
 
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { ReportResponse } from './../models/api';
-import { ReportService } from './../services/report.service'
+
 import { AffiliateService } from './../services/affiliate.service'
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
@@ -69,7 +69,7 @@ export class WeeklyPaymentsComponent extends Localization implements OnInit {
 				this.response = response;
 				this.loading = false;
 				let t1 = performance.now();
-				this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+				// this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
 	}
@@ -77,7 +77,7 @@ export class WeeklyPaymentsComponent extends Localization implements OnInit {
 
 	getTotal(Item: any, cat: string) {
 		let result = 0;
-		//  console.log(Item);
+		//  // console.log(Item);
 		if (Item.PlayerList.length > 0) {
 			for (let entry of Item.PlayerList) {
 				if (cat === '_day1')
@@ -110,7 +110,7 @@ export class WeeklyPaymentsComponent extends Localization implements OnInit {
 				}
 			}
 		}
-		console.log(res);
+		// console.log(res);
 
 		try {
 			var options = {

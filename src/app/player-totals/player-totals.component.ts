@@ -75,16 +75,16 @@ export class PlayerTotalsComponent extends Localization implements OnInit {
         this.response = response;
         this.loading = false;
 
-        console.log(this.response);
+        // console.log(this.response);
         let t1 = performance.now();
-        this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+        // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },
       error => this.errorMessage = <any>error);
   }
 
   getTotal(Item: any, cat: string) {
     let result = 0;
-    //  console.log(Item);
+    //  // console.log(Item);
     if (Item.PlayerList.length > 0) {
       for (let entry of Item.PlayerList) {
         if (cat === '_totalriskopen')
@@ -99,7 +99,7 @@ export class PlayerTotalsComponent extends Localization implements OnInit {
           result = result + Number(entry._net);
         if (cat === '_allweek')
           result = result + Number(entry._sportsweek) + Number(entry._horsesweek) + Number(entry._casinoweek);
-        // console.log(entry);
+        // // console.log(entry);
       }
     }
     return result;

@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { ReportResponse } from './../models/api';
-import { ReportService } from './../services/report.service'
+
 import { AffiliateService } from './../services/affiliate.service'
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { Localization, LocaleService, TranslationService } from 'angular-l10n';
@@ -83,7 +83,7 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 				this.response = response;
 				this.loading = false;
 				let t1 = performance.now();
-				this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
+				// this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
 	}
@@ -142,13 +142,13 @@ export class WeeklyBalancesComponent extends Localization implements OnInit {
 				this.response = response;
 				this.loading = false;
 				let t11 = performance.now();
-				this.toastr.success('This query took ' + (t11 - t10) + ' milliseconds..', 'Success');
+				// this.toastr.success('This query took ' + (t11 - t10) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
 	}
 
 	ExportToExcel() {
-		console.log(this.response.CashFlowList);
+		// console.log(this.response.CashFlowList);
 		try {
 			var options = {
 				showLabels: true

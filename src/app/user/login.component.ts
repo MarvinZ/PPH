@@ -36,7 +36,7 @@ export class LoginComponent {
 
       if (this.tempRes.ResponseStatus.Status === 'Success' && this.tempRes.ResponseAgentInfo.IdAgent != 0) {
         this.loading = true;
-        console.log(this.tempRes.ResponseAgentInfo);
+        // console.log(this.tempRes.ResponseAgentInfo);
         // alert('Plese contact Joe ASAP...');
 
         this.authService.currentUser = {

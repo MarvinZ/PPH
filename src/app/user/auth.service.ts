@@ -72,8 +72,8 @@ export class AuthService {
           userType: localStorage.getItem('userType'),
           selectedSubagent: 0,
           originalId: Number(localStorage.getItem('agentId')),
-          bookId: 1,
-          affCode: 'TESTCODE'
+          bookId: Number(localStorage.getItem('bookId')),
+          affCode: localStorage.getItem('affCode')
 
         }
       }
@@ -114,7 +114,7 @@ export class AuthService {
 
 
   singup(name: string, email: string, phone: string): any {
-    console.log(name, phone, email);
+    // console.log(name, phone, email);
     return {
       'result': 'success',
       'msg': 'succesful registration'
