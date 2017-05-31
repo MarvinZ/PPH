@@ -3,79 +3,68 @@
     <div class="well">
         <h2><i class="fa fa-bar-chart" aria-hidden="true"></i> {{'Statistics' | translate:lang }}</h2>
         <table class="table table-hover" *ngIf="response">
-        <tbody>
-            <tr>
-                <td>{{'Current Balance'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.CurrentBalance | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.PlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.EarningLoses | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Last Weeks Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.LastWeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Last 2 Weeks Player s Wins/Losses'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.Last2WeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
-            </tr>
-            <tr>
-                <td>{{'Number of Sub-agents'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumsubAgents}}</td>
-            </tr>
-            <tr>
-                <td>{{'Number of Players'| translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.NumPlayers}}</td>
-            </tr>
-            <!--<tr>
+            <tbody>
+                <tr>
+                    <td>{{'Current Balance'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.CurrentBalance | currency:'USD':true:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.PlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>{{'Estimated Player s Wins/Losses'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.EarningLoses | currency:'USD':true:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>{{'Last Weeks Player s Wins/Losses'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.LastWeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>{{'Last 2 Weeks Player s Wins/Losses'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.Last2WeekPlayerWinLoss | currency:'USD':true:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>{{'Number of Sub-agents'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.NumsubAgents}}</td>
+                </tr>
+                <tr>
+                    <td>{{'Number of Players'| translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.NumPlayers}}</td>
+                </tr>
+                <!--<tr>
                 <td>{{'Number of Players that have Wagered This Week'| translate:lang}}</td>
                 <td>{{response.AffiliateStatisticsInfo.NumPlayerWageredThisWeek}}</td>
             </tr>-->
-            <tr>
-                <td>{{'Commission Percentage' | translate:lang}}</td>
-                <td>{{response.AffiliateStatisticsInfo.CommissionPercentaje}}</td>
-            </tr>
-        </tbody>
-    </table>
+                <tr>
+                    <td>{{'Commission Percentage' | translate:lang}}</td>
+                    <td>{{response.AffiliateStatisticsInfo.CommissionPercentaje}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="well">
-        <h2><i class="fa fa-bar-chart" aria-hidden="true"></i> {{'Marketing Stats' | translate:lang }}</h2>
-        <ngx-charts-number-card [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
-    </ngx-charts-number-card>
-        <table class="table table-hover" *ngIf="response2">
+    <div class="row">
+        <div class="well" *ngIf="response2">
+            <h2><i class="fa fa-bar-chart" aria-hidden="true"></i> {{'Marketing Stats' | translate:lang }}</h2>
+            <ngx-charts-number-card [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
+            </ngx-charts-number-card>
+            <div class="clearfix"></div>
 
-        <tbody>
-            <tr>
-                <td>{{'Total clicks'| translate:lang}}</td>
-                <td>{{response2?.TotalClicks }}</td>
-            </tr>
-            <tr>
-                <td>{{'Total unique clicks'| translate:lang}}</td>
-                <td>{{response2?.TotalUniqueClicks }}</td>
-            </tr>
-            <tr>
-                <td>{{'Total signups'| translate:lang}}</td>
-                <td>{{response2?.TotalSignups }}</td>
-            </tr>
-
-        </tbody>
-    </table>
-
+        </div>
     </div>
-    <div class="well">
-        <h2><i class="fa fa-line-chart" aria-hidden="true"></i> {{'Hits on last 7 days' | translate:lang }}</h2>
 
-        <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
+    <div class="row">
+
+        <div class="well" *ngIf="response4">
+            <h2><i class="fa fa-line-chart" aria-hidden="true"></i> {{'Hits on last 7 days' | translate:lang }}</h2>
+
+            <ngx-charts-line-chart [view]="view" [scheme]="colorScheme" [results]="multi" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis"
                 [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
                 [yAxisLabel]="yAxisLabel" [autoScale]="autoScale" (select)="onSelect($event)">
             </ngx-charts-line-chart>
-        <div class="clearfix"></div>
+            <div class="clearfix"></div>
 
+        </div>
     </div>
 
     <div class="well clearfix">
@@ -97,7 +86,7 @@
 
     </div>
 
-
+   
     <!--
     <pre>
   {{response | json}}

@@ -27,16 +27,16 @@ export class MainComponent extends Localization implements OnInit {
 	];
 	single = [
 		{
-			"name": "Germany",
-			"value": 8940000
+			"name": "Total Hits",
+			"value": 0
 		},
 		{
-			"name": "USA",
-			"value": 5000000
+			"name": "Total unique hits",
+			"value": 0
 		},
 		{
-			"name": "France",
-			"value": 7200000
+			"name": "Total signups",
+			"value": 0
 		}
 	];
 
@@ -123,6 +123,8 @@ export class MainComponent extends Localization implements OnInit {
 			.subscribe(response => {
 				this.response = response;
 				let t1 = performance.now();
+				console.log(this.response);
+
 				// this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
 			},
 			error => this.errorMessage = <any>error);
@@ -133,7 +135,9 @@ export class MainComponent extends Localization implements OnInit {
 		this.affiliateService.GetMarketingStats(this.auth.currentUser.userName)
 			.subscribe(response2 => {
 				this.response2 = response2;
-
+				this.single[0].value = this.response2.TotalClicks;
+				this.single[1].value = this.response2.TotalUniqueClicks;
+				this.single[2].value = this.response2.TotalSignups;
 				//		// console.log(this.response2);
 				let t3 = performance.now();
 				// this.toastr.success('This query took ' + (t3 - t2) + ' milliseconds..', 'Success');
