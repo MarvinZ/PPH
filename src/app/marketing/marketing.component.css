@@ -1,8 +1,42 @@
-
 .imagePreview {
-  display: block;
-  max-width:230px;
-  max-height:95px;
+  max-height: 162px;
   width: auto;
   height: auto;
+}
+.alert-success {
+    background-color: #bfdeb5;
+    border-color: #4e9f15;
+    color: #426d24;
+}
+.well.banner-body {
+  margin-bottom: 0;
+}
+.banner-body {
+  height: 200px;
+}
+.banner-body table,
+.banner-body table td {
+  margin:0 !important;
+  padding:0 !important;
+  border: 0 !important;
+}
+.banner-body table td {
+  height: 162px !important;
+  vertical-align: middle !important;
+}
+.col-md-4 h4 span {
+  color: #247f9e;
+}
+.btn.btn-size,
+.btn.btn-code {
+  width: 40%;
+  color: #FFF;
+  text-align: center;
+  background: #1c6684;
+  padding: 8px 5px !important;
+}
+.btn.btn-size {
+  width: 59%;
+  margin-right: 1%;
+  background: #999;
 }

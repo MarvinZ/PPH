@@ -1,29 +1,75 @@
-<div class="container">
+<div class="container" id="reportContent">
+  <h1>{{'Affiliate Center' | translate:lang }}</h1>
 
-
-  <h2>
-    {{'My shareable link' | translate:lang }}</h2>
-  <div class="well well-sm"> {{qrAddress}}
-  </div>
-  <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="qrAddress" (cbOnSuccess)="isCopied1 = true">{{'Copy link' | translate:lang}}</button>
-
-
-  <h2>{{'My QR' | translate:lang }}</h2>
-  <!--<a href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>-->
-
-  <div>
-    <qr-code [value]="qrAddress" [size]="350"></qr-code>
-  </div>
-
-  <!--<button type="button" class="btn btn-primary">{{'Download QRCode' | translate:lang}}</button>-->
-
-  Right click and save image as...
-  <div *ngIf="banners">
-    <h2>{{'My Banners' | translate:lang }}</h2>
-    <br>
+  <div class="well">
     <div class="row">
-      <label>{{'Filters:'| translate:lang  }}</label>
+      <div class="col-md-4">
+        <h2>{{'My QR' | translate:lang }}</h2>
+        <!--<a href="http://www.glamquotes.com/wp-content/uploads/2011/11/smile.jpg" download="smile.jpg">Download image</a>-->
+        <div>
+          <qr-code [value]="qrAddress" [size]="350"></qr-code>
+        </div>
+        <!--<button type="button" class="btn btn-primary">{{'Download QRCode' | translate:lang}}</button>-->
+        Right click and save image as...
+      </div>
+      <div class="col-md-8">
+        <h2>{{'My shareable link' | translate:lang }}</h2>
+        <pre>{{qrAddress}}</pre>
+        <button type="button" class="btn btn-primary" [class.btn-success]="isCopied1" ngxClipboard [cbContent]="qrAddress" (cbOnSuccess)="isCopied1 = true">{{'Copy link' | translate:lang}}</button>
+      </div>
     </div>
+  </div>
+  
+  <div *ngIf="banners">
+    <h1>{{'My Banners' | translate:lang }}</h1>
+    
+    <div class="alert alert-success">
+      <i class="fa fa-picture-o" aria-hidden="true"></i> Total banners with hits: <strong>{{bannersToDisplay.length}}</strong>
+    </div>
+
+    <div *ngIf="!loading">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tr>
+            <th>Banner code</th>
+            <th>Sport</th>
+            <th>Total clicks</th>
+            <th>Total unique clicks</th>
+            <th>Total signups</th>
+          </tr>
+          <!--<tr>
+            <td>Link / QR</td>
+            <td> </td>
+            <th>{{-}}</th>
+            <th>{{-}}</th>
+            <th>{{-}}</th>
+          </tr>-->
+          <tr *ngFor="let banner of bannersToDisplay;">
+            <td>{{banner.BannerCode}}</td>
+            <td>{{banner.SportId}}</td>
+            <th>{{banner.TotalClicks}}</th>
+            <th>{{banner.TotalUniqueClicks}}</th>
+            <th>{{banner.TotalSignups}}</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="!banners">
+    <div class="alert alert-success">
+      <i class="fa fa-picture-o" aria-hidden="true"></i> We didnt find any banner with clicks :(
+    </div>
+  </div>
+
+  <div *ngIf="loading">
+    <app-loading> </app-loading>
+  </div>
+
+  <!--<pre>
+  {{banners | json}}
+</pre>-->
+
 
     <!--<div class="row">
 
@@ -58,49 +104,9 @@
  {{'Clear filters'| translate:lang }} </button>
       <br>
     </div>-->
-    <div class="row">
-      Total banners with hits: {{bannersToDisplay.length}}
-    </div>
-    <br>
-    <div *ngIf="loading">
-      <app-loading> </app-loading>
-    </div>
 
-    <div *ngIf="!loading">
 
-      <table class="table table-responsive  table-hover">
-        <tr>
-          <th>Banner code</th>
-          <th>Sport</th>
-          <th>Total clicks</th>
-          <th>Total unique clicks</th>
-          <th>Total signups</th>
-        </tr>
-        <!--<tr>
-          <td>Link / QR</td>
-          <td> </td>
-          <th>{{-}}</th>
-          <th>{{-}}</th>
-          <th>{{-}}</th>
-        </tr>-->
-        <tr *ngFor="let banner of bannersToDisplay;">
-          <td>{{banner.BannerCode}}</td>
-          <td>{{banner.SportId}}</td>
-          <th>{{banner.TotalClicks}}</th>
-          <th>{{banner.TotalUniqueClicks}}</th>
-          <th>{{banner.TotalSignups}}</th>
-        </tr>
-      </table>
-    </div>
 
-  </div>
-  <div *ngIf="!banners">
-    <p> We didnt find any banner with clicks :(
-    </p>
-  </div>
-  <!--<pre>
-  {{banners | json}}
-</pre>-->
 </div>
 <marketing-modal #modal>
   <div class="app-modal-header">
@@ -116,7 +122,6 @@
       {{modal.code}} 
       </code>
     </pre>-->
-
 
   </div>
   <div class="app-modal-footer">
