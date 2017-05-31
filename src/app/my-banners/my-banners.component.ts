@@ -118,7 +118,7 @@ export class MyBannersComponent extends Localization implements OnInit {
         this.bannersToDisplay = this.banners;
         this.loading = false;
 
-        // console.log(this.response);
+         console.log(this.response);
         let t1 = performance.now();
         // this.toastr.success('This query took ' + (t1 - t0) + ' milliseconds..', 'Success');
       },

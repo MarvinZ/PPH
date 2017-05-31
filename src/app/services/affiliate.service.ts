@@ -885,7 +885,28 @@ export class AffiliateService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
+GetAgentPlayerHistory(prmIdAgent: number, prmStartDate: string, prmEndDate: string, prmIdCurrency: string): Observable<any> {
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Token 1e5feebf4d5e86c989f254870e935ce5' }); // ... Set content type to JSON
+    let options = new RequestOptions({ headers: headers }); // Create a request option
+    let payload = {
+      "RequestHeader": {
+        "IdSite": 11,
+        "DomainName": "pph",
+      },
+      "StartDate": prmStartDate,//'2017/01/01',
+      "EndDate": prmEndDate,//'2017/01/08',
+      "IdAgent": prmIdAgent,
+      "ThisWeek": false,
+      "IdPlayer": -1,
+      "IdCurrency": 1
 
+    }
+     console.log(payload);
+
+    return this._http.post(this._url2 + 'Report_AgentPlayerHistory', payload, options) // ...using post request
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
 }
 
 

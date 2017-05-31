@@ -1,3 +1,78 @@
-<p>
-  player-history works!
-</p>
+<div class="container">
+  <h2>{{'Player History' | translate:lang }}</h2>
+  <form #myForm="ngForm" novalidate>
+    <div class="row">
+
+      <div class="col-xs-3 form-group">
+
+        <label>{{'Select Date range:' | translate:lang  }}</label>
+        <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
+      </div>
+      <div class="col-xs-3 form-group">
+        <label>{{'Currency:'| translate:lang  }}</label>
+        <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
+                <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
+            </select>
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+      <div class="col-xs-3 form-group">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 form-group">
+        <button class="btn btn-default" (click)="go()">GO!</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="response?.length > 0">
+    <div>
+      <table class="table table-responsive">
+        <thead>
+          <tr style="background-color: lightgray">
+            <td>Player</td>
+            <td>User/Phone</td>
+            <td>Date</td>
+            <td>Sport</td>
+            <td>Description</td>
+            <td>Risk/Win</td>
+            <td>Amount</td>
+            <td>Result</td>
+            <td>ResultScore</td>
+            <td>Placed</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Item of response;">
+            <td>{{Item.Player}}</td>
+            <td>{{Item.User}}</td>
+            <td>{{Item.Date}}</td>
+            <td>{{Item.Sport }}</td>
+            <td>{{Item.Description }}</td>
+            <td [ngClass]="(Item.RiskWin < 0 )?'redNumber':'greenNumber'">{{Item.RiskWin }}</td>
+            <td [ngClass]="(Item.Amount < 0 )?'redNumber':'greenNumber'">{{Item.Amount  }}</td>
+            <td>{{Item.Result }}</td>
+            <td>{{Item.ResultScore}}</td>
+            <td>{{Item.Placed }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr />
+    </div>
+
+  </div>
+
+  <pre>
+  {{response | json}}
+</pre>
+
+</div>
+
+<div *ngIf="loading">
+  <app-loading> </app-loading>
+</div>

@@ -211,7 +211,7 @@ authorized-->
             </div>
             <div dropdownMenu class="dropdown-menu">
               <li><a [routerLink]="['/actionByPlayer']" routerLinkActive="active">{{ 'Action By Player' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/playerHistory']" routerLinkActive="active">{{ 'Player History' | translate:lang }}(*In-progress*)</a></li>
+              <li><a [routerLink]="['/playerHistory']" routerLinkActive="active">{{ 'Player History' | translate:lang }}</a></li>
               <li><a [routerLink]="['/playerTotals']" routerLinkActive="active">{{ 'Player Totals' | translate:lang }}</a></li>
               <!--<li><a [routerLink]="['/playerLiveWagerTransactions']" routerLinkActive="active">{{ 'Live Wager Transactions' | translate:lang }}(PHASE II )</a></li>-->
               <li *ngIf="!auth.siteName === Affiliates"><a [routerLink]="['/playerAccess']" routerLinkActive="active">{{ 'Player Access' | translate:lang }}</a></li>
