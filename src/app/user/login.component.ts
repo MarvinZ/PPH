@@ -24,7 +24,7 @@ export class LoginComponent {
 
 
   constructor(private authService: AuthService, private router: Router) {
-    this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0, '',0));
+    this.tempRes = new LoginResponse(new ResponseStatus('', '', ''), new ResponseAgentInfo('', 0, '', 0));
   }
 
   login(formValues) {
@@ -49,7 +49,7 @@ export class LoginComponent {
           originalId: this.tempRes.ResponseAgentInfo.IdAgent,
           bookId: this.tempRes.ResponseAgentInfo.Idbook,
           affCode: this.tempRes.ResponseAgentInfo.AffiliateCode
-          
+
         }
         localStorage.setItem('agentId', this.authService.currentUser.id.toString());
         localStorage.setItem('userName', this.authService.currentUser.userName);
@@ -57,7 +57,7 @@ export class LoginComponent {
         localStorage.setItem('lastName', this.authService.currentUser.lastName);
         localStorage.setItem('userType', this.authService.currentUser.userType);
         localStorage.setItem('affCode', this.authService.currentUser.affCode);
-                localStorage.setItem('bookId', this.authService.currentUser.affCode);
+        localStorage.setItem('bookId', this.authService.currentUser.bookId.toString());
 
 
         //  localStorage.setItem('timestamp', new Date().getTime().toString())
