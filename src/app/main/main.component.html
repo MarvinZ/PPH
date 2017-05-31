@@ -46,7 +46,7 @@
     <div class="row">
         <div class="well" *ngIf="response2">
             <h2><i class="fa fa-bar-chart" aria-hidden="true"></i> {{'Marketing Stats' | translate:lang }}</h2>
-            <ngx-charts-number-card [view]="view" [scheme]="colorScheme" [results]="single" (select)="onSelect($event)">
+            <ngx-charts-number-card [view]="view" [scheme]="colorScheme" [results]="single">
             </ngx-charts-number-card>
             <div class="clearfix"></div>
 

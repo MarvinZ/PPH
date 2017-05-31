@@ -98,7 +98,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
       // needs state or province
       // console.log(val);
       if (val) {
-        // this.toastr.success('The pre affiliate applications has been rejected!', 'Success');
+         this.toastr.success('The pre affiliate applications has been rejected!', 'Success');
         this.getData();
         //this.closeDetails();
 
@@ -128,7 +128,7 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
         // needs state or province
         // console.log(val);
         if (val[0] > 0) {
-          // this.toastr.success('The agent has been created!', 'Success');
+           this.toastr.success('The agent has been created!', 'Success');
           this.getData();
           this.closeDetails();
 

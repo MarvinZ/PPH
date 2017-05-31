@@ -40,7 +40,7 @@ export class AuthService {
       "Agent": userName, // "VHEDDIE",
       "Password": password // "TRUMP2021"
     }
-
+   // onsole.log(payload);
     return this.http.post(url, payload, options) // ...using post request
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
