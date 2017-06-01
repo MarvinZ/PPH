@@ -43,8 +43,8 @@ export class MarketingComponent extends Localization implements OnInit {
 
 
   public bannerTypes = [
-    { value: 'Static', display: 'Static' },
-    { value: 'Dynamic', display: 'Dynamic' },
+    { value: 'STATIC', display: 'Static' },
+    { value: 'DYNAMIC', display: 'Dynamic' },
 
   ];
 
