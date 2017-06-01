@@ -1,58 +1,55 @@
-<div class="container">
-  <h2>{{'Player Totals' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Player Totals' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
 
         <label>{{'Select Date range:' | translate:lang  }}</label>
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
         <label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
                 <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
             </select>
 
       </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
+      <div class="col-md-4 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">{{'GO!' | translate:lang}}</button>
       </div>
     </div>
   </form>
 
   <div *ngIf="response?.AgentList?.length > 0">
-    <h2>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h2>
-    <p></p>
+
+    <div class="row">
+      <div class="col-md-10">
+        <h3>{{'Period' | translate:lang}} {{response.StartDate | date: 'MM/dd/yyyy'}} To {{response.EndDate | date: 'MM/dd/yyyy'}}</h3>
+      </div>
+      <div class="col-md-2">
+        
+      </div>
+    </div>
 
 
     <div *ngFor="let Item of response.AgentList;">
 
 
-      <div class="row" style="text-align: center; color: white; background-color: black;">
-        {{Item._agent}}
-      </div>
-
-      <table class="table table-responsive">
+      <div class="table-responsive">
+      <table class="table">
+        <caption><i class="fa fa-chevron-down" aria-hidden="true"></i> {{Item._agent}}</caption>
         <thead>
-          <tr style="background-color: lightgray">
-            <td>Player</td>
-            <td>Last Wager</td>
-            <td>Open Bets</td>
-            <td>Graded Bets Amount</td>
-            <td>Win</td>
-            <td>Loss</td>
-            <td>Net</td>
-            <td>Currency</td>
-            <td>Current Balance</td>
+          <tr>
+            <th>Player</th>
+            <th>Last Wager</th>
+            <th>Open Bets</th>
+            <th>Graded Bets Amount</th>
+            <th>Win</th>
+            <th>Loss</th>
+            <th>Net</th>
+            <th>Currency</th>
+            <th>Current Balance</th>
           </tr>
         </thead>
         <tbody>
@@ -80,11 +77,8 @@
           </tr>
         </tbody>
       </table>
+      </div>
 
-
-
-
-      <hr />
 
     </div>
 

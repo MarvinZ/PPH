@@ -1,49 +1,41 @@
-<div class="container">
-  <h2>{{'Player History' | translate:lang }}</h2>
+<div class="container" id="reportContent">
+  <h1>{{'Player History' | translate:lang }}</h1>
   <form #myForm="ngForm" novalidate>
-    <div class="row">
+    <div class="row well">
 
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
 
         <label>{{'Select Date range:' | translate:lang  }}</label>
         <my-date-range-picker name="dateModel" [options]="myDatePickerOptions" [(ngModel)]="dateModel" required></my-date-range-picker>
       </div>
-      <div class="col-xs-3 form-group">
+      <div class="col-md-4">
         <label>{{'Currency:'| translate:lang  }}</label>
         <select name="ddlCurrency" class="form-control" style="height: 40px;" [(ngModel)]="ddlCurrency">
                 <option *ngFor="let cur of currencies" [value]="cur.value">{{cur.display}}</option>
             </select>
 
       </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-      <div class="col-xs-3 form-group">
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-4 form-group">
-        <button class="btn btn-default" (click)="go()">GO!</button>
+      <div class="col-md-4 ja-text-right padding-top-small">
+        <button class="btn btn-success" (click)="go()">{{'GO!' | translate:lang}}</button>
       </div>
     </div>
   </form>
 
   <div *ngIf="response?.length > 0">
-    <div>
-      <table class="table table-responsive">
+    <div class="table-responsive">
+      <table class="table table-striped">
         <thead>
-          <tr style="background-color: lightgray">
-            <td>Player</td>
-            <td>User/Phone</td>
-            <td>Date</td>
-            <td>Sport</td>
-            <td>Description</td>
-            <td>Risk/Win</td>
-            <td>Amount</td>
-            <td>Result</td>
-            <td>ResultScore</td>
-            <td>Placed</td>
+          <tr>
+            <th>Player</th>
+            <th>User/Phone</th>
+            <th>Date</th>
+            <th>Sport</th>
+            <th>Description</th>
+            <th>Risk/Win</th>
+            <th>Amount</th>
+            <th>Result</th>
+            <th>ResultScore</th>
+            <th>Placed</th>
           </tr>
         </thead>
         <tbody>
@@ -62,7 +54,6 @@
         </tbody>
       </table>
 
-      <hr />
     </div>
 
   </div>
