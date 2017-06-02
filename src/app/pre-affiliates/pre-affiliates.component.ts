@@ -25,8 +25,8 @@ export class PreAffiliatesComponent extends Localization implements OnInit {
 
 
   public books = [
-    { value: '6', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
-    { value: '4', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
+    { value: '12', display: 'Jazz', url: 'http://signup.jazzsports.ag/signupjazz.aspx?prefix=CJ&siteID=300&store_id=2&aff=&banner=&campaign=&se=GOOGLE&sks=/&ru=https://www.google.com/' },
+    { value: '6', display: 'ABC', url: 'http://signup.abcislands.ag/abc_signupnew.aspx' },
     { value: '1', display: 'Looselines', url: 'http://signup.looselines.ag/ll_Signup.aspx' }
 
   ];
