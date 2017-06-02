@@ -43,16 +43,16 @@
 
       <div class="form-group col-md-4">
         <label for="stateOrProvince">{{'State or province:' | translate:lang}}</label>
-        <em *ngIf="signupForm.controls.stateOrProvince?.invalid && (signupForm.controls.stateOrProvince?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-        <input (ngModel)="stateOrProvince" name="stateOrProvince" required id="stateOrProvince" type="text" class="form-control"
+        <!--<em *ngIf="signupForm.controls.stateOrProvince?.invalid && (signupForm.controls.stateOrProvince?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>-->
+        <input (ngModel)="stateOrProvince" name="stateOrProvince"  id="stateOrProvince" type="text" class="form-control"
           placeholder="state or province..." />
       </div>
 
 
       <div class="form-group col-md-4">
         <label for="addressLine1">{{'Address line 1:' | translate:lang}}</label>
-        <em *ngIf="signupForm.controls.addressLine1?.invalid && (signupForm.controls.addressLine1?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
-        <input (ngModel)="addressLine1" name="addressLine1" required id="addressLine1" type="text" class="form-control" placeholder="Address Line 1..."
+        <!--<em *ngIf="signupForm.controls.addressLine1?.invalid && (signupForm.controls.addressLine1?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>-->
+        <input (ngModel)="addressLine1" name="addressLine1"  id="addressLine1" type="text" class="form-control" placeholder="Address Line 1..."
         />
       </div>
 
@@ -66,7 +66,7 @@
 
       <div class="form-group col-md-4">
         <label for="city">{{'City:' | translate:lang}}</label>
-        <em *ngIf="signupForm.controls.city?.invalid && (signupForm.controls.city?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>
+        <!--<em *ngIf="signupForm.controls.city?.invalid && (signupForm.controls.city?.touched || mouseoverLogin)">{{'Required' | translate:lang}}</em>-->
         <input (ngModel)="city" name="city" required id="city" type="text" class="form-control" placeholder="city..." />
       </div>
 
