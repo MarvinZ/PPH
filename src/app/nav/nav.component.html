@@ -85,9 +85,9 @@
               <li><a [routerLink]="['/howitworks']" routerLinkActive="active">{{ 'How it works' | translate:lang }}</a></li>
               <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/howitworkspph']" routerLinkActive="active">{{ 'How it works' | translate:lang }}</a></li>
               <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/demopph']" routerLinkActive="active">{{ 'Demo PPH' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/demo']" routerLinkActive="active">{{ 'Demo' | translate:lang }}</a></li>
+              <!--<li><a [routerLink]="['/demo']" routerLinkActive="active">{{ 'Demo' | translate:lang }}</a></li>-->
               <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/signinguppph']" routerLinkActive="active">{{ 'Signing up PPH' | translate:lang }}</a></li>
-              <li><a [routerLink]="['/signingUp']" routerLinkActive="active">{{ 'Signining up' | translate:lang }}</a></li>
+              <!--<li><a [routerLink]="['/signingUp']" routerLinkActive="active">{{ 'Signining up' | translate:lang }}</a></li>-->
               <li><a [routerLink]="['/gallery']" routerLinkActive="active">{{ 'Gallery' | translate:lang }}</a></li>
               <li *ngIf="!auth.isAuthenticated() && !auth.isAffiliateSite()"><a [routerLink]="['/gallerypph']" routerLinkActive="active">{{ 'Gallery PPH' | translate:lang }}</a></li>
             </div>
